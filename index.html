@@ -975,6 +975,30 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
   #portfolio-page .portfolio-doc-format{display:none}
   #portfolio-page .portfolio-doc-circle{width:36px;height:36px;font-size:22px}
 }
+
+/* PROFILE / INFO: reserved portrait slot (swap this block for a photo later). */
+#info .info-identity{min-height:474px}
+#info .info-photo-slot{
+  width:188px;aspect-ratio:4/5;flex:0 0 auto;
+  margin:2px 0 3px;
+  border:1px dashed rgba(232,235,226,.42);
+  background:rgba(255,255,255,.035);
+  color:#a8ada6;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;position:relative;z-index:1;
+}
+#info .info-photo-slot:before,#info .info-photo-slot:after{
+  content:"";position:absolute;width:18px;height:18px;pointer-events:none;
+}
+#info .info-photo-slot:before{top:-1px;left:-1px;border-top:2px solid #e9bc39;border-left:2px solid #e9bc39}
+#info .info-photo-slot:after{bottom:-1px;right:-1px;border-bottom:2px solid #e9bc39;border-right:2px solid #e9bc39}
+#info .info-photo-icon{width:58px;height:58px;opacity:.62;margin-bottom:4px}
+#info .info-photo-label{font-size:10px;font-weight:850;letter-spacing:.15em;color:#e1e3dc}
+#info .info-photo-sub{font-size:11px;letter-spacing:.025em;color:#969b94}
+#info .info-id-content{padding-top:12px}
+#info .info-id-content h3{margin-top:7px}
+@media(max-width:760px){#info .info-identity{min-height:474px}}
+@media(max-width:500px){#info .info-identity{min-height:468px}#info .info-photo-slot{width:178px}}
 </style>
 </head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><div class="site"><div class="track" id="track"><section class="screen home-v1-page" id="home-screen" aria-labelledby="hero-title"><div class="home-v1-hero">
   <div class="container">
@@ -1015,10 +1039,15 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 </header>
 <div class="info-main">
 <section aria-label="인적사항" class="info-identity">
-<div class="info-id-top"><span>GAME DESIGN</span></div>
-<div aria-hidden="true" class="info-monogram">CL<span>.</span></div>
+<div class="info-photo-slot" aria-label="프로필 사진 삽입 예정">
+  <svg class="info-photo-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+    <circle cx="32" cy="23" r="10" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M13 54v-3c0-11 8.5-18 19-18s19 7 19 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+  <span class="info-photo-label">PROFILE PHOTO</span>
+  <span class="info-photo-sub">사진 삽입 예정</span>
+</div>
 <div class="info-id-content">
-<div class="info-identity-kicker">GAME PLANNER / PROFILE</div>
 <h3>이찬<span>CHAN LEE</span></h3>
 
 </div>
