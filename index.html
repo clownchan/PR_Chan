@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Game Design Portfolio — Documents</title><style>
+:root{--bg:#f6f6f2;--ink:#191b1b;--line:#e0e0d9;--muted:#777a74;--accent:#f7c548}*{box-sizing:border-box}html,body{height:100%;margin:0}body{font-family:Pretendard,'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #f7c548;outline-offset:2px}header.top{height:74px;display:flex;align-items:center;padding:0 5%;border-bottom:1px solid var(--line);gap:20px}header.top .brand{font-size:14.3px;font-weight:900;letter-spacing:.08em;white-space:nowrap}header.top .brand:before{content:'■';color:#dca929;margin-right:12px}.nav{display:flex;gap:26px;margin:auto}.nav button{border:0;background:none;color:#9b9c98;font-size:13.2px;font-weight:900;letter-spacing:.08em;padding:12px 0}.nav button.current{color:var(--ink);border-bottom:3px solid var(--accent)}.topaside{font-size:11px;letter-spacing:.1em;color:var(--muted)}.site{position:relative;height:calc(100vh - 74px);overflow:hidden}.track{height:100%;display:flex;transition:transform .65s cubic-bezier(.22,1,.36,1)}.screen{flex:0 0 100%;overflow:auto;min-width:0;padding:45px clamp(20px,5.5vw,90px) 70px}.screen .wrap{max-width:1360px;margin:auto}.mini{font-size:12.1px;color:#959791;font-weight:850;letter-spacing:.16em}.page-title{font-size:clamp(44px,6.16vw,77px);line-height:1.12;letter-spacing:-.075em;font-weight:950;margin:15px 0 16px}.sub{font-size:15.4px;color:var(--muted);line-height:1.8}.hl{box-shadow:inset 0 -13px var(--accent)}.home-layout{min-height:75vh;display:grid;grid-template-columns:1fr .85fr;align-items:center;gap:50px}.home-title{font-size:clamp(52.8px,6.6vw,110px);font-weight:950;line-height:1.18;letter-spacing:-.09em}.home-art{background:#212322;color:#fff;padding:55px;aspect-ratio:1.2;display:flex;flex-direction:column;justify-content:space-between}.home-art big{font-size:clamp(71.5px,9.9vw,154px);line-height:1;font-weight:950;color:var(--accent)}.primary-btn{border:0;background:var(--ink);color:#fff;padding:14px 20px;font-size:13.2px;font-weight:850;margin-top:25px}.block{background:#fff;border:1px solid var(--line);padding:24px}.simplecolumns{display:grid;grid-template-columns:1fr 1fr;gap:20px}.simplecolumns h3{font-size:16.5px}.simplecolumns p{font-size:14.3px;line-height:1.9;color:#686c66}.cardrow{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:25px}.feature{border:1px solid var(--line);background:#fff;text-align:left;padding:10px;transition:transform .18s;min-width:0}.feature:hover{transform:translateY(-3px)}.feature img,.feature .placeholder{width:100%;height:240px;object-fit:cover;display:block}.feature .placeholder{display:grid;place-items:center;background:#242825;color:#fff;font-size:48.4px;font-weight:900;letter-spacing:-.05em}.feature .placeholder:after{content:'●';color:var(--accent);font-size:24.2px}.feature span.meta{display:block;color:#999;font-size:11px;margin:15px 10px 6px;letter-spacing:.1em}.feature strong{display:block;margin:5px 10px 10px;font-size:23.1px}.feature p{margin:0 10px 12px;font-size:13.2px;color:var(--muted);line-height:1.5}.footnav{position:fixed;bottom:0;left:0;right:0;height:42px;border-top:1px solid var(--line);background:var(--bg);display:flex;align-items:center;justify-content:center;gap:15px;z-index:10}.footnav button{background:none;border:1px solid var(--line);padding:4px 12px}.footnav span{font-size:11px;color:#858780;letter-spacing:.15em}.overlay{position:fixed;inset:0;background:#171919c9;z-index:50;display:none;align-items:center;justify-content:center;padding:22px;backdrop-filter:blur(4px)}.overlay.open{display:flex}.dialog{width:min(1290px,100%);height:min(92vh,880px);background:#fff;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 18px 90px #0005}.dialog-head{display:flex;justify-content:space-between;align-items:center;padding:16px 26px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.15em;font-weight:900}.close{border:0;background:#202222;color:white;width:36px;height:36px;font-size:22px}.dialog-scroll{overflow-y:auto;flex:1;scrollbar-width:thin}.dialog-hero{background:#f8f8f5;padding:42px 50px 32px;display:flex;align-items:center;justify-content:space-between;gap:35px;border-bottom:1px solid var(--line)}.dialog-hero h2{font-size:clamp(47.3px,5.5vw,77px);letter-spacing:-.07em;margin:12px 0}.rule{width:52px;height:5px;background:var(--accent)}.dialog-hero p{color:var(--muted);font-size:14.3px;line-height:1.7;max-width:650px}.panelpad{padding:30px 50px 48px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-bottom:30px}.stat{background:#f7f7f3;border:1px solid #ecece5;padding:19px}.stat small{display:block;font-size:11px;color:#878a84;letter-spacing:.11em;font-weight:850}.stat big{display:block;font-size:clamp(27.5px,2.75vw,41.8px);font-weight:950;letter-spacing:-.04em;margin:8px 0 2px}.stat span{color:#858781;font-size:11px}.section-label{display:flex;align-items:center;gap:10px;font-size:13.2px;letter-spacing:.1em;font-weight:900;margin:0 0 18px}.section-label:before{content:'';width:5px;height:19px;background:var(--accent)}.analytics{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:28px}.analbox{border:1px solid var(--line);padding:22px;background:#fff;min-width:0}.chart-row{display:grid;grid-template-columns:142px 1fr 64px;gap:10px;align-items:center;margin:9px 0}.chart-name{font-size:12.1px;font-weight:700}.chart-tracks{height:13px;display:flex;background:#f1f2ed;overflow:hidden}.chart-tracks span.all{background:#f3be37}.count{font-size:12.1px;text-align:right;font-weight:850}.legend{display:flex;gap:20px;color:var(--muted);font-size:11px;margin:16px 0 10px}.legend b{display:inline-block;width:10px;height:10px;margin-right:5px}.caption{font-size:11px;color:#999b94;line-height:1.6;margin:10px 0 0}.platform-row{display:grid;grid-template-columns:95px 1fr 34px;gap:8px;align-items:center;margin:14px 0;font-size:12.1px}.platform-track{background:#f1f2ed;height:11px}.platform-track>span{display:block;background:#333837;height:100%}.library-controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.library-controls input,.library-controls select{border:1px solid var(--line);background:#fafaf8;padding:11px 13px;font-size:13.2px;min-width:0}.library-controls input{flex:1;min-width:170px}.library-count{font-size:12.1px;color:#8e918a;margin:0 0 14px}.covers{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}.game{min-width:0;border:1px solid var(--line);padding:7px;background:white;text-align:left}.game .game-art{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:154px;overflow:hidden;background:#242725;padding:8px;margin:0;flex-shrink:0}.game .game-art-bg{position:absolute;inset:-15px;background-position:center;background-size:cover;filter:blur(18px) saturate(.76);opacity:.38;margin:0}.game .game-art:after{content:"";position:absolute;inset:0;border:1px solid #ffffff24;pointer-events:none}.game img{position:relative;display:block;width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;object-fit:contain;object-position:center center;filter:none;transition:transform .22s ease}.game strong{font-size:12.1px;line-height:1.45;display:block;margin:9px 4px 5px;min-height:32px}.game > span:last-child{font-size:11px;color:#8d8f89;margin:0 4px 7px;display:block}.experience-group{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;padding:34px 0;border-bottom:1px solid var(--line)}.experience-group h3{font-size:26.4px;margin:9px 0}.experience-group .todo{margin-top:15px;border-left:4px solid var(--accent);background:#f5f5ef;padding:20px;font-size:13.2px;color:#8b8e87}.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.photo-grid img{width:100%;height:210px;object-fit:cover}.photo-empty{background:#f1f1eb;border:1px dashed #c4c5bc;min-height:180px;display:grid;place-items:center;color:#979890;font-size:13.2px}
+@media(max-width:950px){.analytics{grid-template-columns:1fr}.covers{grid-template-columns:repeat(4,1fr)}.chart-row{grid-template-columns:120px 1fr 50px}.home-layout{grid-template-columns:1fr}.home-art{display:none}}@media(max-width:580px){header.top{padding:0 14px;flex-wrap:wrap;gap:2px;height:96px;justify-content:space-between}header.top .brand{font-size:12.1px}.topaside{display:none}.nav{order:3;width:100%;justify-content:space-between;gap:8px}.nav button{font-size:9.9px}.site{height:calc(100vh - 96px)}.screen{padding:25px 17px 70px}.cardrow{grid-template-columns:1fr}.feature{display:grid;grid-template-columns:44% 56%}.feature img,.feature .placeholder{height:135px;grid-row:span 3}.feature strong{font-size:17.6px}.feature p{font-size:12.1px}.overlay{padding:0}.dialog{height:100vh;max-height:100vh}.dialog-head{padding:10px 15px}.dialog-hero{padding:24px 18px}.panelpad{padding:20px 15px 35px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.stats .stat:last-child{grid-column:1/-1}.stat{padding:13px}.stat big{font-size:clamp(24.2px,5.5vw,35.2px)}.analytics{gap:10px}.analbox{padding:14px}.chart-row{grid-template-columns:92px 1fr 39px;gap:6px}.chart-name,.count{font-size:9.9px}.covers{grid-template-columns:repeat(3,1fr);gap:7px}.game{padding:4px}.game .game-art{height:106px}.game strong{font-size:11px}.game span{font-size:9.9px}.experience-group{grid-template-columns:1fr;gap:15px}.simplecolumns{grid-template-columns:1fr}.photo-grid img{height:150px}}
+
+
+/* PROFILE / INFO v3 — content from user-provided résumé slide, layout independent */
+#info .info-v3{max-width:1250px;margin:0 auto;padding:6px 0 65px}
+#info .info-intro{margin:6px 0 24px}
+#info .info-intro h2{font-weight:950;letter-spacing:-.075em;font-size:clamp(38px,4.6vw,63px);line-height:1.1;margin:11px 0 12px}
+#info .info-dot{color:#e8b524}
+#info .info-intro p{font-size:14.3px;line-height:1.8;color:#70746e;margin:0}
+#info .info-main{display:grid;grid-template-columns:minmax(290px,.88fr) minmax(0,1.32fr);gap:17px;align-items:stretch}
+#info .info-identity{background:#212422;color:#fff;padding:23px 28px 22px;min-height:440px;position:relative;display:flex;flex-direction:column;overflow:hidden}
+#info .info-identity:after{content:'';position:absolute;right:-78px;top:82px;border:1px solid #ffffff13;width:255px;height:255px;transform:rotate(45deg);pointer-events:none}
+#info .info-id-top,#info .info-id-bottom{display:flex;justify-content:space-between;gap:8px;font-size:9.9px;font-weight:850;letter-spacing:.12em;color:#a4a9a3}
+#info .info-monogram{font-family:Arial,sans-serif;font-size:clamp(82.5px,9.9vw,121px);line-height:1;font-weight:900;letter-spacing:-.12em;margin:23px 0 7px;color:#f9c642}
+#info .info-monogram span{color:#fff}
+#info .info-id-content{position:relative;z-index:1}
+#info .info-identity-kicker{font-size:9.9px;letter-spacing:.18em;color:#f9c642;font-weight:850}
+#info .info-id-content h3{font-size:35.2px;letter-spacing:-.055em;margin:10px 0 9px;display:flex;align-items:baseline;gap:15px}
+#info .info-id-content h3 span{font-size:12.1px;letter-spacing:.11em;color:#999f99}
+#info .info-id-content p{font-size:13.2px;line-height:1.8;color:#c5cbc5;margin:0 0 13px}
+#info .info-personal{border-top:1px solid #ffffff2d;margin-top:auto;padding:11px 0 12px;position:relative;z-index:1}
+#info .info-personal>div{display:grid;grid-template-columns:75px minmax(0,1fr);gap:5px;align-items:center;padding:6px 0}
+#info .info-personal>div>span:first-child{color:#a6aaa4;font-size:9.9px;letter-spacing:.12em;font-weight:800}
+#info .info-personal>div>span:last-child,#info .info-personal a{color:#f3f4ee;font-size:13.2px;text-decoration:none;overflow-wrap:anywhere;line-height:1.45}
+#info .info-personal a:hover{color:#f9c642}
+#info .info-id-bottom{border-top:1px solid #ffffff2b;padding-top:14px;color:#d4d8d1}
+#info .info-facts{border:1px solid var(--line);background:#fff;padding:24px 28px 20px;display:flex;flex-direction:column}
+#info .info-facts-head,#info .info-facts-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:9.9px;letter-spacing:.1em;color:#999b97}
+#info .info-facts-head strong{font-size:12.1px;color:#262925;letter-spacing:.12em}
+#info .info-facts-category{font-size:12.1px;font-weight:900;letter-spacing:.12em;padding-top:26px;padding-bottom:12px;border-bottom:3px solid #242724}
+#info .info-facts-category span{font-size:11px;font-weight:500;letter-spacing:0;color:#858a82;margin-left:7px}
+#info .info-facts-category.certificates{padding-top:24px}
+#info .info-facts dl{margin:0}
+#info .info-fact{display:grid;grid-template-columns:155px minmax(0,1fr);gap:15px;border-bottom:1px solid #e6e7e0;padding:17px 0}
+#info .info-fact dt{font-size:11px;color:#858a82;font-weight:900;letter-spacing:.01em;padding-top:5px}
+#info .info-fact dd{margin:0;font-size:17.6px;line-height:1.35;font-weight:850;letter-spacing:-.025em;min-width:0;overflow-wrap:anywhere}
+#info .info-fact dd span{display:block;color:#878b85;font-size:13.2px;font-weight:500;letter-spacing:0;line-height:1.6;margin-top:4px}
+#info .info-cert-list{padding:6px 0 4px}
+#info .info-cert{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e6e7e0;font-size:15.4px;font-weight:750}
+#info .info-cert-marker{width:6px;height:6px;background:#e8b524;flex-shrink:0}
+#info .info-facts-foot{margin-top:auto;padding-top:18px}
+#info .info-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:17px}
+#info .info-section-head h3{font-size:28.6px;letter-spacing:-.04em;margin:8px 0 0;line-height:1.3}
+#info .info-section-head h3 span{margin-left:7px;font-size:12.1px;letter-spacing:.13em;font-weight:800;color:#a0a39c}
+#info .info-section-counter{color:#999b96;font-size:11px;font-weight:850;letter-spacing:.12em;white-space:nowrap;padding-bottom:5px}
+#info .info-history-section{margin-top:44px}
+#info .info-activity-list{background:#fff;border:1px solid var(--line);padding:4px 27px}
+#info .info-activity{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;align-items:baseline;padding:20px 0;border-bottom:1px solid #e6e8e1}
+#info .info-activity:last-child{border-bottom:0}
+#info .info-date{font-size:12.1px;letter-spacing:.01em;color:#777e74;font-weight:800;white-space:nowrap}
+#info .info-activity-copy{border-left:3px solid #f5c247;padding-left:19px}
+#info .info-activity h4{font-size:17.6px;letter-spacing:-.03em;margin:0 0 7px;font-weight:900}
+#info .info-activity p{font-size:13.2px;color:#787e76;line-height:1.7;margin:0}
+#info .info-lower-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:31px;align-items:stretch}
+#info .info-lower-card{border:1px solid var(--line);background:#fff;padding:23px 26px 22px;min-width:0}
+#info .info-lower-card .info-section-head{margin-bottom:13px}
+#info .info-lower-card .info-section-head h3{font-size:25.3px}
+#info .info-job,#info .info-award{border-top:1px solid #e6e8e1;padding:18px 0 16px}
+#info .info-job h4,#info .info-award h4{font-size:16.5px;letter-spacing:-.025em;line-height:1.5;margin:0 0 6px;font-weight:850}
+#info .info-job time,#info .info-award time{font-size:12.1px;font-weight:700;color:#92968e}
+#info .info-job p{font-size:13.2px;line-height:1.6;color:#777d74;margin:8px 0 0}
+#info .info-award{display:grid;grid-template-columns:80px 1fr;align-items:baseline;gap:12px}
+#info .info-award h4{margin:0}
+@media(max-width:960px){#info .info-fact{grid-template-columns:118px minmax(0,1fr)}#info .info-main{grid-template-columns:minmax(270px,.88fr) minmax(0,1.12fr)}#info .info-lower-grid{grid-template-columns:1fr}}
+@media(max-width:760px){#info .info-main{grid-template-columns:1fr}#info .info-identity{min-height:360px}#info .info-monogram{font-size:96.8px;margin:16px 0 12px}#info .info-fact{grid-template-columns:145px minmax(0,1fr)}#info .info-history-section{margin-top:30px}}
+@media(max-width:500px){#info .info-intro h2{font-size:60.5px}#info .info-identity{padding:20px 22px;min-height:365px}#info .info-id-top,#info .info-id-bottom{font-size:8.8px}#info .info-id-content h3{font-size:31.9px}#info .info-facts{padding:21px 18px 19px}#info .info-fact{grid-template-columns:115px minmax(0,1fr);gap:10px}#info .info-fact dd{font-size:15.4px}#info .info-fact dt{font-size:9.9px}#info .info-section-head h3{font-size:26.4px}#info .info-activity-list{padding:1px 17px}#info .info-activity{grid-template-columns:1fr;gap:8px;padding:17px 0}#info .info-activity-copy{padding-left:13px}#info .info-activity h4{font-size:16.5px}#info .info-lower-card{padding:17px 17px 13px}#info .info-award{grid-template-columns:1fr;gap:6px}#info .info-personal>div{grid-template-columns:60px minmax(0,1fr)}}
+
+
+/* Unified PROFILE: INFO followed by LIFE WITH GAMES in normal scroll flow */
+.profile-unified-info,.profile-unified-life{display:block;position:relative}
+.profile-unified-info .info-v3{padding-bottom:0 !important}
+.profile-jump{display:inline-flex;gap:18px;align-items:center;border:1px solid var(--line);background:#fff;padding:11px 17px;margin:18px 0 16px;font-size:11px;font-weight:900;letter-spacing:.12em;color:#343732;transition:background .15s,border-color .15s}
+.profile-jump span{color:#c39a1f;font-size:18.7px;line-height:1}
+.profile-jump:hover{border-color:#dfb53e;background:#fff9e7}
+.profile-unified-life{border-top:2px solid #292c29;padding:30px 0 100px;margin-top:69px;min-height:calc(100vh - 164px);scroll-margin-top:25px}
+.profile-unified-kicker{display:flex;gap:16px;align-items:center;margin-bottom:17px}
+.profile-unified-kicker .mini{color:#242724}
+.profile-unified-line{height:1px;background:#dbddd6;flex:1}
+.profile-unified-page{color:#a4a7a0;font-size:11px;font-weight:800;letter-spacing:.14em;white-space:nowrap}
+.profile-unified-life h2{margin:10px 0 10px;font-size:clamp(41.8px,5.06vw,70.4px);font-weight:950;letter-spacing:-.065em;line-height:1.15}
+.profile-unified-life>.sub{font-size:14.3px;margin:0;line-height:1.8}
+.profile-unified-life .cardrow{margin-top:26px}
+@media(max-width:580px){.profile-jump{margin:12px 0 10px}.profile-unified-life{margin-top:45px;padding-top:23px;padding-bottom:70px;min-height:0}.profile-unified-life h2{font-size:clamp(39.6px,11vw,53.9px)}.profile-unified-kicker{gap:9px}.profile-unified-page{font-size:8.8px}.profile-unified-life .cardrow{margin-top:22px}}
+
+/* ═════════════════ HISTORY: vertical archive draft ═════════════════ */
+.history-v2{--history-dark:#1e211e;--history-yellow:#f4c643;--history-line:#dcddd5;padding:0 0 85px;max-width:1350px;margin:auto}
+.history-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(315px,.66fr);align-items:end;gap:55px;padding:6px 0 65px;border-bottom:1px solid #d9dbd4}
+.history-intro-copy h1{font-size:clamp(68.2px,7.7vw,116.6px);line-height:1.08;letter-spacing:-.087em;font-weight:950;margin:19px 0 30px}
+.history-intro-copy h1 span{color:#eabb35}
+.history-intro-lead{font-size:clamp(24.2px,2.42vw,35.2px);font-weight:850;letter-spacing:-.06em;line-height:1.55;color:#242722;margin:0 0 16px;word-break:keep-all}
+.history-intro-lead strong{background:linear-gradient(transparent 66%,#f5c945 66%);font-weight:900}
+.history-intro-sub{font-size:14.3px;line-height:1.85;color:#838780;margin:0}
+.history-overview{background:#222521;color:#fff;min-height:290px;padding:27px 31px;display:flex;flex-direction:column;justify-content:space-between}
+.history-overview-top,.history-overview-bottom{font-size:11px;font-weight:850;letter-spacing:.13em;display:flex;justify-content:space-between;gap:12px;align-items:center;color:#a9ada7}
+.history-overview-top span{font-size:20.9px;color:#f5c945}
+.history-overview-bottom{border-top:1px solid #515550;padding-top:17px;font-size:9.9px}
+.history-years{font-size:clamp(36.3px,4.4vw,66px);line-height:1;font-weight:940;letter-spacing:-.085em;white-space:nowrap}
+.history-years small{font-size:.55em;color:#f2c647;vertical-align:17%;margin:0 5px}
+.history-timeline-head{display:flex;justify-content:space-between;gap:24px;align-items:end;padding:37px 0 25px}
+.history-timeline-head .mini{font-size:11px}
+.history-timeline-head h2{font-size:clamp(24.2px,2.97vw,38.5px);margin:8px 0 0;font-weight:930;letter-spacing:-.048em}
+.history-timeline-head p{font-size:13.2px;margin:0 0 4px;color:#878a84}
+.history-timeline-head p span{color:#bf9728;font-size:18.7px}
+.history-timeline{position:relative;max-width:1210px;margin:0 auto;padding-bottom:25px}
+.history-timeline:before{position:absolute;content:'';top:24px;bottom:18px;left:50%;width:2px;background:linear-gradient(#e9cb69,#cbcfc8 25%,#cbcfc8 75%,#e9cb69);transform:translateX(-50%)}
+.history-year{display:flex;justify-content:center;position:relative;z-index:2;margin:30px auto 25px}
+.history-year:first-child{margin-top:3px}
+.history-year span{display:grid;place-items:center;background:#242724;color:#fff;border:4px solid #f6f6f2;min-width:92px;height:45px;font-size:18.7px;font-weight:890;letter-spacing:-.035em}
+.history-event{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr);align-items:center;gap:0;min-height:168px;margin:0 0 18px}
+.history-empty{display:block}
+.history-node{z-index:1;grid-column:2;grid-row:1;display:grid;place-items:center;align-self:center;position:relative}
+.history-node:before{content:'';position:absolute;z-index:-1;width:calc(100% + 90px);height:2px;background:#d9dbd1}
+.history-bubble{cursor:default;width:76px;height:76px;border-radius:50%;background:#fff;padding:6px;border:2px solid #e6e5dd;box-shadow:0 0 0 7px #f6f6f2,0 0 0 8px #e7e4d9;display:grid;place-items:center;position:relative;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.history-bubble-featured:after{content:'↗';position:absolute;right:-6px;bottom:0;background:#f4c643;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:15.4px;font-weight:900;color:#20231f;border:2px solid #f6f6f2}
+.history-bubble-featured:hover,.history-bubble-featured:focus-visible{transform:scale(1.06);border-color:#e0af2e;box-shadow:0 0 0 7px #f6f6f2,0 0 0 8px #e4bd50,0 11px 20px #0002}
+.history-bubble-visual{border-radius:50%;width:100%;height:100%;display:grid;place-items:center;background:#29322c;color:#f5ce58;overflow:hidden;position:relative}
+.history-bubble-visual:before{content:'';position:absolute;inset:13px;background:#ffffff0e;transform:rotate(45deg);border:1px solid #ffffff16}
+.history-bubble-visual svg{width:39px;height:39px;position:relative;z-index:1}
+.history-art-heart,.history-art-globe{background:#465551;color:#d2ddc5}
+.history-art-trophy,.history-art-award{background:#443d2d;color:#f4d67a}
+.history-art-dice,.history-art-book{background:#3c404d;color:#eaebf2}
+.history-art-box,.history-art-store{background:#394244;color:#dde8e5}
+.history-art-flow{background:#2c3228;color:#fad45f}
+.history-art-chart{background:#3f4640;color:#e6ce87}
+.history-event-card{font:inherit;cursor:default;width:min(100%,473px);display:flex;flex-direction:column;align-items:stretch;gap:11px;text-align:left;background:#fff;border:1px solid #dfdfd7;padding:23px 26px 20px;position:relative;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;color:var(--ink)}
+.history-event-card:before{content:'';position:absolute;left:0;top:0;width:45px;height:4px;background:#f2c442}
+
+.history-event-left>.history-event-card{grid-column:1;grid-row:1;justify-self:end;margin-right:19px}
+.history-event-right>.history-event-card{grid-column:3;grid-row:1;justify-self:start;margin-left:19px}
+.history-event-left>.history-empty{grid-column:3;grid-row:1}
+.history-event-right>.history-empty{grid-column:1;grid-row:1}
+
+.history-date{font-size:13.2px;font-weight:900;letter-spacing:.03em;color:#3e423a}
+.history-category{font-size:9.9px;font-weight:860;letter-spacing:.08em;color:#9d9f99;white-space:nowrap}
+.history-card-name{display:block;font-size:clamp(18.7px,1.65vw,24.2px);font-weight:900;letter-spacing:-.055em;line-height:1.36;word-break:keep-all}
+.history-card-brief{display:block;color:#767a74;font-size:13.2px;line-height:1.7;word-break:keep-all}
+
+
+
+
+.history-end-mark{position:relative;z-index:2;margin:0 auto;display:grid;place-items:center;width:54px;height:54px;background:#f5c644;border:7px solid #f6f6f2;border-radius:50%;font-size:9.9px;font-weight:900;letter-spacing:.04em;color:#272922}
+.history-footnote{display:flex;gap:12px;align-items:flex-start;margin:38px auto 0;padding:16px 20px;border:1px solid #deded7;background:#f5f4ef;max-width:860px}
+.history-foot-diamond{width:8px;height:8px;flex-shrink:0;background:#eabb38;transform:rotate(45deg);margin-top:5px}
+.history-footnote p{margin:0;font-size:12.1px;color:#7e8179;line-height:1.7}
+/* Large, interactive bubbles distinguish the four documented activities. */
+.history-bubble-static{opacity:.82;background:#f0f1eb;border-color:#dedfd7;box-shadow:0 0 0 6px #f6f6f2,0 0 0 7px #e7e4d9;pointer-events:none}
+.history-bubble-static .history-bubble-visual{background:#6b746d;color:#e5e9de}
+.history-bubble-static .history-bubble-visual svg{width:28px;height:28px}
+.history-node-featured{z-index:3}
+.history-bubble-featured{cursor:pointer;width:112px;height:112px;border:3px solid #f3c446;box-shadow:0 0 0 7px #f6f6f2,0 0 0 9px #ebc24c}
+.history-bubble-featured .history-bubble-visual svg{width:47px;height:47px}
+.history-card-field{display:inline-flex;align-self:flex-start;width:auto;font-size:11px;font-weight:790;background:#f4f3ec;border:1px solid #e7e6de;padding:5px 9px;color:#5c655c}
+.history-event:has(.history-bubble-featured) .history-event-card:before{width:64px}
+/* HISTORY MODAL */
+.history-detail-hero{background:#f7f7f4;padding:38px 45px 33px;display:grid;grid-template-columns:minmax(0,1fr) 158px;gap:20px;align-items:end;border-bottom:1px solid #e1e1d9}
+.history-detail-overline{font-size:11px;color:#8c9188;font-weight:850;letter-spacing:.12em}
+.history-detail-hero h2{font-size:clamp(33px,3.85vw,53.9px);font-weight:940;letter-spacing:-.065em;line-height:1.25;word-break:keep-all;margin:16px 0 12px}
+.history-detail-desc{font-size:14.3px;line-height:1.85;color:#6c7069;word-break:keep-all;margin:0;max-width:720px}
+.history-detail-date{margin:0 0 13px;font-size:14.3px;letter-spacing:.03em;font-weight:800;color:#252925}
+.history-detail-monogram{align-self:stretch;background:#272b27;display:flex;flex-direction:column;justify-content:space-between;padding:17px;color:#fff;min-height:147px}
+.history-detail-monogram b{font-size:12.1px;letter-spacing:.08em;color:#f1c547}
+.history-detail-monogram svg{width:55px;height:55px;stroke:#f2cc63;align-self:center;opacity:.9}
+.history-detail-monogram small{font-size:9.9px;letter-spacing:.14em;color:#9caba0;text-align:right}
+.history-detail-content{padding:30px 45px 48px}
+.history-media-heading{display:flex;justify-content:space-between;align-items:end;gap:16px;border-bottom:1px solid #dcded6;padding-bottom:13px;margin-bottom:16px}
+.history-media-heading h3,.history-detail-bottom h3{margin:0;font-size:13.2px;letter-spacing:.12em;font-weight:900}
+.history-media-heading span{font-size:11px;color:#92958d}
+.history-media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:29px}
+.history-media-placeholder{aspect-ratio:1.78;background:repeating-linear-gradient(-45deg,#f4f4f0,#f4f4f0 6px,#f0f0eb 6px,#f0f0eb 12px);border:1px dashed #c7c9c1;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;text-align:center;padding:15px}
+.history-media-placeholder svg{width:31px;height:31px;stroke:#92958c;fill:none;stroke-width:1.45}
+.history-media-placeholder strong{font-size:13.2px;color:#535a51;word-break:keep-all}
+.history-media-placeholder small{font-size:11px;color:#aaaDA5}
+.history-media-placeholder .history-media-num{position:absolute;top:12px;left:14px;font-size:11px;font-weight:800;color:#969a92;letter-spacing:.12em}
+.history-detail-bottom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.history-detail-bottom section{padding-top:17px;border-top:3px solid #282b27;min-width:0}
+.history-detail-bottom .history-bottom-result{border-top-color:#f2c642}
+.history-detail-bottom h3{display:flex;align-items:center;gap:8px}
+.history-detail-bottom h3 span{color:#c5a140;font-size:11px}
+.history-detail-bottom p{margin:13px 0 0;font-size:14.3px;line-height:1.85;color:#535a52;word-break:keep-all}
+@media(max-width:900px){.history-intro{grid-template-columns:1fr;gap:25px}.history-overview{min-height:195px}.history-years{font-size:56.1px}.history-timeline-head{padding-top:27px}.history-event-card{padding:19px}.history-card-top{flex-wrap:wrap;gap:6px}}
+@media(max-width:700px){.history-intro{padding-bottom:30px}.history-intro-copy h1{font-size:70.4px;margin:10px 0 18px}.history-intro-lead{font-size:24.2px}.history-intro-sub{font-size:13.2px}.history-overview{min-height:166px;padding:20px}.history-years{font-size:46.2px}.history-timeline-head{align-items:start}.history-timeline-head p{max-width:113px;font-size:11px;line-height:1.5;text-align:right}.history-timeline-head h2{font-size:25.3px}.history-timeline{padding-left:0}.history-timeline:before{left:42px;transform:none;top:22px;bottom:20px}.history-year{justify-content:flex-start;margin:27px 0 17px;padding-left:0}.history-year span{min-width:84px;width:84px;height:42px;font-size:16.5px;border:4px solid #f6f6f2}.history-event{grid-template-columns:84px minmax(0,1fr);gap:9px;min-height:120px;margin:0 0 13px}.history-node{grid-column:1;grid-row:1}.history-node:before{width:90px;left:44px}.history-bubble{width:55px;height:55px;padding:4px;box-shadow:0 0 0 4px #f6f6f2,0 0 0 5px #e7e4d9}.history-bubble-featured{width:76px;height:76px;border:3px solid #f3c446;box-shadow:0 0 0 4px #f6f6f2,0 0 0 6px #ebc24c}.history-bubble-featured .history-bubble-visual svg{width:34px;height:34px}.history-bubble-visual svg{width:29px;height:29px}.history-bubble-featured:after{width:20px;height:20px;font-size:13.2px}.history-event-left>.history-event-card,.history-event-right>.history-event-card{grid-column:2;grid-row:1;margin:0;justify-self:stretch}.history-event .history-empty{display:none}.history-event-card{padding:15px 14px 13px;gap:7px}.history-card-name{font-size:17.6px}.history-card-brief{font-size:12.1px}.history-category{font-size:8.8px}.history-card-field{font-size:9.9px;padding:4px 7px}.history-end-mark{margin-left:15px}.history-footnote{margin-top:25px}.history-detail-hero{padding:28px 19px 26px;grid-template-columns:1fr}.history-detail-monogram{display:none}.history-detail-content{padding:24px 17px 32px}.history-media-grid{grid-template-columns:1fr;gap:10px}.history-detail-bottom{grid-template-columns:1fr;gap:25px}}
+@media(prefers-reduced-motion:reduce){.history-bubble,.history-event-card{transition:none}}
+
+/* HISTORY V4 — the four interactive bubbles share one size, color and emphasis. */
+.history-bubble-featured{
+  width:112px;height:112px;padding:6px;
+  border:3px solid #e6b536;background:#fff;
+  box-shadow:0 0 0 7px #f6f6f2,0 0 0 9px #e9c150;
+}
+.history-bubble-featured .history-bubble-visual{
+  background:linear-gradient(145deg,#ffe179,#f3c441);
+  color:#222820;
+}
+.history-bubble-featured .history-bubble-visual:before{
+  background:#ffffff1b;border-color:#ffffff42;
+}
+.history-bubble-featured .history-bubble-visual svg{
+  width:47px;height:47px;stroke-width:1.8;
+}
+.history-bubble-featured:after{
+  background:#272d24;color:#ffe17c;
+}
+.history-bubble-featured:hover,.history-bubble-featured:focus-visible{
+  transform:scale(1.055);
+  border-color:#d9a32b;
+  box-shadow:0 0 0 7px #f6f6f2,0 0 0 9px #e5b648,0 10px 22px #0002;
+}
+/* Activity overview appears between the hero photo and the role/result cards. */
+.history-detail-story{margin:0 0 29px;padding:23px 25px 25px;background:#faf8f1;border:1px solid #e9e2ca;border-left:5px solid #edbd3b}
+.history-detail-story h3{font-size:13.2px;letter-spacing:.12em;font-weight:900;margin:0 0 15px}
+.history-detail-story h3 span{color:#bf8f24;margin-right:8px}
+.history-detail-story p{font-size:15.4px;color:#474d46;line-height:1.94;word-break:keep-all;white-space:pre-line;margin:0;max-width:890px}
+/* A single wide hero slot at the top; document/archive photos are below all text. */
+.history-hero-media{margin:0 0 27px}
+.history-hero-media .history-media-heading{margin-bottom:14px}
+.history-hero-photo{width:100%;max-width:940px;height:315px;margin:0 auto;background:#f4f4ed;border:1px dashed #c7c9c1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px;position:relative}
+.history-hero-photo:before{content:'';position:absolute;inset:12px;border:1px solid #e3e4da;pointer-events:none}
+.history-hero-photo svg{width:38px;height:38px;stroke:#989a90;stroke-width:1.5;fill:none}
+.history-hero-photo strong{font-size:15.4px;color:#565c52;z-index:1}
+.history-hero-photo small{font-size:12.1px;color:#989b93;z-index:1}
+.history-detail-documents{margin-top:40px;padding-top:4px}
+.history-detail-documents .history-media-grid{margin-bottom:0}
+.history-detail-documents .history-media-placeholder{aspect-ratio:1.85;min-height:195px}
+@media(max-width:700px){
+  .history-bubble-featured{width:76px;height:76px;padding:4px;border:3px solid #e6b536;box-shadow:0 0 0 4px #f6f6f2,0 0 0 6px #e9c150}
+  .history-bubble-featured .history-bubble-visual svg{width:34px;height:34px;stroke-width:1.8}
+  .history-bubble-featured:hover,.history-bubble-featured:focus-visible{box-shadow:0 0 0 4px #f6f6f2,0 0 0 6px #e5b648,0 8px 15px #0002}
+  .history-detail-story{padding:18px 16px;margin-bottom:27px}
+  .history-detail-story p{font-size:14.3px;line-height:1.85}
+  .history-hero-photo{height:215px;max-width:none;padding:14px}
+  .history-hero-photo strong{font-size:13.2px}
+  .history-detail-documents{margin-top:32px}
+  .history-detail-documents .history-media-placeholder{min-height:170px}
+}
+
+/* PORTFOLIO / linked document index */
+.portfolio-wrap{padding-bottom:60px}
+.portfolio-lead{margin-bottom:43px;max-width:880px}
+.portfolio-headline{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 0 13px;border-bottom:2px solid var(--ink);font-size:12.1px;letter-spacing:.13em;font-weight:900}
+.portfolio-headline>div{display:flex;align-items:center;gap:11px}
+.portfolio-headline>span:last-child{font-size:11px;color:#7e817a}
+.portfolio-heading-mark{width:6px;height:20px;background:var(--accent);display:inline-block}
+.portfolio-doc-list{display:flex;flex-direction:column}
+.portfolio-doc-item{display:grid;grid-template-columns:99px minmax(0,1fr) 165px;align-items:center;gap:26px;min-height:135px;padding:20px 23px 20px 3px;background:transparent;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:background-color .18s ease,padding-left .18s ease}
+.portfolio-doc-item:hover,.portfolio-doc-item:focus-visible{background:#ffffff;padding-left:15px;outline-offset:-3px}
+.portfolio-doc-index{font-size:clamp(35.2px,4.4vw,56.1px);letter-spacing:-.08em;font-weight:900;display:flex;align-items:center;gap:15px;color:#b9bab5}
+.portfolio-doc-index-decor{width:3px;height:45px;background:#dddcd5;display:block}
+.portfolio-doc-item:hover .portfolio-doc-index{color:#252725}
+.portfolio-doc-item:hover .portfolio-doc-index-decor{background:var(--accent)}
+.portfolio-doc-main{min-width:0;display:flex;flex-direction:column;gap:7px}
+.portfolio-doc-game{font-size:14.3px;font-weight:800;line-height:1.3;color:#898b84}
+.portfolio-doc-title{font-size:clamp(22px,2.475vw,33px);font-weight:950;letter-spacing:-.045em;line-height:1.25;word-break:keep-all}
+.portfolio-doc-category{font-size:12.1px;font-weight:700;color:#969991;letter-spacing:.03em}
+.portfolio-doc-action{display:grid;grid-template-columns:auto 48px;grid-template-rows:45px 22px;align-items:center;justify-content:end;column-gap:16px;text-align:right}
+.portfolio-doc-format{font-weight:850;font-size:12.1px;letter-spacing:.11em;color:#898c84}
+.portfolio-doc-circle{height:48px;width:48px;border-radius:50%;background:#252725;color:#fff;display:grid;place-items:center;font-size:29.7px;font-weight:400;grid-row:1/3;grid-column:2;transition:background-color .2s,color .2s,transform .2s}
+.portfolio-doc-item:hover .portfolio-doc-circle{background:var(--accent);color:#171919;transform:translate(3px,-3px)}
+.portfolio-doc-cta{font-size:11px;color:#9a9c96;grid-row:2;grid-column:1;white-space:nowrap}
+.portfolio-file-note{padding-top:19px;font-size:12.1px;color:#93968e;line-height:1.6}
+@media(max-width:700px){.portfolio-lead{margin-bottom:25px}.portfolio-doc-item{grid-template-columns:54px minmax(0,1fr) 50px;gap:12px;min-height:105px;padding:18px 0}.portfolio-doc-item:hover{padding-left:5px}.portfolio-doc-index{font-size:31.9px;gap:8px}.portfolio-doc-index-decor{height:39px;width:2px}.portfolio-doc-game{font-size:12.1px}.portfolio-doc-title{font-size:20.9px}.portfolio-doc-category{font-size:11px}.portfolio-doc-action{display:flex;flex-direction:column;align-items:center;gap:8px}.portfolio-doc-circle{height:40px;width:40px;font-size:24.2px}.portfolio-doc-format{font-size:11px}.portfolio-doc-cta{display:none}}
+@media(prefers-reduced-motion:reduce){.portfolio-doc-item,.portfolio-doc-circle{transition:none}}
+
+/* Text authored for detailed HISTORY and LIFE WITH GAMES descriptions. */
+.history-detail-story .history-story-part{padding:5px 0 20px;margin:0 0 21px;border-bottom:1px solid #e4decc}
+.history-detail-story .history-story-part:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+.history-detail-story .history-story-part h4{font-size:17.6px;letter-spacing:-.035em;line-height:1.5;color:#242821;font-weight:850;margin:2px 0 11px;word-break:keep-all}
+.history-detail-story .history-story-part p{margin:0 0 11px;color:#474d46;line-height:1.85;font-size:14.3px;word-break:keep-all;white-space:normal}
+.history-detail-story .history-story-part p:last-child{margin-bottom:0}
+.history-detail-story .history-story-part strong,.experience-desc strong{color:#252821;font-weight:850}
+.experience-group .experience-desc{font-size:14.3px;color:#51574f;line-height:1.85;margin:14px 0 0;word-break:keep-all;max-width:470px}
+@media(max-width:580px){.history-detail-story .history-story-part h4{font-size:15.4px}.history-detail-story .history-story-part p{font-size:13.2px}.experience-group .experience-desc{font-size:13.2px}}
+
+/* PROFILE content declutter, without changing other pages */
+#info .info-id-content{padding-top:24px}
+#info .info-cert{justify-content:space-between;gap:14px}
+#info .info-cert-main{display:inline-flex;align-items:center;gap:10px;min-width:0}
+#info .info-cert-date{font-size:12.1px;letter-spacing:.015em;font-weight:650;color:#8b9089;white-space:nowrap;text-align:right}
+#info .info-id-top{min-height:10px}
+#info .info-intro{margin-bottom:26px}
+#info .info-intro h2{margin-bottom:0}
+#info .info-facts{padding-bottom:24px}
+.profile-unified-kicker .mini{letter-spacing:.17em}
+.library-notice{font-size:13.2px;color:#747971;line-height:1.65;margin:3px 0 16px;word-break:keep-all}
+@media(max-width:580px){#info .info-id-content{padding-top:18px}#info .info-cert-date{font-size:11px}.library-notice{font-size:12.1px}}
+
+/* Global 10% typography adjustment; layout sizes intentionally unchanged. */
+body{font-size:17.6px;}
+
+/* PROFILE: non-interactive cue for the rest of the vertically scrolling archive. */
+#profile-screen>.wrap{position:relative}
+#profile-screen .profile-unified-info{padding-top:34px}
+.profile-scroll-hint{position:absolute;top:32px;right:4px;display:flex;align-items:center;gap:14px;
+  font-size:11px;font-weight:850;letter-spacing:.08em;color:#777b75;white-space:nowrap;
+  pointer-events:none;user-select:none}
+.profile-scroll-hint-arrow{display:inline-block;font-size:25px;font-weight:400;line-height:1;color:#d1a125;
+  animation:profile-scroll-bob 2s ease-in-out infinite}
+@keyframes profile-scroll-bob{0%,100%{transform:translateY(-3px);opacity:.72}50%{transform:translateY(4px);opacity:1}}
+@media(max-width:580px){#profile-screen .profile-unified-info{padding-top:24px}
+  .profile-scroll-hint{top:25px;right:0;font-size:9px;gap:8px;letter-spacing:.10em}
+  .profile-scroll-hint-arrow{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.profile-scroll-hint-arrow{animation:none}}
+
+/* PROFILE refinement: shared INFO/LIFE visual scale and aligned 01/02 labels. */
+#profile-screen .profile-unified-info,
+#profile-screen .profile-unified-life{max-width:1250px;margin-left:auto;margin-right:auto;width:100%;}
+#profile-screen .profile-unified-life{border-top:1px solid #d8dbd5;padding-top:30px;}
+#profile-screen #info .info-intro h2,
+#profile-screen #life h2{
+  font-size:clamp(38px,4.6vw,63px);
+  line-height:1.1;
+  letter-spacing:-.075em;
+  font-weight:950;
+  margin:11px 0 12px;
+}
+#profile-screen #life .profile-unified-kicker{display:block; margin:6px 0 0;}
+#profile-screen #life .profile-unified-kicker .mini{
+  display:block;
+  font-size:12.1px;
+  font-weight:850;
+  color:#959791;
+  letter-spacing:.16em;
+  line-height:1.4;
+}
+#profile-screen #life .profile-unified-line{display:none;}
+#profile-screen #life>.sub{margin:0;}
+/* Full images only for the tall concert photographs. */
+.experience-group--concert .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;}
+.experience-group--concert .photo-grid img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:top center;
+}
+@media(max-width:580px){
+  #profile-screen #info .info-intro h2,
+  #profile-screen #life h2{font-size:clamp(34px,9vw,42px);}
+  #profile-screen .profile-unified-life{padding-top:23px;}
+  #profile-screen #life .profile-unified-kicker{margin-top:6px;}
+  .experience-group--concert .photo-grid{grid-template-columns:1fr;}
+  .experience-group--concert .photo-grid img{max-width:430px;margin:0 auto;}
+}
+
+/* HISTORY v5 — match PROFILE typography and a quieter, denser timeline. */
+.history-v2{max-width:1250px;padding-bottom:62px}
+.history-intro{display:block;grid-template-columns:none;padding:6px 0 26px;border-bottom:1px solid #dedfda}
+.history-intro-copy h1{
+  font-size:clamp(44px,6.16vw,77px);line-height:1.12;letter-spacing:-.075em;
+  font-weight:950;margin:15px 0 20px
+}
+.history-intro-copy h1 span{color:#272927;box-shadow:inset 0 -13px var(--accent)}
+.history-intro-lead{max-width:900px;font-size:clamp(18px,2.1vw,25px);font-weight:820;letter-spacing:-.035em;line-height:1.5;margin:0 0 8px}
+.history-intro-sub{max-width:950px;font-size:14.3px;line-height:1.75;color:#858881;margin:0;word-break:keep-all}
+.history-timeline-head{padding:23px 0 16px;align-items:center}
+.history-timeline-head h2{font-size:clamp(24px,2.8vw,35px);margin:0;letter-spacing:-.045em}
+.history-timeline{max-width:1170px}
+.history-year{margin:15px auto 10px}
+.history-year:first-child{margin-top:0}
+.history-year span{
+  min-width:0;width:auto;height:auto;padding:2px 16px;
+  background:var(--bg);color:#242724;border:0;
+  font-size:27px;font-weight:920;letter-spacing:-.045em;line-height:1.25
+}
+.history-event{min-height:142px;margin:0 0 9px}
+.history-event:has(.history-bubble-static){min-height:84px;margin-bottom:3px}
+.history-event:has(.history-bubble-static) .history-event-card{
+  padding:10px 17px 9px;gap:5px;width:min(100%,390px);
+  border-color:#e7e8e0;background:#fcfcfa
+}
+.history-event:has(.history-bubble-static) .history-event-card:before{height:2px;width:30px;background:#d4d5cc}
+.history-event:has(.history-bubble-static) .history-date{font-size:11.2px;color:#888b85}
+.history-event:has(.history-bubble-static) .history-card-name{font-size:16px;letter-spacing:-.035em}
+.history-event:has(.history-bubble-static) .history-card-field{font-size:9.5px;padding:3px 7px;background:#f7f7f3;color:#777b75}
+.history-event:has(.history-bubble-static) .history-card-brief{font-size:11.2px;line-height:1.4}
+.history-event:has(.history-bubble-static) .history-node:before{width:calc(100% + 65px)}
+.history-event:has(.history-bubble-static) .history-bubble{
+  width:50px;height:50px;padding:4px;border-width:1px;
+  box-shadow:0 0 0 5px var(--bg),0 0 0 6px #e6e5dd
+}
+.history-event:has(.history-bubble-static) .history-bubble-visual svg{width:23px;height:23px}
+.history-event:has(.history-bubble-featured) .history-event-card{border-color:#dfdfd7}
+.history-detail-hero{display:block;grid-template-columns:none;padding:30px 45px 26px}
+.history-detail-hero h2{margin:9px 0 10px}
+.history-detail-overline{font-size:12.1px;color:#93978e;letter-spacing:.09em}
+.history-detail-monogram{display:none!important}
+@media(max-width:700px){
+  .history-v2{padding-bottom:48px}
+  .history-intro{padding-bottom:24px}
+  .history-intro-copy h1{font-size:clamp(44px,11.4vw,64px);margin:11px 0 17px}
+  .history-intro-lead{font-size:19px;line-height:1.55;margin-bottom:9px}
+  .history-intro-sub{font-size:13.2px;line-height:1.7}
+  .history-timeline-head{padding:20px 0 12px}
+  .history-timeline-head h2{font-size:25.3px}
+  .history-year{justify-content:flex-start;margin:15px 0 10px}
+  .history-year span{font-size:22px;min-width:0;width:auto;height:auto;padding:2px 9px}
+  .history-event{min-height:115px;margin-bottom:11px}
+  .history-event:has(.history-bubble-static){min-height:78px;margin-bottom:6px}
+  .history-event:has(.history-bubble-static) .history-event-card{padding:10px 11px 9px;gap:4px}
+  .history-event:has(.history-bubble-static) .history-card-name{font-size:14.5px}
+  .history-event:has(.history-bubble-static) .history-card-brief{font-size:10.6px}
+  .history-event:has(.history-bubble-static) .history-bubble{width:42px;height:42px;padding:3px}
+  .history-event:has(.history-bubble-static) .history-bubble-visual svg{width:21px;height:21px}
+  .history-event:has(.history-bubble-static) .history-node:before{width:76px;left:44px}
+  .history-detail-hero{padding:25px 19px 23px}
+}
+
+/* HISTORY popup editorial cleanup */
+.history-detail-hero{display:block}
+.history-detail-hero h2{margin-top:0}
+.history-hero-media{margin-top:0}
+.history-detail-story .history-story-part strong{
+  color:#90600f;
+  font-weight:900;
+  background:linear-gradient(transparent 83%,rgba(232,181,48,.18) 83%);
+  -webkit-box-decoration-break:clone;
+  box-decoration-break:clone;
+}
+@media(max-width:580px){.history-detail-hero h2{margin-top:0}}
+/* TRPG archive — originals, grouped by documentation theme. */
+.trpg-hero-gallery{display:block;max-width:920px;margin:0 auto;border:1px solid #dbddd7;background:#fff;overflow:hidden}
+.trpg-hero-gallery img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain}
+.trpg-gallery-collection{display:flex;flex-direction:column;gap:36px;margin-top:20px}
+.trpg-gallery-group{padding-top:18px;border-top:1px solid #e0e2d9}
+.trpg-gallery-group:first-child{border-top:none;padding-top:0}
+.trpg-gallery-heading{display:flex;align-items:center;gap:12px;margin:0 0 9px;font-size:17px;font-weight:900;letter-spacing:-.045em;color:#252923}
+.trpg-gallery-heading:before{content:"";display:inline-block;width:5px;height:20px;background:#ebbc42;flex:none}
+.trpg-gallery-note{font-size:13px;line-height:1.7;color:#72766e;margin:0 0 15px}
+.trpg-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.trpg-gallery-grid--feature{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+.trpg-gallery-grid--single{grid-template-columns:1fr}
+.trpg-gallery-grid--boss{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+.trpg-gallery-grid--boss .trpg-gallery-item--memo .trpg-gallery-visual{height:410px}
+.trpg-gallery-item{appearance:none;border:1px solid #e2e3dc;background:#fbfbf9;padding:0;display:block;width:100%;min-width:0;text-align:left;cursor:zoom-in;overflow:hidden;font-family:inherit;color:inherit;transition:border-color .18s,box-shadow .18s}
+.trpg-gallery-item:hover,.trpg-gallery-item:focus-visible{border-color:#dcb647;box-shadow:0 0 0 2px #edc95c44;outline:0}
+.trpg-gallery-visual{height:260px;display:flex;align-items:center;justify-content:center;background:#f2f3f0;padding:8px;overflow:hidden}
+.trpg-gallery-visual img{width:100%;height:100%;display:block;object-fit:contain}
+.trpg-gallery-item--wide .trpg-gallery-visual{height:410px}
+.trpg-gallery-item--panorama .trpg-gallery-visual{height:240px}
+.trpg-gallery-item--memo .trpg-gallery-visual{height:300px}
+.trpg-gallery-item--log .trpg-gallery-visual{height:280px}
+.trpg-gallery-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 13px 13px;border-top:1px solid #e4e6df}
+.trpg-gallery-caption strong{font-size:13.5px;line-height:1.4;font-weight:800;word-break:keep-all}
+.trpg-gallery-caption em{font-size:11px;color:#a07c22;font-style:normal;white-space:nowrap}
+.trpg-gallery-item--span{grid-column:1/-1}
+#trpg-image-dialog{box-sizing:border-box;width:min(96vw,1420px);max-width:none;max-height:94vh;min-height:0;margin:auto;border:1px solid #50524d;background:#191b19;color:#fff;padding:0;box-shadow:0 20px 80px #0008;overscroll-behavior:contain}
+#trpg-image-dialog::backdrop{background:#101212d9}
+.trpg-lightbox-top{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;gap:12px;border-bottom:1px solid #424540}
+#trpg-lightbox-title{font-size:14px;font-weight:750;letter-spacing:-.02em}
+#trpg-lightbox-close{border:1px solid #686c66;color:#f7f7f4;background:#252825;font-size:22px;width:38px;height:36px;line-height:1;cursor:pointer}
+.trpg-lightbox-image{display:block;width:100%;height:auto;max-height:calc(94vh - 69px);object-fit:contain;background:#191b19}
+@media(max-width:700px){.trpg-gallery-collection{gap:25px}.trpg-gallery-heading{font-size:15px}.trpg-gallery-grid,.trpg-gallery-grid--feature{grid-template-columns:1fr;gap:12px}.trpg-gallery-item--span{grid-column:auto}.trpg-gallery-visual,.trpg-gallery-item--wide .trpg-gallery-visual,.trpg-gallery-item--panorama .trpg-gallery-visual,.trpg-gallery-item--log .trpg-gallery-visual{height:auto;max-height:340px;min-height:180px}.trpg-gallery-visual img{height:auto;max-height:340px}.trpg-gallery-item--memo .trpg-gallery-visual{height:265px}.trpg-gallery-caption{padding:10px 12px}.trpg-gallery-caption strong{font-size:12px}.trpg-hero-gallery img{max-height:none}}
+
+/* BOARDGAME HISTORY: real project photographs and 18-page planning document. */
+.boardgame-hero{max-width:920px;margin:0 auto;border:1px solid #dedfd8;background:#f6f6f3;overflow:hidden}
+.boardgame-hero img{display:block;width:100%;height:auto;object-fit:contain}
+.boardgame-gallery-award .trpg-gallery-visual{height:410px;background:#f6f6f3}
+.boardgame-gallery-award .trpg-gallery-visual img{object-fit:contain}
+.boardgame-gallery-collection .trpg-gallery-grid .trpg-gallery-visual{height:290px}
+.boardgame-gallery-collection .trpg-gallery-grid--single .trpg-gallery-visual{height:410px}
+.boardgame-slides-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.boardgame-slides-grid .trpg-gallery-visual{height:auto;aspect-ratio:16/9;padding:4px;background:#f1f2ef}
+.boardgame-slides-grid .trpg-gallery-visual img{height:100%;width:100%;object-fit:contain}
+.boardgame-slides-grid .trpg-gallery-caption{padding:9px 10px;gap:5px}
+.boardgame-slides-grid .trpg-gallery-caption strong{font-size:12px}
+.boardgame-slides-grid .trpg-gallery-caption em{font-size:10px}
+
+.younghana-gallery-award .trpg-gallery-visual{height:460px;background:#f6f6f3}
+.younghana-gallery-award .trpg-gallery-visual img{object-fit:contain}
+.younghana-slides-grid .trpg-gallery-visual{height:auto;aspect-ratio:16/9;padding:4px;background:#f1f2ef}
+.younghana-slides-grid .trpg-gallery-visual img{height:100%;width:100%;object-fit:contain}
+@media(max-width:700px){.younghana-gallery-award .trpg-gallery-visual{height:320px}}
+@media(max-width:700px){.boardgame-slides-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.boardgame-slides-grid .trpg-gallery-caption{padding:8px}.boardgame-slides-grid .trpg-gallery-caption em{display:none}.boardgame-gallery-collection .trpg-gallery-grid .trpg-gallery-visual{height:220px}.boardgame-gallery-collection .trpg-gallery-grid--single .trpg-gallery-visual{height:340px}}
+
+/* DCA: preserve the tall physical award photo, and show the plan in a quiet gallery. */
+.dca-hero-cover{max-width:680px;background:#f7f7f2;border-color:#e5e5dc}
+.dca-hero-cover img{max-height:690px;object-fit:contain}
+.dca-slides-grid .trpg-gallery-visual{height:auto;aspect-ratio:16/9;padding:4px;background:#f2f2ee}
+.dca-slides-grid .trpg-gallery-visual img{height:100%;width:100%;object-fit:contain}
+@media(max-width:700px){.dca-hero-cover{max-width:100%}.dca-hero-cover img{max-height:520px}}
+
+/* HISTORY 2026-10-22: align heading with PROFILE and make timeline markers legible. */
+#history-screen>.history-wrap{position:relative}
+#history-screen .history-v2{padding-top:34px}
+#history-screen .history-intro{padding-top:0}
+#history-screen .history-intro-copy{max-width:950px}
+
+/* Every timeline marker is one flat circle; keep static markers opaque. */
+.history-bubble,
+.history-event:has(.history-bubble-static) .history-bubble{
+  padding:0 !important; border:0 !important;
+  box-shadow:none !important; background:transparent !important;
+  border-radius:50%; overflow:visible; opacity:1 !important;
+  display:grid; place-items:center;
+}
+.history-bubble::after,
+.history-bubble-visual::before,
+.history-bubble-visual svg{display:none !important}
+.history-bubble-visual,
+.history-bubble-featured .history-bubble-visual,
+.history-bubble-static .history-bubble-visual{
+  width:100%;height:100%;border-radius:50%;
+  border:0;box-shadow:none;position:relative;overflow:hidden;
+  display:block;
+}
+.history-bubble-featured,
+.history-event:has(.history-bubble-featured) .history-bubble{
+  width:92px !important;height:92px !important;
+  cursor:pointer;transition:transform .18s ease;
+}
+.history-bubble-featured .history-bubble-visual{
+  background:#ffcb21 !important;
+}
+.history-bubble-featured:hover .history-bubble-visual,
+.history-bubble-featured:focus-visible .history-bubble-visual{background:#ffd945 !important}
+.history-bubble-featured:hover,.history-bubble-featured:focus-visible{
+  transform:scale(1.075);border:0 !important;box-shadow:none !important;
+}
+.history-bubble-featured:focus-visible{outline:3px solid #2b332d;outline-offset:5px}
+.history-bubble-static,
+.history-event:has(.history-bubble-static) .history-bubble{width:50px !important;height:50px !important}
+.history-bubble-static .history-bubble-visual{background:#737f7e !important;opacity:1 !important}
+
+/* Connect each card BORDER to the CENTER of its own marker, no overshoot. */
+.history-node::before,.history-event:has(.history-bubble-static) .history-node::before,
+.history-event:has(.history-bubble-featured) .history-node::before{display:none !important}
+.history-event-card::after{
+  content:"";position:absolute;top:calc(50% - 1px);height:2px;
+  background:#c6ccc3;pointer-events:none;z-index:0;
+}
+.history-event-left>.history-event-card::after{right:-74px;width:74px}
+.history-event-right>.history-event-card::after{left:-74px;width:74px}
+.history-event:has(.history-bubble-featured) .history-event-card::after{background:#e2be50}
+.history-node{z-index:2}
+@media(max-width:700px){
+  #history-screen .history-v2{padding-top:24px}
+  .history-bubble-featured,.history-event:has(.history-bubble-featured) .history-bubble{width:70px !important;height:70px !important}
+  .history-bubble-static,.history-event:has(.history-bubble-static) .history-bubble{width:42px !important;height:42px !important}
+  .history-event-left>.history-event-card::after,
+  .history-event-right>.history-event-card::after{left:-51px;right:auto;width:51px}
+}
+
+
+/* 2026-10-22 | unified headings, simpler navigation and timeline markers */
+.page-title .hl,
+#profile-screen #life h2 .hl {
+  color:#e8b524 !important;
+  box-shadow:none !important;
+  background:transparent !important;
+  text-decoration:none !important;
+}
+/* retain whole-phrase accent on HOME separately */
+#portfolio-page .portfolio-wrap>.page-title{margin:15px 0 16px;font-size:clamp(44px,6.16vw,77px);line-height:1.12;letter-spacing:-.075em;font-weight:950}
+#portfolio-page .portfolio-wrap{padding-top:0}
+#portfolio-page .portfolio-headline{padding-top:16px}
+#portfolio-page .portfolio-heading-mark{display:none !important}
+
+/* A persistent, floating pill-shaped navigation replaces old top tabs and footer arrows. */
+header.top{justify-content:space-between}
+header.top>.nav, .footnav{display:none !important}
+.floating-page-nav{
+  position:fixed;left:50%;bottom:max(22px, env(safe-area-inset-bottom));transform:translateX(-50%);
+  z-index:35;display:flex;align-items:center;gap:4px;padding:7px;
+  width:max-content;max-width:calc(100vw - 32px);
+  border-radius:999px;background:#1c211e;border:1px solid #42473f;
+  box-shadow:0 16px 55px #0004,0 2px 12px #0002;
+  backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+}
+.floating-page-nav button{
+  border:0;border-radius:999px;color:#e4e6dd;background:transparent;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  font-size:11px;font-weight:900;letter-spacing:.025em;white-space:nowrap;
+  min-width:112px;min-height:46px;padding:11px 15px;transition:background .2s,color .2s,transform .2s;
+}
+.floating-page-nav button:hover:not(.current){background:#333b35;color:#fff}
+.floating-page-nav button.current{background:var(--accent);color:#161b17;box-shadow:0 3px 12px #0002}
+.floating-page-nav button svg{width:17px;height:17px;flex:0 0 17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.screen{padding-bottom:max(116px, calc(95px + env(safe-area-inset-bottom)))}
+@media(max-width:620px){
+  .floating-page-nav{width:calc(100vw - 28px);bottom:max(12px,env(safe-area-inset-bottom));padding:5px;gap:2px}
+  .floating-page-nav button{min-width:0;flex:1;min-height:47px;gap:4px;padding:8px 4px;font-size:9.1px;letter-spacing:-.012em;flex-direction:column}
+  .floating-page-nav button svg{width:17px;height:17px;flex-basis:17px}
+  .screen{padding-bottom:120px}
+  #portfolio-page .portfolio-wrap>.page-title{font-size:clamp(44px,11vw,64px)}
+}
+@media(prefers-reduced-motion:reduce){.floating-page-nav button{transition:none}}
+
+/* Identically sized, opaque single-circle timeline markers. */
+.history-bubble-featured,.history-bubble-static,
+.history-event:has(.history-bubble-featured) .history-bubble,
+.history-event:has(.history-bubble-static) .history-bubble{
+  width:50px !important;height:50px !important;min-width:50px !important;min-height:50px !important;
+  opacity:1 !important;border-radius:50% !important;
+}
+.history-bubble-static .history-bubble-visual{opacity:1 !important}
+@media(max-width:700px){
+  .history-bubble-featured,.history-bubble-static,
+  .history-event:has(.history-bubble-featured) .history-bubble,
+  .history-event:has(.history-bubble-static) .history-bubble{
+    width:42px !important;height:42px !important;min-width:42px !important;min-height:42px !important;
+  }
+}
+/* New DCA cover uses the 16:10 competition graphic; award photo moved below. */
+.dca-hero-cover{max-width:760px}
+.dca-hero-cover img{max-height:475px;object-fit:contain}
+.dca-gallery-award .trpg-gallery-visual{height:520px;background:#f6f6f3}
+.dca-gallery-award .trpg-gallery-visual img{width:100%;height:100%;object-fit:contain}
+@media(max-width:700px){.dca-hero-cover{max-width:100%}.dca-hero-cover img{max-height:360px}.dca-gallery-award .trpg-gallery-visual{height:340px}}
+/* External video link as a compact documentary resource. */
+.boardgame-video-link{display:flex;align-items:center;gap:16px;padding:17px 20px;border:1px solid #d9dcd2;background:#f9f9f5;color:#20241f;text-decoration:none;max-width:700px;transition:border-color .16s,background-color .16s}
+.boardgame-video-link:hover{border-color:#c79c27;background:#fff9e7}
+.boardgame-video-link .video-play-mark{display:grid;place-items:center;width:44px;height:44px;background:#1f2520;border-radius:50%;font-size:13px;color:#f4c643;flex:0 0 44px}
+.boardgame-video-link strong,.boardgame-video-link small{display:block}
+.boardgame-video-link strong{font-size:15px;font-weight:850}
+.boardgame-video-link small{margin-top:5px;color:#83867e;font-size:11px}
+
+
+/* The floating toolbar yields focus whenever a detail dialog is open. */
+body:has(#overlay.open) .floating-page-nav{opacity:0;visibility:hidden;pointer-events:none}
+@media(max-width:620px){#portfolio-page .portfolio-lead-tail{display:block}}
+
+/* === Oct 22 HOME + PROFILE heading refinement === */
+.home-layout.home-cover{min-height:calc(100vh - 210px);display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);align-items:center;gap:clamp(28px,4vw,72px);padding:clamp(8px,2vw,28px) 0 0;position:relative}
+.home-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;max-width:760px}
+.home-kicker{font-size:clamp(17px,1.85vw,24px);line-height:1.4;color:#858782;font-weight:500;margin-bottom:clamp(34px,5vh,72px)}
+.home-main-title{display:flex;flex-direction:column;gap:clamp(10px,1.3vw,18px);font-weight:950;letter-spacing:-.075em;line-height:1.06;color:#111313}
+.home-main-title span{font-size:clamp(42px,5.1vw,76px)}
+.home-main-title strong{font-size:clamp(64px,7.1vw,112px);font-weight:950}
+.home-main-title em{font-style:normal;background:var(--accent);box-shadow:0 0 0 .16em var(--accent);padding:0 .04em}
+.home-desc{margin:clamp(34px,4vh,52px) 0 0;font-size:clamp(17px,2vw,25px);line-height:1.45;color:#232625;font-weight:400;letter-spacing:-.03em}
+.home-desc strong{font-weight:800}
+.home-contact{margin-top:clamp(58px,8vh,90px);display:flex;flex-direction:column;gap:10px}
+.home-contact-title{display:flex;align-items:center;gap:16px;font-size:clamp(27px,3vw,44px);letter-spacing:-.05em;line-height:1.15}
+.home-contact-title strong{font-weight:900;color:#111313}
+.home-contact-title span{color:#8d8f8a;font-weight:500}
+.home-divider{width:2px;height:1.05em;background:#d7ad31;display:inline-block;border-radius:999px;flex:none}
+.home-contact-meta{font-size:clamp(19px,1.9vw,30px);line-height:1.35;color:#8f918d;font-weight:400}
+.home-visual{position:relative;min-height:clamp(360px,52vh,560px);align-self:end}
+.home-polaroid{position:absolute;background:#fff;padding:clamp(10px,1vw,16px) clamp(10px,1vw,16px) clamp(22px,1.7vw,28px);box-shadow:0 18px 36px rgba(0,0,0,.12);border:1px solid #ecece8}
+.home-polaroid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(100%)}
+.home-polaroid-front{width:clamp(250px,28vw,410px);left:2%;bottom:2%;transform:rotate(-7deg);z-index:2}
+.home-polaroid-back{width:clamp(240px,25vw,370px);right:0;bottom:10%;transform:rotate(7deg);z-index:1}
+#info .info-dot{display:none}
+#profile-screen #info .info-intro h2,.profile-unified-life h2{font-size:clamp(24px,2.8vw,35px)!important;margin:0 0 10px!important;letter-spacing:-.045em!important;line-height:1.2!important;font-weight:930!important}
+.profile-unified-life>.sub{margin-top:6px}
+@media(max-width:1100px){.home-layout.home-cover{grid-template-columns:minmax(0,1fr) minmax(300px,.8fr)}.home-kicker{margin-bottom:38px}.home-contact{margin-top:48px}}
+@media(max-width:950px){.home-layout.home-cover{grid-template-columns:1fr;min-height:auto;padding-top:8px}.home-copy{max-width:none}.home-desc{font-size:clamp(16px,2.1vw,22px)}.home-contact{margin-top:38px}.home-visual{min-height:360px;width:min(100%,540px);justify-self:end;margin-top:22px}}
+@media(max-width:580px){.home-layout.home-cover{padding-top:0;gap:20px;align-items:start}.home-kicker{font-size:14px;margin-bottom:24px}.home-main-title span{font-size:40px}.home-main-title strong{font-size:58px;line-height:1.03}.home-desc{font-size:16px;line-height:1.6}.home-contact{margin-top:28px;gap:6px}.home-contact-title{font-size:21px;gap:10px}.home-divider{width:2px}.home-contact-meta{font-size:14px}.home-visual{min-height:240px;width:100%;margin-top:8px}.home-polaroid-front{width:64%;left:0;bottom:0}.home-polaroid-back{width:56%;right:2%;bottom:22%}}
+
+/* === Oct 22 HOME cover refinement v2 === */
+#home-screen{display:flex;align-items:center}
+.home-layout.home-cover-refined{min-height:calc(100vh - 210px);display:grid;grid-template-columns:minmax(0,1.02fr) minmax(360px,.98fr);align-items:center;gap:clamp(32px,4vw,88px);padding:clamp(8px,1.8vw,24px) 0 0;position:relative}
+.home-copy.refined{max-width:660px;display:flex;flex-direction:column;align-items:flex-start}
+.home-kicker{font-size:clamp(16px,1.5vw,21px);line-height:1.35;color:#8a8a87;font-weight:500;margin-bottom:clamp(38px,5vh,62px);letter-spacing:-.02em}
+.home-main-title.refined{display:flex;flex-direction:column;gap:clamp(12px,1vw,16px);letter-spacing:-.065em;line-height:1.08;color:#121212}
+.home-main-title.refined span{font-size:clamp(40px,4vw,64px);font-weight:820}
+.home-main-title.refined strong{font-size:clamp(70px,6vw,100px);font-weight:950}
+.home-main-title.refined em{font-style:normal;background:var(--accent);padding:.02em .08em .03em .08em;box-shadow:none}
+.home-desc.refined{margin-top:clamp(34px,3.5vh,46px);font-size:clamp(17px,1.75vw,26px);line-height:1.55;color:#232323;font-weight:400;letter-spacing:-.03em}
+.home-desc.refined strong{font-weight:850}
+.home-contact.refined{margin-top:clamp(54px,6.2vh,78px);gap:8px}
+.home-contact-title.refined{display:flex;align-items:center;gap:16px;font-size:clamp(26px,2.7vw,40px);line-height:1.18;letter-spacing:-.05em}
+.home-contact-title.refined strong{font-weight:900;color:#101010}.home-contact-title.refined span{color:#8a8a87;font-weight:500}
+.home-divider{width:2px;height:1em;background:#d7ad31;border-radius:999px;display:inline-block;flex:none}
+.home-contact-meta{font-size:clamp(18px,1.55vw,27px);line-height:1.4;color:#8f8f8c;font-weight:400;letter-spacing:-.02em}
+.home-visual.refined{display:flex;justify-content:flex-end;align-items:flex-end;min-height:clamp(320px,40vw,500px)}
+.home-polaroid-composite{display:block;width:min(100%, 540px);height:auto;filter:drop-shadow(0 18px 26px rgba(0,0,0,.11))}
+@media (max-width:1100px){.home-layout.home-cover-refined{grid-template-columns:minmax(0,1fr) minmax(300px,.84fr);gap:32px}.home-polaroid-composite{width:min(100%,460px)}.home-main-title.refined strong{font-size:clamp(62px,6vw,88px)}}
+@media (max-width:900px){#home-screen{align-items:flex-start}.home-layout.home-cover-refined{min-height:auto;grid-template-columns:1fr;gap:24px;padding-top:0}.home-copy.refined{max-width:none}.home-visual.refined{justify-content:center;min-height:auto;margin-top:6px}.home-polaroid-composite{width:min(100%,420px)}.home-contact.refined{margin-top:32px}.home-kicker{margin-bottom:26px}.home-main-title.refined span{font-size:36px}.home-main-title.refined strong{font-size:56px}.home-desc.refined{font-size:16px;line-height:1.6}.home-contact-title.refined{font-size:22px}.home-contact-meta{font-size:15px}}
+
+
+/* File 1 HOME design, scoped to its own screen. Other tabs' CSS is unchanged. */
+#home-screen.home-v1-page{padding:0;position:relative;overflow-x:hidden;overflow-y:auto;isolation:isolate;background:#fcfcfb}
+#home-screen .home-v1-hero{min-height:100%;position:relative;overflow:hidden}
+#home-screen .home-v1-hero>.container{position:relative;max-width:1440px;min-height:calc(100vh - 74px);margin:0 auto;padding:clamp(95px,11vh,145px) 60px 98px}
+#home-screen .hero-content{z-index:3;position:relative;width:min(900px,77%)}
+#home-screen .eyebrow{font-size:14px;color:#929292;letter-spacing:.035em;font-weight:500}
+#home-screen .hero-content h1{font-size:clamp(55px,5.9vw,94px);line-height:1.24;letter-spacing:-.075em;font-weight:900;margin:57px 0 43px;word-break:keep-all}
+#home-screen .hero-content h1 .line-one{display:block;font-size:.59em;letter-spacing:-.072em;margin-bottom:19px}
+#home-screen .mark{background:#ffca42;box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 .06em .03em}
+#home-screen .hero-description{font-size:clamp(18px,1.65vw,23px);line-height:1.65;letter-spacing:-.045em;word-break:keep-all;margin:0}
+#home-screen .hero-description strong{font-weight:850}
+#home-screen .hero-bottom{margin-top:64px;display:flex;align-items:center;gap:42px}
+#home-screen .role-label{display:flex;align-items:center;gap:13px;color:#969696;font-size:19px;font-weight:500}
+#home-screen .role-label:before{content:'';display:block;width:3px;height:32px;background:#ffca42}
+#home-screen .hero-cta{font-size:13px;font-weight:800;display:flex;gap:12px;align-items:center;border:0;border-bottom:1px solid #131313;border-radius:0;background:transparent;color:#131313;padding:10px 0;transition:gap .2s;cursor:pointer}
+#home-screen .hero-cta:hover{gap:19px}
+#home-screen .hero-image{position:absolute;z-index:1;bottom:0;right:-5px;width:min(49vw,670px);mix-blend-mode:multiply;filter:grayscale(100%);pointer-events:none}
+#home-screen .hero-image img{display:block;width:100%;height:auto}
+#home-screen .hero-note{position:absolute;bottom:50px;left:60px;display:flex;align-items:center;gap:12px;font-size:10px;color:#aaa;letter-spacing:.14em;font-weight:700}
+#home-screen .hero-note .profile-scroll-hint-arrow{font-size:22px}
+#home-screen .vertical-note{position:absolute;z-index:2;right:42px;top:80px;writing-mode:vertical-rl;color:#bcbcbc;letter-spacing:.2em;font-size:11px}
+@media (min-width:1510px){#home-screen .hero-image{right:calc((100vw - 1440px)/2 - 60px)}}
+@media (max-width:1100px){#home-screen .home-v1-hero>.container{padding-left:36px;padding-right:36px}#home-screen .hero-note{left:36px}#home-screen .hero-content{width:79%}#home-screen .hero-content h1{font-size:clamp(52px,6vw,75px)}#home-screen .hero-image{width:53vw;right:-38px}}
+@media (max-width:740px){#home-screen .home-v1-hero>.container{min-height:780px;max-height:none;padding:76px 22px 300px}#home-screen .hero-content{width:100%}#home-screen .eyebrow{font-size:12px}#home-screen .hero-content h1{font-size:clamp(39px,9.3vw,63px);margin:40px 0 30px;line-height:1.25}#home-screen .hero-content h1 .line-one{font-size:.62em;margin-bottom:16px}#home-screen .hero-description{font-size:16px}#home-screen .hero-bottom{margin-top:34px;gap:24px;flex-wrap:wrap}#home-screen .role-label{font-size:15px}#home-screen .hero-cta{font-size:12px}#home-screen .hero-image{width:min(90vw,520px);right:-6%;bottom:0}#home-screen .hero-note,#home-screen .vertical-note{display:none}}
+@media (prefers-reduced-motion: reduce){#home-screen .hero-cta{transition:none}}
+
+
+/* 2026-10-22 HOME FIX: original HOME hero is full-width, not a flex child. */
+#home-screen.home-v1-page{
+  display:block !important;
+  align-items:initial !important;
+  width:100%;
+  max-width:none;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+#home-screen.home-v1-page > .home-v1-hero{
+  display:block;
+  position:relative;
+  width:100%;
+  min-width:0;
+  min-height:100%;
+  flex:none;
+}
+#home-screen.home-v1-page .home-v1-hero > .container{
+  width:100%;
+  box-sizing:border-box;
+}
+
+/* HOME — second scroll area: photo placeholder + written self-introduction */
+#home-screen .home-v1-hero{min-height:calc(100vh - 74px)}
+#home-screen .home-about-section{
+  position:relative;min-height:calc(100vh - 74px);background:#f7f7f3;
+  border-top:1px solid #e9e9e2;display:flex;align-items:center;
+  padding:clamp(62px,8vh,105px) clamp(24px,6vw,90px) clamp(120px,13vh,165px);
+}
+#home-screen .home-about-inner{
+  max-width:1280px;width:100%;margin:0 auto;
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  align-items:center;column-gap:clamp(42px,7vw,118px);
+}
+#home-screen .home-about-photo{
+  width:100%;aspect-ratio:4/4.65;min-height:420px;
+  background:#e9eae5;border:1px solid #dadcd5;
+}
+#home-screen .home-about-copy{align-self:center;min-width:0}
+#home-screen .home-about-kicker{color:#a0a29b;font-size:11px;letter-spacing:.17em;font-weight:850;margin-bottom:16px}
+#home-screen .home-about-copy h2{font-size:clamp(39px,4.3vw,69px);line-height:1.12;letter-spacing:-.065em;font-weight:930;margin:0 0 clamp(34px,5vh,58px)}
+#home-screen .home-about-period{color:#d9a629}
+#home-screen .home-about-writing{max-width:580px;min-height:260px}
+#home-screen .home-about-writing-placeholder{font-size:clamp(17px,1.55vw,22px);line-height:1.8;letter-spacing:-.025em;color:#8d908a;margin:0 0 28px}
+#home-screen .home-about-text-lines{display:grid;gap:15px;margin-bottom:35px}
+#home-screen .home-about-text-lines span{height:9px;background:#e3e5df;border-radius:2px;max-width:100%}
+#home-screen .home-about-text-lines span:nth-child(2){width:95%}
+#home-screen .home-about-text-lines span:nth-child(3){width:87%}
+#home-screen .home-about-text-lines span:nth-child(4){width:94%}
+#home-screen .home-about-text-lines span:nth-child(5){width:56%}
+#home-screen .home-about-text-lines--second span:nth-child(2){width:89%}
+#home-screen .home-about-text-lines--second span:nth-child(4){width:61%}
+/* HOME — populated self-introduction, retaining the original section layout. */
+#home-screen .home-about-writing{max-width:640px;min-height:0}
+#home-screen .home-about-copy h2{margin-bottom:clamp(24px,3vh,38px)}
+#home-screen .home-about-statement{
+  margin:0 0 24px;color:#252a26;font-weight:870;
+  font-size:clamp(21px,2vw,27px);line-height:1.45;letter-spacing:-.055em;
+  overflow-wrap:break-word;word-break:keep-all;
+}
+#home-screen .home-about-paragraphs{display:grid;gap:17px}
+#home-screen .home-about-paragraphs p{
+  margin:0;font-size:clamp(14px,1.08vw,15.5px);line-height:1.81;
+  letter-spacing:-.021em;color:#535951;word-break:keep-all;overflow-wrap:break-word;
+}
+#home-screen .home-about-paragraphs strong{font-weight:820;color:#252a26}
+@media(max-width:850px){
+  #home-screen .home-about-statement{font-size:clamp(20px,2.7vw,24px)}
+  #home-screen .home-about-paragraphs p{font-size:14.5px}
+}
+@media(max-width:670px){
+  #home-screen .home-about-statement{font-size:22px;line-height:1.5;margin-bottom:20px}
+  #home-screen .home-about-paragraphs{gap:16px}
+  #home-screen .home-about-paragraphs p{font-size:15px;line-height:1.8}
+  #home-screen .home-about-statement-break{display:none}
+}
+/* HISTORY — clickable bubble: small arrow in the upper-right corner only. */
+#history-screen .history-bubble-featured::after{
+  content:'↗';display:grid !important;place-items:center;position:absolute;
+  top:-5px;right:-6px;bottom:auto;left:auto;
+  width:22px;height:22px;border-radius:50%;
+  background:#242824;color:#ffe17a;border:2px solid #f6f6f2;
+  font-size:13px;font-weight:900;line-height:1;pointer-events:none;z-index:4;
+}
+@media(max-width:850px){
+  #home-screen .home-about-inner{gap:36px;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)}
+  #home-screen .home-about-photo{min-height:300px}
+}
+@media(max-width:670px){
+  #home-screen .home-about-section{padding:52px 22px 132px;align-items:flex-start}
+  #home-screen .home-about-inner{grid-template-columns:1fr;gap:36px}
+  #home-screen .home-about-photo{aspect-ratio:5/4;min-height:0}
+  #home-screen .home-about-copy h2{font-size:39px;margin-bottom:22px}
+  #home-screen .home-about-writing{min-height:240px}
+  #home-screen .home-about-writing-placeholder{font-size:16px}
+  #history-screen .history-bubble-featured::after{top:-6px;right:-7px;width:20px;height:20px;font-size:12px}
+}
+
+
+/* Five-tab navigation and standalone GAMES page. */
+#games-screen>.games-wrap{max-width:1360px;margin:0 auto}
+#games-screen .profile-unified-life{max-width:1250px;width:100%;margin:24px auto 0;padding:24px 0 95px;border-top:1px solid #d8dbd5;min-height:0;scroll-margin-top:0}
+#games-screen #life h2{font-size:clamp(24px,2.8vw,35px)!important;line-height:1.2!important;letter-spacing:-.045em!important;font-weight:930!important;margin:0 0 10px!important}
+#games-screen #life>.sub{margin:0;color:#858881;font-size:15px;line-height:1.7}
+#games-screen #life .cardrow{margin-top:30px}
+#games-screen #life .feature{border-radius:2px}
+#profile-screen #info .info-intro{margin-top:16px}
+#profile-screen #info .info-intro h2{margin-top:0!important}
+/* Do not retain the former section number or yellow dot next to INFO. */
+#profile-screen #info .info-intro>.mini{display:none}
+@media(max-width:760px){
+ #games-screen .profile-unified-life{margin-top:18px;padding-top:20px}
+ #games-screen #life .cardrow{margin-top:22px}
+ .floating-page-nav{gap:3px}
+ .floating-page-nav button{min-width:87px;padding-left:8px;padding-right:8px;font-size:10px;gap:6px}
+}
+@media(max-width:620px){
+ .floating-page-nav{gap:1px}
+ .floating-page-nav button{min-width:0;padding:7px 1px;gap:3px;font-size:8.4px;letter-spacing:-.03em}
+ .floating-page-nav button svg{width:16px;height:16px}
+ #games-screen #life h2{font-size:clamp(24px,7vw,32px)!important}
+}
+/* Persistent CONTACT button, separate from the bottom navigation. */
+.contact-widget{position:fixed;bottom:max(24px,env(safe-area-inset-bottom));right:clamp(13px,2.3vw,40px);z-index:45;font-family:inherit}
+.contact-trigger{display:inline-flex;align-items:center;gap:8px;border:1px solid #2e3430;border-radius:999px;background:#f7c548;color:#171a17;min-height:49px;padding:0 19px;font-size:12px;font-weight:950;letter-spacing:.055em;box-shadow:0 11px 32px rgba(0,0,0,.17);transition:transform .18s,box-shadow .18s}
+.contact-trigger:hover{transform:translateY(-2px);box-shadow:0 15px 30px rgba(0,0,0,.2)}
+.contact-trigger svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.contact-trigger[aria-expanded="true"]{background:#1c211e;color:#fff;border-color:#1c211e}
+.contact-panel{position:absolute;bottom:calc(100% + 13px);right:0;width:min(340px,calc(100vw - 24px));border:1px solid #d8d8d1;background:#fff;box-shadow:0 20px 55px rgba(0,0,0,.19);border-radius:15px;overflow:hidden}
+.contact-panel[hidden]{display:none!important}
+.contact-panel-head{display:flex;justify-content:space-between;align-items:center;padding:16px 19px;border-bottom:1px solid #e8e9e3}
+.contact-panel-head strong{font-size:15px;font-weight:950;letter-spacing:.05em}
+.contact-panel-head button{border:0;background:#f1f2eb;color:#50554f;border-radius:50%;font-size:23px;width:31px;height:31px;line-height:1}
+.contact-fields{padding:8px 19px 14px;margin:0}
+.contact-fields>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid #f0f0eb;align-items:center}
+.contact-fields>div:last-child{border-bottom:0}
+.contact-fields dt{font-size:12px;color:#8b8d86;font-weight:800}
+.contact-fields dd{margin:0;font-size:14px;color:#1b1d19;font-weight:750;overflow-wrap:anywhere}
+.contact-fields a{color:inherit;text-underline-offset:3px}
+body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .contact-widget{opacity:0;pointer-events:none;visibility:hidden}
+@media(max-width:1090px){.contact-widget{bottom:89px;right:17px}}
+@media(max-width:620px){.contact-widget{bottom:calc(87px + env(safe-area-inset-bottom));right:14px}.contact-trigger{min-height:43px;padding:0 13px;font-size:10.5px;gap:7px}.contact-panel{max-height:calc(100vh - 240px);overflow:auto}}
+</style><style>
+/* PORTFOLIO: cover thumbnails */
+#portfolio-page .portfolio-doc-item{
+  grid-template-columns:72px 184px minmax(0,1fr) 158px;
+  column-gap:24px;
+  min-height:156px;
+  padding:22px 19px 22px 3px;
+}
+#portfolio-page .portfolio-doc-cover{
+  display:block;position:relative;overflow:hidden;
+  aspect-ratio:16 / 9;min-width:0;width:100%;
+  border:1px solid #d9dbd3;background:#f6f6f3;
+  border-radius:3px;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+#portfolio-page .portfolio-doc-cover img{
+  display:block;width:100%;height:100%;object-fit:cover;object-position:center center;
+}
+#portfolio-page .portfolio-doc-item:hover .portfolio-doc-cover,
+#portfolio-page .portfolio-doc-item:focus-visible .portfolio-doc-cover{
+  border-color:#d4a622;box-shadow:0 12px 24px rgba(0,0,0,.08);transform:translateY(-2px);
+}
+#portfolio-page .portfolio-doc-main{gap:9px}
+@media(max-width:900px){
+  #portfolio-page .portfolio-doc-item{grid-template-columns:56px 140px minmax(0,1fr) 104px;gap:16px;min-height:140px;padding:20px 8px 20px 2px}
+  #portfolio-page .portfolio-doc-action{grid-template-columns:auto 42px;column-gap:9px}
+  #portfolio-page .portfolio-doc-circle{width:42px;height:42px;font-size:24px}
+  #portfolio-page .portfolio-doc-index{font-size:39px}
+}
+@media(max-width:650px){
+  #portfolio-page .portfolio-doc-item{
+    grid-template-columns:33px 100px minmax(0,1fr);
+    grid-template-rows:auto auto;column-gap:10px;row-gap:0;
+    padding:18px 0;min-height:126px;align-items:center;
+  }
+  #portfolio-page .portfolio-doc-index{grid-column:1;grid-row:1/3;align-self:center;font-size:25px;letter-spacing:-.07em}
+  #portfolio-page .portfolio-doc-index-decor{display:none}
+  #portfolio-page .portfolio-doc-cover{grid-column:2;grid-row:1/3;align-self:center}
+    #portfolio-page .portfolio-doc-main{grid-column:3;grid-row:1;align-self:end;gap:4px}
+  #portfolio-page .portfolio-doc-game{font-size:11px}
+  #portfolio-page .portfolio-doc-title{font-size:clamp(15px,4.4vw,20px);line-height:1.28}
+  #portfolio-page .portfolio-doc-category{font-size:10px}
+  #portfolio-page .portfolio-doc-action{grid-column:3;grid-row:2;align-self:start;justify-self:start;display:flex;flex-direction:row;gap:9px;margin-top:11px;align-items:center;text-align:left}
+  #portfolio-page .portfolio-doc-format{font-size:10px}
+  #portfolio-page .portfolio-doc-circle{width:29px;height:29px;font-size:18px}
+  #portfolio-page .portfolio-doc-cta{display:none}
+  #portfolio-page .portfolio-doc-item:hover{padding-left:0}
+}
+@media(max-width:365px){
+  #portfolio-page .portfolio-doc-item{grid-template-columns:27px 83px minmax(0,1fr);column-gap:8px}
+  #portfolio-page .portfolio-doc-title{font-size:15px}
+}
+</style>
+
+<style id="portfolio-thumb-large-refresh">
+/* DCA cover source is 600px wide: avoid browser upscaling and preserve sharpness. */
+.dca-hero-cover{width:min(100%, 460px) !important;max-width:460px !important;margin-left:auto;margin-right:auto}
+.dca-hero-cover img{display:block;width:100% !important;height:auto !important;max-height:300px !important;object-fit:contain !important}
+
+/* PORTFOLIO: make the cover actual reading-size rather than a small icon. */
+#portfolio-page .portfolio-doc-item{
+  grid-template-columns:62px clamp(370px, 34vw, 510px) minmax(0, 1fr) 126px;
+  column-gap:19px;
+  min-height:0;
+  padding:27px 9px 27px 4px;
+  align-items:center;
+}
+#portfolio-page .portfolio-doc-cover{width:100%;aspect-ratio:16/9;border-radius:4px;box-shadow:0 5px 17px rgba(0,0,0,.055)}
+#portfolio-page .portfolio-doc-cover img{width:100%;height:100%;object-fit:contain;object-position:center;background:#fff}
+#portfolio-page .portfolio-doc-index{font-size:clamp(31px,3.3vw,47px);gap:7px}
+#portfolio-page .portfolio-doc-index-decor{height:42px;width:2px}
+#portfolio-page .portfolio-doc-main{gap:13px;align-self:center}
+#portfolio-page .portfolio-doc-title{font-size:clamp(24px,2.25vw,32px);line-height:1.26}
+#portfolio-page .portfolio-doc-game{font-size:clamp(12px,1.1vw,15px)}
+#portfolio-page .portfolio-doc-category{font-size:12px;line-height:1.65}
+#portfolio-page .portfolio-doc-action{column-gap:10px;grid-template-columns:auto 45px}
+#portfolio-page .portfolio-doc-circle{height:45px;width:45px}
+
+@media(max-width:1230px){
+  #portfolio-page .portfolio-doc-item{grid-template-columns:51px clamp(300px, 34vw, 410px) minmax(0,1fr) 84px;column-gap:15px}
+  #portfolio-page .portfolio-doc-action{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+  #portfolio-page .portfolio-doc-cta{display:none}
+  #portfolio-page .portfolio-doc-format{font-size:10px}
+  #portfolio-page .portfolio-doc-circle{width:41px;height:41px;font-size:26px}
+}
+/* Tablet and mobile: let each thumbnail fill the row instead of shrinking it. */
+@media(max-width:960px){
+  #portfolio-page .portfolio-doc-item{
+    grid-template-columns:58px minmax(0,1fr) 105px;
+    grid-template-rows:auto auto;
+    column-gap:18px;row-gap:15px;
+    padding:25px 10px 28px 3px;
+  }
+  #portfolio-page .portfolio-doc-index{grid-column:1;grid-row:1/3;align-self:start;margin-top:5px;font-size:35px}
+  #portfolio-page .portfolio-doc-index-decor{height:33px}
+  #portfolio-page .portfolio-doc-cover{grid-column:2/4;grid-row:1;max-width:650px;justify-self:start}
+  #portfolio-page .portfolio-doc-main{grid-column:2;grid-row:2;gap:7px;align-self:center}
+  #portfolio-page .portfolio-doc-action{grid-column:3;grid-row:2;align-self:center;justify-self:end}
+  #portfolio-page .portfolio-doc-title{font-size:clamp(23px,3vw,29px)}
+}
+@media(max-width:600px){
+  #portfolio-page .portfolio-doc-item{
+    grid-template-columns:35px minmax(0,1fr) 46px;
+    column-gap:9px;row-gap:12px;padding:19px 0 24px;
+  }
+  #portfolio-page .portfolio-doc-index{font-size:27px;grid-column:1;grid-row:1/3;align-self:start;margin-top:2px}
+  #portfolio-page .portfolio-doc-index-decor{display:none}
+  #portfolio-page .portfolio-doc-cover{grid-column:2/4;grid-row:1;max-width:none}
+  #portfolio-page .portfolio-doc-main{grid-column:2;grid-row:2;gap:4px}
+  #portfolio-page .portfolio-doc-action{grid-column:3;grid-row:2;align-self:center;justify-self:end;margin:0}
+  #portfolio-page .portfolio-doc-game{font-size:11px}
+  #portfolio-page .portfolio-doc-title{font-size:clamp(18px,4.5vw,23px)}
+  #portfolio-page .portfolio-doc-category{font-size:10px}
+  #portfolio-page .portfolio-doc-format{display:none}
+  #portfolio-page .portfolio-doc-circle{width:36px;height:36px;font-size:22px}
+}
+</style>
+</head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><div class="site"><div class="track" id="track"><section class="screen home-v1-page" id="home-screen" aria-labelledby="hero-title"><div class="home-v1-hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow reveal">Game Design PORTFOLIO &nbsp; / &nbsp; 2026</div>
+      <h1 id="hero-title" class="reveal delay"><span class="line-one">기억에 남을 재미를,</span>설득력 있는 <span class="mark">설계</span>로.</h1>
+      <p class="hero-description reveal delay2">플레이 <strong>경험</strong>을 <strong>규칙과 데이터</strong>로 구체화하고,<br>기획 의도를 명확히 <strong>전달</strong>합니다.</p>
+      <div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div><button type="button" class="hero-cta" data-page="4">포트폴리오 둘러보기 <span aria-hidden="true">↗</span></button></div>
+    </div>
+    <div class="hero-image" aria-hidden="true"><img alt="" src="./assets/img_001.webp" /></div>
+    <div class="hero-note"><span>SCROLL TO EXPLORE</span><span class="profile-scroll-hint-arrow" aria-hidden="true">↓</span></div><div class="vertical-note">PLAY · ANALYZE · DESIGN</div>
+  </div>
+</div>
+<section class="home-about-section" id="home-about" aria-labelledby="home-about-heading">
+  <div class="home-about-inner">
+    <div class="home-about-photo" role="img" aria-label="추후 프로필 사진을 넣을 자리"></div>
+    <div class="home-about-copy">
+      <div class="home-about-kicker">GET TO KNOW ME</div>
+      <h2 id="home-about-heading">ABOUT ME<span class="home-about-period">.</span></h2>
+      <div class="home-about-writing" aria-label="게임 기획자 자기소개">
+        <h3 class="home-about-statement">재미를 발견하고, 설계하고,<br class="home-about-statement-break"> 더 나은 방법을 고민합니다.</h3>
+        <div class="home-about-paragraphs">
+          <p>다양한 장르의 게임을 깊이 경험하며 <strong>플레이어의 선택과 재미를 만드는 시스템</strong>에 관심을 가져왔습니다.</p>
+          <p>광고·마케팅 기획에서는 타깃의 요구를 분석하고 아이디어를 설득력 있는 제안으로 구체화하여 <strong>공모전 수상</strong>이라는 성과를 거두었습니다.</p>
+          <p>또한 TRPG 마스터 활동과 게임 시스템 기획서 제작을 통해 <strong>아이디어를 실제로 작동하는 규칙과 데이터로 설계하는 역량</strong>을 발전시켜 왔습니다.</p>
+          <p>최근에는 생성형 AI와 Dify를 활용한 게임기획 보조 도구를 개발하며 <strong>반복적인 검토 업무를 개선하고 기획 프로세스를 효율화하는 방법</strong>까지 탐구하고 있습니다.</p>
+          <p>다양한 경험을 바탕으로 재미의 이유를 분석하고, 그 가치를 플레이어에게 전달할 수 있는 게임 기획자를 지향합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section><section class="screen" id="profile-screen"><div class="wrap"><h1 class="page-title">PROFILE<span class="hl">.</span></h1><div class="profile-unified-info" id="info">
+<div class="info-v3">
+<header class="info-intro">
+<h2>INFO</h2>
+
+</header>
+<div class="info-main">
+<section aria-label="인적사항" class="info-identity">
+<div class="info-id-top"><span>GAME DESIGN</span></div>
+<div aria-hidden="true" class="info-monogram">CL<span>.</span></div>
+<div class="info-id-content">
+<div class="info-identity-kicker">GAME PLANNER / PROFILE</div>
+<h3>이찬<span>CHAN LEE</span></h3>
+
+</div>
+<div class="info-personal">
+<div><span>BIRTH</span><span>2001.01.02</span></div>
+<div><span>PHONE</span><a href="tel:01047833576">010-4783-3576</a></div>
+<div><span>EMAIL</span><a href="mailto:clownchan00@gmail.com">clownchan00@gmail.com</a></div>
+</div>
+
+</section>
+<section aria-label="학력과 자격증" class="info-facts">
+<div class="info-facts-head"><strong>PROFILE INFORMATION</strong></div>
+<div class="info-facts-category">EDUCATION <span>학력</span></div>
+<dl>
+<div class="info-fact"><dt>2019 —</dt><dd>아주대학교<span>문화콘텐츠학 전공</span></dd></div>
+<div class="info-fact"><dt>2025.09 — 2026.02</dt><dd>HFWU Nürtingen-Geislingen<span>독일 교환학생</span></dd></div>
+</dl>
+<div class="info-facts-category certificates">CERTIFICATIONS <span>자격증</span></div>
+<div class="info-cert-list"><div class="info-cert"><span class="info-cert-main"><span class="info-cert-marker"></span>컴퓨터활용능력 2급</span><time class="info-cert-date" datetime="2021-08-06">2021.08.06</time></div><div class="info-cert"><span class="info-cert-main"><span class="info-cert-marker"></span>JLPT N1</span><time class="info-cert-date" datetime="2026-08-18">2026.08.18</time></div></div>
+
+</section>
+</div>
+<section aria-labelledby="info-activities-heading" class="info-history-section">
+<div class="info-section-head"><div><h3 id="info-activities-heading">주요 활동 <span>ACTIVITIES</span></h3></div></div>
+<div class="info-activity-list"><article class="info-activity">
+<time class="info-date">2019.09 — 12</time><div class="info-activity-copy"><h4>하나은행 영하나 마케팅 크루 2기</h4><p>오프라인 광고 집행 · 상품 기획 · 경쟁 PT</p></div>
+</article>
+<article class="info-activity">
+<time class="info-date">2020.06 — 12</time><div class="info-activity-copy"><h4>희망씨앗 대학생 봉사단 8기</h4><p>재능기부 봉사 기획 · 보육원 교육 봉사</p></div>
+</article>
+<article class="info-activity">
+<time class="info-date">2021 — 2022</time><div class="info-activity-copy"><h4>TRPG 마스터</h4><p>시나리오·플레이 자료 제작 · 데이터 정리 · 6개 세션 / 누적 21명 / 총 283시간 플레이</p></div>
+</article>
+<article class="info-activity">
+<time class="info-date">2021.09 — 12</time><div class="info-activity-copy"><h4>보드게임 제작 프로젝트</h4><p>콘셉트·규칙 기획 · 실물 제작</p></div>
+</article>
+<article class="info-activity">
+<time class="info-date">2024.04 — 05</time><div class="info-activity-copy"><h4>KT&amp;G 상상 마케팅 스쿨 17기</h4><p>마케팅 교육 이수 · F&amp;B 광고 기획서 작성</p></div>
+</article></div>
+</section>
+<div class="info-lower-grid">
+<section aria-labelledby="info-career-heading" class="info-lower-card">
+<div class="info-section-head"><div><h3 id="info-career-heading">경력 <span>CAREER</span></h3></div></div>
+<div class="info-job-list"><article class="info-job"><h4>주식회사 엘즈</h4><time>2025.02.03 — 2025.08.19</time><p>물류 · 재고 관리</p></article>
+<article class="info-job"><h4>에프알엘코리아㈜ (유니클로)</h4><time>2026.03.11 — 2026.05.04</time><p>매장 리뉴얼 오픈 · 고객 응대 · 재고 관리</p></article></div>
+</section>
+<section aria-labelledby="info-awards-heading" class="info-lower-card">
+<div class="info-section-head"><div><h3 id="info-awards-heading">수상 <span>AWARDS</span></h3></div></div>
+<div class="info-award-list"><article class="info-award"><time>2019.12</time><h4>영하나 마케팅 크루 2기 아이디어 대상</h4></article>
+<article class="info-award"><time>2020.10</time><h4>제37회 DCA 대학생 광고대상 동상</h4></article>
+<article class="info-award"><time>2021.12</time><h4>제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회 장려상<br>(보드게임 제작)</h4></article></div>
+</section>
+</div>
+</div>
+</div></div></section><section class="screen" id="games-screen"><div class="wrap games-wrap">
+<h1 class="page-title">GAMES<span class="hl">.</span></h1>
+<div class="profile-unified-life" id="life"><h2>LIFE WITH GAMES</h2><p class="sub">게임을 플레이하고, 소장하고, 일상 속에서 경험합니다.</p><div class="cardrow"><button class="feature" data-open="playing"><img alt="보유 중인 게임 기기와 컨트롤러" src="./assets/img_002.webp"><span class="meta">01</span><strong>PLAYING</strong><p>장르 분포 · 플랫폼 경험 · 게임 라이브러리</p></button><button class="feature" data-open="collection"><img alt="소장 중인 게임 패키지" src="./assets/img_003.webp"/><span class="meta">02</span><strong>COLLECTION</strong><p>게임 패키지 · OST·아트북 · 룰북 · 굿즈</p></button><button class="feature" data-open="culture"><img alt="플레이엑스포 현장" src="./assets/img_004.webp"/><span class="meta">03</span><strong>EXPERIENCE</strong><p>공연 · 전시 · 경기 관람 · 대회 참가 및 운영</p></button></div></div>
+</div></section><section class="screen" id="history-screen"><div class="wrap history-wrap"><h1 class="page-title">HISTORY<span class="hl">.</span></h1><div class="profile-scroll-hint" aria-hidden="true"><span>SCROLL TO EXPLORE</span><span class="profile-scroll-hint-arrow">↓</span></div><div class="history-v2">
+<header class="history-intro">
+<div class="history-intro-copy"><p class="history-intro-lead">게임 기획자가 되기 위해 다양한 활동을 이어왔습니다.</p><p class="history-intro-sub">게임·기획에 관한 경험들을 최근 활동부터 확인하실 수 있습니다. 주요 활동을 클릭하면 자세한 내용을 확인하실 수 있습니다.</p></div>
+</header>
+<div class="history-timeline-head"><div><h2>TIMELINE</h2></div></div>
+<div class="history-timeline" id="historyTimeline"><div class="history-year" id="history-year-2026"><span>2026</span></div><div class="history-event history-event-left" data-history-entry="exchange"><article class="history-event-card">
+<span class="history-date">2025.09 — 2026.02</span>
+<span class="history-card-name">독일 HFWU 교환학생</span>
+<span class="history-card-field">교환학생</span>
+<span class="history-card-brief">새로운 문화와 환경에서 배우고 협업.</span>
+</article><div class="history-node"><span aria-hidden="true" class="history-bubble history-bubble-static"><span class="history-bubble-visual history-art-globe"></span></span></div><span aria-hidden="true" class="history-empty"></span></div><div class="history-year" id="history-year-2024"><span>2024</span></div><div class="history-event history-event-right" data-history-entry="ktng"><span aria-hidden="true" class="history-empty"></span><div class="history-node"><span aria-hidden="true" class="history-bubble history-bubble-static"><span class="history-bubble-visual history-art-chart"></span></span></div><article class="history-event-card">
+<span class="history-date">2024.04 — 05</span>
+<span class="history-card-name">KT&amp;G 상상 마케팅 스쿨 17기</span>
+<span class="history-card-field">기획 교육</span>
+<span class="history-card-brief">광고 기획의 관점을 확장한 교육 활동.</span>
+</article></div><div class="history-year" id="history-year-2022"><span>2022</span></div><div class="history-event history-event-left" data-history-entry="trpg"><article class="history-event-card">
+<span class="history-date">2021 — 2022</span>
+<span class="history-card-name">TRPG 마스터</span>
+<span class="history-card-field">게임 운영 경험</span>
+<span class="history-card-brief">규칙과 밸런스를 설계하는 운영자</span>
+</article><div class="history-node history-node-featured"><button aria-label="TRPG 마스터 상세보기" class="history-bubble history-bubble-featured" data-history="trpg" title="TRPG 마스터 상세보기" type="button"><span class="history-bubble-visual history-art-book"></span></button></div><span aria-hidden="true" class="history-empty"></span></div><div class="history-year" id="history-year-2021"><span>2021</span></div><div class="history-event history-event-right" data-history-entry="boardgame"><span aria-hidden="true" class="history-empty"></span><div class="history-node history-node-featured"><button aria-label="보드게임 제작 프로젝트 상세보기" class="history-bubble history-bubble-featured" data-history="boardgame" title="보드게임 제작 프로젝트 상세보기" type="button"><span class="history-bubble-visual history-art-dice"></span></button></div><article class="history-event-card">
+<span class="history-date">2021.09 — 12</span>
+<span class="history-card-name">보드게임 제작 프로젝트</span>
+<span class="history-card-field">규칙 설계 · 실물 제작</span>
+<span class="history-card-brief">테스트 플레이를 거쳐 규칙을 구현하는 기획자</span>
+</article></div><div class="history-year" id="history-year-2020"><span>2020</span></div><div class="history-event history-event-left" data-history-entry="dca"><article class="history-event-card">
+<span class="history-date">2020.08</span>
+<span class="history-card-name">제37회 DCA 대학생 광고대상</span>
+<span class="history-card-field">리더 · 일정 관리</span>
+<span class="history-card-brief">제약을 고려한 프로젝트 관리로 성과까지</span>
+</article><div class="history-node history-node-featured"><button aria-label="제37회 DCA 대학생 광고대상 상세보기" class="history-bubble history-bubble-featured" data-history="dca" title="제37회 DCA 대학생 광고대상 상세보기" type="button"><span class="history-bubble-visual history-art-trophy"></span></button></div><span aria-hidden="true" class="history-empty"></span></div><div class="history-event history-event-right" data-history-entry="volunteer"><span aria-hidden="true" class="history-empty"></span><div class="history-node"><span aria-hidden="true" class="history-bubble history-bubble-static"><span class="history-bubble-visual history-art-heart"></span></span></div><article class="history-event-card">
+<span class="history-date">2020.06 — 12</span>
+<span class="history-card-name">희망씨앗 대학생 봉사단 8기</span>
+<span class="history-card-field">봉사 기획</span>
+<span class="history-card-brief">재능기부 봉사 기획과 교육 봉사.</span>
+</article></div><div class="history-year" id="history-year-2019"><span>2019</span></div><div class="history-event history-event-left" data-history-entry="younghana"><article class="history-event-card">
+<span class="history-date">2019.09 — 12</span>
+<span class="history-card-name">하나은행 영하나 마케팅 크루 2기</span>
+<span class="history-card-field">책임감 · PT</span>
+<span class="history-card-brief">19살 신입생, 기획자로 내딛은 첫걸음</span>
+</article><div class="history-node history-node-featured"><button aria-label="하나은행 영하나 마케팅 크루 2기 상세보기" class="history-bubble history-bubble-featured" data-history="younghana" title="하나은행 영하나 마케팅 크루 2기 상세보기" type="button"><span class="history-bubble-visual history-art-lightbulb"></span></button></div><span aria-hidden="true" class="history-empty"></span></div><div aria-hidden="true" class="history-end-mark"><span>START</span></div></div>
+
+</div></div></section><section class="screen" id="portfolio-page"><div class="wrap portfolio-wrap">
+  
+  <h1 class="page-title">PORTFOLIO<span class="hl">.</span></h1>
+  <p class="sub portfolio-lead">플레이를 통해 발견한 문제점을 <span class="portfolio-lead-tail">기획서로 구체화했습니다</span></p>
+  <div class="portfolio-headline"><div><span>DOCUMENTS LIST</span></div></div>
+  <div class="portfolio-doc-list"><a class="portfolio-doc-item" href="./portfolio_documents/05_%EC%9D%B4%EC%B0%AC_%EA%B0%9C%EC%84%A0%EC%A0%9C%EC%95%88_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9D%B4%ED%84%B0%EB%84%90%EB%A6%AC%ED%84%B4_%EB%AC%B4%EA%B8%B0%EC%84%A0%ED%83%9D%EC%84%B1%EC%9E%A5.xlsx" download aria-label="이터널 리턴 무기 선택 성장 시스템, 원본 파일 다운로드">
+  <span class="portfolio-doc-index">01<span class="portfolio-doc-index-decor"></span></span>
+  <span class="portfolio-doc-cover" aria-label="이터널 리턴 무기 선택 성장 시스템 제안서 표지"><img src="./assets/img_005.png" alt="이터널 리턴 무기 선택 성장 시스템 제안서 표지" loading="lazy" decoding="async" /></span>
+  <span class="portfolio-doc-main">
+    <span class="portfolio-doc-game">이터널 리턴</span>
+    <strong class="portfolio-doc-title">무기 선택 성장 시스템</strong>
+    <span class="portfolio-doc-category">개선 제안 · 시스템 기획</span>
+  </span>
+  <span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span class="portfolio-doc-circle" aria-hidden="true">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
+</a>
+<a class="portfolio-doc-item" href="./portfolio_documents/03_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%A0%A0%EB%A0%88%EC%8A%A4%EC%A1%B4%EC%A0%9C%EB%A1%9C_%EC%A1%B0%EA%B1%B4%EB%B6%80%ED%8E%B8%EC%84%B1%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80.pdf" target="_blank" rel="noopener noreferrer" aria-label="젠레스 존 제로 조건부 편성 스테이지, PDF 문서 열기">
+  <span class="portfolio-doc-index">02<span class="portfolio-doc-index-decor"></span></span>
+  <span class="portfolio-doc-cover" aria-label="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지"><img src="./assets/img_006.png" alt="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지" loading="lazy" decoding="async" /></span>
+  <span class="portfolio-doc-main">
+    <span class="portfolio-doc-game">젠레스 존 제로</span>
+    <strong class="portfolio-doc-title">조건부 편성 스테이지</strong>
+    <span class="portfolio-doc-category">창작 · 시스템 기획</span>
+  </span>
+  <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span class="portfolio-doc-circle" aria-hidden="true">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
+</a>
+<a class="portfolio-doc-item" href="./portfolio_documents/04_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AA%AC%EA%B8%B8%EC%8A%A4%ED%83%80%EB%8B%A4%EC%9D%B4%EB%B8%8C_%EC%97%B0%EA%B3%84%EC%8A%A4%ED%82%AC.xlsx" download aria-label="몬스터 길들이기: 스타다이브 연계 스킬 시스템, 원본 파일 다운로드">
+  <span class="portfolio-doc-index">03<span class="portfolio-doc-index-decor"></span></span>
+  <span class="portfolio-doc-cover" aria-label="몬스터 길들이기: 스타다이브 연계 스킬 시스템 창작 기획서 표지"><img src="./assets/img_007.png" alt="몬스터 길들이기: 스타다이브 연계 스킬 시스템 창작 기획서 표지" loading="lazy" decoding="async" /></span>
+  <span class="portfolio-doc-main">
+    <span class="portfolio-doc-game">몬스터 길들이기: 스타다이브</span>
+    <strong class="portfolio-doc-title">연계 스킬 시스템</strong>
+    <span class="portfolio-doc-category">창작 · 시스템 기획</span>
+  </span>
+  <span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span class="portfolio-doc-circle" aria-hidden="true">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
+</a>
+<a class="portfolio-doc-item" href="./portfolio_documents/02_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A6%AC%EC%BA%A1.pdf" target="_blank" rel="noopener noreferrer" aria-label="승리의 여신: 니케 캐릭터 리캡 시스템, PDF 문서 열기">
+  <span class="portfolio-doc-index">04<span class="portfolio-doc-index-decor"></span></span>
+  <span class="portfolio-doc-cover" aria-label="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지"><img src="./assets/img_008.png" alt="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지" loading="lazy" decoding="async" /></span>
+  <span class="portfolio-doc-main">
+    <span class="portfolio-doc-game">승리의 여신: 니케</span>
+    <strong class="portfolio-doc-title">캐릭터 리캡 시스템</strong>
+    <span class="portfolio-doc-category">창작 · 시스템 기획</span>
+  </span>
+  <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span class="portfolio-doc-circle" aria-hidden="true">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
+</a>
+<a class="portfolio-doc-item" href="./portfolio_documents/01_%EC%9D%B4%EC%B0%AC_%EC%97%AD%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%B6%95%EA%B4%B4%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC_%EC%BA%90%EB%A6%AD%ED%84%B0%EA%B3%B5%EB%9E%B5.pdf" target="_blank" rel="noopener noreferrer" aria-label="붕괴: 스타레일 캐릭터 공략 시스템, PDF 문서 열기">
+  <span class="portfolio-doc-index">05<span class="portfolio-doc-index-decor"></span></span>
+  <span class="portfolio-doc-cover" aria-label="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지"><img src="./assets/img_009.png" alt="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지" loading="lazy" decoding="async" /></span>
+  <span class="portfolio-doc-main">
+    <span class="portfolio-doc-game">붕괴: 스타레일</span>
+    <strong class="portfolio-doc-title">캐릭터 공략 시스템</strong>
+    <span class="portfolio-doc-category">역기획 · UI</span>
+  </span>
+  <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span class="portfolio-doc-circle" aria-hidden="true">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
+</a></div>
+  
+</div></section></div></div><nav class="floating-page-nav" aria-label="포트폴리오 페이지 이동">
+  <button type="button" data-page="0" class="current" aria-current="page" title="HOME">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg><span>HOME</span></button>
+  <button type="button" data-page="1" title="PROFILE">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21v-2c0-3.5 3.3-6 7.5-6s7.5 2.5 7.5 6v2"/></svg><span>PROFILE</span></button>
+  <button type="button" data-page="2" title="GAMES">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="11" rx="5"/><path d="M8 11v5M5.5 13.5h5M15.5 12h.01M18 14h.01"/></svg><span>GAMES</span></button>
+  <button type="button" data-page="3" title="HISTORY">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg><span>HISTORY</span></button>
+  <button type="button" data-page="4" title="PORTFOLIO">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12c6 3 12 3 18 0"/></svg><span>PORTFOLIO</span></button>
+</nav><div class="contact-widget" id="contactWidget">
+<button type="button" id="contactTrigger" class="contact-trigger" aria-expanded="false" aria-controls="contactPanel" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9h8M8 12h6"/></svg><span>CONTACT</span></button>
+<section class="contact-panel" id="contactPanel" role="dialog" aria-label="연락처" hidden>
+  <div class="contact-panel-head"><strong>CONTACT</strong><button type="button" id="contactClose" aria-label="연락처 닫기">×</button></div>
+  <dl class="contact-fields">
+    <div><dt>이름</dt><dd>이찬</dd></div>
+    <div><dt>전화번호</dt><dd><a href="tel:01047833576">010-4783-3576</a></dd></div>
+    <div><dt>이메일</dt><dd><a href="mailto:clownchan00@gmail.com">clownchan00@gmail.com</a></dd></div>
+  </dl>
+</section>
+</div><div class="overlay" id="overlay"><div aria-labelledby="dialogTitle" aria-modal="true" class="dialog" role="dialog"><div class="dialog-head"><span id="dialogKicker">LIFE WITH GAMES / PLAYING</span><button aria-label="닫기" class="close" id="close">×</button></div><div class="dialog-scroll" id="scroller"><div id="modalBody"></div></div></div></div><dialog id="trpg-image-dialog" aria-labelledby="trpg-lightbox-title"><div class="trpg-lightbox-top"><span id="trpg-lightbox-title"></span><button id="trpg-lightbox-close" type="button" aria-label="이미지 닫기">×</button></div><img id="trpg-lightbox-image" class="trpg-lightbox-image" alt="확대 보기" /></dialog><script>
+const games=[{"title":"붕괴: 스타레일","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_010.webp"},{"title":"이터널 리턴","genres":["MOBA","생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_011.webp"},{"title":"포켓몬스터 LEGENDS 아르세우스","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_012.webp"},{"title":"슬레이 더 스파이어","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_013.webp"},{"title":"카오스 제로 나이트메어","genres":["로그라이크","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_014.webp"},{"title":"바이오 쇼크 인피니트","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_015.webp"},{"title":"보더랜드 2","genres":["RPG · JRPG","슈팅(FPS · TPS 등)"],"platforms":["PC","PSvita"],"cover":"./assets/img_016.webp"},{"title":"다크 소울 3","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_017.webp"},{"title":"파 크라이 3","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_018.webp"},{"title":"건파이어 리본","genres":["로그라이크","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_019.webp"},{"title":"하데스","genres":["로그라이크","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_020.webp"},{"title":"록맨 11","genres":["플랫폼"],"platforms":["PC"],"cover":"./assets/img_021.webp"},{"title":"몬스터 헌터 라이즈","genres":["액션 · 어드벤처"],"platforms":["NS","PC"],"cover":"./assets/img_022.webp"},{"title":"Ori and the Blind Forest","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_023.webp"},{"title":"포탈 2","genres":["퍼즐","플랫폼"],"platforms":["PC"],"cover":"./assets/img_024.webp"},{"title":"슈퍼 미트 보이","genres":["플랫폼"],"platforms":["PC"],"cover":"./assets/img_025.webp"},{"title":"시스템 쇼크 (Remake)","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_026.webp"},{"title":"테라리아","genres":["생존 · 샌드박스","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_027.webp"},{"title":"팰월드","genres":["생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_028.webp"},{"title":"스컬: The Hero Slayer","genres":["로그라이크","플랫폼"],"platforms":["PC"],"cover":"./assets/img_029.webp"},{"title":"엘든 링","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_030.webp"},{"title":"The Elder Scrolls V: Skyrim","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_031.webp"},{"title":"로보토미 코퍼레이션","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_032.webp"},{"title":"몬스터 헌터: 와일즈","genres":["액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_033.webp"},{"title":"보더랜드 3","genres":["RPG · JRPG","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_034.webp"},{"title":"젤다의 전설 브레스 오브 더 와일드","genres":["액션 · 어드벤처","오픈월드"],"platforms":["NS"],"cover":"./assets/img_035.webp"},{"title":"포켓몬스터 LEGENDS Z","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_036.webp"},{"title":"메트로이드 프라임 리마스터","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_037.webp"},{"title":"Florence","genres":["캐주얼 · 생활","퍼즐"],"platforms":["PC"],"cover":"./assets/img_038.webp"},{"title":"파이널 판타지 VII","genres":["RPG · JRPG"],"platforms":["NS"],"cover":"./assets/img_039.webp"},{"title":"바이오하자드 RE:3","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_040.webp"},{"title":"슬레이 더 스파이어 2","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_041.webp"},{"title":"산나비","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_042.webp"},{"title":"페르소나 5 더 로열","genres":["RPG · JRPG"],"platforms":["PC"],"cover":"./assets/img_043.webp"},{"title":"MOUSE: P.I. For Hire","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_044.webp"},{"title":"페르소나3 리로드","genres":["RPG · JRPG"],"platforms":["PC"],"cover":"./assets/img_045.webp"},{"title":"메이플스토리 DS","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["DS"],"cover":"./assets/img_046.webp"},{"title":"포켓몬 불가사의 던전 어둠의 탐험대&시간의탐험대","genres":["RPG · JRPG","로그라이크"],"platforms":["DS"],"cover":"./assets/img_047.webp"},{"title":"포켓몬스터 블랙&화이트","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_048.webp"},{"title":"슈퍼마리오64 DS","genres":["액션 · 어드벤처","플랫폼"],"platforms":["DS"],"cover":"./assets/img_049.webp"},{"title":"메트로이드 프라임 헌터즈","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["DS"],"cover":"./assets/img_050.webp"},{"title":"만져라 메이드 인 와리오","genres":["캐주얼 · 생활","퍼즐"],"platforms":["DS"],"cover":"./assets/img_051.webp"},{"title":"포켓몬스터PT 기라티나","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_052.webp"},{"title":"포켓몬 불가사의 던전 파랑 구조대","genres":["RPG · JRPG","로그라이크"],"platforms":["DS"],"cover":"./assets/img_053.webp"},{"title":"요시 아일랜드 DS","genres":["플랫폼"],"platforms":["DS"],"cover":"./assets/img_054.webp"},{"title":"도와줘! 리듬 히어로","genres":["리듬 · 음악"],"platforms":["DS"],"cover":"./assets/img_055.webp"},{"title":"포켓몬스터 하트골드&소울실버","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_056.webp"},{"title":"포켓몬스터 X&Y","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_057.webp"},{"title":"마리오 카트 7","genres":["레이싱","캐주얼 · 생활"],"platforms":["3DS"],"cover":"./assets/img_058.webp"},{"title":"파이어 엠블렘 Echoes 또 하나의 영웅왕","genres":["RPG · JRPG","전략 · 시뮬레이션"],"platforms":["3DS"],"cover":"./assets/img_059.webp"},{"title":"슈퍼 마리오 3D 랜드","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_060.webp"},{"title":"하츠네미쿠 프로젝트 미라이 디럭스","genres":["리듬 · 음악"],"platforms":["3DS"],"cover":"./assets/img_061.webp"},{"title":"슈퍼 스매시브라더스 for 닌텐도 3DS","genres":["대전격투"],"platforms":["3DS"],"cover":"./assets/img_062.webp"},{"title":"포켓몬스터 썬&문","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_063.webp"},{"title":"포켓몬스터 울트라썬&울트라문","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_064.webp"},{"title":"별의 커비 트리플 디럭스","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_065.webp"},{"title":"포켓몬스터 오메가루비&알파사파이어","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_066.webp"},{"title":"몬스터헌터 4","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_067.webp"},{"title":"몬스터헌터 4G","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_068.webp"},{"title":"스타폭스 64 3D","genres":["슈팅(FPS · TPS 등)"],"platforms":["3DS"],"cover":"./assets/img_069.webp"},{"title":"별의 커비 로보보 플래닛","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_070.webp"},{"title":"젤다의 전설 시간의 오카리나 3D","genres":["액션 · 어드벤처","퍼즐"],"platforms":["3DS"],"cover":"./assets/img_071.webp"},{"title":"젤다무쌍 하이랄의 전설들","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_072.webp"},{"title":"튀어나와요 동물의 숲","genres":["캐주얼 · 생활"],"platforms":["3DS"],"cover":"./assets/img_073.webp"},{"title":"하츠네 미쿠 -Project DIVA- f","genres":["리듬 · 음악"],"platforms":["PSvita"],"cover":"./assets/img_074.webp"},{"title":"하츠네 미쿠 -Project DIVA- f 2nd","genres":["리듬 · 음악"],"platforms":["PSvita"],"cover":"./assets/img_075.webp"},{"title":"드래곤즈 크라운","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PSvita"],"cover":"./assets/img_076.webp"},{"title":"젤다의 전설 스카이워드 소드","genres":["액션 · 어드벤처","퍼즐"],"platforms":["Wii"],"cover":"./assets/img_077.webp"},{"title":"대난투 스매시브라더스 X ","genres":["대전격투"],"platforms":["Wii"],"cover":"./assets/img_078.webp"},{"title":"폭권 TOURNAMENT DX","genres":["대전격투"],"platforms":["NS"],"cover":"./assets/img_079.webp"},{"title":"포켓몬스터 소드&실드","genres":["RPG · JRPG"],"platforms":["NS"],"cover":"./assets/img_080.webp"},{"title":"링 피트 어드벤쳐","genres":["캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_081.webp"},{"title":"슈퍼 스매시브라더스 얼티밋","genres":["대전격투"],"platforms":["NS"],"cover":"./assets/img_082.webp"},{"title":"슈퍼 마리오 오디세이","genres":["액션 · 어드벤처","플랫폼"],"platforms":["NS"],"cover":"./assets/img_083.webp"},{"title":"모여봐요 동물의 숲","genres":["캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_084.webp"},{"title":"마리오 카트 8 디럭스","genres":["레이싱","캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_085.webp"},{"title":"별의 커비 스타 얼라이즈","genres":["플랫폼"],"platforms":["NS"],"cover":"./assets/img_086.webp"},{"title":"몬스터 헌터: 월드","genres":["액션 · 어드벤처"],"platforms":["PC","PS4"],"cover":"./assets/img_087.webp"},{"title":"몬스터 헌터 월드: 아이스본","genres":["액션 · 어드벤처"],"platforms":["PC","PS4"],"cover":"./assets/img_088.webp"},{"title":"몬스터 헌터 라이즈: 선브레이크","genres":["액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_089.webp"},{"title":"Left 4 Dead 2","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_090.webp"},{"title":"Mirror’s Edge","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_091.webp"},{"title":"리그 오브 레전드","genres":["MOBA"],"platforms":["PC"],"cover":"./assets/img_092.webp"},{"title":"오버워치","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_093.webp"},{"title":"마블 라이벌즈","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_094.webp"},{"title":"Balatro","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_095.webp"},{"title":"승리의 여신: 니케","genres":["수집형RPG","슈팅(FPS · TPS 등)"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_096.webp"},{"title":"트릭컬 리바이브","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_097.webp"},{"title":"몬길: STAR DIVE","genres":["수집형RPG","액션 · 어드벤처"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_098.webp"},{"title":"데스티니 차일드","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_099.webp"},{"title":"페르소나 5: 더 팬텀 X","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_100.webp"},{"title":"젠레스 존 제로","genres":["수집형RPG","액션 · 어드벤처"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_101.webp"},{"title":"명일방주","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_102.webp"},{"title":"블루 아카이브","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_103.webp"},{"title":"랑그릿사(모바일)","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_104.webp"},{"title":"명조: 워더링 웨이브","genres":["수집형RPG","오픈월드"],"platforms":["PC"],"cover":"./assets/img_105.webp"},{"title":"림버스 컴퍼니","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_106.webp"},{"title":"팀 포트리스 2","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_107.webp"},{"title":"크로노 아크","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_108.webp"},{"title":"To The Moon","genres":["액션 · 어드벤처","퍼즐"],"platforms":["PC"],"cover":"./assets/img_109.webp"},{"title":"철권 7","genres":["대전격투"],"platforms":["PC"],"cover":"./assets/img_110.webp"},{"title":"The Binding of Isaac","genres":["로그라이크","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_111.webp"},{"title":"DEAD BY DAYLIGHT","genres":["생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_112.webp"},{"title":"쿠키런: 킹덤","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_113.webp"},{"title":"뱅드림! 걸즈 밴드 파티!","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_114.webp"},{"title":"프로젝트 세카이 컬러풀 스테이지! feat.하츠네미쿠","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_115.webp"},{"title":"메이플 키우기","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_116.webp"},{"title":"소녀전선","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_117.webp"},{"title":"포켓몬 카드 게임 Pocket","genres":["전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_118.webp"},{"title":"스도리카","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_119.webp"},{"title":"포켓몬 마스터즈 EX","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_120.webp"},{"title":"아이돌마스터 밀리언 라이브! 시어터 데이즈","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_121.webp"},{"title":"PUBG: BATTLEGROUNDS","genres":["생존 · 샌드박스","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_122.webp"}],primaryCounts={"RPG · JRPG": 27, "MOBA": 2, "로그라이크": 10, "슈팅(FPS · TPS 등)": 12, "플랫폼": 7, "액션 · 어드벤처": 17, "퍼즐": 1, "생존 · 샌드박스": 4, "캐주얼 · 생활": 5, "리듬 · 음악": 7, "레이싱": 2, "대전격투": 5, "수집형RPG": 13, "전략 · 시뮬레이션": 1},secondaryCounts={"수집형RPG": 8, "생존 · 샌드박스": 1, "액션 · 어드벤처": 16, "전략 · 시뮬레이션": 12, "슈팅(FPS · TPS 등)": 6, "플랫폼": 7, "오픈월드": 2, "퍼즐": 5, "로그라이크": 2, "캐주얼 · 생활": 2},platformCounts={"PC": 54, "모바일(Android/iOS)": 23, "NS": 14, "PSvita": 4, "DS": 11, "3DS": 17, "Wii": 2, "PS4": 2},totalHours=12213.0,hourEntries=51,images={"djmax":"./assets/img_123.webp","signed":"./assets/img_124.webp","ost":"./assets/img_125.webp","expo":"./assets/img_126.webp","package1":"./assets/img_127.webp","package2":"./assets/img_128.webp","concert1":"./assets/img_129.webp","concert2":"./assets/img_130.webp","er":"./assets/img_131.webp","tournament":"./assets/img_132.webp","trpg":"./assets/img_133.webp","goods":"./assets/img_134.webp"};
+let page=0, genre='all',query='',activeModal='';const $=s=>document.querySelector(s);
+function changePage(n){page=Math.max(0,Math.min(4,n));$('#track').style.transform=`translateX(-${page*100}%)`;document.querySelectorAll('[data-page]').forEach(b=>{const current=+b.dataset.page===page;b.classList.toggle('current',current);if(b.closest('.floating-page-nav')){if(current)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');}})} document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>changePage(+b.dataset.page));
+
+function stats(){return `<div class="stats"><div class="stat"><small>REGISTERED GAMES</small><big>${games.length}+</big></div><div class="stat"><small>PLATFORMS</small><big>${Object.keys(platformCounts).length}</big></div><div class="stat"><small>RECORDED HOURS</small><big>${Math.floor(totalHours).toLocaleString()}h+</big></div></div>`}
+function analytics(){
+  const counts={...primaryCounts};
+  for(const [k,c] of Object.entries(secondaryCounts)) counts[k]=(counts[k]||0)+c;
+  const keys=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]||a.localeCompare(b,'ko'));
+  const max=Math.max(...Object.values(counts));
+  const maxP=Math.max(...Object.values(platformCounts));
+  return `<section><h3 class="section-label">01 / GENRE DISTRIBUTION</h3><div class="analytics"><div class="analbox">${keys.map(k=>`<div class="chart-row"><span class="chart-name">${k}</span><div class="chart-tracks"><span class="all" style="width:${counts[k]/max*100}%"></span></div><span class="count">${counts[k]}</span></div>`).join('')}<p class="caption">한 게임에 최대 2개 장르가 포함되므로 장르별 게임 수의 합계는 전체 등록 게임 수와 다를 수 있습니다.</p></div><div class="analbox"><div class="section-label">02 / PLATFORM EXPERIENCE</div>${Object.entries(platformCounts).sort((a,b)=>b[1]-a[1]).map(([n,c])=>`<div class="platform-row"><span>${n}</span><div class="platform-track"><span style="width:${c/maxP*100}%"></span></div><b>${c}</b></div>`).join('')}<p class="caption">같은 게임을 여러 플랫폼에서 플레이한 경우 플랫폼별로 각각 집계합니다.</p></div></div></section>`
+}
+function library(){
+  const genreTotals={...primaryCounts};
+  for(const [name,n] of Object.entries(secondaryCounts)) genreTotals[name]=(genreTotals[name]||0)+n;
+  const genres=Object.keys(genreTotals).sort((a,b)=>genreTotals[b]-genreTotals[a]||a.localeCompare(b,'ko'));
+  return `<section id="library"><h3 class="section-label">03 / GAME LIBRARY</h3><p class="library-notice">※ 실제로 플레이했지만 목록에 명시되지 않은 게임도 있습니다.</p><div class="library-controls"><input id="search" type="search" placeholder="게임명 검색" aria-label="게임명 검색"><select id="genre" aria-label="장르 필터"><option value="all">모든 장르</option>${genres.map(x=>`<option>${x}</option>`).join('')}</select></div><p class="library-count" id="libraryCount"></p><div class="covers" id="covers"></div></section>`
+}
+function filtered(){
+  return games.filter(g=>(genre==='all'||g.genres.includes(genre))&&g.title.toLowerCase().includes(query.toLowerCase()))
+    .sort((a,b)=>a.title.localeCompare(b.title,'ko',{numeric:true,sensitivity:'base'}));
+}
+function draw(){
+  const result=filtered();
+  $('#libraryCount').textContent=`${result.length}개 게임`;
+  $('#covers').innerHTML=result.map(g=>`<article class="game"><span class="game-art"><span class="game-art-bg" style="background-image:url('${g.cover}')"></span><img src="${g.cover}" loading="lazy" decoding="async" alt="${g.title} 게임 이미지"></span><strong>${g.title}</strong><span>${g.genres.join(' / ')}</span></article>`).join('');
+}
+function playBody(){return `<div class="dialog-hero"><div><div class="mini">01 / PLAYING · PERSONAL DATA ARCHIVE</div><h2 id="dialogTitle">PLAYING.</h2><div class="rule"></div><p>어떤 장르를 얼마나 폭넓게 플레이 했는지 살펴볼 수 있습니다</p></div></div><div class="panelpad">${stats()}${analytics()}${library()}</div>`}
+const groups={"collection":[["게임 패키지","DS, 3DS, PS Vita, Switch, PS4, Wii 등 **세대와 플랫폼을 가리지 않고** 좋아하는 게임의 실물 패키지를 수집해 왔습니다. 게임을 소장하는 즐거움도 소중하게 생각합니다.",["package1","package2"]],["게임 OST와 아트북","게임은 음악과 미술, 이야기가 어우러진 **종합예술**이라고 생각합니다. 플레이 경험을 넘어 작품을 이루는 다양한 요소를 더 깊이 감상하고 싶어 OST와 아트북도 수집했습니다.",["ost"]],["TRPG 룰북","직접 TRPG를 플레이하고 진행하는 것을 좋아해 **TRPG 룰북**도 수집했습니다. 새로운 세계관과 규칙을 읽고, 다양한 플레이 방식을 알아가는 과정 자체를 즐깁니다.",["trpg"]],["게임 & 애니메이션 굿즈","좋아하는 작품의 **캐릭터 피규어와 가챠 굿즈**를 수집하고 있습니다. 좋아하는 게임과 애니메이션 캐릭터가 너무 많아 고민입니다.",["goods"]]],"culture":[["게임 대회 운영","**DJMAX RESPECT 제1회 방구석 디제잉 대회**에서 매니저로 활동했습니다. 게임을 플레이하고 관람하는 것뿐 아니라, 대회를 운영하는 입장에서도 게임 문화를 경험했습니다.",["djmax"]],["게임 대회 참가","**포켓몬스터, 마리오카트, 대난투 등 다양한 게임의 대회**에 참가해 왔습니다. 게임을 즐기는 것을 넘어, 다른 플레이어들과 실력을 겨루고 경쟁하는 경험도 좋아합니다.",["tournament"]],["게임 행사와 전시","**PlayX4를 비롯한 게임 행사와 팝업스토어**를 방문하는 것을 좋아합니다. 새로운 게임을 접하고, 게임을 둘러싼 다양한 문화와 현장의 분위기를 즐깁니다.",["expo"]],["게임 음악 공연 관람","**페르소나 5 콘서트**를 관람했습니다. 게임 속에서 좋아했던 음악을 공연장에서 직접 감상하며, 게임의 감동을 새롭게 경험하는 순간을 즐깁니다.",["concert1","concert2"]],["e스포츠 현장 관람","게임을 직접 플레이하는 것만큼 **e스포츠 현장 관람**도 좋아합니다. **이터널 리턴 마스터즈와 내셔널리그**를 현장에서 관람하며 선수들의 플레이와 관객의 열기를 즐겼습니다.",["er"]]]};
+function safeRichText(s){return safeHistoryText(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
+function modalCategory(which){return which==='culture'?'EXPERIENCE':which.toUpperCase();}
+function otherBody(which){let title=modalCategory(which);return `<div class="dialog-hero"><div><div class="mini">LIFE WITH GAMES / ${title}</div><h2 id="dialogTitle">${title}.</h2><div class="rule"></div><p>${which==='collection'?'좋아하는 게임과 캐릭터와 관련된 것들을 수집해왔습니다':'공연부터 전시, 경기, 대회까지 게임을 다양하게 즐긴 경험을 기록했습니다.'}</p></div></div><div class="panelpad">${groups[which].map(([label,desc,pics],i)=>`<div class="experience-group${which==='culture'&&label==='게임 음악 공연 관람'?' experience-group--concert':''}"><div><div class="mini">0${i+1}</div><h3>${safeHistoryText(label)}</h3><p class="experience-desc">${safeRichText(desc)}</p></div><div class="photo-grid">${pics.map(p=>p?`<img src="${images[p]}" alt="${safeHistoryText(label)}">`:`<div class="photo-empty">사진 추가 예정</div>`).join('')}</div></div>`).join('')}</div>`}
+function openModal(which){
+  activeModal=which;
+  $('#dialogKicker').textContent='LIFE WITH GAMES / '+modalCategory(which);
+  $('#modalBody').innerHTML=which==='playing'?playBody():otherBody(which);
+  $('#overlay').classList.add('open');
+  $('#scroller').scrollTop=0;
+  $('#close').focus();
+  if(which==='playing'){
+    query='';genre='all';
+    $('#search').oninput=()=>{query=$('#search').value;draw()};
+    $('#genre').onchange=()=>{genre=$('#genre').value;draw()};
+    draw();
+  }
+}
+document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openModal(b.dataset.open));function closeModal(){$('#overlay').classList.remove('open')}$('#close').onclick=closeModal;$('#overlay').onclick=e=>{if(e.target===$('#overlay'))closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if($('#overlay').classList.contains('open'))return;if(e.key==='ArrowRight')changePage(page+1);if(e.key==='ArrowLeft')changePage(page-1)});changePage(0);
+
+
+const historyActivities=[{"id":"trpg","year":"2022","date":"2021 — 2022","type":"GAME / FACILITATION","tag":"게임 운영 경험","title":"TRPG 마스터","brief":"규칙과 밸런스를 설계하는 운영자","overview":"TRPG 마스터로서 시나리오·플레이 자료를 제작하고 참여자와 함께 세션을 진행한 활동.","role":"시나리오 집필, 규칙·플레이 자료 제작, 데이터 정리, 게임 진행","result":"6개 세션 · 누적 21명 참여 · 총 283시간 플레이","media":["TRPG 세션 / 온라인 플레이 화면","시나리오 · 규칙 설계 문서","맵 · 세션 운영 기록"],"thumb":"book","detail":"TRPG 마스터로서 참가자의 선택에 따라 진행되는 시나리오와 플레이 규칙을 준비하고, 세션에서 사용할 맵·자료를 제작했습니다. 진행 중 발생하는 상황과 규칙 적용을 판단하며 플레이를 운영했고, 세션에 필요한 데이터를 기록하고 정리했습니다. 총 6개 세션을 누적 21명과 함께 283시간 진행하며 게임 규칙의 설계와 전달, 플레이 운영을 경험했습니다.","sections":[{"heading":"기존 규칙을 새로운 플레이 경험으로 확장한 283시간","paragraphs":["웹 기반 TRPG 플랫폼 **Roll20을 활용해 총 6개 세션을 운영하며, 누적 21명의 플레이어와 283시간 동안 게임을 진행**했습니다. 특히 『로그 호라이즌』 룰북의 기존 규칙과 리소스를 응용하여 시나리오를 구성하고, 플레이어의 스킬과 몬스터의 능력치를 조정하며 전투 밸런스를 설계했습니다."]},{"heading":"몬스터와 환경의 상호작용으로 공략의 재미를 설계","paragraphs":["**몬스터별 특성은 태그를 추가하여 구분하고, 플레이어의 새로운 스킬과 상호작용하도록 설계**했습니다. 예를 들어 '비행' 태그를 가진 몬스터가 '대공' 효과의 영향을 받도록 설정해 전투 전략에 차이를 두었습니다.","또한 수상 지형이 포함된 전투 맵에서는 육지에서 보스를 효과적으로 공격하기 어렵도록 구성하고, **특정 몬스터를 활용해 수상 타일로 이동하는 기믹**을 배치했습니다. 이를 통해 플레이어가 지형과 몬스터의 특성을 파악하고, 유리한 위치를 확보해 보스의 패턴에 대응하도록 유도했습니다."]},{"heading":"성능 제한이 아닌 역할의 재설계로 밸런스를 개선","paragraphs":["**특정 플레이어의 강력한 장비가 다른 플레이어들의 전투 경험을 저해하는 밸런스 문제**도 경험했습니다. 기존 이동력 제한을 벗어나 직선 경로를 빠르게 이동할 수 있는 '훅샷' 장비가 근접 전투에 특화된 캐릭터에게 지급되면서, 해당 플레이어에게 전투 기여도가 집중되었습니다. 처음에는 맵에 장애물을 추가해 이동을 제한했지만, 오히려 장비를 획득한 플레이어의 재미를 떨어뜨리는 결과로 이어졌습니다.","이를 해결하기 위해 **장비의 성능을 제한하는 대신, 강점을 팀 전체에 기여할 수 있는 방향으로 전투 기믹을 재설계**했습니다. 보스전 맵 외곽에 지형을 변화시키는 레버를 배치하고, 훅샷의 기동성을 활용해 이를 조작하면 아군의 공격 기회가 확보되도록 구성했습니다.","그 결과 훅샷을 획득한 플레이어는 높은 기동성을 활용하는 재미를 유지하면서도 팀의 전투를 지원할 수 있었고, 다른 플레이어들은 보스와의 직접적인 전투에 집중할 수 있었습니다. 이 경험을 통해 **밸런스 조정은 단순히 강한 요소를 제한하는 것이 아니라, 각 플레이어의 재미와 역할을 함께 고려해야 한다**는 점을 배웠습니다."]},{"heading":"재화 불균형을 새로운 소비 콘텐츠로 해결","paragraphs":["운영 과정에서는 **예상보다 많은 골드가 지급되어 재화가 과도하게 축적되는 밸런스 문제**도 발생했습니다. 이를 해결하기 위해 기존 상점 NPC에 도박꾼이라는 설정을 추가하고, Roll20에서 구현할 수 있는 간단한 야바위 미니게임을 설계했습니다.","**기존 NPC와 플랫폼 기능을 활용해 새로운 골드 소비처를 마련**함으로써 재화 불균형에 대응했습니다. 단순히 보상량을 줄이는 대신, 플레이어가 자발적으로 재화를 소비할 수 있는 콘텐츠를 추가하는 방식으로 문제 해결을 시도했습니다."]},{"heading":"다양한 게임 데이터를 관리하며 운영의 관점을 넓히다","paragraphs":["이외에도 플레이 중 추가되는 아이템과 스킬의 밸런스를 조정하고, NPC 상점의 판매 목록과 상황별 사운드, 전투 데이터를 직접 관리했습니다.","이러한 경험을 통해 **기존 시스템과 리소스를 활용한 콘텐츠 설계부터 전투·재화 밸런스 조정, 실제 플레이어의 경험을 고려한 문제 해결과 운영까지** 게임기획의 다양한 과정을 간접적으로 경험할 수 있었습니다."]}]},{"id":"boardgame","year":"2021","date":"2021.09 — 12","type":"PROJECT / DESIGN","tag":"규칙 설계 · 실물 제작","title":"보드게임 제작 프로젝트","brief":"테스트 플레이를 거쳐 규칙을 구현하는 기획자","overview":"게임 콘셉트와 규칙을 기획한 뒤 실물 보드게임 제작까지 진행한 프로젝트.","role":"게임 콘셉트 기획, 룰 설계, 제작업체 선정 및 실물 제작 과정 참여","result":"보드게임 실물 제작 · 제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회 장려상 (2021.12)","media":["보드게임 실물 사진 / 구성품","보드게임 기획서 · 규칙서","제작 결과물 · 수상 관련 자료"],"thumb":"dice","detail":"대학 팀 프로젝트에서 보드게임의 콘셉트와 플레이 규칙을 기획하고, 이를 실제로 플레이할 수 있는 실물 게임으로 제작했습니다. 제작업체를 선정하고 규칙과 구성물을 실제 제품으로 구현하는 과정에 참여했습니다. 제작 결과물은 제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회에서 장려상을 수상했습니다.","sections":[{"heading":"조별과제의 갈등을 새로운 보드게임으로 기획하다","paragraphs":["문화콘텐츠기획실습에서 3인 팀으로 추리형 보드게임 **『빌런은 누구?』를 기획하고 실물로 제작**했습니다. 대학생에게 익숙한 조별과제를 소재로, 협업 과정에서 발생하는 갈등과 소통의 중요성을 게임으로 전달하고자 했습니다."]},{"heading":"서로 다른 승리 조건을 가진 세 진영의 규칙을 설계하다","paragraphs":["기존 마피아 게임의 추리 구조를 바탕으로 **마피아·시민·중립의 세 진영이 각기 다른 승리 조건을 추구하는 게임 규칙을 설계**했습니다. 조별과제의 진행 과정을 자료조사·발표자료 제작·발표의 세 단계로 구성하고, 캐릭터마다 고유한 능력과 점수 획득 조건을 부여했습니다. 이를 통해 플레이어들이 각자의 목표를 달성하기 위해 협력하거나 서로를 견제하며, 매번 다른 전략을 선택하도록 유도했습니다."]},{"heading":"20회 이상의 테스트 플레이로 진영 간 밸런스를 검증하다","paragraphs":["특히 **서로 다른 승리 조건을 가진 세 진영이 공정하게 경쟁할 수 있도록 수업 시간 중 20회 이상의 테스트 플레이를 진행**했습니다. 반복적인 플레이를 통해 각 진영의 승리 가능성과 캐릭터 능력, 점수 획득 조건을 점검하고 규칙을 다듬으며, 특정 역할에 지나치게 유리하거나 불리하지 않은 플레이 경험을 제공하고자 노력했습니다."]},{"heading":"소규모 제작의 제약을 넘어 실물 게임으로 완성하다","paragraphs":["실물 제작 과정에서는 **단 4개 패키지라는 소규모 발주 조건으로 인해 제작업체를 선정하는 데 어려움**이 있었습니다. 이를 해결하기 위해 팀원들과 제작 가능한 업체를 조사하고 연락하며, 게임 박스·카드·토큰·룰북 등의 제작 비용과 구성을 검토했습니다.","그 결과 **패키지당 66,496원, 총 30만 원 이내의 예산으로 실물 제작을 완료**했습니다. 또한 규칙 소개 영상을 직접 편집해 유튜브에 게시했으며, 완성된 결과물로 **제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회에서 장려상**을 수상했습니다.","이 경험을 통해 **새로운 게임 규칙을 설계하고 반복적인 검증으로 완성도를 높이는 과정뿐 아니라, 한정된 예산과 제작 환경까지 고려하여 기획을 실제 결과물로 구현하는 역량**을 기를 수 있었습니다."]}]},{"id":"dca","year":"2020","date":"2020.08","type":"AWARD / ADVERTISING","tag":"리더 · 일정 관리","title":"제37회 DCA 대학생 광고대상","brief":"제약을 고려한 프로젝트 관리로 성과까지","overview":"대학생 광고 기획 활동을 통해 아이디어를 구체화하고 경쟁 결과를 경험한 프로젝트.","role":"광고 기획 프로젝트 참여 · 세부 담당 업무 확인 예정","result":"제37회 DCA 대학생 광고대상 동상 (2020.10)","media":["수상 사진 / 상장","광고 기획안 · 출품 자료","수상 관련 자료"],"thumb":"trophy","detail":"대학생 광고 기획 프로젝트에서 광고 아이디어를 제안하고 출품 결과물로 구체화한 활동입니다. 실제 수상 결과로 이어졌다는 점에서 기획안의 완성도와 전달력을 확인할 수 있는 경험입니다. 개별 담당 업무와 제작 자료에 대한 상세 설명은 원본 자료를 확인한 후 보완할 예정입니다.","sections":[{"heading":"2주간의 일정을 설계하고, 3명의 방향을 하나로","paragraphs":["제37회 DCA 대학생 광고대상에서 3인 팀의 **리더로 참여하여 일정 관리, 자료조사, 기획 의도 설계**를 담당했습니다. 코로나19로 대면 협업이 불가능한 상황에서, 배달 서비스의 활성화를 위한 광고기획서를 2주 안에 완성해야 했습니다."]},{"heading":"팀의 역량을 고려하여 마일스톤을 설계하다","paragraphs":["프로젝트 초기에 팀원들의 역량을 고려하여 **기획 방향 확정과 최종 기획서 제작에 시간을 차등 배분하는 일정 계획**을 수립했습니다. 팀원 모두 논리 구조 설계와 자료조사에는 익숙했지만, 기획서의 페이지 구성과 시각적 전달에는 보완이 필요하다고 판단했기 때문입니다.","이에 **첫 3일간 매일 3시간씩 온라인 회의를 진행하며 시장 분석과 기획 인사이트를 집중적으로 논의**했고, 팀원 모두가 동의할 수 있는 방향성을 빠르게 확정했습니다."]},{"heading":"명확한 방향성과 역할 분담으로 협업의 효율을 높이다","paragraphs":["이후 일주일 이상의 시간을 기획서의 페이지 구성, 자료 배치, 디자인 등 **최종 결과물의 완성도를 높이는 작업에 집중**했습니다.","기획 방향에 대한 공감대가 형성되어 있었기에 불필요한 의견 충돌이나 재작업을 줄일 수 있었고, 각자 맡은 역할과 마감 일정을 명확히 인지한 상태에서 작업을 이어갔습니다. 덕분에 **밤샘 작업이나 무리한 일정 소화 없이 여유 있게 결과물을 완성**할 수 있었습니다."]},{"heading":"계획적인 협업을 수상 성과로 연결하다","paragraphs":["최종적으로 **제37회 DCA 대학생 광고대상에서 동상**을 수상했습니다.","이 경험을 통해 **팀의 역량과 프로젝트의 제약 조건을 고려하여 일정을 설계하고, 명확한 방향성과 역할 분담을 통해 협업의 효율과 결과물의 완성도를 함께 높이는 프로젝트 관리 역량**을 기를 수 있었습니다."]}]},{"id":"younghana","year":"2019","date":"2019.09 — 12","type":"MARKETING / AWARD","tag":"책임감 · PT","title":"하나은행 영하나 마케팅 크루 2기","brief":"19살 신입생, 기획자로 내딛은 첫걸음","overview":"20대 고객을 위한 카드 상품과 광고 아이디어를 기획하고, 제안을 발표한 마케팅 크루 활동.","role":"카드 상품 아이디어 기획, 오프라인 광고 활동, 경쟁 PT 발표","result":"카드 상품 아이디어 최종 채택 · 영하나 마케팅 크루 2기 아이디어 대상 (2019.12)","media":["활동·발표 현장 사진","카드 상품 기획서","경쟁 PT 발표 자료"],"thumb":"lightbulb","detail":"20대 고객을 대상으로 하는 카드 상품과 광고 아이디어를 기획한 마케팅 크루 활동입니다. 상품 아이디어를 제안하고 오프라인 광고 활동에 참여했으며, 경쟁 PT에서 기획 의도를 직접 발표했습니다. 제안한 카드 상품 아이디어는 최종 채택되었고, 영하나 마케팅 크루 2기 아이디어 대상을 수상했습니다.","sections":[{"heading":"가장 어린 팀원으로 시작해 기획자의 태도를 배우다","paragraphs":["대학 입학 후 참여한 하나은행 영하나 마케팅 크루 2기는 **기획을 대하는 태도와 책임감을 배울 수 있었던 첫 대외활동**이었습니다. 오프라인 광고 집행부터 카드 상품 기획, 최종 경쟁 PT까지 다양한 마케팅 활동을 경험했습니다. 당시 팀 내 최연소 신입생으로서 처음부터 큰 역할을 맡지는 못했지만, 단순히 주어진 업무만 수행하는 팀원으로 남고 싶지는 않았습니다. 기획 과정에 적극적으로 참여하며 팀의 아이디어가 만들어지는 과정과 의도를 이해하기 위해 노력했습니다."]},{"heading":"기획의 논리와 의도를 깊이 이해하다","paragraphs":["최종 프로젝트에서는 20대 1인 가구의 소비 패턴을 분석하여, 밤 시간대의 여가 생활에 특화된 카드 상품 **『하나의 밤』**을 기획했습니다. 저는 시장 분석부터 타깃 설정, 상품 혜택과 마케팅 전략으로 이어지는 논리 구조를 파악하며, **팀이 무엇을 제안하는지뿐 아니라 왜 이러한 제안을 하게 되었는지** 스스로 설명할 수 있을 만큼 기획을 이해하고자 했습니다."]},{"heading":"프로젝트에 대한 책임감으로 발표를 자원하다","paragraphs":["최종 경쟁 PT를 앞두고는 **스스로 발표자를 자원했습니다.** 발표 경험이 많지 않은 최연소 신입생이었기에 주변의 우려도 있었지만, 기획 단계부터 함께 고민해 온 만큼 프로젝트에 대한 책임감과 주인의식을 갖고 있었기 때문입니다. 팀원들과 함께 만든 아이디어의 가치를 직접 전달하고 싶었고, **기획을 충분히 이해하고 있다는 자신감이 발표에 도전할 수 있는 원동력**이 되었습니다."]},{"heading":"50명 이상의 청중 앞에서 기획의 가치를 전달하다","paragraphs":["결과적으로 현업 임직원을 포함한 **50명 이상의 청중 앞에서 경쟁 PT를 마무리**했고, 팀의 아이디어는 **최종 채택과 아이디어 대상 수상**이라는 성과로 이어졌습니다.","이 경험은 단순히 발표에 대한 자신감을 얻은 것을 넘어, **설득력 있는 전달은 기획에 대한 깊은 이해와 결과물에 대한 책임감에서 시작한다**는 사실을 깨닫는 계기가 되었습니다. 또한 맡겨진 역할에 머무르지 않고 스스로 기여할 수 있는 영역을 찾아 나서는 태도를 갖추게 된, 제 성장의 중요한 출발점이었습니다."]}]}];
+const historyIndex=Object.fromEntries(historyActivities.map((activity,i)=>[activity.id,{...activity,index:i}]));
+const historySvgIcons={
+  lightbulb:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M9 14.5c-1.8-1.2-2.8-2.6-2.8-4.8a5.8 5.8 0 0 1 11.6 0c0 2.2-1 3.6-2.8 4.8-.6.5-1 1.3-1 2.5h-4c0-1.2-.4-2-1-2.5z"/></svg>`,heart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-9-5.2-9-11.1a4.9 4.9 0 0 1 9-2.6 4.9 4.9 0 0 1 9 2.6C21 15.8 12 21 12 21z"/></svg>`,trophy:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h10v6c0 4-2 6-5 6s-5-2-5-6V3zM7 5H4v3c0 3 2 4 4 4M17 5h3v3c0 3-2 4-4 4M12 15v4m-4 2h8m-7-2h6"/></svg>`,dice:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg>`,award:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="m8.8 12-1.7 9 4.9-3 4.9 3-1.7-9"/></svg>`,book:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A3.5 3.5 0 0 1 7.5 3H20v17H7.5A3.5 3.5 0 0 0 4 21V4.5zM4 18.8A3 3 0 0 1 7 16h13"/></svg>`,chart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18M6 16v-5m6 5V5m6 11v-8"/></svg>`,box:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5zm-9 5v9l9 5 9-5V8M12 13v9"/></svg>`,globe:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9M12 3c-3 3-4 6-4 9s1 6 4 9"/></svg>`,store:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18l-2-6H5l-2 6zm1 0v10h16V10M9 20v-7h6v7"/></svg>`,flow:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="7" height="5" rx="1"/><rect x="14.5" y="16" width="7" height="5" rx="1"/><path d="M6 8v6h12v2m-7-10h7v6"/></svg>`
+};
+function safeHistoryText(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+const trpgAssets={"cover":"./assets/img_135.webp","maps":"./assets/img_136.webp","water":"./assets/img_137.webp","riding":"./assets/img_138.webp","butchery":"./assets/img_139.webp","forest":"./assets/img_140.webp","boss":"./assets/img_141.webp","monster":"./assets/img_142.webp","sheet":"./assets/img_143.webp","inventory":"./assets/img_144.webp","combat":"./assets/img_145.webp","gold":"./assets/img_146.webp","skilltable":"./assets/img_147.webp"};
+
+function trpgMediaFigure(key,title,classes=''){
+  return `<button type="button" class="trpg-gallery-item ${classes}" data-trpg-full="${key}" data-trpg-caption="${safeHistoryText(title)}" aria-label="${safeHistoryText(title)} 원본 이미지 확대 보기"><span class="trpg-gallery-visual"><img src="${trpgAssets[key]}" alt="${safeHistoryText(title)}" loading="eager"></span><span class="trpg-gallery-caption"><strong>${safeHistoryText(title)}</strong><em>확대 보기 ↗</em></span></button>`;
+}
+function renderTrpgCover(){return `<div class="trpg-hero-gallery"><img src="${trpgAssets.cover}" alt="운영한 여섯 TRPG 세션의 표지 이미지 갤러리" /></div>`;}
+function renderTrpgArchive(){return `<div class="trpg-gallery-collection">
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">전투 맵과 환경 기믹</h4><p class="trpg-gallery-note">Roll20 세션에서 활용한 전투 맵과, 환경 기믹을 함께 정리했습니다.</p>
+    <div class="trpg-gallery-grid trpg-gallery-grid--single">${trpgMediaFigure('maps','제작·운영한 전투 맵 목록','trpg-gallery-item--panorama')}</div>
+    <div class="trpg-gallery-grid trpg-gallery-grid--feature trpg-gallery-grid--boss" style="margin-top:15px">
+      ${trpgMediaFigure('boss','환경을 고려한 보스 몬스터 스킬 설계','trpg-gallery-item--memo')}
+      ${trpgMediaFigure('water','각성의 사당 · 수상 지형 보스전','trpg-gallery-item--wide')}
+    </div>
+    <div class="trpg-gallery-grid" style="margin-top:15px">${trpgMediaFigure('butchery','푸줏간 · 전투 맵')}${trpgMediaFigure('forest','고대수의 숲 · 전투 맵')}</div>
+  </section>
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">몬스터·캐릭터 데이터 설계</h4><p class="trpg-gallery-note">직접 정리·추가한 전투 특기와 몬스터 스킬, 캐릭터 데이터 및 Roll20 운영 기록을 모았습니다.</p>
+    <div class="trpg-gallery-grid">
+      ${trpgMediaFigure('monster','몬스터 스킬 설계 및 데이터 관리','trpg-gallery-item--memo')}
+      ${trpgMediaFigure('skilltable','기존 규칙의 캐릭터 스킬 데이터 관리 및 추가','trpg-gallery-item--memo')}
+      ${trpgMediaFigure('riding','기믹 몬스터','trpg-gallery-item--memo')}
+      ${trpgMediaFigure('sheet','Roll20 캐릭터 스탯·전투 특기')}
+      ${trpgMediaFigure('inventory','아이템·스킬 데이터 관리','trpg-gallery-item--span')}
+    </div>
+  </section>
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">실제 플레이 운영과 재화 대응</h4><p class="trpg-gallery-note">실시간 피드백에 대응한 전투 기록과, 골드 소비처로 도입한 야바위 미니게임의 운영 화면입니다.</p>
+    <div class="trpg-gallery-grid trpg-gallery-grid--single">
+      ${trpgMediaFigure('combat','실시간으로 플레이어의 부정적 피드백 대응','trpg-gallery-item--log')}
+      ${trpgMediaFigure('gold','재화 소비를 위한 야바위 미니게임','trpg-gallery-item--log')}
+    </div>
+  </section>
+</div>`;}
+const boardgameAssets={"board-cover":"./assets/img_148.webp","board-award":"./assets/img_149.webp","board-report1":"./assets/img_150.webp","board-report2":"./assets/img_151.webp","board-slide-01":"./assets/img_152.webp","board-slide-02":"./assets/img_153.webp","board-slide-03":"./assets/img_154.webp","board-slide-04":"./assets/img_155.webp","board-slide-05":"./assets/img_156.webp","board-slide-06":"./assets/img_157.webp","board-slide-07":"./assets/img_158.webp","board-slide-08":"./assets/img_159.webp","board-slide-09":"./assets/img_160.webp","board-slide-10":"./assets/img_161.webp","board-slide-11":"./assets/img_162.webp","board-slide-12":"./assets/img_163.webp","board-slide-13":"./assets/img_164.webp","board-slide-14":"./assets/img_165.webp","board-slide-15":"./assets/img_166.webp","board-slide-16":"./assets/img_167.webp","board-slide-17":"./assets/img_168.webp","board-slide-18":"./assets/img_169.webp"};
+Object.assign(trpgAssets,boardgameAssets);
+
+function boardgameMediaFigure(key,title,extra=''){
+  return `<button type="button" class="trpg-gallery-item ${extra}" data-trpg-full="${key}" data-trpg-caption="${safeHistoryText(title)}" aria-label="${safeHistoryText(title)} 이미지 확대 보기"><span class="trpg-gallery-visual"><img src="${boardgameAssets[key]}" alt="${safeHistoryText(title)}" loading="lazy"></span><span class="trpg-gallery-caption"><strong>${safeHistoryText(title)}</strong><em>확대 보기 ↗</em></span></button>`;
+}
+function renderBoardgameCover(){
+  return `<div class="boardgame-hero"><img src="${boardgameAssets['board-cover']}" alt="실물 제작한 보드게임 빌런은 누구? 패키지와 구성품" /></div>`;
+}
+function renderBoardgameArchive(){
+  const slides=Array.from({length:18},(_,i)=>boardgameMediaFigure('board-slide-'+String(i+1).padStart(2,'0'), '기획안 · '+String(i+1).padStart(2,'0')+' / 18'));
+  return `<div class="trpg-gallery-collection boardgame-gallery-collection">
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">실물 제작과 수상 결과</h4><p class="trpg-gallery-note">최종 제작한 보드게임 패키지와 캡스톤 디자인 성과전시회 수상 자료입니다.</p>
+    <div class="trpg-gallery-grid trpg-gallery-grid--single">${boardgameMediaFigure('board-award','제5회 LINC+ 캡스톤 디자인 성과전시회 장려상','boardgame-gallery-award')}</div>
+  </section>
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">기획 · 제작 활동보고안</h4><p class="trpg-gallery-note">구성물 디자인부터 테스트 플레이와 실물 제작까지 진행 과정을 정리한 활동보고안입니다.</p>
+    <div class="trpg-gallery-grid">${boardgameMediaFigure('board-report1','1차 디자인 및 구성물 기획')}${boardgameMediaFigure('board-report2','테스트 플레이 및 실물 제작 과정')}</div>
+  </section>
+  <section class="trpg-gallery-group boardgame-video-section">
+  <h4 class="trpg-gallery-heading">보드게임 규칙 소개 영상</h4>
+  <p class="trpg-gallery-note">직접 제작한 보드게임의 진행 규칙을 영상으로 확인할 수 있습니다.</p>
+  <a class="boardgame-video-link" href="https://youtu.be/R13TaAwwrBQ?si=TPwEJxWAx755seKd" target="_blank" rel="noopener noreferrer" aria-label="빌런은 누구? 룰 소개 영상 유튜브에서 열기"><span class="video-play-mark" aria-hidden="true">▶</span><span><strong>『빌런은 누구?』 룰 소개 영상</strong><small>YouTube에서 영상 보기 ↗</small></span></a>
+</section>
+<section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">보드게임 기획안 · 전체 18페이지</h4><p class="trpg-gallery-note">기획 의도, 시장분석, 캐릭터 및 플레이 규칙, 예산안을 담은 발표자료입니다. 각 슬라이드를 선택하면 크게 볼 수 있습니다.</p>
+    <div class="boardgame-slides-grid">${slides.join('')}</div>
+  </section>
+  </div>`;
+}
+const younghanaAssets={"cover":"./assets/img_170.jpg","award":"./assets/img_171.jpg","slide01":"./assets/img_172.png","slide02":"./assets/img_173.png","slide03":"./assets/img_174.png","slide04":"./assets/img_175.png","slide05":"./assets/img_176.png","slide06":"./assets/img_177.png","slide07":"./assets/img_178.png","slide08":"./assets/img_179.png","slide09":"./assets/img_180.png","slide10":"./assets/img_181.png","slide11":"./assets/img_182.png","slide12":"./assets/img_183.png","slide16":"./assets/img_184.png"};
+const dcaAssets={"dca-cover":"./assets/img_185.webp","dca-slide01":"./assets/img_186.webp","dca-slide02":"./assets/img_187.webp","dca-slide03":"./assets/img_188.webp","dca-slide04":"./assets/img_189.webp","dca-slide05":"./assets/img_190.webp","dca-slide06":"./assets/img_191.webp","dca-slide07":"./assets/img_192.webp","dca-slide08":"./assets/img_193.webp","dca-slide09":"./assets/img_194.webp","dca-slide10":"./assets/img_195.webp","dca-slide11":"./assets/img_196.webp","dca-slide12":"./assets/img_197.webp","dca-slide13":"./assets/img_198.webp","dca-slide14":"./assets/img_199.webp","dca-slide15":"./assets/img_200.webp","dca-slide16":"./assets/img_201.webp","dca-slide17":"./assets/img_202.webp","dca-slide18":"./assets/img_203.webp","dca-slide19":"./assets/img_204.webp","dca-slide20":"./assets/img_205.webp","dca-slide21":"./assets/img_206.webp","dca-slide22":"./assets/img_207.webp","dca-slide23":"./assets/img_208.webp","dca-slide24":"./assets/img_209.webp","dca-slide25":"./assets/img_210.webp","dca-slide26":"./assets/img_211.webp","dca-slide27":"./assets/img_212.webp","dca-slide28":"./assets/img_213.webp"};
+
+function dcaMediaFigure(key,title){
+  return `<button type="button" class="trpg-gallery-item" data-trpg-full="${key}" data-trpg-caption="${safeHistoryText(title)}" aria-label="${safeHistoryText(title)} 이미지 확대 보기"><span class="trpg-gallery-visual"><img src="${dcaAssets[key]}" alt="${safeHistoryText(title)}" loading="lazy"></span><span class="trpg-gallery-caption"><strong>${safeHistoryText(title)}</strong><em>확대 보기 ↗</em></span></button>`;
+}
+function renderDcaCover(){
+  return `<div class="trpg-hero-gallery dca-hero-cover"><img src="./assets/img_214.jpg" alt="제37회 DCA 대학생광고대상 IDEAFLEX 출품 영상 표지" /></div>`;
+}
+function renderDcaArchive(){
+  const slideLabels=["표지","목차","시장분석","시장분석","시장분석","시장분석","시장분석","문제도출","문제도출","문제도출","문제도출","문제도출","타깃분석","타깃분석","인사이트","인사이트","인사이트","콘셉트 도출","IMC 전략 개요","옥외광고","포장 용기 광고","영상 광고","영상 광고","체험존 기획","리뷰 콘텐츠 공모전","메뉴 추천 서비스","일정표","마무리"];
+  const slides=slideLabels.map((name,i)=>dcaMediaFigure('dca-slide'+String(i+1).padStart(2,'0'), String(i+1).padStart(2,'0')+' · '+name));
+  return `<div class="trpg-gallery-collection dca-gallery-collection">
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">수상 결과</h4>
+  <p class="trpg-gallery-note">제37회 DCA 대학생 광고대상 기획 부문 동상을 수상했습니다.</p>
+  <div class="trpg-gallery-grid trpg-gallery-grid--single dca-gallery-award">${dcaMediaFigure('dca-cover','제37회 DCA 대학생 광고대상 동상','dca-gallery-award')}</div>
+</section>
+<section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">EATZ MY WAY · 기획서 전체 28페이지</h4>
+    <p class="trpg-gallery-note">시장·타깃 분석에서 인사이트 도출, IMC 전략과 실행 일정까지 이어지는 출품 기획서입니다. 각 슬라이드를 선택하면 크게 볼 수 있습니다.</p>
+    <div class="boardgame-slides-grid dca-slides-grid">${slides.join('')}</div>
+  </section>
+</div>`;
+}
+
+const historyFullImageAssets={...trpgAssets,...boardgameAssets,...younghanaAssets,...dcaAssets};
+
+function younghanaMediaFigure(key,title,extra=''){
+  return `<button type="button" class="trpg-gallery-item ${extra}" data-trpg-full="${key}" data-trpg-caption="${safeHistoryText(title)}" aria-label="${safeHistoryText(title)} 이미지 확대 보기"><span class="trpg-gallery-visual"><img src="${younghanaAssets[key]}" alt="${safeHistoryText(title)}" loading="lazy"></span><span class="trpg-gallery-caption"><strong>${safeHistoryText(title)}</strong><em>확대 보기 ↗</em></span></button>`;
+}
+function renderYounghanaCover(){
+  return `<div class="trpg-hero-gallery"><img src="${younghanaAssets.cover}" alt="하나은행 영하나 마케팅 크루 2기 경쟁 PT 발표 현장 사진" /></div>`;
+}
+function renderYounghanaArchive(){
+  const slides=[
+    ['slide01','01 · 표지'],
+    ['slide02','02 · 시장분석'],
+    ['slide03','03 · 시장분석'],
+    ['slide04','04 · 시장분석'],
+    ['slide05','05 · 시장분석'],
+    ['slide06','06 · 타깃 인사이트'],
+    ['slide07','07 · 타깃 인사이트'],
+    ['slide08','08 · 콘셉트 도출'],
+    ['slide09','09 · 타깃분석'],
+    ['slide10','10 · 기획 개요'],
+    ['slide11','11 · 기획 개요'],
+    ['slide12','12 · 기획 개요'],
+    ['slide16','13 · 마무리']
+  ];
+  return `<div class="trpg-gallery-collection younghana-gallery-collection">
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">수상 결과</h4><p class="trpg-gallery-note">최종 발표 이후 아이디어 대상을 수상한 현장 사진입니다.</p>
+    <div class="trpg-gallery-grid trpg-gallery-grid--single">${younghanaMediaFigure('award','영하나 마케팅 크루 2기 아이디어 대상','younghana-gallery-award')}</div>
+  </section>
+  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">최종 기획서 · 전체 13페이지</h4><p class="trpg-gallery-note">영하나 마케팅 크루 2기 최종 발표 자료입니다. 각 슬라이드를 클릭하면 크게 볼 수 있습니다.</p>
+    <div class="trpg-gallery-grid boardgame-slides-grid younghana-slides-grid">${slides.map(([key,title])=>younghanaMediaFigure(key,title)).join('')}</div>
+  </section>
+</div>`;
+}
+
+function renderHistoryCover(a){return a.id==='trpg'?renderTrpgCover():a.id==='boardgame'?renderBoardgameCover():a.id==='younghana'?renderYounghanaCover():a.id==='dca'?renderDcaCover():`<div class="history-hero-photo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><circle cx="8" cy="9" r="2"/><path d="m3 17 6-5 5 4 3-3 4 4"/></svg><strong>${safeHistoryText(a.media[0])}</strong><small>대표 사진 추가 예정</small></div>`;}
+function renderHistoryArchive(a){return a.id==='trpg'?renderTrpgArchive():a.id==='boardgame'?renderBoardgameArchive():a.id==='younghana'?renderYounghanaArchive():a.id==='dca'?renderDcaArchive():`<div class="history-media-grid">${a.media.slice(1).map(historyMediaSlot).join('')}</div>`;}
+
+function historyMediaSlot(label,i){const icon=i%2===0?`<svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 16l6-6 5 5 3-3 4 4M8 9h.01"/></svg>`:`<svg viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6zM15 2v5h4M9 12h7M9 16h7"/></svg>`;return `<div class="history-media-placeholder"><span class="history-media-num">0${i+1}</span>${icon}<strong>${safeHistoryText(label)}</strong><small>이미지 / 문서 추가 예정</small></div>`;}
+function openHistory(id){
+  const a=historyIndex[id];if(!a)return;
+  activeModal='history:'+id;
+  $('#dialogKicker').textContent=a.title+' / ACTIVITY DETAIL';
+  $('#modalBody').innerHTML=`<div class="history-detail-hero"><div><h2 id="dialogTitle">${safeHistoryText(a.title)}</h2><div class="history-detail-date">${safeHistoryText(a.date)}</div></div></div><div class="history-detail-content"><section class="history-hero-media">${renderHistoryCover(a)}</section><section class="history-detail-story"><h3>ACTIVITY OVERVIEW</h3>${a.sections.map(part=>`<div class="history-story-part"><h4>${safeHistoryText(part.heading)}</h4>${part.paragraphs.map(par=>`<p>${safeRichText(par)}</p>`).join('')}</div>`).join('')}</section><div class="history-detail-bottom"><section><h3>MY ROLE</h3><p>${safeHistoryText(a.role)}</p></section><section class="history-bottom-result"><h3>RESULT & OUTPUT</h3><p>${safeHistoryText(a.result)}</p></section></div><section class="history-detail-documents"><div class="history-media-heading"><h3>DOCUMENT & OUTPUT ARCHIVE</h3></div>${renderHistoryArchive(a)}</section></div>`
+  $('#overlay').classList.add('open');
+  $('#scroller').scrollTop=0;
+  $('#close').focus();
+}
+document.querySelectorAll('[data-history]').forEach(b=>b.addEventListener('click',()=>openHistory(b.dataset.history)));
+const trpgLightbox=document.getElementById('trpg-image-dialog');
+const trpgLightboxImage=document.getElementById('trpg-lightbox-image');
+const trpgLightboxTitle=document.getElementById('trpg-lightbox-title');
+// Keep the parent HISTORY popup open while closing only the full-size image.
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape' && trpgLightbox.open){
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    trpgLightbox.close();
+  }
+},true);
+trpgLightbox.addEventListener('cancel',event=>{
+  event.preventDefault();
+  trpgLightbox.close();
+});
+
+document.getElementById('modalBody').addEventListener('click',event=>{
+  const el=event.target.closest('[data-trpg-full]');
+  if(!el)return;
+  const key=el.dataset.trpgFull;
+  if(!historyFullImageAssets[key])return;
+  trpgLightboxImage.src=historyFullImageAssets[key];
+  trpgLightboxImage.alt=el.dataset.trpgCaption||'원본 이미지';
+  trpgLightboxTitle.textContent=el.dataset.trpgCaption||'TRPG 운영 자료';
+  trpgLightbox.showModal();
+});
+document.getElementById('trpg-lightbox-close').addEventListener('click',()=>trpgLightbox.close());
+trpgLightbox.addEventListener('click',event=>{if(event.target===trpgLightbox)trpgLightbox.close();});
+
+</script>
+<script>
+(function(){
+  const widget=document.getElementById('contactWidget');
+  const trigger=document.getElementById('contactTrigger');
+  const panel=document.getElementById('contactPanel');
+  const close=document.getElementById('contactClose');
+  if(!widget||!trigger||!panel||!close)return;
+  function toggle(open){
+    panel.hidden=!open;
+    trigger.setAttribute('aria-expanded',String(open));
+  }
+  trigger.addEventListener('click',function(){toggle(panel.hidden);});
+  close.addEventListener('click',function(){toggle(false);trigger.focus();});
+  document.addEventListener('pointerdown',function(event){if(!widget.contains(event.target))toggle(false);});
+  document.addEventListener('keydown',function(event){
+    if(event.key==='Escape'&&!panel.hidden){toggle(false);trigger.focus();}
+  });
+  document.querySelectorAll('.floating-page-nav [data-page],.hero-cta[data-page]').forEach(function(el){el.addEventListener('click',function(){toggle(false);});});
+})();
+</script>
+</body></html>
