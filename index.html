@@ -31,7 +31,7 @@
 #info .info-intro p{font-size:14.3px;line-height:1.8;color:#70746e;margin:0}
 #info .info-main{display:grid;grid-template-columns:minmax(290px,.88fr) minmax(0,1.32fr);gap:17px;align-items:stretch}
 #info .info-identity{background:#212422;color:#fff;padding:23px 28px 22px;min-height:440px;position:relative;display:flex;flex-direction:column;overflow:hidden}
-#info .info-identity:after{content:'';position:absolute;right:-78px;top:82px;border:1px solid #ffffff13;width:255px;height:255px;transform:rotate(45deg);pointer-events:none}
+
 #info .info-id-top,#info .info-id-bottom{display:flex;justify-content:space-between;gap:8px;font-size:9.9px;font-weight:850;letter-spacing:.12em;color:#a4a9a3}
 #info .info-monogram{font-family:Arial,sans-serif;font-size:clamp(82.5px,9.9vw,121px);line-height:1;font-weight:900;letter-spacing:-.12em;margin:23px 0 7px;color:#f9c642}
 #info .info-monogram span{color:#fff}
@@ -1020,13 +1020,26 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 </style>
 <style>
 /* Profile image placements | 2026-10-22 */
-#home-screen .home-about-photo { overflow: hidden; background: #f6f6f6; }
-#home-screen .home-about-photo-img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+/* HOME full-length portrait: size the box to the source image (1361 x 2048).
+   No inner letterboxing, crop or mismatched aspect ratio at any breakpoint. */
+#home-screen .home-about-photo {
+  width: 100%;
+  aspect-ratio: 1361 / 2048;
+  min-height: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+}
+#home-screen .home-about-photo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
 #info .info-photo-slot { overflow: hidden; padding: 0; background: #f3f4f4; border: 1px solid rgba(232,235,226,.42); }
 #info .info-photo-img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; transform: scale(1.3); transform-origin: center 30%; }
-@media (max-width: 670px) {
-  #home-screen .home-about-photo-img { object-fit: cover; object-position: center 30%; }
-}
+/* The exact image aspect ratio is preserved on small screens as well. */
 </style>
 </head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><div class="site"><div class="track" id="track"><section class="screen home-v1-page" id="home-screen" aria-labelledby="hero-title"><div class="home-v1-hero">
   <div class="container">
@@ -1081,7 +1094,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 </section>
 <section aria-label="학력과 자격증" class="info-facts">
 <div class="info-facts-head"><strong>PROFILE INFORMATION</strong></div>
-<div class="info-facts-category">EDUCATION <span>학력</span></div>
+<div class="info-facts-category">EDUCATION</div>
 <dl>
 <div class="info-fact"><dt>2019 —</dt><dd>아주대학교<span>문화콘텐츠학 전공</span></dd></div>
 <div class="info-fact"><dt>2025.09 — 2026.02</dt><dd>HfWU Nürtingen-Geislingen<span>독일 교환학생</span></dd></div>
