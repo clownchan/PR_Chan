@@ -1,0 +1,35 @@
+﻿number,title,local_path,source_zip_path,width,height,format,size_bytes
+1,승리의 여신: 니케,assets/game-covers-v22/01_nikke.jpg,수집형RPG/승리의 여신 니케.jpg,600,900,JPEG,81756
+2,붕괴: 스타레일,assets/game-covers-v22/02_honkai_star_rail.png,수집형RPG/붕괴스타레일.png,600,900,PNG,993912
+3,몬길: STAR DIVE,assets/game-covers-v22/03_mongil_star_dive.jpg,수집형RPG/몬길 스타다이브.jpg,1024,1365,JPEG,193913
+4,림버스 컴퍼니,assets/game-covers-v22/04_limbus_company.jpg,수집형RPG/림버스 컴퍼니.jpg,1000,1500,JPEG,155377
+5,트릭컬 리바이브,assets/game-covers-v22/05_trickcal_revive.jpg,수집형RPG/트릭컬 리바이브.jpg,900,1274,JPEG,228323
+6,젠레스 존 제로,assets/game-covers-v22/06_zenless_zone_zero.jpg,수집형RPG/젠레스 존 제로.jpg,820,1200,JPEG,169669
+7,카오스 제로 나이트메어,assets/game-covers-v22/07_chaos_zero_nightmare.jpg,수집형RPG/카오스 제로 나이트메어.jpg,600,900,JPEG,70413
+8,데스티니 차일드,assets/game-covers-v22/08_destiny_child.jpg,수집형RPG/데스티니 차일드.jpg,799,1131,JPEG,173021
+9,리그 오브 레전드,assets/game-covers-v22/09_league_of_legends.jpg,MOBA/리그 오브 레전드.jpg,1200,1600,JPEG,250305
+10,이터널 리턴,assets/game-covers-v22/10_eternal_return.jpg,MOBA/이터널 리턴.jpg,600,900,JPEG,85978
+11,하이퍼 유니버스 공식 게임 홍보 아트,assets/game-covers-v22/11_hyper_universe.jpg,MOBA/하이퍼 유니버스.jpg,640,960,JPEG,82595
+12,포켓몬 LEGENDS Z-A 공식 키아트,assets/game-covers-v22/12_pokemon_legends_za.jpg,JRPG/포켓몬스터.jpg,750,1000,JPEG,111186
+13,페르소나 시리즈,assets/game-covers-v22/13_persona.jpg,JRPG/페르소나.jpg,600,843,JPEG,112947
+14,파이널 판타지 VII,assets/game-covers-v22/14_final_fantasy_vii.jpg,JRPG/파이널 판타지 7.jpg,600,900,JPEG,63474
+15,몬스터 헌터 와일즈 공식,assets/game-covers-v22/15_monster_hunter_wilds.jpg,ARPG/몬스터 헌터.jpg,600,900,JPEG,87621
+16,스카이림,assets/game-covers-v22/16_skyrim.jpg,ARPG/스카이림.jpg,600,900,JPEG,79908
+17,엘든 링,assets/game-covers-v22/17_elden_ring.jpg,ARPG/엘든 링.jpg,1000,1500,JPEG,149289
+18,다크 소울 3,assets/game-covers-v22/18_dark_souls_iii.jpg,ARPG/다크소울3.jpg,1000,1500,JPEG,189950
+19,젤다의 전설 야생의 숨결 공식 키아트 — 하이랄을 바라보는 링크,assets/game-covers-v22/19_zelda_botw.jpg,기타/젤다의전설.jpg,267,400,JPEG,71490
+20,슬레이 더 스파이어 시리즈,assets/game-covers-v22/20_slay_the_spire.jpg,로그라이크/슬레이 더 스파이어.jpg,1000,1500,JPEG,137389
+21,아이작의 번제,assets/game-covers-v22/21_binding_of_isaac.jpg,로그라이크/바인딩 오브 아이작.jpg,600,900,JPEG,91637
+22,스컬,assets/game-covers-v22/22_skul.jpg,로그라이크/스컬.jpg,600,900,JPEG,60626
+23,하데스,assets/game-covers-v22/23_hades.jpg,로그라이크/하데스.jpg,768,1025,JPEG,115755
+24,크로노 아크,assets/game-covers-v22/24_chrono_ark.jpg,로그라이크/크로노아크.jpg,898,1300,JPEG,249978
+25,오버워치,assets/game-covers-v22/25_overwatch.jpg,히어로 슈터/오버워치.jpg,600,900,JPEG,70550
+26,팀 포트리스 2,assets/game-covers-v22/26_team_fortress_2.jpg,히어로 슈터/팀포트리스2.jpg,600,900,JPEG,87609
+27,마블 라이벌즈,assets/game-covers-v22/27_marvel_rivals.jpg,히어로 슈터/마블 라이벌즈.jpg,600,900,JPEG,26491
+28,DJMAX RESPECT V,assets/game-covers-v22/28_djmax_respect_v.jpg,기타/디제이맥스.jpg,810,1080,JPEG,83460
+29,대난투 시리즈,assets/game-covers-v22/29_super_smash_bros.jpg,기타/대난투.jpg,600,900,JPEG,130912
+30,보더랜드 시리즈,assets/game-covers-v22/30_borderlands.jpg,기타/보더랜드.jpg,800,1123,JPEG,254422
+31,마블 스냅,assets/game-covers-v22/31_marvel_snap.jpg,기타/마블스냅.jpg,600,900,JPEG,115762
+32,테라리아,assets/game-covers-v22/32_terraria.jpg,기타/테라리아.jpg,600,900,JPEG,94370
+33,산나비,assets/game-covers-v22/33_sanabi.jpg,기타/산나비.jpg,1200,1800,JPEG,334662
+34,바이오쇼크 인피니트,assets/game-covers-v22/34_bioshock_infinite.jpg,기타/바이오쇼크.jpg,600,900,JPEG,132955
