@@ -1889,7 +1889,7 @@ body { background: var(--bg); }
   --portfolio-gutter: clamp(18px, 5.5vw, 90px);
   --portfolio-section-space: clamp(42px, 7vw, 88px);
   --portfolio-divider: 1px solid var(--line);
-  --portfolio-section-divider: 3px solid var(--ink);
+  --portfolio-section-divider: 2px solid #d3cbb5;
 }
 #track > .screen:not(#home-screen),
 #home-screen .home-about-section,
@@ -1897,7 +1897,20 @@ body { background: var(--bg); }
   padding: var(--portfolio-section-space) var(--portfolio-gutter);
   border-top: var(--portfolio-divider);
 }
-#track > .screen:not(#home-screen) {border-top:var(--portfolio-section-divider)}
+#track > .screen:not(#home-screen) {
+  position: relative;
+  border-top: 0;
+}
+#track > .screen:not(#home-screen)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  width: min(76%, 1040px);
+  margin-inline: auto;
+  border-top: var(--portfolio-section-divider);
+  pointer-events: none;
+}
 #track > .screen > .wrap,
 #home-screen .home-about-inner,
 #home-screen .home-profile-info-section .wrap {
