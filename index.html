@@ -1969,6 +1969,24 @@ body { background: var(--bg); }
   .portfolio-doc-item:is(:hover,:focus-visible) .portfolio-doc-circle{translate:0 -2px}
   :is(.floating-page-nav button,.contact-trigger,.ai-play-link,.history-detail-toggle,.studio-controls button):active{scale:.96}
 }
+@media(prefers-reduced-motion:no-preference){
+  @keyframes portfolio-scroll-appear {
+    from {opacity:0;translate:0 16px}
+    to {opacity:1;translate:0 0}
+  }
+  @keyframes portfolio-scroll-media {
+    from {opacity:0;translate:0 13px;clip-path:inset(5% 0 0)}
+    to {opacity:1;translate:0 0;clip-path:inset(0)}
+  }
+  .portfolio-scroll-enter {
+    animation:portfolio-scroll-appear .68s var(--scroll-enter-delay,0ms) cubic-bezier(.22,1,.36,1) backwards;
+  }
+  .portfolio-scroll-enter[data-scroll-media] {
+    animation-name:portfolio-scroll-media;
+    animation-duration:.82s;
+  }
+  .portfolio-scroll-enter:focus-within {animation:none}
+}
 #hero-title .line-one {white-space:normal}
 .ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -3277,5 +3295,33 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     });
   }, {threshold:0.55});
   document.querySelectorAll('.ai-play-link, .studio-controls button, #history-detail-toggle').forEach(button => observer.observe(button));
+})();
+</script><script>
+(() => {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const elements = document.querySelectorAll([
+    '.home-about-copy > h2', '.home-about-statement', '.home-about-paragraphs > p',
+    '#profile-info .info-intro', '#profile-info .info-identity', '#profile-info .info-facts',
+    '#profile-info .info-activity-copy', '#track > .screen > .wrap > .page-title',
+    '.ai-lead', '.ai-case > header', '.ai-case > p', '.ai-topic',
+    '.auction-highlight', '.portfolio-doc-item', '#history-screen .h17-intro',
+    '#history-screen .h17-scroll', '#history-screen .h17-panel-content',
+    '.playing-inline-stats .stat', '.playing-expanded-heading',
+    '.games-event-card', '.games-collection-card'
+  ].join(','));
+  const observer = new IntersectionObserver(entries => {
+    const entering = entries.filter(entry => entry.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    entering.forEach(({target}, index) => {
+      observer.unobserve(target);
+      if (target.contains(document.activeElement)) return;
+      target.style.setProperty('--scroll-enter-delay', Math.min(index * 65, 195) + 'ms');
+      if (target.matches('.auction-highlight, .portfolio-doc-item, .games-collection-card')) {
+        target.setAttribute('data-scroll-media', '');
+      }
+      target.classList.add('portfolio-scroll-enter');
+    });
+  }, {rootMargin:'0px 0px -24px 0px'});
+  elements.forEach(element => observer.observe(element));
 })();
 </script></body></html>
