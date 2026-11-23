@@ -1919,6 +1919,23 @@ body { background: var(--bg); }
 #history-screen .history-detail-bottom section,
 #games-screen .playing-expanded-heading,
 #games-screen .games-culture-block{border-top:var(--portfolio-divider)}
+#home-screen.home-v1-page .home-v1-hero > .container {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(220px,31%);
+  align-items:center;
+  gap:clamp(18px,4vw,56px);
+}
+#home-screen .hero-content h1{font-size:clamp(30px,4.9vw,65px)}
+.hero-photocards{position:relative;isolation:isolate;justify-self:center;width:min(100%,330px);aspect-ratio:1.22}
+.hero-photocard{position:absolute;box-sizing:border-box;width:66%;margin:0;padding:clamp(6px,1.1vw,12px);padding-bottom:clamp(14px,2.2vw,27px);background:#fff;border:1px solid #deddd7;box-shadow:0 12px 28px #241d1422}
+.hero-photocard img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;filter:grayscale(1)}
+.hero-photocard--back{top:4%;left:6%;transform:rotate(-11deg);opacity:.68}
+.hero-photocard--back img{object-position:83% center;filter:grayscale(1) contrast(.78)}
+.hero-photocard--front{top:10%;right:6%;transform:rotate(7deg);z-index:1}
+@media(max-width:740px){
+  #home-screen.home-v1-page .home-v1-hero > .container{grid-template-columns:1fr}
+  .hero-photocards{justify-self:end;width:min(70%,265px);margin-right:5px}
+}
 #hero-title .line-one {white-space:normal}
 .ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -1969,9 +1986,13 @@ html:has(.studio-view[open]){overflow:hidden}
 </style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
-<div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
+<div class="eyebrow reveal">Game Design PORTFOLIO</div>
 <h1 class="reveal delay" id="hero-title"><span class="line-one">게임 안팎에서 얻은 발견을,</span>플레이할 수 있는 <span class="mark">재미</span>로<span class="home-hero-period">.</span></h1>
 <div class="hero-bottom reveal delay2"><div class="role-label">이찬</div></div>
+</div>
+<div class="hero-photocards">
+  <figure class="hero-photocard hero-photocard--back"><img src="./assets/hero-photo-back.webp" alt="영하나 크루 발표 무대 전경" width="1200" height="800"></figure>
+  <figure class="hero-photocard hero-photocard--front"><img src="./assets/hero-photo-front.webp" alt="마이크를 들고 영하나 크루 기획안을 발표하는 이찬" width="720" height="720"></figure>
 </div>
 </div>
 </div>
