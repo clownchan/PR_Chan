@@ -1902,9 +1902,9 @@ body { background: var(--bg); }
 .studio-zoom{display:none}
 @media(max-width:760px){
   .studio-zoom{display:inline-block}
-  .studio-view{width:min(calc(100vw - 28px),540px);height:auto;max-height:calc(100dvh - 32px);margin:auto;border:1px solid #555;border-radius:14px;overflow:hidden}
+  .studio-view{position:fixed;inset:0;width:min(calc(100vw - 28px),540px);height:fit-content;max-height:calc(100dvh - 32px);margin:auto;border:1px solid #555;border-radius:14px;overflow:hidden}
   .studio-view::backdrop{background:rgba(0,0,0,.68)}
-  .studio-pan{display:grid;place-items:center}
+  .studio-pan{display:grid;place-items:center;aspect-ratio:1266/793;max-height:calc(100dvh - 110px)}
   .studio-pan img{width:100%;height:auto;max-height:calc(100dvh - 110px);object-fit:contain}
   .studio-pan.is-zoomed{display:block}
   .studio-pan.is-zoomed img{width:1266px;height:auto;max-height:none;margin:0}
