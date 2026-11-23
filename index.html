@@ -2030,6 +2030,67 @@ html:has(.studio-view[open]){overflow:hidden}
 .studio-controls button{width:44px;height:44px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:50%;cursor:pointer;font-size:1.25rem}
 @media(max-width:600px){.studio-stage{aspect-ratio:1266/735}.studio-stage img{width:88%}}
 @media(prefers-reduced-motion:reduce){.studio-stage img{transition:none}}
+/* Shared surfaces and control colors, based on the profile and bottom navigation. */
+:root{
+  --portfolio-paper:#fffdf6;
+  --portfolio-soft:#eee8d7;
+  --portfolio-gold-soft:#f7e6a5;
+  --portfolio-control-dark:#1d1b16;
+  --portfolio-control-light:#fffdf4;
+}
+#ai-screen .ai-topic,
+#history-screen .h17-panel,
+#games-screen .games-experience-item,
+#games-screen .games-collection-card,
+#games-screen .playing-inline-stats .stat{
+  background-color:var(--portfolio-paper);
+  border-color:var(--line);
+}
+#ai-screen .ai-topic :is(p,li),
+#ai-screen .ai-lead,
+#portfolio-page :is(.portfolio-doc-game,.portfolio-doc-category,.portfolio-doc-format,.portfolio-doc-cta),
+#history-screen :is(.h17-intro-copy p,.h17-legend,.h17-field),
+#games-screen :is(.games-event-copy p,.games-collection-caption p){
+  color:var(--muted);
+}
+#portfolio-page .portfolio-doc-index{color:#807662}
+#portfolio-page .portfolio-doc-circle,
+#playing-expanded .playing-genre-details{
+  background-color:var(--portfolio-control-dark);
+  color:var(--portfolio-control-light);
+}
+#playing-expanded .playing-genre-details{border-color:var(--portfolio-control-dark)}
+#portfolio-page .portfolio-doc-item:is(:hover,:focus-visible) .portfolio-doc-circle,
+.contact-trigger{
+  background-color:var(--accent);
+  color:var(--ink);
+}
+.contact-trigger{border-color:#d0b233}
+.contact-trigger[aria-expanded="true"]{
+  background-color:var(--portfolio-control-dark);
+  border-color:var(--portfolio-control-dark);
+  color:var(--portfolio-control-light);
+}
+#history-screen .h17-bubble{background-color:var(--portfolio-soft);border-color:var(--portfolio-paper);box-shadow:0 0 0 1px #cfc5ad}
+#history-screen .h17-stop.has-archive .h17-bubble{background-color:var(--portfolio-gold-soft);color:var(--ink);box-shadow:0 0 0 1px #cfb456}
+#history-screen .h17-stop.is-active .h17-bubble,
+#history-screen .h17-stop.is-active:not(.has-archive) .h17-bubble{background-color:var(--accent);color:var(--ink);border-color:var(--portfolio-paper);box-shadow:0 0 0 2px #b99c32}
+#history-screen .h17-field,
+#games-screen .playing-genre-tab{
+  background-color:var(--portfolio-soft);
+  border-color:var(--line);
+  color:var(--muted);
+}
+#games-screen .playing-genre-tab:hover{
+  background-color:var(--portfolio-paper);
+  color:var(--ink);
+}
+#games-screen .playing-genre-tab[aria-selected="true"]{
+  background-color:var(--portfolio-control-dark);
+  border-color:var(--portfolio-control-dark);
+  color:var(--portfolio-control-light);
+  box-shadow:inset 0 4px 0 var(--accent);
+}
 </style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
