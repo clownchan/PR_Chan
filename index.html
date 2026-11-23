@@ -1841,6 +1841,7 @@ body { background: var(--bg); }
 .floating-page-nav button.current { background: var(--accent); }
 #ai-screen .ai-case { max-width: none; border: 0; border-top: 2px solid var(--ink); padding: clamp(20px,4vw,48px) 0; background: transparent; }
 #ai-screen .ai-case > p, #ai-screen .ai-case > header { max-width: 76ch; }
+#ai-screen .ai-case > .ai-overview { max-width: none; }
 .ai-media-slot { background: #fcf9ef; }
 #history-screen .h17-panel.has-history-detail { min-height: 0; }
 #history-screen .has-history-detail .h17-description { display: none; }
@@ -2066,7 +2067,7 @@ html:has(.studio-view[open]){overflow:hidden}
         <h2 id="ai-night-title"><img class="ai-title-logo" src="./assets/ai-night-heading.webp" alt="야간자율학습"></h2>
         <p class="ai-summary">밤의 학교에서 아이템을 파밍하고, 크리쳐를 피해 탈출하는 1인칭 익스트랙션 호러<br>Unity 3D · 개발 중</p>
       </header>
-      <p>교실과 실습실에서 아이템을 모으고 배전함을 수리해 탈출구를 엽니다. 진입할 때마다 달라지는 학교에서 크리쳐를 피해 파밍과 탈출 경로를 정합니다.</p>
+      <p class="ai-overview">교실과 실습실에서 아이템을 모으고 배전함을 수리해 탈출구를 엽니다. 진입할 때마다 달라지는 학교에서 크리쳐를 피해 파밍과 탈출 경로를 정합니다.</p>
       <figure class="auction-highlight night-highlight">
         <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
       </figure>
@@ -2097,10 +2098,10 @@ html:has(.studio-view[open]){overflow:hidden}
         <h2 id="ai-auction-title"><img class="ai-title-logo" src="./assets/ai-auction-heading.webp" alt="ClockWork Auction"></h2>
         <p class="ai-summary">한정된 예산으로 세 라이벌과 경쟁하며 물품을 모으는 모바일 웹 경매 게임<br>웹에서 플레이 가능</p>
       </header>
+      <p class="ai-overview">수집형 RPG, SLG, 방치형 모바일 게임에 넣을 수 있는 기간 한정 이벤트를 기획했습니다.</p>
        <div class="ai-game-intro">
         <figure class="auction-highlight">
           <video width="540" height="1170" src="./assets/auction-highlight.mp4" poster="./assets/auction-highlight-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="ClockWork Auction 플레이 하이라이트"></video>
-          <figcaption>수집형 RPG, SLG, 방치형 모바일 게임에 넣을 수 있는 기간 한정 이벤트를 기획했습니다.</figcaption>
         </figure>
         <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
       </div>
