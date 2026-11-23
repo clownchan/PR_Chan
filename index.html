@@ -2024,16 +2024,80 @@ html:has(.studio-view[open]){overflow:hidden}
     <h1 class="page-title" id="ai-title">AI<span class="hl">.</span></h1>
     <p class="ai-lead">AI와 함께 만든 게임과 제작 도구를 소개합니다.</p>
     <nav class="ai-index" aria-label="AI 프로젝트 바로가기">
-      <a href="#ai-circus"><small>게임 제작 도구</small><span>Circus Studio</span></a>
-      <a href="#ai-auction"><small>모바일 웹게임</small><span>ClockWork Auction</span></a>
       <a href="#ai-night"><small>Unity 3D 게임</small><span>야간자율학습</span></a>
+      <a href="#ai-auction"><small>모바일 웹게임</small><span>ClockWork Auction</span></a>
+      <a href="#ai-circus"><small>게임 제작 도구</small><span>Circus Studio</span></a>
     </nav>
+    <article class="ai-case" id="ai-night" aria-labelledby="ai-night-title">
+      <header>
+        <h2 id="ai-night-title">야간자율학습</h2>
+        <p class="ai-summary">밤의 학교에서 아이템을 파밍하고, 크리쳐를 피해 탈출하는 1인칭 익스트랙션 호러<br>Unity 3D · 개발 중</p>
+      </header>
+      <p>교실, 화장실, 실습실을 수색해 아이템을 모으고, 배전함을 수리해 탈출구를 엽니다. 학교 구조는 진입할 때마다 달라집니다. 플레이어는 크리쳐의 수색을 피하면서 어디를 더 탐색할지, 언제 탈출할지 판단해야 합니다.</p>
+      <figure class="auction-highlight night-highlight">
+        <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
+        <figcaption>개발 중 빌드 플레이 하이라이트</figcaption>
+      </figure>
+      <h3>웹에서 핵심 재미를 확인하고 Unity로 옮기기</h3>
+      <p>익스트랙션 장르의 재미는 계획대로 되지 않는 상황에서 다음 행동을 고르는 데 있다고 생각했습니다. 여기에 호러를 더해, 눈앞의 아이템을 더 챙길지 위험을 피해 돌아갈지 고민하는 게임을 만들고 싶었습니다. 먼저 웹 프로토타입으로 파밍과 탈출의 흐름을 확인한 뒤, 공포스러운 학교 공간과 조명, 1인칭 시야를 구현하기 위해 프로젝트를 Unity로 옮겼습니다.</p>
+      <p>탐사·파밍·은신·탈출의 기본 규칙은 직접 작성했습니다. 로커에 숨기 직전에 크리쳐에게 들켰을 때처럼 여러 규칙이 겹치는 상황은 Codex와 함께 정리했습니다. 제가 승인한 기획을 Claude Code가 Unity에 구현했고, 개발 빌드에서 확인한 문제는 Circus Studio에 기록해 다음 패치에 반영했습니다.</p>
+      <h3>카메라 별로 모델링을 다르게 출력하기</h3>
+      <p>Tripo로 플레이어와 크리쳐의 모델을 만들고 Unity에 적용했습니다. 플레이어가 아래를 내려다보면 자기 몸이 보여야 했지만, 모델 전체를 그대로 표시하니 머리가 카메라 시야를 가렸습니다. 거울에는 머리까지 포함한 전신이 필요했습니다.</p>
+      <p>Claude Code와 카메라별로 표시할 부분을 나눴습니다. 1인칭 화면에서는 머리를 숨기고, 거울에는 전신을 표시했습니다. 이번에는 어두운 교실에서 거울 속 캐릭터가 거의 보이지 않아 반사 화면에만 별도 재질을 적용했습니다. 걷기와 달리기 동작은 실제 이동 속도에 맞추고, 오른손은 손전등 손잡이를 따라가도록 조정했습니다.</p>
+      <h3>학교 구조가 달라져도 탈출할 길은 확보하기</h3>
+      <p>판마다 학교 구조가 달라지면 익숙한 길을 그대로 따라갈 수 없어 탐색에 긴장감이 생깁니다. 따라서 매번 다른 배치를 만들면서도, 플레이어가 배전함과 탈출구까지 갈 수 있도록 생성 규칙을 정했습니다.</p>
+      <p>Codex와 <strong>복도·계단 연결 → 배전함과 탈출구 위치 확보 → 방과 아이템 배치 → 이동 경로 검사</strong> 순서로 규칙을 정리했습니다. 문제가 생긴 배치는 같은 생성 번호로 다시 불러와 확인할 수 있게 했습니다. 복도의 어두운 분위기를 유지하면서도 켜진 조명 주변의 출입구와 주요 단서는 눈에 들어오도록 배치했습니다.</p>
+      <h3>위협적인 크리쳐에게서 벗어날 틈 만들기</h3>
+      <p>크리쳐로부터 도망치는 플레이어가 로커에 숨거나, 스태미나를 소모해 빠르게 시야에서 벗어나는 것이 의미 있도록 설계하고 싶었지만, 동시에 크리쳐를 위협적인 존재로 만들고 싶었습니다. 그래서 Codex와 <strong>크리쳐가 직접 본 위치</strong>와 <strong>소리를 들은 위치</strong>를 나누고, 추격 중 시야가 끊겼을 때 어떤 단서를 따라갈지 정했습니다.</p>
+      <div class="ai-evidence">
+        <figure><img src="./assets/portfolio-night-map.webp" loading="lazy" alt="탐사 중 스마트폰에 표시되는 두 층의 학교 지도"><figcaption>플레이 중 확인하는 층별 지도</figcaption></figure>
+        <figure><img src="./assets/portfolio-night-guard.webp" loading="lazy" alt="탈출구 근처 복도에서 야간 경비원과 마주친 장면"><figcaption>Unity 빌드에서 경비원과 마주친 장면</figcaption></figure>
+      </div>
+    </article>
+    <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
+      <header>
+        <h2 id="ai-auction-title">ClockWork Auction</h2>
+        <p class="ai-summary">한정된 예산으로 세 라이벌과 경쟁하며 물품을 모으는 모바일 웹 경매 게임<br>웹에서 플레이 가능</p>
+      </header>
+      <div class="ai-game-intro">
+        <div>
+          <div class="ai-auction-art"><img src="./assets/ai-auction-wordmark.webp" alt="" width="720" height="240" loading="lazy"></div>
+          <p class="ai-game-intent">수집형 RPG, SLG, 방치형 모바일 게임에 기간 한정 이벤트로 적용할 수 있는 미니게임을 기획했습니다.</p>
+          <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
+        </div>
+        <figure class="auction-highlight">
+          <video width="540" height="1170" src="./assets/auction-highlight.mp4" poster="./assets/auction-highlight-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="ClockWork Auction 플레이 하이라이트"></video>
+          <figcaption>플레이 하이라이트</figcaption>
+        </figure>
+      </div>
+      <h3>세 라이벌이 서로 다른 입찰 고민을 만들도록 설계하기</h3>
+      <ul>
+        <li><strong>루루는 희귀품이나 세트를 완성할 물품에 예산을 집중하는 수집가입니다.</strong> 플레이어는 필요한 물품을 두고 루루와 경쟁할지, 다른 조합을 노릴지 결정합니다.</li>
+        <li><strong>모코는 초반에 저렴한 물품을 골라 사고, 후반에 남겨둔 예산으로 따라잡습니다.</strong> 플레이어는 초반에 좋은 물품을 얻고도 후반 경쟁에 쓸 예산을 남겨야 합니다.</li>
+        <li><strong>레오는 초반부터 먼저 입찰하고, 감당할 수 있는 가격까지 맞입찰하는 견제형 라이벌입니다.</strong> 플레이어는 첫 물품에 돈을 더 쓸지, 일찍 빠져 다음 기회를 기다릴지 고민합니다.</li>
+      </ul>
+      <h3>빈손 보정으로 첫 낙찰 기회 만들기</h3>
+      <p>가격에 신중한 모코가 첫 물품을 계속 놓치면, 후반에 예산을 써서 따라잡는 전략도 펼치기 어려웠습니다. 입찰 한도를 계속 높이면 모코의 절약 성향이 흐려지고 전체 낙찰가도 오를 수 있었습니다.</p>
+      <p>Codex와 함께, <strong>물품이 없을 때만 입찰 한도를 높이고 첫 낙찰 뒤에는 보정을 해제하는 ‘빈손 보정’ 규칙</strong>을 설계했습니다. 모코의 감정가 상한과 각 라이벌의 잔액 제한도 함께 적용했습니다.</p>
+      <p>Codex를 활용해 물품 순서를 동일하게 두고 입찰 전략을 바꿔가며 <strong>첫 낙찰 시점, 빈손 종료율, 평균 낙찰가</strong>를 비교했습니다. 첫 낙찰 기회를 늘리는 과정에서 전체 낙찰가가 지나치게 오르지 않는지도 살폈습니다.</p>
+      <h3>아트와 사운드로 경매 상황을 읽기 쉽게 만들기</h3>
+      <p><strong>스팀펑크풍 사교클럽</strong>을 콘셉트로 잡고, AI에 배경·물품·라이벌 표정이 화면에서 맡을 역할을 나눠 지시했습니다. 배경은 경매장 분위기를 만들고, 물품은 작은 화면에서도 형태가 구분되도록 했습니다. 시안을 게임에 적용하면서 <strong>현재가, 남은 시간, 입찰 버튼</strong>을 한눈에 찾을 수 있도록 배치했고, 물품 이미지는 경매와 도감에서 함께 사용했습니다.</p>
+      <p>라이벌의 경매 성향이 첫인상에서도 드러나도록 AI에 표정과 분위기를 다르게 지시했습니다. 루루는 희귀품을 고르는 여유로운 수집가, 모코는 가격을 신중하게 살피는 실속파, 레오는 먼저 경쟁을 거는 자신감 있는 라이벌로 표현했습니다.</p>
+      <div class="ai-evidence ai-evidence--auction">
+        <figure><img src="./assets/portfolio-auction-concept.webp" loading="lazy" alt="황동 살롱 테마의 ClockWork Auction UI 시안"><figcaption>황동 살롱 UI 시안</figcaption></figure>
+        <figure><img src="./assets/portfolio-auction-ui.webp" loading="lazy" alt="현재가, 남은 시간, 라이벌과 입찰 버튼이 보이는 모바일 경매 화면"><figcaption>모바일 빌드에 적용된 경매 화면</figcaption></figure>
+      </div>
+      <p><strong>소리마다 플레이어에게 어떤 정보를 전달할지</strong>부터 정리했습니다. 입찰음은 가격이 바뀌었다는 짧은 신호, 마감음은 판단할 시간이 줄었다는 신호, 낙찰음은 결과가 확정됐다는 신호로 구분했습니다. 입찰이 짧은 간격으로 반복되기 때문에, 반복해서 들어도 부담이 적고, 입찰·마감·낙찰을 소리로 구분할 수 있도록 기준을 잡았습니다.</p>
+    </article>
     <article class="ai-case" id="ai-circus" aria-labelledby="ai-circus-title">
       <header>
         <h2 id="ai-circus-title"><img src="./assets/circus-studio-icon.png" alt="">Circus Studio</h2>
-        <p class="ai-summary">Unity, Codex, Claude Code를 연결한 게임 제작 도구</p>
+        <p class="ai-summary">Codex, Claude Code, Unity를 연결해 기획부터 구현·QA까지 관리하는 게임 제작 도구</p>
       </header>
-      <p>기획서와 테스트 기록은 물론, 게임에 쓰는 실제 데이터와 리소스도 한곳에서 관리할 수 있습니다. 아이템 수치와 드롭 규칙을 확인하고, 이미지·모델 같은 리소스의 교체 후보도 검토할 수 있습니다.</p>
+      <p>AI와 게임을 만들다 보니 초안, 확정된 규칙, 구현 결과가 여러 대화와 파일에 흩어졌습니다. 수정이 쌓일수록 <strong>어떤 기획을 기준으로 구현했고, 어느 빌드에서 무엇을 확인했는지</strong> 찾는 데 시간이 걸렸습니다. 이 기록을 프로젝트 단위로 연결하기 위해 Circus Studio를 만들었습니다.</p>
+      <h3>내가 승인한 기획을 개발 기준으로 삼기</h3>
+      <p>먼저 만들 기능과 해결할 문제를 정합니다. Codex가 기획 초안을 작성하면, 함께 세부 규칙과 예외 상황을 정리합니다. 초안을 검토하고 승인하면 그 내용이 개발 패키지로 전달되고, Claude Code가 이를 바탕으로 구현해 빌드와 테스트 결과를 남깁니다.</p>
+      <p>구현 뒤에는 <strong>Codex와 함께 승인한 기획과 구현 결과를 대조</strong>합니다. 직접 플레이하며 확인한 문제도 해당 빌드에 연결해 기록합니다. QA에서 발견한 화면 문제는 수정 요청으로 남기고, 다음 빌드에서 무엇을 다시 확인할지 정리했습니다.</p>
       <figure class="ai-workflow-diagram">
         <figcaption class="workflow-legend">
           <span>협업 도구</span>
@@ -2053,6 +2117,9 @@ html:has(.studio-view[open]){overflow:hidden}
           </ol>
         </div>
       </figure>
+      <h3>Unity에 들어 있는 데이터와 리소스를 기획에 활용하기</h3>
+      <p>Unity 프로젝트를 읽어 <strong>아이템 수치, 드롭 규칙, 프리팹 같은 실제 게임 데이터와 리소스</strong>를 Circus Studio에서 확인할 수 있게 했습니다. 새 아이템을 기획할 때는 현재 아이템 목록과 드롭 테이블을 먼저 보고, 리소스를 교체할 때는 게임에서 쓰는 파일과 교체 후보를 함께 확인합니다.</p>
+      <p>표에서 수정한 값은 기획 기준으로 저장합니다. Codex는 이후 기획에서 그 값을 참고하고, 게임에 적용할 변경은 제가 승인한 뒤 Claude Code가 반영합니다. <strong>기획에서 합의한 값과 현재 빌드에 들어 있는 값</strong>을 각각 확인할 수 있습니다.</p>
       <dialog class="studio-view" aria-label="Circus Studio 화면 확대"><header><strong></strong><div><button class="studio-zoom" type="button" aria-pressed="false">확대</button> <button class="studio-close" type="button" autofocus>닫기</button></div></header><div class="studio-pan"><img alt=""></div></dialog>
 <section class="studio-gallery" aria-label="Circus Studio 작업 화면" aria-roledescription="슬라이드쇼">
   <div class="studio-stage">
@@ -2064,67 +2131,6 @@ html:has(.studio-view[open]){overflow:hidden}
   </div>
   <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><strong aria-live="polite">1 / 5 · 프로젝트 대시보드</strong><button type="button" aria-label="다음 화면">→</button></div>
 </section>
-    </article>
-    <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
-      <header>
-        <h2 id="ai-auction-title">ClockWork Auction</h2>
-        <p class="ai-summary">한정된 예산으로 물품을 모으는 모바일 웹 경매 게임</p>
-      </header>
-      <div class="ai-game-intro">
-        <div>
-          <div class="ai-auction-art"><img src="./assets/ai-auction-wordmark.webp" alt="" width="720" height="240" loading="lazy"></div>
-          <p class="ai-game-intent">서브컬처, 4X, 방치형 모바일 게임에 기간 한정 이벤트로 넣을 수 있게 기획했습니다. 한정된 예산으로 10번의 경매에 참여하며, 지금 입찰할지 다음 물품을 위해 돈을 남길지 선택합니다.</p>
-          <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
-        </div>
-        <figure class="auction-highlight">
-          <video width="540" height="1170" src="./assets/auction-highlight.mp4" poster="./assets/auction-highlight-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="ClockWork Auction 플레이 하이라이트"></video>
-          <figcaption>플레이 하이라이트</figcaption>
-        </figure>
-      </div>
-      <h3>황동 살롱 시안을 모바일 경매 화면으로</h3>
-      <p>AI로 살롱 배경과 물품, 라이벌 표정 시안을 만들고 화면별 리소스로 나눴습니다. 경매와 도감에는 같은 물품 이미지를 연결했습니다. 작은 화면에서도 현재가, 남은 시간, 입찰 버튼을 한눈에 찾도록 배치했습니다.</p>
-      <div class="ai-evidence ai-evidence--auction">
-        <figure><img src="./assets/portfolio-auction-concept.webp" loading="lazy" alt="황동 살롱 테마의 ClockWork Auction UI 시안"><figcaption>황동 살롱 UI 시안</figcaption></figure>
-        <figure><img src="./assets/portfolio-auction-ui.webp" loading="lazy" alt="현재가, 남은 시간, 라이벌과 입찰 버튼이 보이는 모바일 경매 화면"><figcaption>모바일 빌드에 적용된 경매 화면</figcaption></figure>
-      </div>
-      <h3>같은 경매 규칙, 다른 라이벌</h3>
-      <p>세 라이벌은 같은 호가 단위와 잔액 제한을 따릅니다. 첫 낙찰품을 바탕으로 세트 완성이나 여러 종류의 물품 수집을 노리고, 그 목표에 따라 다음 입찰가를 판단합니다.</p>
-      <dl class="ai-rivals">
-        <div><dt>루루 · 희귀품 수집가</dt><dd>희귀품과 세트를 완성할 물품에 예산을 집중합니다.</dd></div>
-        <div><dt>모코 · 후반 실속형</dt><dd>초반에는 싼 물품을 고르고, 후반에 남긴 돈으로 따라잡습니다.</dd></div>
-        <div><dt>레오 · 초반 견제형</dt><dd>초반에 먼저 입찰하고, 감당할 수 있는 가격까지 맞입찰합니다.</dd></div>
-      </dl>
-      <h3>빈손 보정으로 첫 낙찰 기회 만들기</h3>
-      <ol class="ai-flow" aria-label="라이벌의 빈손 보정 규칙">
-        <li>보유 물품 0개</li><li>입찰 한도를 한 호가 높임</li><li>첫 낙찰 후 보정 종료</li>
-      </ol>
-      <p>첫 물품을 놓쳐 계속 관망하는 상황을 줄이기 위해 한 호가만 여유를 줬습니다. 라이벌별 한도와 남은 예산은 그대로 적용합니다. AI와 같은 물품 순서에서 여러 전략을 돌려 첫 낙찰 시점, 빈손 종료율, 평균 낙찰가를 비교했습니다.</p>
-    </article>
-    <article class="ai-case" id="ai-night" aria-labelledby="ai-night-title">
-      <header>
-        <h2 id="ai-night-title">야간자율학습</h2>
-        <p class="ai-summary">밤의 학교에서 물품을 회수하고 괴이를 피해 탈출하는 Unity 3D 게임 · 개발 중</p>
-      </header>
-      <figure class="auction-highlight night-highlight">
-        <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
-        <figcaption>개발 중 빌드 플레이 하이라이트</figcaption>
-      </figure>
-      <h3>Tripo 모델을 Unity 캐릭터로 적용</h3>
-      <p>Tripo로 만든 플레이어와 경비원 모델을 GLB로 가져오고, Unity에서 실제 이동 속도에 따라 대기·걷기·달리기 동작을 연결했습니다. Claude Code로 1인칭 화면을 가리는 머리 부분과 거울에 보이는 전신을 나누고, 손이 손전등 그립에 맞도록 조정했습니다.</p>
-      <h3>판마다 달라지는 학교와 조명</h3>
-      <p>Codex와 복도·계단을 먼저 연결한 뒤 교실과 특수실, 파밍 물품을 배치하는 규칙을 설계했습니다. 필수 공간과 출구에 도달할 수 있는지 검사하고, 같은 생성 번호로 문제 맵을 다시 불러오도록 했습니다. 어두운 복도와 켜진 조명을 대비시켜 단서와 이동 방향이 보이게 구성했습니다.</p>
-      <ol class="ai-flow" aria-label="학교 맵 생성 순서">
-        <li>복도·계단 연결</li><li>필수 공간·물품 배치</li><li>이동 경로 검사</li>
-      </ol>
-      <h3>괴이가 보고 들은 단서로 수색</h3>
-      <p>AI와 순찰·추격·수색의 전환 조건을 정했습니다. 경비원은 시야에 들어온 플레이어를 추격하고, 놓치면 마지막으로 본 위치나 소리가 난 곳을 확인합니다. 플레이어는 복도 모서리로 시야를 끊거나 로커에 숨어 대응할 수 있습니다.</p>
-      <ol class="ai-flow" aria-label="야간 경비원의 행동 흐름">
-        <li>순찰</li><li>발견·추격</li><li>시야를 놓치면 단서 수색</li>
-      </ol>
-      <div class="ai-evidence">
-        <figure><img src="./assets/portfolio-night-map.webp" loading="lazy" alt="탐사 중 스마트폰에 표시되는 두 층의 학교 지도"><figcaption>플레이 중 확인하는 층별 지도</figcaption></figure>
-        <figure><img src="./assets/portfolio-night-guard.webp" loading="lazy" alt="탈출구 근처 복도에서 야간 경비원과 마주친 장면"><figcaption>Unity 빌드에서 경비원과 마주친 장면</figcaption></figure>
-      </div>
     </article>
   </div>
 </section>
