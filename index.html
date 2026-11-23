@@ -2040,11 +2040,13 @@ html:has(.studio-view[open]){overflow:hidden}
       <dialog class="studio-view" aria-label="Circus Studio 화면 확대"><header><strong></strong><div><button class="studio-zoom" type="button" aria-pressed="false">확대</button> <button class="studio-close" type="button" autofocus>닫기</button></div></header><div class="studio-pan"><img alt=""></div></dialog>
 <section class="studio-gallery" aria-label="Circus Studio 작업 화면" aria-roledescription="슬라이드쇼">
   <div class="studio-stage">
-    <img data-place="center" src="./assets/circus-approval.png" width="1266" height="793" loading="lazy" alt="Clockwork Auction 기획서 목록과 승인한 패치 내용">
-    <img data-place="right" src="./assets/circus-development.png" width="1266" height="793" loading="lazy" alt="Claude Code에 전달된 개발 패키지와 구현 요청 내역">
-    <img data-place="left" src="./assets/circus-resources.png" width="1266" height="793" loading="lazy" alt="Unity 프로젝트의 리소스 현황과 최근 변경된 파일">
+    <img src="./assets/studio-shot-dashboard.png" width="1266" height="793" loading="lazy" data-title="프로젝트 대시보드" alt="진행 중인 작업, 검토 대기 요청, QA 이슈를 모아 보는 홈 화면">
+    <img src="./assets/studio-shot-planning.png" width="1266" height="793" loading="lazy" data-title="기획서 검토와 승인" alt="승인 상태별 기획서 목록과 기획 문서 본문">
+    <img src="./assets/studio-shot-game-data.png" width="1266" height="793" loading="lazy" data-title="Unity 게임 데이터" alt="Unity에서 읽어온 아이템 정의와 드롭 테이블 목록">
+    <img src="./assets/studio-shot-asset-catalog.png" width="1266" height="793" loading="lazy" data-title="Unity 리소스 카탈로그" alt="폴더별 Unity 프리팹을 보여주는 리소스 카탈로그">
+    <img src="./assets/studio-shot-build-review.png" width="1266" height="793" loading="lazy" data-title="개발 패키지와 QA" alt="Claude의 승인 요청과 Codex QA 반영 내역">
   </div>
-  <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><strong aria-live="polite">1 / 3 · 기획 승인</strong><button type="button" aria-label="다음 화면">→</button></div>
+  <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><strong aria-live="polite">1 / 5 · 프로젝트 대시보드</strong><button type="button" aria-label="다음 화면">→</button></div>
 </section>
     </article>
     <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
@@ -2953,7 +2955,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   const gallery=document.querySelector('.studio-gallery');
   const stage=gallery.querySelector('.studio-stage');
   const slides=Array.from(stage.children);
-  const labels=['기획 승인','개발 패키지','Unity 리소스 관리'];
+  const labels=slides.map(slide=>slide.dataset.title);
   const [previous,next]=gallery.querySelectorAll('button');
   let current=0;
   let position=0;
@@ -2964,7 +2966,8 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       const side=Math.sin(phase);
       const depth=(1+Math.cos(phase))/2;
       slide.style.transform='translate(-50%,-50%) translateX('+side*96+'%) perspective(900px) rotateY('+(-side*38)+'deg) scale('+(0.65+0.35*depth)+')';
-      slide.style.opacity=Math.max(0,(depth-0.05)/0.95);
+      slide.style.opacity=Math.max(0,(depth-0.24)/0.76);
+      slide.style.pointerEvents=depth>0.24?"":"none";
       slide.style.zIndex=Math.round(depth*100);
     });
   }
@@ -2974,7 +2977,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       slide.setAttribute('aria-hidden',String(i!==current));
       slide.draggable=false;
     });
-    gallery.querySelector('strong').textContent=(current+1)+' / 3 · '+labels[current];
+    gallery.querySelector('strong').textContent=(current+1)+' / '+slides.length+' · '+labels[current];
     cancelAnimationFrame(animation);
     const from=position;
     const target=current+slides.length*Math.round((from-current)/slides.length);
