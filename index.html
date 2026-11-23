@@ -1906,7 +1906,7 @@ body { background: var(--bg); }
   position: absolute;
   top: 0;
   inset-inline: 0;
-  width: min(76%, 1040px);
+  width: min(calc(100% - var(--portfolio-gutter)), calc(var(--portfolio-content-width) + var(--portfolio-gutter)));
   margin-inline: auto;
   border-top: var(--portfolio-section-divider);
   pointer-events: none;
