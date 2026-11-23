@@ -2237,11 +2237,14 @@ function scrollPortfolioTo(target) {
   const start = window.scrollY;
   const destinationTop = () => target === portfolioSections[0] ? 0 : window.scrollY + target.getBoundingClientRect().top - 18;
   const initialDistance = destinationTop() - start;
-  if (reducePortfolioMotion.matches || Math.abs(initialDistance) < 2) {
+  if (Math.abs(initialDistance) < 2) {
     window.scrollTo({top: start + initialDistance, behavior: 'instant'});
     return;
   }
-  const duration = Math.min(1550, Math.max(520, Math.abs(initialDistance) * 0.16));
+  const distance = Math.abs(initialDistance);
+  const duration = reducePortfolioMotion.matches
+    ? Math.min(700, Math.max(380, distance * 0.1))
+    : Math.min(1550, Math.max(520, distance * 0.16));
   let startedAt;
   function animate(now) {
     startedAt ??= now;
