@@ -1889,27 +1889,12 @@ body { background: var(--bg); }
   --portfolio-gutter: clamp(18px, 5.5vw, 90px);
   --portfolio-section-space: clamp(42px, 7vw, 88px);
   --portfolio-divider: 1px solid var(--line);
-  --portfolio-section-divider: 2px solid #d3cbb5;
 }
 #track > .screen:not(#home-screen),
 #home-screen .home-about-section,
 #home-screen .home-profile-info-section {
   padding: var(--portfolio-section-space) var(--portfolio-gutter);
   border-top: var(--portfolio-divider);
-}
-#track > .screen:not(#home-screen) {
-  position: relative;
-  border-top: 0;
-}
-#track > .screen:not(#home-screen)::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  inset-inline: 0;
-  width: min(calc(100% - var(--portfolio-gutter)), calc(var(--portfolio-content-width) + var(--portfolio-gutter)));
-  margin-inline: auto;
-  border-top: var(--portfolio-section-divider);
-  pointer-events: none;
 }
 #track > .screen > .wrap,
 #home-screen .home-about-inner,
@@ -1980,7 +1965,7 @@ html:has(.studio-view[open]){overflow:hidden}
 .studio-controls button{width:44px;height:44px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:50%;cursor:pointer;font-size:1.25rem}
 @media(max-width:600px){.studio-stage{aspect-ratio:1266/735}.studio-stage img{width:88%}}
 @media(prefers-reduced-motion:reduce){.studio-stage img{transition:none}}
-</style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
+</style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
