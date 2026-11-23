@@ -1789,8 +1789,9 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .ai-media-slot span { color: #4e544c; font-size: 14px; line-height: 1.55; word-break: keep-all; overflow-wrap: break-word; }
 .ai-media-slot--link { min-height: 88px; }
 .ai-media-slot--video { min-height: 160px; aspect-ratio: 16 / 7; }
-.ai-game-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,270px);gap:clamp(20px,5vw,60px);align-items:center;margin:20px 0 32px}
-.ai-game-intro .auction-highlight{margin:0}
+.ai-game-intro{margin:20px 0 32px}
+.ai-game-intro .auction-highlight{margin:0;text-align:left}
+.ai-game-intro .ai-play-link{margin-top:12px}
 .ai-play-link{display:inline-flex;align-items:center;min-height:44px;padding:10px 20px;border-radius:24px;background:var(--accent);color:var(--ink);font-weight:800;text-decoration:none}
 .ai-play-link:hover,.ai-play-link:focus-visible{text-decoration:underline}
 .ai-evidence{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0 22px}
@@ -1799,7 +1800,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .ai-evidence figcaption{padding:9px 12px;font-size:14px;font-weight:700}
 .ai-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0;list-style:none;margin:14px 0}
 .ai-flow li{padding:10px 12px;border-left:3px solid var(--accent);background:#fff;font-weight:700}
-@media(max-width:600px){.ai-game-intro,.ai-evidence{grid-template-columns:1fr}.ai-game-intro .auction-highlight{max-width:245px;margin:auto}.ai-flow{grid-template-columns:1fr}}
+@media(max-width:600px){.ai-evidence{grid-template-columns:1fr}.ai-game-intro .auction-highlight{max-width:245px}.ai-flow{grid-template-columns:1fr}}
 .auction-highlight { margin:24px auto; width:min(100%,320px); text-align:center; }
 .night-highlight { width:min(100%,880px); }
 .auction-highlight video { display:block; width:100%; height:auto; border-radius:12px; background:#231b15; }
@@ -1924,7 +1925,9 @@ body { background: var(--bg); }
 }
 html:has(.studio-view[open]){overflow:hidden}
 .studio-stage img[aria-hidden=true]{cursor:zoom-in}.studio-controls{display:flex;align-items:center;justify-content:center;gap:1em;padding:.6em}
-.studio-controls strong{min-width:10em;text-align:center}
+.studio-caption{flex:0 1 38ch;min-width:0;text-align:center}
+.studio-controls button{flex-shrink:0}
+.ai-case .studio-caption p{margin:4px 0 0;font-size:13px;line-height:1.5}
 .studio-controls button{width:44px;height:44px;border:1px solid currentColor;background:transparent;color:inherit;border-radius:50%;cursor:pointer;font-size:1.25rem}
 @media(max-width:600px){.studio-stage{aspect-ratio:1266/735}.studio-stage img{width:88%}}
 @media(prefers-reduced-motion:reduce){.studio-stage img{transition:none}}
@@ -2032,7 +2035,6 @@ html:has(.studio-view[open]){overflow:hidden}
       <p>교실과 실습실에서 아이템을 모으고 배전함을 수리해 탈출구를 엽니다. 진입할 때마다 달라지는 학교에서 크리쳐를 피해 파밍과 탈출 경로를 정합니다.</p>
       <figure class="auction-highlight night-highlight">
         <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
-        <figcaption>개발 중 빌드 플레이 하이라이트</figcaption>
       </figure>
       <div class="ai-topics">
         <section class="ai-topic">
@@ -2061,15 +2063,12 @@ html:has(.studio-view[open]){overflow:hidden}
         <h2 id="ai-auction-title"><img class="ai-title-logo" src="./assets/ai-auction-heading.webp" alt="ClockWork Auction"></h2>
         <p class="ai-summary">한정된 예산으로 세 라이벌과 경쟁하며 물품을 모으는 모바일 웹 경매 게임<br>웹에서 플레이 가능</p>
       </header>
-      <div class="ai-game-intro">
-        <div>
-          <p class="ai-game-intent">수집형 RPG, SLG, 방치형 모바일 게임에 넣을 수 있는 기간 한정 이벤트를 기획했습니다.</p>
-          <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
-        </div>
+       <div class="ai-game-intro">
         <figure class="auction-highlight">
           <video width="540" height="1170" src="./assets/auction-highlight.mp4" poster="./assets/auction-highlight-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="ClockWork Auction 플레이 하이라이트"></video>
-          <figcaption>플레이 하이라이트</figcaption>
+          <figcaption>수집형 RPG, SLG, 방치형 모바일 게임에 넣을 수 있는 기간 한정 이벤트를 기획했습니다.</figcaption>
         </figure>
+        <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
       </div>
       <div class="ai-topics">
         <section class="ai-topic">
@@ -2089,7 +2088,7 @@ html:has(.studio-view[open]){overflow:hidden}
         <section class="ai-topic ai-topic--wide">
       <h3>아트와 사운드로 경매 상황을 읽기 쉽게 만들기</h3>
       <p><strong>스팀펑크풍 사교클럽</strong>을 콘셉트로 배경·물품·표정의 역할을 나눠 AI에 지시했습니다. 모바일에서 현재가·남은 시간·입찰 버튼이 한눈에 보이도록 배치했습니다.</p>
-      <p>루루는 여유로운 수집가, 모코는 신중한 실속파, 레오는 자신감 있는 견제형으로 표정과 분위기를 잡았습니다.</p>
+      <p>각 캐릭터 디자인은 AI의 전략 콘셉트에 맞게 디자인했습니다.</p>
       <p>입찰음은 가격 변화, 마감음은 남은 시간, 낙찰음은 결과 확정을 알립니다. 반복해 들어도 부담이 적고 <strong>각 상황을 소리로 구분</strong>할 수 있게 했습니다.</p>
         </section>
       </div>
@@ -2132,13 +2131,13 @@ html:has(.studio-view[open]){overflow:hidden}
       <dialog class="studio-view" aria-label="Circus Studio 화면 확대"><header><strong></strong><div><button class="studio-zoom" type="button" aria-pressed="false">확대</button> <button class="studio-close" type="button" autofocus>닫기</button></div></header><div class="studio-pan"><img alt=""></div></dialog>
 <section class="studio-gallery" aria-label="Circus Studio 작업 화면" aria-roledescription="슬라이드쇼">
   <div class="studio-stage">
-    <img src="./assets/studio-shot-dashboard.png" width="1266" height="793" loading="lazy" data-title="프로젝트 대시보드" alt="진행 중인 작업, 검토 대기 요청, QA 이슈를 모아 보는 홈 화면">
-    <img src="./assets/studio-shot-planning.png" width="1266" height="793" loading="lazy" data-title="기획서 검토와 승인" alt="승인 상태별 기획서 목록과 기획 문서 본문">
-    <img src="./assets/studio-shot-game-data.png" width="1266" height="793" loading="lazy" data-title="Unity 게임 데이터" alt="Unity에서 읽어온 아이템 정의와 드롭 테이블 목록">
-    <img src="./assets/studio-shot-asset-catalog.png" width="1266" height="793" loading="lazy" data-title="Unity 리소스 카탈로그" alt="폴더별 Unity 프리팹을 보여주는 리소스 카탈로그">
-    <img src="./assets/studio-shot-build-review.png" width="1266" height="793" loading="lazy" data-title="개발 패키지와 QA" alt="Claude의 승인 요청과 Codex QA 반영 내역">
+    <img src="./assets/studio-shot-dashboard.png" width="1266" height="793" loading="lazy" data-title="프로젝트 대시보드" data-description="진행 중인 작업과 최근 빌드, 검토 대기 요청, QA 이슈를 한 화면에서 확인합니다." alt="진행 중인 작업, 검토 대기 요청, QA 이슈를 모아 보는 홈 화면">
+    <img src="./assets/studio-shot-planning.png" width="1266" height="793" loading="lazy" data-title="기획서 검토와 승인" data-description="상태별로 기획서를 찾고 세부 규칙을 검토합니다. 승인한 기획은 개발 패키지의 기준으로 전달됩니다." alt="승인 상태별 기획서 목록과 기획 문서 본문">
+    <img src="./assets/studio-shot-game-data.png" width="1266" height="793" loading="lazy" data-title="Unity 게임 데이터" data-description="Unity에서 읽어 온 아이템 수치와 드롭 테이블을 확인합니다. 표에서 수정한 값은 다음 기획에 사용할 기준으로 저장합니다." alt="Unity에서 읽어온 아이템 정의와 드롭 테이블 목록">
+    <img src="./assets/studio-shot-asset-catalog.png" width="1266" height="793" loading="lazy" data-title="Unity 리소스 카탈로그" data-description="프리팹과 이미지 같은 리소스를 폴더별로 확인하고, 현재 파일과 교체 후보를 비교합니다." alt="폴더별 Unity 프리팹을 보여주는 리소스 카탈로그">
+    <img src="./assets/studio-shot-build-review.png" width="1266" height="793" loading="lazy" data-title="개발 패키지와 QA" data-description="Claude Code의 승인 요청과 QA 반영 내역을 봅니다. 다음 빌드에서 확인할 항목을 작업과 함께 관리합니다." alt="Claude의 승인 요청과 Codex QA 반영 내역">
   </div>
-  <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><strong aria-live="polite">1 / 5 · 프로젝트 대시보드</strong><button type="button" aria-label="다음 화면">→</button></div>
+  <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><div class="studio-caption" aria-live="polite"><strong>1 / 5 · 프로젝트 대시보드</strong><p>진행 중인 작업과 최근 빌드, 검토 대기 요청, QA 이슈를 한 화면에서 확인합니다.</p></div><button type="button" aria-label="다음 화면">→</button></div>
 </section>
         </section>
       </div>
@@ -2984,6 +2983,9 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   const stage=gallery.querySelector('.studio-stage');
   const slides=Array.from(stage.children);
   const labels=slides.map(slide=>slide.dataset.title);
+  const caption=gallery.querySelector('.studio-caption');
+  const captionTitle=caption.querySelector('strong');
+  const captionDescription=caption.querySelector('p');
   const [previous,next]=gallery.querySelectorAll('button');
   let current=0;
   let position=0;
@@ -3005,7 +3007,8 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       slide.setAttribute('aria-hidden',String(i!==current));
       slide.draggable=false;
     });
-    gallery.querySelector('strong').textContent=(current+1)+' / '+slides.length+' · '+labels[current];
+    captionTitle.textContent=(current+1)+' / '+slides.length+' · '+labels[current];
+    captionDescription.textContent=slides[current].dataset.description;
     cancelAnimationFrame(animation);
     const from=position;
     const target=current+slides.length*Math.round((from-current)/slides.length);
