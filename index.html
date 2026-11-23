@@ -1758,28 +1758,31 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .ai-rivals { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 195px), 1fr)); gap: 9px; padding: 0; margin: 20px 0; }
 .ai-rivals > div { padding: 13px 15px; background: #f6f6f2; }
 .ai-rivals dt { font-weight: 850; color: var(--ink); }
-.ai-workflow-diagram { margin: 24px 0 20px; padding: clamp(14px, 2.5vw, 25px); background: #f6f6f2; border: 1px solid var(--line); border-radius: 8px; }
-.workflow-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-bottom: 20px; color: #535950; font-size: 13px; font-weight: 750; }
-.workflow-legend > span, .workflow-icons { display: inline-flex; align-items: center; gap: 6px; }
-.workflow-legend img, .workflow-legend .workflow-profile { width: 18px; height: 18px; }
-.ai-workflow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
-.ai-workflow li { position: relative; min-width: 0; }
-.workflow-node { position: relative; display: grid; gap: 12px; height: 100%; padding: 13px 10px; border-top: 3px solid #d8a527; background: #fff; border-radius: 5px; }
-.workflow-node strong { display: block; color: var(--ink); font-size: 14px; line-height: 1.35; word-break: keep-all; }
-.workflow-node p { margin: 5px 0 0; font-size: 13px; line-height: 1.5; }
-.workflow-icons { align-self: start; }
-.workflow-icons img { display: block; }
-.workflow-profile { display: inline-block; position: relative; flex-shrink: 0; width: 27px; height: 27px; border-radius: 50%; background: #e5e8e2; }
-.workflow-profile::before, .workflow-profile::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); background: #485349; }
-.workflow-profile::before { top: 20%; width: 26%; aspect-ratio: 1; border-radius: 50%; }
-.workflow-profile::after { top: 52%; width: 50%; height: 29%; border-radius: 100% 100% 38% 38%; }
-.workflow-arrow { position: absolute; top: 21px; left: calc(100% + 4px); width: 7px; height: 7px; border-top: 2px solid #646c62; border-right: 2px solid #646c62; transform: rotate(45deg); }
-@media (max-width: 930px) {
-  .ai-workflow { grid-template-columns: 1fr; gap: 16px; }
-  .workflow-node { grid-template-columns: 62px minmax(0, 1fr); align-items: start; gap: 8px; border-top: 0; border-left: 3px solid #d8a527; }
-  .workflow-arrow { top: calc(100% + 3px); left: 31px; transform: rotate(135deg); }
+.ai-workflow-diagram { margin: 25px 0; padding: 15px 0; border-block: 1px solid #d9d0b7; }
+.workflow-legend { display: flex; flex-wrap: wrap; gap: 9px 16px; align-items: center; color: #514937; font-size: 13px; font-weight: 750; }
+.workflow-legend span { display: inline-flex; gap: 5px; align-items: center; }
+.workflow-legend img { width: 19px; height: 19px; object-fit: contain; }
+.workflow-legend .workflow-gpt { width: 30px; height: 20px; }
+.workflow-flow { position: relative; margin-top: 15px; }
+.workflow-connection { display: none; }
+.ai-workflow { display: grid; gap: 15px; position: relative; list-style: none; margin: 0; padding: 0; }
+.ai-workflow::before { content: ""; position: absolute; width: 4px; background: var(--ink); top: 18px; bottom: 34px; left: 19px; }
+.ai-workflow li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: start; }
+.workflow-step { z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border: 4px solid var(--ink); border-radius: 50%; background: var(--accent); color: var(--ink); font-size: 16px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.workflow-copy { padding: 2px 0 2px 9px; border-left: 2px solid #d4a916; }
+.workflow-copy strong { display: block; color: var(--ink); font-size: 14px; line-height: 1.35; word-break: keep-all; }
+.workflow-copy p { margin: 4px 0 0; font-size: 13px; line-height: 1.5; }
+@media (min-width: 920px) {
+  .workflow-flow { margin-top: 8px; }
+  .ai-workflow { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 0; }
+  .ai-workflow::before { display: none; }
+  .ai-workflow li { grid-template-columns: minmax(0,1fr); grid-template-rows: 84px 116px 84px; gap: 0; justify-items: center; }
+  .workflow-connection { display: block; position: absolute; top: 84px; width: 100%; height: 116px; }
+  .workflow-step { grid-row: 2; align-self: start; width: 58px; height: 58px; border-width: 5px; font-size: 19px; }
+  .ai-workflow li:nth-child(even) .workflow-step { align-self: end; }
+  .workflow-copy { grid-row: 3; width: calc(100% - 20px); padding: 0 0 0 10px; }
+  .ai-workflow li:nth-child(even) .workflow-copy { grid-row: 1; align-self: end; }
 }
-.ai-rivals dd { margin: 4px 0 0; }
 .ai-case .ai-game-intent { margin-top: 16px; }
 .ai-media-slot { display: grid; place-items: center; min-height: 145px; margin: 14px 0 20px; padding: 20px; border: 1px dashed #aaa99e; border-radius: 6px; background: #f6f6f2; text-align: center; }
 .ai-media-slot figcaption { display: grid; gap: 5px; max-width: 48ch; }
@@ -1796,7 +1799,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 }
 </style>
 <style id="continuous-portfolio">
-:root { --bg: #fffdf5; --ink: #171612; --line: #e1ddd0; --muted: #655f52; --accent: #ffda36; }
+:root { --bg: #fcfcfb; --section-bg: #f4f0e2; --ink: #171612; --line: #e1ddd0; --muted: #655f52; --accent: #ffda36; }
 html, body { height: auto; min-height: 100%; }
 html { scroll-padding-top: 18px; }
 body { background: var(--bg); }
@@ -1805,13 +1808,9 @@ body { background: var(--bg); }
 #track > .screen { display: block; width: 100%; overflow: visible; padding: clamp(42px, 7vw, 104px) clamp(18px, 5.5vw, 90px); border-top: 1px solid var(--line); }
 #track > .screen > .wrap { max-width: 1180px; }
 #track > #home-screen.home-v1-page { padding: 0; overflow: visible; border-top: 0; }
-#home-screen .home-v1-hero { background: var(--accent); }
-#home-screen .home-hero-period { color: var(--ink); }
-#home-screen .eyebrow, #home-screen .role-label, #home-screen .hero-note, #home-screen .hero-note .profile-scroll-hint-arrow, #home-screen .vertical-note { color: #4c3e13; }
-#home-screen .role-label::before { background: var(--ink); }
-#home-screen .hero-cta { background: var(--ink); color: #fffdf5; padding: 10px 14px; }
-#track > #ai-screen { background: #f4f0e2; }
-#track > #history-screen { background: #f7f3e8; }
+#home-screen .home-v1-hero { background: #fcfcfb; }
+#home-screen .home-about-section, #home-screen .home-profile-info-section { background: var(--section-bg); }
+#track > .screen:not(#home-screen) { background: var(--section-bg); }
 #track > #games-screen { padding-bottom: max(134px, calc(104px + env(safe-area-inset-bottom))); }
 #track .page-title { margin: 0 0 21px; }
 .hl { box-shadow: inset 0 -.19em var(--accent); }
@@ -1826,19 +1825,10 @@ body { background: var(--bg); }
 #ai-screen .ai-case { max-width: none; border: 0; border-top: 2px solid var(--ink); padding: clamp(20px,4vw,48px) 0; background: transparent; }
 #ai-screen .ai-case > p, #ai-screen .ai-case > header { max-width: 76ch; }
 .ai-media-slot { background: #fcf9ef; }
-#ai-screen .ai-workflow-diagram { border: 0; border-top: 1px solid #d9d0b7; border-bottom: 1px solid #d9d0b7; border-radius: 0; padding: 16px 0; background: transparent; }
-#ai-screen .workflow-node { height: auto; background: none; border: 0; padding: 0; gap: 7px; }
-#ai-screen .workflow-node p { margin-top: 3px; }
-#ai-screen .workflow-arrow { top: 11px; }
-.workflow-legend img[src$="chatgpt.png"], .workflow-icons img[src$="chatgpt.png"] { object-fit: cover; }
 #history-inline { margin-top: 22px; background: #fffdf7; border: 1px solid var(--line); }
 #history-inline[hidden] { display: none; }
 #history-inline .history-detail-content { max-width: 100%; }
 #history-inline .trpg-gallery-item { text-decoration: none; }
-@media (max-width: 930px) {
-  #ai-screen .workflow-node { grid-template-columns: 58px minmax(0,1fr); }
-  #ai-screen .workflow-arrow { top: calc(100% + 3px); left: 10px; }
-}
 @media (max-width: 560px) {
   #ai-screen .ai-index { grid-template-columns: 1fr; gap: 6px; }
   #ai-screen .ai-index a { min-height: 0; gap: 3px; padding: 9px 12px; }
@@ -1951,45 +1941,25 @@ body { background: var(--bg); }
         <p class="ai-summary">Unity, Codex, Claude Code를 연결한 게임 제작 도구</p>
       </header>
       <p>기획서와 테스트 기록은 물론, 게임에 쓰는 실제 데이터와 리소스도 한곳에서 관리할 수 있습니다. 아이템 수치와 드롭 규칙을 확인하고, 이미지·모델 같은 리소스의 교체 후보도 검토할 수 있습니다.</p>
-      <div class="ai-workflow-diagram">
-        <div class="workflow-legend" aria-label="워크플로우 참여자">
-          <span><span class="workflow-profile" aria-hidden="true"></span> 기획자</span>
-          <span><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"> Codex</span>
-          <span><img src="./assets/ai-claude.svg" alt="" width="27" height="27"> Claude</span>
+      <figure class="ai-workflow-diagram">
+        <figcaption class="workflow-legend">
+          <span>협업 도구</span>
+          <span><img class="workflow-gpt" src="./assets/workflow-chatgpt.png" alt="" width="30" height="20"> Codex</span>
+          <span><img src="./assets/ai-claude.svg" alt="" width="19" height="19"> Claude</span>
+        </figcaption>
+        <div class="workflow-flow">
+          <svg class="workflow-connection" viewBox="0 0 1000 116" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M100 29 C185 29 215 87 300 87 S415 29 500 29 S615 87 700 87 S815 29 900 29" fill="none" stroke="#171612" stroke-width="8" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <ol class="ai-workflow" aria-label="Circus Studio 개발 워크플로우">
+            <li><span class="workflow-step" aria-hidden="true">1</span><div class="workflow-copy"><strong>기획 방향 지시</strong><p>만들 기능과 해결할 문제를 정합니다.</p></div></li>
+            <li><span class="workflow-step" aria-hidden="true">2</span><div class="workflow-copy"><strong>초안 작성 · 조율</strong><p>Codex와 세부 규칙과 검수 기준을 정합니다.</p></div></li>
+            <li><span class="workflow-step" aria-hidden="true">3</span><div class="workflow-copy"><strong>초안 검수 · 승인</strong><p>빠진 조건을 확인하고 초안을 승인합니다.</p></div></li>
+            <li><span class="workflow-step" aria-hidden="true">4</span><div class="workflow-copy"><strong>개발 구현</strong><p>Claude가 구현하고 빌드와 테스트 결과를 남깁니다.</p></div></li>
+            <li><span class="workflow-step" aria-hidden="true">5</span><div class="workflow-copy"><strong>구현 결과 검수</strong><p>Codex와 빌드를 검수하고 수정할 항목을 정합니다.</p></div></li>
+          </ol>
         </div>
-        <ol class="ai-workflow" aria-label="Circus Studio 개발 워크플로우">
-          <li>
-            <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><span class="workflow-profile" aria-hidden="true"></span></span>
-              <div><strong>기획 방향 지시</strong><p>만들 기능과 해결할 문제를 정합니다.</p></div>
-            </div><span class="workflow-arrow" aria-hidden="true"></span>
-          </li>
-          <li>
-            <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
-              <div><strong>초안 작성 · 세부 조율</strong><p>Codex가 초안을 쓰고, 함께 규칙과 확인 기준을 정합니다.</p></div>
-            </div><span class="workflow-arrow" aria-hidden="true"></span>
-          </li>
-          <li>
-            <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><span class="workflow-profile" aria-hidden="true"></span></span>
-              <div><strong>초안 검수 · 승인</strong><p>빠진 조건과 예외를 확인하고 개발에 넘길 초안을 승인합니다.</p></div>
-            </div><span class="workflow-arrow" aria-hidden="true"></span>
-          </li>
-          <li>
-            <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><img src="./assets/ai-claude.svg" alt="" width="27" height="27"></span>
-              <div><strong>개발 구현</strong><p>Claude가 승인된 초안을 바탕으로 구현하고 빌드와 테스트 결과를 남깁니다.</p></div>
-            </div><span class="workflow-arrow" aria-hidden="true"></span>
-          </li>
-          <li>
-            <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
-              <div><strong>구현 결과 검수</strong><p>Codex와 빌드를 함께 확인하고 수정할 항목을 정합니다.</p></div>
-            </div>
-          </li>
-        </ol>
-      </div>
+      </figure>
       <figure class="ai-media-slot">
         <figcaption><small>이미지 자리</small><strong>Circus Studio 화면</strong><span>기획·개발·검수 기록이 연결된 화면과 실제 데이터 표·리소스 관리 화면을 함께 보여주기.</span></figcaption>
       </figure>
@@ -2257,10 +2227,39 @@ let genre='all',query='',activeModal='';const $=s=>document.querySelector(s);
 const portfolioSections = Array.from(document.querySelectorAll('#track > .screen'));
 const portfolioNav = Array.from(document.querySelectorAll('.floating-page-nav [data-page]'));
 const reducePortfolioMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-function scrollPortfolioTo(target) {
-  const top = window.scrollY + target.getBoundingClientRect().top - 18;
-  window.scrollTo({top, behavior: reducePortfolioMotion.matches ? 'instant' : 'smooth'});
+let portfolioScrollFrame = 0;
+function cancelPortfolioScroll() {
+  if (portfolioScrollFrame) cancelAnimationFrame(portfolioScrollFrame);
+  portfolioScrollFrame = 0;
 }
+function scrollPortfolioTo(target) {
+  cancelPortfolioScroll();
+  const start = window.scrollY;
+  const destinationTop = () => target === portfolioSections[0] ? 0 : window.scrollY + target.getBoundingClientRect().top - 18;
+  const initialDistance = destinationTop() - start;
+  if (reducePortfolioMotion.matches || Math.abs(initialDistance) < 2) {
+    window.scrollTo({top: start + initialDistance, behavior: 'instant'});
+    return;
+  }
+  const duration = Math.min(1550, Math.max(520, Math.abs(initialDistance) * 0.16));
+  let startedAt;
+  function animate(now) {
+    startedAt ??= now;
+    const progress = Math.min(1, (now - startedAt) / duration);
+    const eased = progress * progress * (3 - 2 * progress);
+    const destination = destinationTop();
+    window.scrollTo({top: start + (destination - start) * eased, behavior: 'instant'});
+    portfolioScrollFrame = progress < 1 ? requestAnimationFrame(animate) : 0;
+  }
+  portfolioScrollFrame = requestAnimationFrame(animate);
+}
+window.addEventListener('wheel', cancelPortfolioScroll, {passive: true});
+window.addEventListener('touchstart', cancelPortfolioScroll, {passive: true});
+window.addEventListener('pointerdown', cancelPortfolioScroll);
+window.addEventListener('keydown', event => {
+  if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].includes(event.key)) cancelPortfolioScroll();
+});
+reducePortfolioMotion.addEventListener('change', cancelPortfolioScroll);
 function syncPortfolioNavigation() {
   const readingLine = window.innerHeight * 0.28;
   let current = 0;
