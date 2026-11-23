@@ -2947,7 +2947,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       const side=Math.sin(phase);
       const depth=(1+Math.cos(phase))/2;
       slide.style.transform='translate(-50%,-50%) translateX('+side*96+'%) perspective(900px) rotateY('+(-side*38)+'deg) scale('+(0.65+0.35*depth)+')';
-      slide.style.opacity=0.14+0.86*depth;
+      slide.style.opacity=Math.max(0,(depth-0.05)/0.95);
       slide.style.zIndex=Math.round(depth*100);
     });
   }
@@ -2974,7 +2974,8 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       if(t<1)animation=requestAnimationFrame(frame);
     }
     animation=requestAnimationFrame(frame);
-  }  previous.onclick=()=>show(current-1);
+  }
+  previous.onclick=()=>show(current-1);
   next.onclick=()=>show(current+1);
   gallery.onkeydown=e=>{
     if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();show(current+(e.key==='ArrowRight'?1:-1))}
@@ -2999,15 +3000,25 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   stage.onkeydown=e=>{
     if(e.key==='Enter'||e.key===' '){e.preventDefault();openImage()}
   };
-  let start=null;
-  stage.onpointerdown=e=>{if(e.isPrimary)start={x:e.clientX,y:e.clientY}};
-  stage.onpointercancel=()=>{start=null};
-  stage.onpointerup=e=>{
-    if(!start||!e.isPrimary)return;
-    const dx=e.clientX-start.x,dy=e.clientY-start.y;
-    start=null;
-    if(Math.abs(dx)>32&&Math.abs(dx)>Math.abs(dy))show(current+(dx<0?1:-1));
-    else if(Math.abs(dx)<8&&Math.abs(dy)<8&&slides.includes(e.target)){const i=slides.indexOf(e.target);if(i===current)openImage();else show(i)}
+  let gesture=null;
+  stage.onpointerdown=event=>{
+    if(!event.isPrimary||event.button!==0)return;
+    gesture={id:event.pointerId,x:event.clientX,y:event.clientY,slide:slides.indexOf(event.target)};
+    stage.setPointerCapture(event.pointerId);
+  };
+  stage.onlostpointercapture=()=>{gesture=null};
+  stage.onpointerup=event=>{
+    if(gesture?.id!==event.pointerId)return;
+    const {x,y,slide}=gesture;
+    gesture=null;
+    const dx=event.clientX-x;
+    const dy=event.clientY-y;
+    if(Math.abs(dx)>32&&Math.abs(dx)>Math.abs(dy)){
+      show(current+(dx<0?1:-1));
+    }else if(Math.abs(dx)<8&&Math.abs(dy)<8&&slide>=0){
+      if(slide===current)openImage();
+      else show(slide);
+    }
   };
   show(0);
 })();
