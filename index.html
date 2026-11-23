@@ -1936,6 +1936,39 @@ body { background: var(--bg); }
   #home-screen.home-v1-page .home-v1-hero > .container{grid-template-columns:1fr}
   .hero-photocards{justify-self:end;width:min(90%,340px);margin-right:5px}
 }
+@media(prefers-reduced-motion:no-preference){
+  @keyframes portfolio-build-in{
+    from{opacity:0;translate:0 16px;scale:.98}
+    to{opacity:1;translate:0 0;scale:1}
+  }
+  @keyframes portfolio-control-in{
+    0%{opacity:0;translate:0 9px;scale:.93}
+    75%{opacity:1;translate:0 0;scale:1.03}
+    100%{opacity:1;translate:0 0;scale:1}
+  }
+  #home-screen .hero-content .reveal{
+    animation:portfolio-build-in .64s cubic-bezier(.22,1,.36,1) both;
+  }
+  #home-screen .hero-content .delay{animation-delay:.09s}
+  #home-screen .hero-content .delay2{animation-delay:.22s}
+  .hero-photocards{animation:portfolio-build-in .76s .18s cubic-bezier(.22,1,.36,1) both}
+  .floating-page-nav{animation:portfolio-build-in .55s .22s cubic-bezier(.22,1,.36,1) both}
+  .floating-page-nav button,.contact-trigger,.portfolio-control-enter{
+    animation:portfolio-control-in .52s var(--control-delay,0s) cubic-bezier(.22,1,.36,1) both;
+  }
+  .floating-page-nav button:nth-child(1){--control-delay:.32s}
+  .floating-page-nav button:nth-child(2){--control-delay:.38s}
+  .floating-page-nav button:nth-child(3){--control-delay:.44s}
+  .floating-page-nav button:nth-child(4){--control-delay:.50s}
+  .floating-page-nav button:nth-child(5){--control-delay:.56s}
+  .contact-trigger{--control-delay:.54s}
+  .floating-page-nav button,.contact-trigger,.ai-play-link,.history-detail-toggle,.studio-controls button,.portfolio-doc-circle{
+    transition:translate .22s ease,scale .22s ease,background-color .22s ease,color .22s ease;
+  }
+  :is(.floating-page-nav button,.contact-trigger,.ai-play-link,.history-detail-toggle,.studio-controls button):is(:hover,:focus-visible),
+  .portfolio-doc-item:is(:hover,:focus-visible) .portfolio-doc-circle{translate:0 -2px}
+  :is(.floating-page-nav button,.contact-trigger,.ai-play-link,.history-detail-toggle,.studio-controls button):active{scale:.96}
+}
 #hero-title .line-one {white-space:normal}
 .ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -3231,5 +3264,18 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     }
   };
   show(0);
+})();
+</script><script>
+(() => {
+  if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(({target, isIntersecting}) => {
+      if (!isIntersecting) return;
+      target.classList.add('portfolio-control-enter');
+      target.addEventListener('animationend', () => target.classList.remove('portfolio-control-enter'), {once:true});
+      observer.unobserve(target);
+    });
+  }, {threshold:0.55});
+  document.querySelectorAll('.ai-play-link, .studio-controls button, #history-detail-toggle').forEach(button => observer.observe(button));
 })();
 </script></body></html>
