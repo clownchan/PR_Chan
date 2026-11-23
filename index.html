@@ -1884,6 +1884,34 @@ body { background: var(--bg); }
 #playing-expanded .playing-covers.cylinder > * { position:absolute; top:50%; left:50%; width:clamp(94px,13vw,154px); max-width:44%; margin:0; transform-origin:center; }
 
 </style><style>
+:root {
+  --portfolio-content-width: 1180px;
+  --portfolio-gutter: clamp(18px, 5.5vw, 90px);
+  --portfolio-section-space: clamp(42px, 7vw, 88px);
+  --portfolio-divider: 1px solid var(--line);
+}
+#track > .screen:not(#home-screen),
+#home-screen .home-about-section,
+#home-screen .home-profile-info-section {
+  padding: var(--portfolio-section-space) var(--portfolio-gutter);
+  border-top: var(--portfolio-divider);
+}
+#track > .screen > .wrap,
+#home-screen .home-about-inner,
+#home-screen .home-profile-info-section .wrap {
+  width: 100%;
+  max-width: var(--portfolio-content-width);
+  margin-inline: auto;
+}
+#home-screen.home-v1-page .home-v1-hero > .container {
+  width: 100%;
+  max-width: calc(var(--portfolio-content-width) + 2 * var(--portfolio-gutter));
+  padding-inline: var(--portfolio-gutter);
+  margin-inline: auto;
+}
+#ai-screen .ai-case{border-top:var(--portfolio-divider);margin-bottom:0}
+#history-screen .h17-intro{border-bottom:var(--portfolio-divider)}
+#portfolio-page .portfolio-doc-item{border-bottom:var(--portfolio-divider)}
 #hero-title .line-one {white-space:normal}
 .ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -1936,7 +1964,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
 <h1 class="reveal delay" id="hero-title"><span class="line-one">게임 안팎에서 얻은 발견을,</span>플레이할 수 있는 <span class="mark">재미</span>로<span class="home-hero-period">.</span></h1>
-<div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div></div>
+<div class="hero-bottom reveal delay2"><div class="role-label">이찬</div></div>
 </div>
 </div>
 </div>
@@ -2209,13 +2237,13 @@ html:has(.studio-view[open]){overflow:hidden}
 <header class="h17-intro">
 <div class="h17-intro-copy">
 <p class="h17-eyebrow">2019 — 2026</p>
-<h2>게임 기획자가 되기 위해 다양한 활동을 이어왔습니다.</h2>
-<p>연도별 활동에서 맡은 역할과 결과를 확인할 수 있습니다.</p>
+
+<p>연도별 활동과 결과를 확인할 수 있습니다.</p>
 </div>
 </header>
 <div class="h17-heading"><span class="h17-legend"><i></i> 활동을 선택하면 아래에 관련 내용과 자료가 표시됩니다.</span></div>
 <div aria-label="연도별 활동 가로 연대표" class="h17-scroll" id="h17-scroll" role="region" tabindex="0">
-<div aria-label="연도별 활동 선택" class="h17-track" role="tablist"><div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop has-archive" data-h17-entry="younghana" id="h17-tab-younghana" role="tab" tabindex="-1" type="button">
+<div aria-label="연도별 활동 선택" class="h17-track" role="tablist"><div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="true" class="h17-stop is-active has-archive" data-h17-entry="younghana" id="h17-tab-younghana" role="tab" tabindex="0" type="button">
 <span class="h17-year">2019</span>
 <span class="h17-orbit"><span class="h17-bubble">01</span></span>
 <span class="h17-stop-title">영하나 크루</span>
@@ -2239,7 +2267,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="h17-stop-title">보드게임 제작</span>
 <span class="h17-stop-cat">게임 규칙 설계 · 제작</span>
 </button></div>
-<div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="true" class="h17-stop is-active has-archive" data-h17-entry="trpg" id="h17-tab-trpg" role="tab" tabindex="0" type="button">
+<div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop has-archive" data-h17-entry="trpg" id="h17-tab-trpg" role="tab" tabindex="-1" type="button">
 <span class="h17-year">2022</span>
 <span class="h17-orbit"><span class="h17-bubble">05</span></span>
 <span class="h17-stop-title">TRPG 마스터</span>
@@ -2258,18 +2286,18 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="h17-stop-cat">글로벌 · 문화 교류</span>
 </button></div></div>
 </div>
-<div class="h17-bottom"><div class="h17-pagination"><button aria-label="이전 활동 선택" id="h17-prev" type="button">←</button><span id="h17-position">05 / 07</span><button aria-label="다음 활동 선택" id="h17-next" type="button">→</button></div></div>
-<section aria-labelledby="h17-tab-trpg" aria-live="polite" class="h17-panel" id="h17-panel" role="tabpanel" tabindex="0">
+<div class="h17-bottom"><div class="h17-pagination"><button aria-label="이전 활동 선택" id="h17-prev" type="button">←</button><span id="h17-position">01 / 07</span><button aria-label="다음 활동 선택" id="h17-next" type="button">→</button></div></div>
+<section aria-labelledby="h17-tab-younghana" aria-live="polite" class="h17-panel" id="h17-panel" role="tabpanel" tabindex="0">
 <div class="h17-panel-content">
-<div class="h17-panel-heading"><span class="h17-date" id="h17-date">2021 — 2022</span><span class="h17-field" id="h17-field">게임 시스템 · 운영</span></div>
-<h3 id="h17-title">TRPG 마스터</h3>
-<p class="h17-description" id="h17-description">직접 설계한 시나리오와 전투 규칙을 플레이어의 선택에 맞춰 운영하고, 밸런스 문제를 개선했습니다.</p>
+<div class="h17-panel-heading"><span class="h17-date" id="h17-date">2019.09 — 12</span><span class="h17-field" id="h17-field">상품 기획 · PT</span></div>
+<h3 id="h17-title">하나은행 영하나 마케팅 크루 2기</h3>
+<p class="h17-description" id="h17-description">20대 고객을 위한 카드 상품을 기획하고, 경쟁 PT에서 기획의 가치를 직접 전달했습니다.</p>
 </div>
 <div class="h17-panel-meta">
-<div class="h17-metric"><span>MY ROLE</span><p id="h17-role">시나리오·몬스터·전투 규칙 설계 · 밸런스 조정 · 세션 진행</p></div>
-<div class="h17-metric h17-metric-result"><span>RESULT / OUTPUT</span><p id="h17-result">6개 세션 · 누적 21명 · 총 283시간</p></div>
+<div class="h17-metric"><span>MY ROLE</span><p id="h17-role">카드 상품 아이디어 기획 · 현장 마케팅 · 경쟁 PT 발표</p></div>
+<div class="h17-metric h17-metric-result"><span>RESULT / OUTPUT</span><p id="h17-result">아이디어 대상 · 제안 상품 최종 채택</p></div>
 </div>
-<button class="history-detail-toggle" id="history-detail-toggle" type="button" aria-controls="history-inline" aria-expanded="false" hidden>상세 펼치기 <span aria-hidden="true">⌄</span></button>
+<button class="history-detail-toggle" id="history-detail-toggle" type="button" aria-controls="history-inline" aria-expanded="false">상세 펼치기 <span aria-hidden="true">⌄</span></button>
 <div id="history-inline" hidden></div>
 </section>
 </div></div></div></section><section class="screen" id="games-screen"><div class="wrap games-wrap">
@@ -2795,7 +2823,7 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
   const panel = document.getElementById('h17-panel');
   if (!buttons.length || !panel) return;
   const byId = Object.fromEntries(records.map((r,i) => [r.id,{...r,index:i}]));
-  let selected = 'trpg';
+  let selected = records[0].id;
   const detailToggle = document.getElementById('history-detail-toggle');
   const inlineDetail = document.getElementById('history-inline');
   function syncHistoryToggle() {
@@ -2815,7 +2843,7 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
     scrollPortfolioTo(panel);
   });
   const put=(id,value)=>{document.getElementById(id).textContent=value;};
-  const pick=(id,focus=false)=>{
+  const pick=(id,focus=false,expand=true)=>{
     const data=byId[id];
     if(!data)return;
     selected=id;
@@ -2831,12 +2859,9 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
     put('h17-title',data.title);
     put('h17-description',data.description);
     put('h17-role',data.role);
-    const result = document.getElementById('h17-result');
-    result.querySelectorAll('.count-up').forEach(counter => countObserver?.unobserve(counter));
-    result.textContent = data.result;
-    addPortfolioCounters(result, measuredCountPattern, 'history:' + id);
+    put('h17-result',data.result);
     put('h17-position',String(data.index+1).padStart(2,'0')+' / 07');
-    renderInlineHistory(data.detail ? id : null);
+    renderInlineHistory(expand && data.detail ? id : null);
     detailToggle.hidden = !data.detail;
     syncHistoryToggle();
     const active=buttons[data.index];
@@ -2863,7 +2888,7 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
   });
   document.getElementById('h17-prev').addEventListener('click',()=>pick(records[Math.max(0,byId[selected].index-1)].id));
   document.getElementById('h17-next').addEventListener('click',()=>pick(records[Math.min(records.length-1,byId[selected].index+1)].id));
-  pick(selected);
+  pick(selected,false,false);
 })();
 </script>
 
