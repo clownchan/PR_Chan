@@ -1808,8 +1808,6 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .night-highlight { width:min(100%,880px); }
 .auction-highlight video { display:block; width:100%; height:auto; border-radius:12px; background:#231b15; }
 .auction-highlight figcaption { margin-top:8px; color:#4e544c; font-size:14px; }
-.ai-auction-art { background: #222b28; border-radius: 5px; padding: 14px; text-align: center; }
-.ai-auction-art img { display: block; width: min(100%, 540px); height: auto; margin: auto; }
 @media (max-width: 720px) {
   .floating-page-nav { width: calc(100vw - 28px); }
   .floating-page-nav button { min-width: 0; flex: 1; padding-inline: 3px; }
@@ -1897,6 +1895,7 @@ body { background: var(--bg); }
 #playing-expanded .playing-covers.cylinder > * { position:absolute; top:50%; left:50%; width:clamp(94px,13vw,154px); max-width:44%; margin:0; transform-origin:center; }
 
 </style><style>
+.ai-title-logo{display:block;width:min(100%,360px);height:auto;margin:0 0 12px}
 #ai-circus-title{display:flex;align-items:center;gap:.2em} #ai-circus-title img{width:1.2em;height:1.2em;flex:none;object-fit:contain}
 @media(pointer:fine){.studio-stage img[aria-hidden]{cursor:grab}.studio-stage.is-dragging,.studio-stage.is-dragging img[aria-hidden]{cursor:grabbing}}
 .studio-gallery{min-width:0;grid-column:1/-1}
@@ -2030,7 +2029,7 @@ html:has(.studio-view[open]){overflow:hidden}
     </nav>
     <article class="ai-case" id="ai-night" aria-labelledby="ai-night-title">
       <header>
-        <h2 id="ai-night-title">야간자율학습</h2>
+        <h2 id="ai-night-title"><img class="ai-title-logo" src="./assets/ai-night-heading.webp" alt="야간자율학습"></h2>
         <p class="ai-summary">밤의 학교에서 아이템을 파밍하고, 크리쳐를 피해 탈출하는 1인칭 익스트랙션 호러<br>Unity 3D · 개발 중</p>
       </header>
       <p>교실과 실습실에서 아이템을 모으고 배전함을 수리해 탈출구를 엽니다. 진입할 때마다 달라지는 학교에서 크리쳐를 피해 파밍과 탈출 경로를 정합니다.</p>
@@ -2049,19 +2048,14 @@ html:has(.studio-view[open]){overflow:hidden}
       <p>Codex와 <strong>복도·계단 연결 → 필수 위치 확보 → 방과 아이템 배치 → 경로 검사</strong> 순서를 정했습니다. 문제 배치는 같은 생성 번호로 재현하고, 어두운 복도에서는 조명으로 출입구와 단서를 드러냈습니다.</p>
       <h3>위협적인 크리쳐에게서 벗어날 틈 만들기</h3>
       <p>추격의 위협을 유지하면서도 도망치거나 로커에 숨을 틈을 만들고 싶었습니다. Codex와 <strong>직접 본 위치</strong>와 <strong>소리를 들은 위치</strong>를 나눠, 시야가 끊긴 뒤 크리쳐가 따라갈 단서를 정했습니다.</p>
-      <div class="ai-evidence">
-        <figure><img src="./assets/portfolio-night-map.webp" loading="lazy" alt="탐사 중 스마트폰에 표시되는 두 층의 학교 지도"><figcaption>플레이 중 확인하는 층별 지도</figcaption></figure>
-        <figure><img src="./assets/portfolio-night-guard.webp" loading="lazy" alt="탈출구 근처 복도에서 야간 경비원과 마주친 장면"><figcaption>Unity 빌드에서 경비원과 마주친 장면</figcaption></figure>
-      </div>
     </article>
     <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
       <header>
-        <h2 id="ai-auction-title">ClockWork Auction</h2>
+        <h2 id="ai-auction-title"><img class="ai-title-logo" src="./assets/ai-auction-heading.webp" alt="ClockWork Auction"></h2>
         <p class="ai-summary">한정된 예산으로 세 라이벌과 경쟁하며 물품을 모으는 모바일 웹 경매 게임<br>웹에서 플레이 가능</p>
       </header>
       <div class="ai-game-intro">
         <div>
-          <div class="ai-auction-art"><img src="./assets/ai-auction-wordmark.webp" alt="" width="720" height="240" loading="lazy"></div>
           <p class="ai-game-intent">수집형 RPG, SLG, 방치형 모바일 게임에 넣을 수 있는 기간 한정 이벤트를 기획했습니다.</p>
           <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
         </div>
