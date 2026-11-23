@@ -1758,7 +1758,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .workflow-flow { position: relative; margin-top: 15px; }
 .workflow-connection { display: none; }
 .ai-workflow { display: grid; gap: 15px; position: relative; list-style: none; margin: 0; padding: 0; }
-.ai-workflow::before { content: ""; position: absolute; width: 4px; background: var(--ink); top: 18px; bottom: 34px; left: 19px; }
+.ai-workflow::before { content: ""; position: absolute; width: 2px; background: var(--ink); top: 18px; bottom: 34px; left: 20px; }
 .ai-workflow li { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; align-items: start; }
 .workflow-step { z-index: 1; display: grid; place-items: center; width: 42px; height: 42px; border: 4px solid var(--ink); border-radius: 50%; background: var(--accent); color: var(--ink); font-size: 16px; font-weight: 900; font-variant-numeric: tabular-nums; }
 .workflow-copy { padding: 2px 0 2px 9px; border-left: 2px solid #d4a916; }
@@ -1769,12 +1769,14 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
   .workflow-flow { margin-top: 8px; }
   .ai-workflow { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 0; }
   .ai-workflow::before { display: none; }
-  .ai-workflow li { grid-template-columns: minmax(0,1fr); grid-template-rows: 84px 116px 84px; gap: 0; justify-items: center; }
-  .workflow-connection { display: block; position: absolute; top: 84px; width: 100%; height: 116px; }
+  .ai-workflow li { grid-template-columns: minmax(0,1fr); grid-template-rows: 84px 88px minmax(84px,auto); gap: 0; justify-items: center; }
+  .workflow-connection { display: block; position: absolute; top: 84px; width: 100%; height: 88px; }
   .workflow-step { grid-row: 2; align-self: start; width: 58px; height: 58px; border-width: 5px; font-size: 19px; }
   .ai-workflow li:nth-child(even) .workflow-step { align-self: end; }
-  .workflow-copy { grid-row: 3; width: calc(100% - 20px); padding: 0 0 0 10px; }
-  .ai-workflow li:nth-child(even) .workflow-copy { grid-row: 1; align-self: end; }
+  .workflow-copy { position: relative; grid-row: 3; width: calc(100% - 16px); align-self: start; padding: 5px 0 0; border-left: 0; text-align: center; }
+  .workflow-copy::before { content: ""; position: absolute; left: 50%; bottom: 100%; height: 30px; border-left: 1px dashed var(--muted); }
+  .ai-workflow li:nth-child(even) .workflow-copy { grid-row: 1; align-self: end; padding: 0 0 5px; }
+  .ai-workflow li:nth-child(even) .workflow-copy::before { top: 100%; bottom: auto; }
 }
 .ai-case .ai-game-intent { margin-top: 16px; }
 .ai-media-slot { display: grid; place-items: center; min-height: 145px; margin: 14px 0 20px; padding: 20px; border: 1px dashed #aaa99e; border-radius: 6px; background: #f6f6f2; text-align: center; }
@@ -2275,8 +2277,8 @@ html:has(.studio-view[open]){overflow:hidden}
           <span><img src="./assets/ai-claude.svg" alt="" width="19" height="19"> Claude</span>
         </figcaption>
         <div class="workflow-flow">
-          <svg class="workflow-connection" viewBox="0 0 1000 116" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M100 29 C185 29 215 87 300 87 S415 29 500 29 S615 87 700 87 S815 29 900 29" fill="none" stroke="#171612" stroke-width="8" vector-effect="non-scaling-stroke"/>
+          <svg class="workflow-connection" viewBox="0 0 1000 88" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M100 29 C185 29 215 59 300 59 S415 29 500 29 S615 59 700 59 S815 29 900 29" fill="none" stroke="#171612" stroke-width="3" vector-effect="non-scaling-stroke"/>
           </svg>
           <ol class="ai-workflow" aria-label="Circus Studio 개발 워크플로우">
             <li><span class="workflow-step" aria-hidden="true">1</span><div class="workflow-copy"><strong>기획 방향 지시</strong><p>만들 기능과 해결할 문제를 정합니다.</p></div></li>
