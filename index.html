@@ -1795,13 +1795,63 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
   .floating-page-nav button { min-width: 0; flex: 1; padding-inline: 3px; }
 }
 </style>
-</head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><div class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
+<style id="continuous-portfolio">
+:root { --bg: #fffdf5; --ink: #171612; --line: #e1ddd0; --muted: #655f52; --accent: #ffda36; }
+html, body { height: auto; min-height: 100%; }
+html { scroll-padding-top: 18px; }
+body { background: var(--bg); }
+.site, #track { height: auto; overflow: visible; }
+#track { display: block; transition: none; }
+#track > .screen { display: block; width: 100%; overflow: visible; padding: clamp(42px, 7vw, 104px) clamp(18px, 5.5vw, 90px); border-top: 1px solid var(--line); }
+#track > .screen > .wrap { max-width: 1180px; }
+#track > #home-screen.home-v1-page { padding: 0; overflow: visible; border-top: 0; }
+#home-screen .home-v1-hero { background: var(--accent); }
+#home-screen .home-hero-period { color: var(--ink); }
+#home-screen .eyebrow, #home-screen .role-label, #home-screen .hero-note, #home-screen .hero-note .profile-scroll-hint-arrow, #home-screen .vertical-note { color: #4c3e13; }
+#home-screen .role-label::before { background: var(--ink); }
+#home-screen .hero-cta { background: var(--ink); color: #fffdf5; padding: 10px 14px; }
+#track > #ai-screen { background: #f4f0e2; }
+#track > #history-screen { background: #f7f3e8; }
+#track > #games-screen { padding-bottom: max(134px, calc(104px + env(safe-area-inset-bottom))); }
+#track .page-title { margin: 0 0 21px; }
+.hl { box-shadow: inset 0 -.19em var(--accent); }
+.floating-page-nav { background: #1d1b16; }
+.floating-page-nav button.current { background: var(--accent); }
+#ai-screen .ai-index { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+#ai-screen .ai-index a { display: grid; align-content: space-between; gap: 12px; min-height: 108px; padding: 15px; border: 1px solid #dcd3bb; border-radius: 0; overflow-wrap: anywhere; }
+.ai-index a:first-child { background: var(--accent); }
+.ai-index a > small { display: block; color: #5f5332; font-size: 12px; }
+.ai-index a > span { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
+.ai-index a > span::after { content: '↓'; flex-shrink: 0; }
+#ai-screen .ai-case { max-width: none; border: 0; border-top: 2px solid var(--ink); padding: clamp(20px,4vw,48px) 0; background: transparent; }
+#ai-screen .ai-case > p, #ai-screen .ai-case > header { max-width: 76ch; }
+.ai-media-slot { background: #fcf9ef; }
+#ai-screen .ai-workflow-diagram { border: 0; border-top: 1px solid #d9d0b7; border-bottom: 1px solid #d9d0b7; border-radius: 0; padding: 16px 0; background: transparent; }
+#ai-screen .workflow-node { height: auto; background: none; border: 0; padding: 0; gap: 7px; }
+#ai-screen .workflow-node p { margin-top: 3px; }
+#ai-screen .workflow-arrow { top: 11px; }
+.workflow-legend img[src$="chatgpt.png"], .workflow-icons img[src$="chatgpt.png"] { object-fit: cover; }
+#history-inline { margin-top: 22px; background: #fffdf7; border: 1px solid var(--line); }
+#history-inline[hidden] { display: none; }
+#history-inline .history-detail-content { max-width: 100%; }
+#history-inline .trpg-gallery-item { text-decoration: none; }
+@media (max-width: 930px) {
+  #ai-screen .workflow-node { grid-template-columns: 58px minmax(0,1fr); }
+  #ai-screen .workflow-arrow { top: calc(100% + 3px); left: 10px; }
+}
+@media (max-width: 560px) {
+  #ai-screen .ai-index { grid-template-columns: 1fr; gap: 6px; }
+  #ai-screen .ai-index a { min-height: 0; gap: 3px; padding: 9px 12px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
 <h1 class="reveal delay" id="hero-title"><span class="line-one">기억에 남을 재미를,</span>설득력 있는 <span class="mark">설계</span>로<span class="home-hero-period">.</span></h1>
 <p class="hero-description reveal delay2">플레이 <strong>경험</strong>을 <strong>규칙과 데이터</strong>로 구체화하고,<br/>기획 의도를 명확히 <strong>전달</strong>합니다.</p>
-<div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div><button class="hero-cta" data-page="2" type="button">포트폴리오 둘러보기 <span aria-hidden="true">↗</span></button></div>
+<div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div><button class="hero-cta" data-page="1" type="button">AI 프로젝트 둘러보기 <span aria-hidden="true">↗</span></button></div>
 </div>
 <div aria-hidden="true" class="hero-image"><img alt="" src="./assets/img_001.webp"/></div>
 <div class="hero-note"><span>SCROLL TO EXPLORE</span><span aria-hidden="true" class="profile-scroll-hint-arrow">↓</span></div><div class="vertical-note">PLAY · ANALYZE · DESIGN</div>
@@ -1891,9 +1941,9 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
     <h1 class="page-title" id="ai-title">AI<span class="hl">.</span></h1>
     <p class="ai-lead">AI와 함께 만든 게임과 제작 도구를 소개합니다.</p>
     <nav class="ai-index" aria-label="AI 프로젝트 바로가기">
-      <a href="#ai-circus">Circus Studio</a>
-      <a href="#ai-auction">ClockWork Auction</a>
-      <a href="#ai-night">야간자율학습</a>
+      <a href="#ai-circus"><small>게임 제작 도구</small><span>Circus Studio</span></a>
+      <a href="#ai-auction"><small>모바일 웹게임</small><span>ClockWork Auction</span></a>
+      <a href="#ai-night"><small>Unity 3D 게임</small><span>야간자율학습</span></a>
     </nav>
     <article class="ai-case" id="ai-circus" aria-labelledby="ai-circus-title">
       <header>
@@ -1904,7 +1954,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
       <div class="ai-workflow-diagram">
         <div class="workflow-legend" aria-label="워크플로우 참여자">
           <span><span class="workflow-profile" aria-hidden="true"></span> 기획자</span>
-          <span><img src="./assets/ai-codex.svg" alt="" width="27" height="27"> Codex</span>
+          <span><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"> Codex</span>
           <span><img src="./assets/ai-claude.svg" alt="" width="27" height="27"> Claude</span>
         </div>
         <ol class="ai-workflow" aria-label="Circus Studio 개발 워크플로우">
@@ -1916,7 +1966,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
           </li>
           <li>
             <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><img src="./assets/ai-codex.svg" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
+              <span class="workflow-icons" aria-hidden="true"><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
               <div><strong>초안 작성 · 세부 조율</strong><p>Codex가 초안을 쓰고, 함께 규칙과 확인 기준을 정합니다.</p></div>
             </div><span class="workflow-arrow" aria-hidden="true"></span>
           </li>
@@ -1934,7 +1984,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
           </li>
           <li>
             <div class="workflow-node">
-              <span class="workflow-icons" aria-hidden="true"><img src="./assets/ai-codex.svg" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
+              <span class="workflow-icons" aria-hidden="true"><img src="./assets/workflow-chatgpt.png" alt="" width="27" height="27"><span class="workflow-profile" aria-hidden="true"></span></span>
               <div><strong>구현 결과 검수</strong><p>Codex와 빌드를 함께 확인하고 수정할 항목을 정합니다.</p></div>
             </div>
           </li>
@@ -2056,17 +2106,17 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <div class="h17-intro-copy">
 <p class="h17-eyebrow">2019 — 2026</p>
 <h2>게임 기획자가 되기 위해 다양한 활동을 이어왔습니다.</h2>
-<p>게임·기획에 관한 경험들을 최근 활동부터 확인하실 수 있습니다.</p>
+<p>연도별 활동에서 맡은 역할과 결과를 확인할 수 있습니다.</p>
 </div>
 </header>
-<div class="h17-heading"><span class="h17-legend"><i></i> 상세 팝업 제공 <small>· 노란색 활동 아래 「상세 보기」 클릭</small></span></div>
+<div class="h17-heading"><span class="h17-legend"><i></i> 활동을 선택하면 아래에 관련 내용과 자료가 표시됩니다.</span></div>
 <div aria-label="연도별 활동 가로 연대표" class="h17-scroll" id="h17-scroll" role="region" tabindex="0">
 <div aria-label="연도별 활동 선택" class="h17-track" role="tablist"><div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop has-archive" data-h17-entry="younghana" id="h17-tab-younghana" role="tab" tabindex="-1" type="button">
 <span class="h17-year">2019</span>
 <span class="h17-orbit"><span class="h17-bubble">01</span></span>
 <span class="h17-stop-title">영하나 크루</span>
 <span class="h17-stop-cat">상품 기획 · PT</span>
-</button><button aria-label="영하나 크루 상세 팝업 열기" class="h18-open-archive" data-history="younghana" type="button">상세 보기 ↗</button></div>
+</button></div>
 <div class="h18-point"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop" data-h17-entry="volunteer" id="h17-tab-volunteer" role="tab" tabindex="-1" type="button">
 <span class="h17-year">2020</span>
 <span class="h17-orbit"><span class="h17-bubble">02</span></span>
@@ -2078,19 +2128,19 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <span class="h17-orbit"><span class="h17-bubble">03</span></span>
 <span class="h17-stop-title">DCA 광고대상</span>
 <span class="h17-stop-cat">프로젝트 리딩</span>
-</button><button aria-label="DCA 광고대상 상세 팝업 열기" class="h18-open-archive" data-history="dca" type="button">상세 보기 ↗</button></div>
+</button></div>
 <div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop has-archive" data-h17-entry="boardgame" id="h17-tab-boardgame" role="tab" tabindex="-1" type="button">
 <span class="h17-year">2021</span>
 <span class="h17-orbit"><span class="h17-bubble">04</span></span>
 <span class="h17-stop-title">보드게임 제작</span>
 <span class="h17-stop-cat">게임 규칙 설계 · 제작</span>
-</button><button aria-label="보드게임 제작 상세 팝업 열기" class="h18-open-archive" data-history="boardgame" type="button">상세 보기 ↗</button></div>
+</button></div>
 <div class="h18-point h18-point--archive"><button aria-controls="h17-panel" aria-selected="true" class="h17-stop is-active has-archive" data-h17-entry="trpg" id="h17-tab-trpg" role="tab" tabindex="0" type="button">
 <span class="h17-year">2022</span>
 <span class="h17-orbit"><span class="h17-bubble">05</span></span>
 <span class="h17-stop-title">TRPG 마스터</span>
 <span class="h17-stop-cat">게임 시스템 · 운영</span>
-</button><button aria-label="TRPG 마스터 상세 팝업 열기" class="h18-open-archive" data-history="trpg" type="button">상세 보기 ↗</button></div>
+</button></div>
 <div class="h18-point"><button aria-controls="h17-panel" aria-selected="false" class="h17-stop" data-h17-entry="ktng" id="h17-tab-ktng" role="tab" tabindex="-1" type="button">
 <span class="h17-year">2024</span>
 <span class="h17-orbit"><span class="h17-bubble">06</span></span>
@@ -2113,10 +2163,10 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <div class="h17-panel-meta">
 <div class="h17-metric"><span>MY ROLE</span><p id="h17-role">시나리오·몬스터·전투 규칙 설계 · 밸런스 조정 · 세션 진행</p></div>
 <div class="h17-metric h17-metric-result"><span>RESULT / OUTPUT</span><p id="h17-result">6개 세션 · 누적 21명 · 총 283시간</p></div>
-<div class="h17-actions"><button class="h17-detail-btn" data-history="trpg" id="h17-detail" type="button">자세히 보기 <span aria-hidden="true">↗</span></button></div>
 </div>
 </section>
 <div class="h17-bottom"><div class="h17-pagination"><button aria-label="이전 활동 선택" id="h17-prev" type="button">←</button><span id="h17-position">05 / 07</span><button aria-label="다음 활동 선택" id="h17-next" type="button">→</button></div></div>
+<div id="history-inline" hidden></div>
 </div></div></div></section><section class="screen" id="games-screen"><div class="wrap games-wrap">
 <h1 class="page-title">GAMES<span class="hl">.</span></h1><div aria-hidden="true" class="profile-scroll-hint"><span>SCROLL TO EXPLORE</span><span class="profile-scroll-hint-arrow">↓</span></div>
 <div class="profile-unified-life games-intro-v15" id="life">
@@ -2182,13 +2232,13 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <article class="games-collection-card"><div class="games-photo" data-placeholder="TRPG 룰북"><img alt="TRPG 룰북 수집 사진" decoding="async" loading="lazy" src="./assets/img_133.webp"/></div><div class="games-collection-caption"><strong>TRPG 룰북</strong><p>직접 TRPG를 플레이하고 진행하는 것을 좋아해 TRPG 룰북도 수집했습니다. 새로운 세계관과 규칙을 읽고, 다양한 플레이 방식을 알아가는 과정 자체를 즐깁니다.</p></div></article>
 <article class="games-collection-card"><div class="games-photo" data-placeholder="게임 · 캐릭터 굿즈"><img alt="게임 캐릭터 굿즈 사진" decoding="async" loading="lazy" src="./assets/img_134.webp"/></div><div class="games-collection-caption"><strong>게임 &amp; 애니메이션 굿즈</strong><p>좋아하는 작품의 캐릭터 피규어와 가챠 굿즈를 수집하고 있습니다. 좋아하는 게임과 애니메이션 캐릭터가 너무 많아 고민입니다.</p></div></article></div>
 </section></div>
-</div></section></div></div><nav aria-label="포트폴리오 페이지 이동" class="floating-page-nav">
+</div></section></div></main><nav aria-label="포트폴리오 섹션 이동" class="floating-page-nav">
 
 
 
 
 
-<button aria-current="page" class="current" data-page="0" title="PROFILE" type="button">
+<button aria-current="location" class="current" data-page="0" title="PROFILE" type="button">
 <svg aria-hidden="true" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"></path></svg><span>PROFILE</span></button><button data-page="1" title="AI" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2l2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8z"></path></svg><span>AI</span></button><button data-page="2" title="DOCUMENT" type="button"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5zM14 3v5h5M8 12h8M8 16h8"></path></svg><span>DOCUMENT</span></button><button data-page="3" title="HISTORY" type="button">
 <svg aria-hidden="true" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v6l4 2"></path></svg><span>HISTORY</span></button><button data-page="4" title="GAMES" type="button">
 <svg aria-hidden="true" viewbox="0 0 24 24"><rect height="11" rx="5" width="18" x="3" y="8"></rect><path d="M8 11v5M5.5 13.5h5M15.5 12h.01M18 14h.01"></path></svg><span>GAMES</span></button></nav><div class="contact-widget" id="contactWidget">
@@ -2201,10 +2251,43 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <div><dt>이메일</dt><dd><a href="mailto:clownchan00@gmail.com">clownchan00@gmail.com</a></dd></div>
 </dl>
 </section>
-</div><div class="overlay" id="overlay"><div aria-labelledby="dialogTitle" aria-modal="true" class="dialog" role="dialog"><div class="dialog-head"><span id="dialogKicker">LIFE WITH GAMES / PLAYING</span><button aria-label="닫기" class="close" id="close">×</button></div><div class="dialog-scroll" id="scroller"><div id="modalBody"></div></div></div></div><dialog aria-labelledby="trpg-lightbox-title" id="trpg-image-dialog"><div class="trpg-lightbox-top"><span id="trpg-lightbox-title"></span><button aria-label="이미지 닫기" id="trpg-lightbox-close" type="button">×</button></div><img alt="확대 보기" class="trpg-lightbox-image" id="trpg-lightbox-image"/></dialog><script>
+</div><div class="overlay" id="overlay"><div aria-labelledby="dialogTitle" aria-modal="true" class="dialog" role="dialog"><div class="dialog-head"><span id="dialogKicker">LIFE WITH GAMES / PLAYING</span><button aria-label="닫기" class="close" id="close">×</button></div><div class="dialog-scroll" id="scroller"><div id="modalBody"></div></div></div></div><script>
 const games=[{"title":"붕괴: 스타레일","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_010.webp"},{"title":"이터널 리턴","genres":["MOBA","생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_011.webp"},{"title":"포켓몬스터 LEGENDS 아르세우스","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_012.webp"},{"title":"슬레이 더 스파이어","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_013.webp"},{"title":"카오스 제로 나이트메어","genres":["로그라이크","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_014.webp"},{"title":"바이오 쇼크 인피니트","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_015.webp"},{"title":"보더랜드 2","genres":["RPG · JRPG","슈팅(FPS · TPS 등)"],"platforms":["PC","PSvita"],"cover":"./assets/img_016.webp"},{"title":"다크 소울 3","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_017.webp"},{"title":"파 크라이 3","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_018.webp"},{"title":"건파이어 리본","genres":["로그라이크","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_019.webp"},{"title":"하데스","genres":["로그라이크","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_020.webp"},{"title":"록맨 11","genres":["플랫폼"],"platforms":["PC"],"cover":"./assets/img_021.webp"},{"title":"몬스터 헌터 라이즈","genres":["액션 · 어드벤처"],"platforms":["NS","PC"],"cover":"./assets/img_022.webp"},{"title":"Ori and the Blind Forest","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_023.webp"},{"title":"포탈 2","genres":["퍼즐","플랫폼"],"platforms":["PC"],"cover":"./assets/img_024.webp"},{"title":"슈퍼 미트 보이","genres":["플랫폼"],"platforms":["PC"],"cover":"./assets/img_025.webp"},{"title":"시스템 쇼크 (Remake)","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_026.webp"},{"title":"테라리아","genres":["생존 · 샌드박스","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_027.webp"},{"title":"팰월드","genres":["생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_028.webp"},{"title":"스컬: The Hero Slayer","genres":["로그라이크","플랫폼"],"platforms":["PC"],"cover":"./assets/img_029.webp"},{"title":"엘든 링","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_030.webp"},{"title":"The Elder Scrolls V: Skyrim","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_031.webp"},{"title":"로보토미 코퍼레이션","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_032.webp"},{"title":"몬스터 헌터: 와일즈","genres":["액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_033.webp"},{"title":"보더랜드 3","genres":["RPG · JRPG","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_034.webp"},{"title":"젤다의 전설 브레스 오브 더 와일드","genres":["액션 · 어드벤처","오픈월드"],"platforms":["NS"],"cover":"./assets/img_035.webp"},{"title":"포켓몬스터 LEGENDS Z","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_036.webp"},{"title":"메트로이드 프라임 리마스터","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["NS"],"cover":"./assets/img_037.webp"},{"title":"Florence","genres":["캐주얼 · 생활","퍼즐"],"platforms":["PC"],"cover":"./assets/img_038.webp"},{"title":"파이널 판타지 VII","genres":["RPG · JRPG"],"platforms":["NS"],"cover":"./assets/img_039.webp"},{"title":"바이오하자드 RE:3","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_040.webp"},{"title":"슬레이 더 스파이어 2","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_041.webp"},{"title":"산나비","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_042.webp"},{"title":"페르소나 5 더 로열","genres":["RPG · JRPG"],"platforms":["PC"],"cover":"./assets/img_043.webp"},{"title":"MOUSE: P.I. For Hire","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_044.webp"},{"title":"페르소나3 리로드","genres":["RPG · JRPG"],"platforms":["PC"],"cover":"./assets/img_045.webp"},{"title":"메이플스토리 DS","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["DS"],"cover":"./assets/img_046.webp"},{"title":"포켓몬 불가사의 던전 어둠의 탐험대&시간의탐험대","genres":["RPG · JRPG","로그라이크"],"platforms":["DS"],"cover":"./assets/img_047.webp"},{"title":"포켓몬스터 블랙&화이트","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_048.webp"},{"title":"슈퍼마리오64 DS","genres":["액션 · 어드벤처","플랫폼"],"platforms":["DS"],"cover":"./assets/img_049.webp"},{"title":"메트로이드 프라임 헌터즈","genres":["슈팅(FPS · TPS 등)","액션 · 어드벤처"],"platforms":["DS"],"cover":"./assets/img_050.webp"},{"title":"만져라 메이드 인 와리오","genres":["캐주얼 · 생활","퍼즐"],"platforms":["DS"],"cover":"./assets/img_051.webp"},{"title":"포켓몬스터PT 기라티나","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_052.webp"},{"title":"포켓몬 불가사의 던전 파랑 구조대","genres":["RPG · JRPG","로그라이크"],"platforms":["DS"],"cover":"./assets/img_053.webp"},{"title":"요시 아일랜드 DS","genres":["플랫폼"],"platforms":["DS"],"cover":"./assets/img_054.webp"},{"title":"도와줘! 리듬 히어로","genres":["리듬 · 음악"],"platforms":["DS"],"cover":"./assets/img_055.webp"},{"title":"포켓몬스터 하트골드&소울실버","genres":["RPG · JRPG"],"platforms":["DS"],"cover":"./assets/img_056.webp"},{"title":"포켓몬스터 X&Y","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_057.webp"},{"title":"마리오 카트 7","genres":["레이싱","캐주얼 · 생활"],"platforms":["3DS"],"cover":"./assets/img_058.webp"},{"title":"파이어 엠블렘 Echoes 또 하나의 영웅왕","genres":["RPG · JRPG","전략 · 시뮬레이션"],"platforms":["3DS"],"cover":"./assets/img_059.webp"},{"title":"슈퍼 마리오 3D 랜드","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_060.webp"},{"title":"하츠네미쿠 프로젝트 미라이 디럭스","genres":["리듬 · 음악"],"platforms":["3DS"],"cover":"./assets/img_061.webp"},{"title":"슈퍼 스매시브라더스 for 닌텐도 3DS","genres":["대전격투"],"platforms":["3DS"],"cover":"./assets/img_062.webp"},{"title":"포켓몬스터 썬&문","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_063.webp"},{"title":"포켓몬스터 울트라썬&울트라문","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_064.webp"},{"title":"별의 커비 트리플 디럭스","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_065.webp"},{"title":"포켓몬스터 오메가루비&알파사파이어","genres":["RPG · JRPG"],"platforms":["3DS"],"cover":"./assets/img_066.webp"},{"title":"몬스터헌터 4","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_067.webp"},{"title":"몬스터헌터 4G","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_068.webp"},{"title":"스타폭스 64 3D","genres":["슈팅(FPS · TPS 등)"],"platforms":["3DS"],"cover":"./assets/img_069.webp"},{"title":"별의 커비 로보보 플래닛","genres":["플랫폼"],"platforms":["3DS"],"cover":"./assets/img_070.webp"},{"title":"젤다의 전설 시간의 오카리나 3D","genres":["액션 · 어드벤처","퍼즐"],"platforms":["3DS"],"cover":"./assets/img_071.webp"},{"title":"젤다무쌍 하이랄의 전설들","genres":["액션 · 어드벤처"],"platforms":["3DS"],"cover":"./assets/img_072.webp"},{"title":"튀어나와요 동물의 숲","genres":["캐주얼 · 생활"],"platforms":["3DS"],"cover":"./assets/img_073.webp"},{"title":"하츠네 미쿠 -Project DIVA- f","genres":["리듬 · 음악"],"platforms":["PSvita"],"cover":"./assets/img_074.webp"},{"title":"하츠네 미쿠 -Project DIVA- f 2nd","genres":["리듬 · 음악"],"platforms":["PSvita"],"cover":"./assets/img_075.webp"},{"title":"드래곤즈 크라운","genres":["RPG · JRPG","액션 · 어드벤처"],"platforms":["PSvita"],"cover":"./assets/img_076.webp"},{"title":"젤다의 전설 스카이워드 소드","genres":["액션 · 어드벤처","퍼즐"],"platforms":["Wii"],"cover":"./assets/img_077.webp"},{"title":"대난투 스매시브라더스 X ","genres":["대전격투"],"platforms":["Wii"],"cover":"./assets/img_078.webp"},{"title":"폭권 TOURNAMENT DX","genres":["대전격투"],"platforms":["NS"],"cover":"./assets/img_079.webp"},{"title":"포켓몬스터 소드&실드","genres":["RPG · JRPG"],"platforms":["NS"],"cover":"./assets/img_080.webp"},{"title":"링 피트 어드벤쳐","genres":["캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_081.webp"},{"title":"슈퍼 스매시브라더스 얼티밋","genres":["대전격투"],"platforms":["NS"],"cover":"./assets/img_082.webp"},{"title":"슈퍼 마리오 오디세이","genres":["액션 · 어드벤처","플랫폼"],"platforms":["NS"],"cover":"./assets/img_083.webp"},{"title":"모여봐요 동물의 숲","genres":["캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_084.webp"},{"title":"마리오 카트 8 디럭스","genres":["레이싱","캐주얼 · 생활"],"platforms":["NS"],"cover":"./assets/img_085.webp"},{"title":"별의 커비 스타 얼라이즈","genres":["플랫폼"],"platforms":["NS"],"cover":"./assets/img_086.webp"},{"title":"몬스터 헌터: 월드","genres":["액션 · 어드벤처"],"platforms":["PC","PS4"],"cover":"./assets/img_087.webp"},{"title":"몬스터 헌터 월드: 아이스본","genres":["액션 · 어드벤처"],"platforms":["PC","PS4"],"cover":"./assets/img_088.webp"},{"title":"몬스터 헌터 라이즈: 선브레이크","genres":["액션 · 어드벤처"],"platforms":["PC"],"cover":"./assets/img_089.webp"},{"title":"Left 4 Dead 2","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_090.webp"},{"title":"Mirror’s Edge","genres":["액션 · 어드벤처","플랫폼"],"platforms":["PC"],"cover":"./assets/img_091.webp"},{"title":"리그 오브 레전드","genres":["MOBA"],"platforms":["PC"],"cover":"./assets/img_092.webp"},{"title":"오버워치","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_093.webp"},{"title":"마블 라이벌즈","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_094.webp"},{"title":"Balatro","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_095.webp"},{"title":"승리의 여신: 니케","genres":["수집형RPG","슈팅(FPS · TPS 등)"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_096.webp"},{"title":"트릭컬 리바이브","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_097.webp"},{"title":"몬길: STAR DIVE","genres":["수집형RPG","액션 · 어드벤처"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_098.webp"},{"title":"데스티니 차일드","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_099.webp"},{"title":"페르소나 5: 더 팬텀 X","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_100.webp"},{"title":"젠레스 존 제로","genres":["수집형RPG","액션 · 어드벤처"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_101.webp"},{"title":"명일방주","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_102.webp"},{"title":"블루 아카이브","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_103.webp"},{"title":"랑그릿사(모바일)","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_104.webp"},{"title":"명조: 워더링 웨이브","genres":["수집형RPG","오픈월드"],"platforms":["PC"],"cover":"./assets/img_105.webp"},{"title":"림버스 컴퍼니","genres":["RPG · JRPG","수집형RPG"],"platforms":["PC","모바일(Android/iOS)"],"cover":"./assets/img_106.webp"},{"title":"팀 포트리스 2","genres":["슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_107.webp"},{"title":"크로노 아크","genres":["로그라이크","전략 · 시뮬레이션"],"platforms":["PC"],"cover":"./assets/img_108.webp"},{"title":"To The Moon","genres":["액션 · 어드벤처","퍼즐"],"platforms":["PC"],"cover":"./assets/img_109.webp"},{"title":"철권 7","genres":["대전격투"],"platforms":["PC"],"cover":"./assets/img_110.webp"},{"title":"The Binding of Isaac","genres":["로그라이크","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_111.webp"},{"title":"DEAD BY DAYLIGHT","genres":["생존 · 샌드박스"],"platforms":["PC"],"cover":"./assets/img_112.webp"},{"title":"쿠키런: 킹덤","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_113.webp"},{"title":"뱅드림! 걸즈 밴드 파티!","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_114.webp"},{"title":"프로젝트 세카이 컬러풀 스테이지! feat.하츠네미쿠","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_115.webp"},{"title":"메이플 키우기","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_116.webp"},{"title":"소녀전선","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_117.webp"},{"title":"포켓몬 카드 게임 Pocket","genres":["전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_118.webp"},{"title":"스도리카","genres":["수집형RPG","전략 · 시뮬레이션"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_119.webp"},{"title":"포켓몬 마스터즈 EX","genres":["수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_120.webp"},{"title":"아이돌마스터 밀리언 라이브! 시어터 데이즈","genres":["리듬 · 음악","수집형RPG"],"platforms":["모바일(Android/iOS)"],"cover":"./assets/img_121.webp"},{"title":"PUBG: BATTLEGROUNDS","genres":["생존 · 샌드박스","슈팅(FPS · TPS 등)"],"platforms":["PC"],"cover":"./assets/img_122.webp"}],primaryCounts={"RPG · JRPG": 27, "MOBA": 2, "로그라이크": 10, "슈팅(FPS · TPS 등)": 12, "플랫폼": 7, "액션 · 어드벤처": 17, "퍼즐": 1, "생존 · 샌드박스": 4, "캐주얼 · 생활": 5, "리듬 · 음악": 7, "레이싱": 2, "대전격투": 5, "수집형RPG": 13, "전략 · 시뮬레이션": 1},secondaryCounts={"수집형RPG": 8, "생존 · 샌드박스": 1, "액션 · 어드벤처": 16, "전략 · 시뮬레이션": 12, "슈팅(FPS · TPS 등)": 6, "플랫폼": 7, "오픈월드": 2, "퍼즐": 5, "로그라이크": 2, "캐주얼 · 생활": 2},platformCounts={"PC": 54, "모바일(Android/iOS)": 23, "NS": 14, "PSvita": 4, "DS": 11, "3DS": 17, "Wii": 2, "PS4": 2},totalHours=16413.0,hourEntries=51,images={"djmax":"./assets/img_123.webp","signed":"./assets/img_124.webp","ost":"./assets/img_125.webp","expo":"./assets/img_126.webp","package1":"./assets/img_127.webp","package2":"./assets/img_128.webp","concert1":"./assets/img_129.webp","concert2":"./assets/img_130.webp","er":"./assets/img_131.webp","esports2024":"./assets/img_games_esports_2024.webp","popup2026":"./assets/img_games_event_popup.webp","tournament":"./assets/img_132.webp","trpg":"./assets/img_133.webp","goods":"./assets/img_134.webp"};
-let page=0, genre='all',query='',activeModal='';const $=s=>document.querySelector(s);
-function changePage(n){page=Math.max(0,Math.min(document.querySelectorAll("#track > .screen").length-1,n));$('#track').style.transform=`translateX(-${page*100}%)`;document.querySelectorAll('[data-page]').forEach(b=>{const current=+b.dataset.page===page;b.classList.toggle('current',current);if(b.closest('.floating-page-nav')){if(current)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');}})} document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>changePage(+b.dataset.page));
+let genre='all',query='',activeModal='';const $=s=>document.querySelector(s);
+const portfolioSections = Array.from(document.querySelectorAll('#track > .screen'));
+const portfolioNav = Array.from(document.querySelectorAll('.floating-page-nav [data-page]'));
+const reducePortfolioMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+function scrollPortfolioTo(target) {
+  const top = window.scrollY + target.getBoundingClientRect().top - 18;
+  window.scrollTo({top, behavior: reducePortfolioMotion.matches ? 'instant' : 'smooth'});
+}
+function syncPortfolioNavigation() {
+  const readingLine = window.innerHeight * 0.28;
+  let current = 0;
+  portfolioSections.forEach((section, index) => {
+    if (section.getBoundingClientRect().top <= readingLine) current = index;
+  });
+  portfolioNav.forEach((button, index) => {
+    button.classList.toggle('current', index === current);
+    if (index === current) button.setAttribute('aria-current', 'location');
+    else button.removeAttribute('aria-current');
+  });
+}
+document.querySelectorAll('[data-page]').forEach(button => {
+  button.addEventListener('click', () => scrollPortfolioTo(portfolioSections[Number(button.dataset.page)]));
+});
+let navigationFrame = 0;
+function scheduleNavigationSync() {
+  if (navigationFrame) return;
+  navigationFrame = requestAnimationFrame(() => {
+    navigationFrame = 0;
+    syncPortfolioNavigation();
+  });
+}
+window.addEventListener('scroll', scheduleNavigationSync, {passive: true});
+window.addEventListener('resize', scheduleNavigationSync);
+window.addEventListener('pageshow', scheduleNavigationSync);
+syncPortfolioNavigation();
 
 document.querySelector('#playing-stat-games').textContent=games.length+'+';document.querySelector('#playing-stat-platforms').textContent=Object.keys(platformCounts).length;document.querySelector('#playing-stat-hours').textContent=Math.floor(totalHours).toLocaleString()+'h+';
 function stats(){return `<div class="stats"><div class="stat"><small>GAMES PLAYED</small><big>${games.length}+</big></div><div class="stat"><small>PLATFORMS</small><big>${Object.keys(platformCounts).length}</big></div><div class="stat"><small>RECORDED HOURS</small><big>${Math.floor(totalHours).toLocaleString()}h+</big></div></div>`}
@@ -2250,7 +2333,7 @@ function openModal(which){
     draw();
   }
 }
-document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openModal(b.dataset.open));function closeModal(){$('#overlay').classList.remove('open')}$('#close').onclick=closeModal;$('#overlay').onclick=e=>{if(e.target===$('#overlay'))closeModal()};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();if($('#overlay').classList.contains('open'))return;if(e.defaultPrevented || e.target.closest?.('input,select,textarea,[contenteditable],#h17-scroll'))return;if(e.key==='ArrowRight')changePage(page+1);if(e.key==='ArrowLeft')changePage(page-1)});changePage(0);
+document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>openModal(b.dataset.open));function closeModal(){$('#overlay').classList.remove('open')}$('#close').onclick=closeModal;$('#overlay').onclick=e=>{if(e.target===$('#overlay'))closeModal()};document.addEventListener('keydown',event=>{if(event.key==='Escape')closeModal();});
 
 
 const historyActivities=[{"id":"trpg","year":"2022","date":"2021 — 2022","type":"GAME / FACILITATION","tag":"게임 운영 경험","title":"TRPG 마스터","brief":"규칙과 밸런스를 설계하는 운영자","overview":"TRPG 마스터로서 시나리오·플레이 자료를 제작하고 참여자와 함께 세션을 진행한 활동.","role":"시나리오 집필, 규칙·플레이 자료 제작, 데이터 정리, 게임 진행","result":"6개 세션 · 누적 21명 참여 · 총 283시간 플레이","media":["TRPG 세션 / 온라인 플레이 화면","시나리오 · 규칙 설계 문서","맵 · 세션 운영 기록"],"thumb":"book","detail":"TRPG 마스터로서 참가자의 선택에 따라 진행되는 시나리오와 플레이 규칙을 준비하고, 세션에서 사용할 맵·자료를 제작했습니다. 진행 중 발생하는 상황과 규칙 적용을 판단하며 플레이를 운영했고, 세션에 필요한 데이터를 기록하고 정리했습니다. 총 6개 세션을 누적 21명과 함께 283시간 진행하며 게임 규칙의 설계와 전달, 플레이 운영을 경험했습니다.","sections":[{"heading":"기존 규칙을 새로운 플레이 경험으로 확장한 283시간","paragraphs":["웹 기반 TRPG 플랫폼 **Roll20을 활용해 총 6개 세션을 운영하며, 누적 21명의 플레이어와 283시간 동안 게임을 진행**했습니다. 특히 『로그 호라이즌』 룰북의 기존 규칙과 리소스를 응용하여 시나리오를 구성하고, 플레이어의 스킬과 몬스터의 능력치를 조정하며 전투 밸런스를 설계했습니다."]},{"heading":"몬스터와 환경의 상호작용으로 공략의 재미를 설계","paragraphs":["**몬스터별 특성은 태그를 추가하여 구분하고, 플레이어의 새로운 스킬과 상호작용하도록 설계**했습니다. 예를 들어 '비행' 태그를 가진 몬스터가 '대공' 효과의 영향을 받도록 설정해 전투 전략에 차이를 두었습니다.","또한 수상 지형이 포함된 전투 맵에서는 육지에서 보스를 효과적으로 공격하기 어렵도록 구성하고, **특정 몬스터를 활용해 수상 타일로 이동하는 기믹**을 배치했습니다. 이를 통해 플레이어가 지형과 몬스터의 특성을 파악하고, 유리한 위치를 확보해 보스의 패턴에 대응하도록 유도했습니다."]},{"heading":"성능 제한이 아닌 역할의 재설계로 밸런스를 개선","paragraphs":["**특정 플레이어의 강력한 장비가 다른 플레이어들의 전투 경험을 저해하는 밸런스 문제**도 경험했습니다. 기존 이동력 제한을 벗어나 직선 경로를 빠르게 이동할 수 있는 '훅샷' 장비가 근접 전투에 특화된 캐릭터에게 지급되면서, 해당 플레이어에게 전투 기여도가 집중되었습니다. 처음에는 맵에 장애물을 추가해 이동을 제한했지만, 오히려 장비를 획득한 플레이어의 재미를 떨어뜨리는 결과로 이어졌습니다.","이를 해결하기 위해 **장비의 성능을 제한하는 대신, 강점을 팀 전체에 기여할 수 있는 방향으로 전투 기믹을 재설계**했습니다. 보스전 맵 외곽에 지형을 변화시키는 레버를 배치하고, 훅샷의 기동성을 활용해 이를 조작하면 아군의 공격 기회가 확보되도록 구성했습니다.","그 결과 훅샷을 획득한 플레이어는 높은 기동성을 활용하는 재미를 유지하면서도 팀의 전투를 지원할 수 있었고, 다른 플레이어들은 보스와의 직접적인 전투에 집중할 수 있었습니다. 이 경험을 통해 **밸런스 조정은 단순히 강한 요소를 제한하는 것이 아니라, 각 플레이어의 재미와 역할을 함께 고려해야 한다**는 점을 배웠습니다."]},{"heading":"재화 불균형을 새로운 소비 콘텐츠로 해결","paragraphs":["운영 과정에서는 **예상보다 많은 골드가 지급되어 재화가 과도하게 축적되는 밸런스 문제**도 발생했습니다. 이를 해결하기 위해 기존 상점 NPC에 도박꾼이라는 설정을 추가하고, Roll20에서 구현할 수 있는 간단한 야바위 미니게임을 설계했습니다.","**기존 NPC와 플랫폼 기능을 활용해 새로운 골드 소비처를 마련**함으로써 재화 불균형에 대응했습니다. 단순히 보상량을 줄이는 대신, 플레이어가 자발적으로 재화를 소비할 수 있는 콘텐츠를 추가하는 방식으로 문제 해결을 시도했습니다."]},{"heading":"다양한 게임 데이터를 관리하며 운영의 관점을 넓히다","paragraphs":["이외에도 플레이 중 추가되는 아이템과 스킬의 밸런스를 조정하고, NPC 상점의 판매 목록과 상황별 사운드, 전투 데이터를 직접 관리했습니다.","이러한 경험을 통해 **기존 시스템과 리소스를 활용한 콘텐츠 설계부터 전투·재화 밸런스 조정, 실제 플레이어의 경험을 고려한 문제 해결과 운영까지** 게임기획의 다양한 과정을 간접적으로 경험할 수 있었습니다."]}]},{"id":"boardgame","year":"2021","date":"2021.09 — 12","type":"PROJECT / DESIGN","tag":"규칙 설계 · 실물 제작","title":"보드게임 제작 프로젝트","brief":"테스트 플레이를 거쳐 규칙을 구현하는 기획자","overview":"게임 콘셉트와 규칙을 기획한 뒤 실물 보드게임 제작까지 진행한 프로젝트.","role":"게임 콘셉트 기획, 룰 설계, 제작업체 선정 및 실물 제작 과정 참여","result":"보드게임 실물 제작 · 제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회 장려상 (2021.12)","media":["보드게임 실물 사진 / 구성품","보드게임 기획서 · 규칙서","제작 결과물 · 수상 관련 자료"],"thumb":"dice","detail":"대학 팀 프로젝트에서 보드게임의 콘셉트와 플레이 규칙을 기획하고, 이를 실제로 플레이할 수 있는 실물 게임으로 제작했습니다. 제작업체를 선정하고 규칙과 구성물을 실제 제품으로 구현하는 과정에 참여했습니다. 제작 결과물은 제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회에서 장려상을 수상했습니다.","sections":[{"heading":"조별과제의 갈등을 새로운 보드게임으로 기획하다","paragraphs":["문화콘텐츠기획실습에서 3인 팀으로 추리형 보드게임 **『빌런은 누구?』를 기획하고 실물로 제작**했습니다. 대학생에게 익숙한 조별과제를 소재로, 협업 과정에서 발생하는 갈등과 소통의 중요성을 게임으로 전달하고자 했습니다."]},{"heading":"서로 다른 승리 조건을 가진 세 진영의 규칙을 설계하다","paragraphs":["기존 마피아 게임의 추리 구조를 바탕으로 **마피아·시민·중립의 세 진영이 각기 다른 승리 조건을 추구하는 게임 규칙을 설계**했습니다. 조별과제의 진행 과정을 자료조사·발표자료 제작·발표의 세 단계로 구성하고, 캐릭터마다 고유한 능력과 점수 획득 조건을 부여했습니다. 이를 통해 플레이어들이 각자의 목표를 달성하기 위해 협력하거나 서로를 견제하며, 매번 다른 전략을 선택하도록 유도했습니다."]},{"heading":"20회 이상의 테스트 플레이로 진영 간 밸런스를 검증하다","paragraphs":["특히 **서로 다른 승리 조건을 가진 세 진영이 공정하게 경쟁할 수 있도록 수업 시간 중 20회 이상의 테스트 플레이를 진행**했습니다. 반복적인 플레이를 통해 각 진영의 승리 가능성과 캐릭터 능력, 점수 획득 조건을 점검하고 규칙을 다듬으며, 특정 역할에 지나치게 유리하거나 불리하지 않은 플레이 경험을 제공하고자 노력했습니다."]},{"heading":"소규모 제작의 제약을 넘어 실물 게임으로 완성하다","paragraphs":["실물 제작 과정에서는 **단 4개 패키지라는 소규모 발주 조건으로 인해 제작업체를 선정하는 데 어려움**이 있었습니다. 이를 해결하기 위해 팀원들과 제작 가능한 업체를 조사하고 연락하며, 게임 박스·카드·토큰·룰북 등의 제작 비용과 구성을 검토했습니다.","그 결과 **패키지당 66,496원, 총 30만 원 이내의 예산으로 실물 제작을 완료**했습니다. 또한 규칙 소개 영상을 직접 편집해 유튜브에 게시했으며, 완성된 결과물로 **제5회 LINC+ 인문사회계열 캡스톤 디자인 성과전시회에서 장려상**을 수상했습니다.","이 경험을 통해 **새로운 게임 규칙을 설계하고 반복적인 검증으로 완성도를 높이는 과정뿐 아니라, 한정된 예산과 제작 환경까지 고려하여 기획을 실제 결과물로 구현하는 역량**을 기를 수 있었습니다."]}]},{"id":"dca","year":"2020","date":"2020.08","type":"AWARD / ADVERTISING","tag":"리더 · 일정 관리","title":"제37회 DCA 대학생 광고대상","brief":"제약을 고려한 프로젝트 관리로 성과까지","overview":"대학생 광고 기획 활동을 통해 아이디어를 구체화하고 경쟁 결과를 경험한 프로젝트.","role":"광고 기획 프로젝트 참여 · 세부 담당 업무 확인 예정","result":"제37회 DCA 대학생 광고대상 동상 (2020.10)","media":["수상 사진 / 상장","광고 기획안 · 출품 자료","수상 관련 자료"],"thumb":"trophy","detail":"대학생 광고 기획 프로젝트에서 광고 아이디어를 제안하고 출품 결과물로 구체화한 활동입니다. 실제 수상 결과로 이어졌다는 점에서 기획안의 완성도와 전달력을 확인할 수 있는 경험입니다. 개별 담당 업무와 제작 자료에 대한 상세 설명은 원본 자료를 확인한 후 보완할 예정입니다.","sections":[{"heading":"2주간의 일정을 설계하고, 3명의 방향을 하나로","paragraphs":["제37회 DCA 대학생 광고대상에서 3인 팀의 **리더로 참여하여 일정 관리, 자료조사, 기획 의도 설계**를 담당했습니다. 코로나19로 대면 협업이 불가능한 상황에서, 배달 서비스의 활성화를 위한 광고기획서를 2주 안에 완성해야 했습니다."]},{"heading":"팀의 역량을 고려하여 마일스톤을 설계하다","paragraphs":["프로젝트 초기에 팀원들의 역량을 고려하여 **기획 방향 확정과 최종 기획서 제작에 시간을 차등 배분하는 일정 계획**을 수립했습니다. 팀원 모두 논리 구조 설계와 자료조사에는 익숙했지만, 기획서의 페이지 구성과 시각적 전달에는 보완이 필요하다고 판단했기 때문입니다.","이에 **첫 3일간 매일 3시간씩 온라인 회의를 진행하며 시장 분석과 기획 인사이트를 집중적으로 논의**했고, 팀원 모두가 동의할 수 있는 방향성을 빠르게 확정했습니다."]},{"heading":"명확한 방향성과 역할 분담으로 협업의 효율을 높이다","paragraphs":["이후 일주일 이상의 시간을 기획서의 페이지 구성, 자료 배치, 디자인 등 **최종 결과물의 완성도를 높이는 작업에 집중**했습니다.","기획 방향에 대한 공감대가 형성되어 있었기에 불필요한 의견 충돌이나 재작업을 줄일 수 있었고, 각자 맡은 역할과 마감 일정을 명확히 인지한 상태에서 작업을 이어갔습니다. 덕분에 **밤샘 작업이나 무리한 일정 소화 없이 여유 있게 결과물을 완성**할 수 있었습니다."]},{"heading":"계획적인 협업을 수상 성과로 연결하다","paragraphs":["최종적으로 **제37회 DCA 대학생 광고대상에서 동상**을 수상했습니다.","이 경험을 통해 **팀의 역량과 프로젝트의 제약 조건을 고려하여 일정을 설계하고, 명확한 방향성과 역할 분담을 통해 협업의 효율과 결과물의 완성도를 함께 높이는 프로젝트 관리 역량**을 기를 수 있었습니다."]}]},{"id":"younghana","year":"2019","date":"2019.09 — 12","type":"MARKETING / AWARD","tag":"책임감 · PT","title":"하나은행 영하나 마케팅 크루 2기","brief":"19살 신입생, 기획자로 내딛은 첫걸음","overview":"20대 고객을 위한 카드 상품과 광고 아이디어를 기획하고, 제안을 발표한 마케팅 크루 활동.","role":"카드 상품 아이디어 기획, 오프라인 광고 활동, 경쟁 PT 발표","result":"카드 상품 아이디어 최종 채택 · 영하나 마케팅 크루 2기 아이디어 대상 (2019.12)","media":["활동·발표 현장 사진","카드 상품 기획서","경쟁 PT 발표 자료"],"thumb":"lightbulb","detail":"20대 고객을 대상으로 하는 카드 상품과 광고 아이디어를 기획한 마케팅 크루 활동입니다. 상품 아이디어를 제안하고 오프라인 광고 활동에 참여했으며, 경쟁 PT에서 기획 의도를 직접 발표했습니다. 제안한 카드 상품 아이디어는 최종 채택되었고, 영하나 마케팅 크루 2기 아이디어 대상을 수상했습니다.","sections":[{"heading":"가장 어린 팀원으로 시작해 기획자의 태도를 배우다","paragraphs":["대학 입학 후 참여한 하나은행 영하나 마케팅 크루 2기는 **기획을 대하는 태도와 책임감을 배울 수 있었던 첫 대외활동**이었습니다. 오프라인 광고 집행부터 카드 상품 기획, 최종 경쟁 PT까지 다양한 마케팅 활동을 경험했습니다. 당시 팀 내 최연소 신입생으로서 처음부터 큰 역할을 맡지는 못했지만, 단순히 주어진 업무만 수행하는 팀원으로 남고 싶지는 않았습니다. 기획 과정에 적극적으로 참여하며 팀의 아이디어가 만들어지는 과정과 의도를 이해하기 위해 노력했습니다."]},{"heading":"기획의 논리와 의도를 깊이 이해하다","paragraphs":["최종 프로젝트에서는 20대 1인 가구의 소비 패턴을 분석하여, 밤 시간대의 여가 생활에 특화된 카드 상품 **『하나의 밤』**을 기획했습니다. 저는 시장 분석부터 타깃 설정, 상품 혜택과 마케팅 전략으로 이어지는 논리 구조를 파악하며, **팀이 무엇을 제안하는지뿐 아니라 왜 이러한 제안을 하게 되었는지** 스스로 설명할 수 있을 만큼 기획을 이해하고자 했습니다."]},{"heading":"프로젝트에 대한 책임감으로 발표를 자원하다","paragraphs":["최종 경쟁 PT를 앞두고는 **스스로 발표자를 자원했습니다.** 발표 경험이 많지 않은 최연소 신입생이었기에 주변의 우려도 있었지만, 기획 단계부터 함께 고민해 온 만큼 프로젝트에 대한 책임감과 주인의식을 갖고 있었기 때문입니다. 팀원들과 함께 만든 아이디어의 가치를 직접 전달하고 싶었고, **기획을 충분히 이해하고 있다는 자신감이 발표에 도전할 수 있는 원동력**이 되었습니다."]},{"heading":"50명 이상의 청중 앞에서 기획의 가치를 전달하다","paragraphs":["결과적으로 현업 임직원을 포함한 **50명 이상의 청중 앞에서 경쟁 PT를 마무리**했고, 팀의 아이디어는 **최종 채택과 아이디어 대상 수상**이라는 성과로 이어졌습니다.","이 경험은 단순히 발표에 대한 자신감을 얻은 것을 넘어, **설득력 있는 전달은 기획에 대한 깊은 이해와 결과물에 대한 책임감에서 시작한다**는 사실을 깨닫는 계기가 되었습니다. 또한 맡겨진 역할에 머무르지 않고 스스로 기여할 수 있는 영역을 찾아 나서는 태도를 갖추게 된, 제 성장의 중요한 출발점이었습니다."]}]}];
@@ -2380,45 +2463,25 @@ function renderHistoryCover(a){return a.id==='trpg'?renderTrpgCover():a.id==='bo
 function renderHistoryArchive(a){return a.id==='trpg'?renderTrpgArchive():a.id==='boardgame'?renderBoardgameArchive():a.id==='younghana'?renderYounghanaArchive():a.id==='dca'?renderDcaArchive():`<div class="history-media-grid">${a.media.slice(1).map(historyMediaSlot).join('')}</div>`;}
 
 function historyMediaSlot(label,i){const icon=i%2===0?`<svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zM3 16l6-6 5 5 3-3 4 4M8 9h.01"/></svg>`:`<svg viewBox="0 0 24 24"><path d="M6 2h9l4 4v16H6zM15 2v5h4M9 12h7M9 16h7"/></svg>`;return `<div class="history-media-placeholder"><span class="history-media-num">0${i+1}</span>${icon}<strong>${safeHistoryText(label)}</strong><small>이미지 / 문서 추가 예정</small></div>`;}
-function openHistory(id){
-  const a=historyIndex[id];if(!a)return;
-  activeModal='history:'+id;
-  $('#dialogKicker').textContent=a.title+' / ACTIVITY DETAIL';
-  $('#modalBody').innerHTML=`<div class="history-detail-hero"><div><h2 id="dialogTitle">${safeHistoryText(a.title)}</h2><div class="history-detail-date">${safeHistoryText(a.date)}</div></div></div><div class="history-detail-content"><section class="history-hero-media">${renderHistoryCover(a)}</section><section class="history-detail-story"><h3>ACTIVITY OVERVIEW</h3>${a.sections.map(part=>`<div class="history-story-part"><h4>${safeHistoryText(part.heading)}</h4>${part.paragraphs.map(par=>`<p>${safeRichText(par)}</p>`).join('')}</div>`).join('')}</section><div class="history-detail-bottom"><section><h3>MY ROLE</h3><p>${safeHistoryText(a.role)}</p></section><section class="history-bottom-result"><h3>RESULT & OUTPUT</h3><p>${safeHistoryText(a.result)}</p></section></div><section class="history-detail-documents"><div class="history-media-heading"><h3>DOCUMENT & OUTPUT ARCHIVE</h3></div>${renderHistoryArchive(a)}</section></div>`
-  $('#overlay').classList.add('open');
-  $('#scroller').scrollTop=0;
-  $('#close').focus();
+function renderInlineHistory(id) {
+  const activity = historyIndex[id];
+  const detail = document.getElementById('history-inline');
+  detail.hidden = !activity;
+  detail.replaceChildren();
+  if (!activity) return;
+  const a = activity;
+  detail.innerHTML = `<div class="history-detail-hero"><div><h2 id="history-detail-title">${safeHistoryText(a.title)}</h2><div class="history-detail-date">${safeHistoryText(a.date)}</div></div></div><div class="history-detail-content"><section class="history-hero-media">${renderHistoryCover(a)}</section><section class="history-detail-story"><h3>ACTIVITY OVERVIEW</h3>${a.sections.map(part=>`<div class="history-story-part"><h4>${safeHistoryText(part.heading)}</h4>${part.paragraphs.map(par=>`<p>${safeRichText(par)}</p>`).join('')}</div>`).join('')}</section><div class="history-detail-bottom"><section><h3>MY ROLE</h3><p>${safeHistoryText(a.role)}</p></section><section class="history-bottom-result"><h3>RESULT & OUTPUT</h3><p>${safeHistoryText(a.result)}</p></section></div><section class="history-detail-documents"><div class="history-media-heading"><h3>DOCUMENT & OUTPUT ARCHIVE</h3></div>${renderHistoryArchive(a)}</section></div>`;
+  detail.querySelectorAll('[data-trpg-full]').forEach(button => {
+    const link = document.createElement('a');
+    link.className = button.className;
+    link.href = historyFullImageAssets[button.dataset.trpgFull];
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.setAttribute('aria-label', button.getAttribute('aria-label'));
+    link.append(...button.childNodes);
+    button.replaceWith(link);
+  });
 }
-document.querySelectorAll('[data-history]').forEach(b=>b.addEventListener('click',()=>openHistory(b.dataset.history)));
-const trpgLightbox=document.getElementById('trpg-image-dialog');
-const trpgLightboxImage=document.getElementById('trpg-lightbox-image');
-const trpgLightboxTitle=document.getElementById('trpg-lightbox-title');
-// Keep the parent HISTORY popup open while closing only the full-size image.
-document.addEventListener('keydown',event=>{
-  if(event.key==='Escape' && trpgLightbox.open){
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    trpgLightbox.close();
-  }
-},true);
-trpgLightbox.addEventListener('cancel',event=>{
-  event.preventDefault();
-  trpgLightbox.close();
-});
-
-document.getElementById('modalBody').addEventListener('click',event=>{
-  const el=event.target.closest('[data-trpg-full]');
-  if(!el)return;
-  const key=el.dataset.trpgFull;
-  if(!historyFullImageAssets[key])return;
-  trpgLightboxImage.src=historyFullImageAssets[key];
-  trpgLightboxImage.alt=el.dataset.trpgCaption||'원본 이미지';
-  trpgLightboxTitle.textContent=el.dataset.trpgCaption||'TRPG 운영 자료';
-  trpgLightbox.showModal();
-});
-document.getElementById('trpg-lightbox-close').addEventListener('click',()=>trpgLightbox.close());
-trpgLightbox.addEventListener('click',event=>{if(event.target===trpgLightbox)trpgLightbox.close();});
-
 </script>
 <script>
 (function(){
@@ -2516,8 +2579,7 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
      const target=document.getElementById(id);
      if(!target) return;
      event.preventDefault();
-     const destination=target.getBoundingClientRect().top-container.getBoundingClientRect().top+container.scrollTop-12;
-     container.scrollTo({top:Math.max(0,destination),behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+     scrollPortfolioTo(target);
    });
  });
  container.querySelectorAll('.games-culture-layout .games-photo img').forEach(function(im){
@@ -2533,12 +2595,11 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
   const buttons = Array.from(document.querySelectorAll('#history-screen .h17-stop'));
   const scroller = document.getElementById('h17-scroll');
   const panel = document.getElementById('h17-panel');
-  const details = document.getElementById('h17-detail');
-  if (!buttons.length || !panel || !details) return;
+  if (!buttons.length || !panel) return;
   const byId = Object.fromEntries(records.map((r,i) => [r.id,{...r,index:i}]));
   let selected = 'trpg';
   const put=(id,value)=>{document.getElementById(id).textContent=value;};
-  const pick=(id,focus=false)=>{
+  const pick=(id,focus=false,showDetail=true)=>{
     const data=byId[id];
     if(!data)return;
     selected=id;
@@ -2556,8 +2617,7 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
     put('h17-role',data.role);
     put('h17-result',data.result);
     put('h17-position',String(data.index+1).padStart(2,'0')+' / 07');
-    details.hidden=!data.detail;
-    details.dataset.history=data.detail?id:'';
+    renderInlineHistory(showDetail && data.detail ? id : null);
     const active=buttons[data.index];
     if (focus) active.focus({preventScroll:true});
     if (scroller && active) {
@@ -2582,14 +2642,7 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
   });
   document.getElementById('h17-prev').addEventListener('click',()=>pick(records[Math.max(0,byId[selected].index-1)].id));
   document.getElementById('h17-next').addEventListener('click',()=>pick(records[Math.min(records.length-1,byId[selected].index+1)].id));
-  // Timeline's detail buttons are separate from its bubbles. Sync the selected
-  // bubble and summary panel BEFORE the existing modal click handler runs.
-  document.querySelectorAll('#history-screen .h18-open-archive[data-history]').forEach(button=>{
-    button.addEventListener('click',()=>pick(button.dataset.history),{capture:true});
-  });
-  // The original popup handler reads detail.dataset.history when clicked.
-  // For the three summary-only activities the button stays hidden.
-  pick(selected);
+  pick(selected,false,false);
 })();
 </script>
 
@@ -2633,13 +2686,13 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
 
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null;
   for (const {screen, items} of screens) {
-    screen.addEventListener('scroll', schedule, {passive: true});
     resizeObserver?.observe(screen);
     items.forEach(item => {
       item.classList.add('scroll-fade');
       resizeObserver?.observe(item);
     });
   }
+  window.addEventListener('scroll', schedule, {passive: true});
   window.addEventListener('resize', schedule);
   window.addEventListener('pageshow', schedule);
   motion.addEventListener('change', schedule);
@@ -2649,14 +2702,12 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
 <script>
 (() => {
   const screen = document.getElementById('ai-screen');
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   screen.querySelectorAll('.ai-index a').forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault();
       const target = document.getElementById(link.hash.slice(1));
       if (!target) return;
-      const top = target.getBoundingClientRect().top - screen.getBoundingClientRect().top + screen.scrollTop - 18;
-      screen.scrollTo({top, behavior: motion.matches ? 'auto' : 'smooth'});
+      scrollPortfolioTo(target);
       target.tabIndex = -1;
       target.focus({preventScroll: true});
     });
