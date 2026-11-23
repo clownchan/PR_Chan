@@ -1737,12 +1737,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
  #games-screen .games-experience-item:last-child {grid-column:auto;grid-template-columns:37% minmax(0,1fr);}
 }
 </style>
-<style>
-@media (prefers-reduced-motion: no-preference) {
-  .scroll-fade { opacity: var(--scroll-opacity, 1); }
-  .scroll-fade:focus-within { opacity: 1; }
-}
-</style>
+
 <style>
 .ai-wrap { padding-bottom: 1rem; }
 .ai-lead { color: #535950; font-size: clamp(16px, 2vw, 21px); line-height: 1.7; }
@@ -1978,6 +1973,7 @@ body { background: var(--bg); }
     from {opacity:0;translate:0 13px;clip-path:inset(5% 0 0)}
     to {opacity:1;translate:0 0;clip-path:inset(0)}
   }
+  .portfolio-scroll-pending:not(:focus-within) {opacity:0}
   .portfolio-scroll-enter {
     animation:portfolio-scroll-appear .68s var(--scroll-enter-delay,0ms) cubic-bezier(.22,1,.36,1) backwards;
   }
@@ -2972,58 +2968,6 @@ document.querySelectorAll('.games-event-copy p').forEach(element => {
 </script>
 
 
-<script id="scroll-fade">
-(() => {
-  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const selectors = [
-    '.home-about-photo', '.home-about-copy', '.info-identity', '.info-facts',
-    '.info-history-section', '.info-lower-card', '.portfolio-doc-item',
-    '.games-experience-item', '.games-collection-card', '.h17-panel', '.ai-case'
-  ];
-  const screens = Array.from(document.querySelectorAll('.track > .screen'), screen => ({
-    screen,
-    items: Array.from(screen.querySelectorAll(selectors.join(', ')))
-  })).filter(({items}) => items.length);
-  let frame = 0;
-
-  function update() {
-    frame = 0;
-    for (const {screen, items} of screens) {
-      const viewport = screen.getBoundingClientRect();
-      const top = Math.max(0, viewport.top);
-      const bottom = Math.min(window.innerHeight, viewport.bottom);
-      const values = items.map(item => {
-        const rect = item.getBoundingClientRect();
-        const fadeDistance = Math.max(1, Math.min(135, rect.height * 0.75, (bottom - top) * 0.25));
-        const edgeDistance = Math.min(rect.bottom - top, bottom - rect.top);
-        const progress = Math.max(0, Math.min(1, edgeDistance / fadeDistance));
-        return 0.38 + 0.62 * progress * progress * (3 - 2 * progress);
-      });
-      items.forEach((item, index) => {
-        item.style.setProperty('--scroll-opacity', values[index].toFixed(3));
-      });
-    }
-  }
-
-  function schedule() {
-    if (!motion.matches && !frame) frame = requestAnimationFrame(update);
-  }
-
-  const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null;
-  for (const {screen, items} of screens) {
-    resizeObserver?.observe(screen);
-    items.forEach(item => {
-      item.classList.add('scroll-fade');
-      resizeObserver?.observe(item);
-    });
-  }
-  window.addEventListener('scroll', schedule, {passive: true});
-  window.addEventListener('resize', schedule);
-  window.addEventListener('pageshow', schedule);
-  motion.addEventListener('change', schedule);
-  schedule();
-})();
-</script>
 <script id="genre-cylinder">
 document.querySelectorAll('.playing-covers').forEach(stage => {
   const cards = Array.from(stage.children);
@@ -3307,13 +3251,14 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     '.auction-highlight', '.portfolio-doc-item', '#history-screen .h17-intro',
     '#history-screen .h17-scroll', '#history-screen .h17-panel-content',
     '.playing-inline-stats .stat', '.playing-expanded-heading',
-    '.games-event-card', '.games-collection-card'
+    '.games-event-card', '.games-experience-item', '.games-collection-card', '.info-lower-card'
   ].join(','));
   const observer = new IntersectionObserver(entries => {
     const entering = entries.filter(entry => entry.isIntersecting)
       .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
     entering.forEach(({target}, index) => {
       observer.unobserve(target);
+      target.classList.remove('portfolio-scroll-pending');
       if (target.contains(document.activeElement)) return;
       target.style.setProperty('--scroll-enter-delay', Math.min(index * 65, 195) + 'ms');
       if (target.matches('.auction-highlight, .portfolio-doc-item, .games-collection-card')) {
@@ -3321,7 +3266,13 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       }
       target.classList.add('portfolio-scroll-enter');
     });
-  }, {rootMargin:'0px 0px -24px 0px'});
-  elements.forEach(element => observer.observe(element));
+  }, {rootMargin:'0px 0px -52px 0px'});
+  const belowViewport = Array.from(elements).filter(element =>
+    element.getBoundingClientRect().top >= window.innerHeight
+  );
+  belowViewport.forEach(element => {
+    element.classList.add('portfolio-scroll-pending');
+    observer.observe(element);
+  });
 })();
 </script></body></html>
