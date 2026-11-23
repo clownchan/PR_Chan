@@ -2979,9 +2979,10 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   if (!cards.length) return;
   stage.classList.add('cylinder');
   stage.setAttribute('aria-label','장르별 게임 표지. 좌우 방향키 또는 드래그로 회전');
-  let angle = 0, speed = 0, frame = 0, previous = 0, drag = null;
+  let angle = 0, targetAngle = 0, speed = 0, frame = 0, previous = 0, drag = null;
+  let width = stage.clientWidth;
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   function draw() {
-    const width = stage.clientWidth;
     if (!width) return;
     const radius = width * 0.42;
     cards.forEach((card, i) => {
@@ -2996,44 +2997,75 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   function stop() {
     cancelAnimationFrame(frame);
     frame = previous = speed = 0;
+    targetAngle = angle;
+  }
+  function requestDraw() {
+    if (!frame) frame = requestAnimationFrame(tick);
   }
   function tick(now) {
-    if (!stage.clientWidth || document.hidden) { stop(); return; }
-    angle += speed * Math.min(40, previous ? now - previous : 0) / 1000;
+    frame = 0;
+    if (!width || document.hidden) { stop(); return; }
+    const elapsed = previous ? Math.min(32, now - previous) : 16;
     previous = now;
+    if (!drag) {
+      targetAngle += speed * elapsed / 1000;
+      if (gliding) speed *= Math.exp(-elapsed / 170);
+    }
+    const remainder = targetAngle - angle;
+    angle = reducedMotion.matches || Math.abs(remainder) < 0.001
+      ? targetAngle : angle + remainder * (1 - Math.exp(-elapsed / 28));
     draw();
-    frame = requestAnimationFrame(tick);
+    if (Math.abs(targetAngle - angle) >= 0.001 || Math.abs(speed) > 0.015) requestDraw();
+    else { previous = speed = 0; }
   }
+  let gliding = false;
   stage.addEventListener('pointermove', e => {
     if (drag && e.pointerId === drag.id) {
-      angle += (e.clientX - drag.x) / Math.max(50, stage.clientWidth * 0.35);
+      const delta = (e.clientX - drag.x) / Math.max(80, width * 0.48);
+      const elapsed = Math.max(8, e.timeStamp - drag.time);
+      targetAngle += delta;
+      drag.velocity = drag.velocity * 0.55 + delta * 1000 / elapsed * 0.45;
       drag.x = e.clientX;
-      draw();
-    } else if (e.pointerType === 'mouse') {
+      drag.time = e.timeStamp;
+      requestDraw();
+    } else if (e.pointerType === 'mouse' && !reducedMotion.matches) {
       const rect = stage.getBoundingClientRect();
       const offset = (e.clientX - rect.left) / rect.width * 2 - 1;
-      if (Math.abs(offset) < 0.12) { stop(); return; }
-      speed = offset * 1.5;
-      if (!frame) frame = requestAnimationFrame(tick);
+      gliding = false;
+      speed = Math.abs(offset) < 0.12 ? 0 : offset * 1.5;
+      requestDraw();
     }
   });
-  stage.addEventListener('pointerleave', stop);
+  stage.addEventListener('pointerleave', () => { if (!drag && !gliding) speed = 0; });
   stage.addEventListener('pointerdown', e => {
     if (!e.isPrimary || e.button !== 0) return;
     stop();
-    drag = {id:e.pointerId, x:e.clientX};
+    drag = {id:e.pointerId, x:e.clientX, time:e.timeStamp, velocity:0};
     stage.setPointerCapture(e.pointerId);
   });
-  stage.addEventListener('lostpointercapture', () => { drag = null; });
+  function endDrag(e, coast) {
+    if (drag?.id !== e.pointerId) return;
+    speed = coast && !reducedMotion.matches && e.timeStamp - drag.time < 85
+      ? Math.max(-3, Math.min(3, drag.velocity)) : 0;
+    drag = null;
+    gliding = true;
+    requestDraw();
+  }
+  stage.addEventListener('pointerup', e => endDrag(e, true));
+  stage.addEventListener('pointercancel', e => endDrag(e, false));
+  stage.addEventListener('lostpointercapture', e => endDrag(e, false));
   stage.addEventListener('dragstart', e => e.preventDefault());
   stage.addEventListener('keydown', e => {
     if (!['ArrowLeft','ArrowRight'].includes(e.key)) return;
     e.preventDefault();
     stop();
-    angle += (e.key === 'ArrowLeft' ? -1 : 1) * 2 * Math.PI / cards.length;
-    draw();
+    targetAngle += (e.key === 'ArrowLeft' ? -1 : 1) * 2 * Math.PI / cards.length;
+    requestDraw();
   });
-  new ResizeObserver(draw).observe(stage);
+  new ResizeObserver(([entry]) => {
+    width = entry.contentRect.width;
+    draw();
+  }).observe(stage);
   draw();
 });
 </script>
@@ -3078,10 +3110,10 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       return;
     }
     const start=performance.now();
-    const duration=Math.abs(target-from)<0.5?560:780;
+    const duration=Math.abs(target-from)<0.5?400:580;
     function frame(now){
       const t=Math.min(1,(now-start)/duration);
-      position=from+(target-from)*t*t*(3-2*t);
+      position=target+(from-target)*(1-t)**3;
       draw();
       if(t<1)animation=requestAnimationFrame(frame);
     }
@@ -3123,6 +3155,17 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     if(e.key==='Enter'||e.key===' '){e.preventDefault();openImage()}
   };
   let gesture=null;
+  let dragFrame=0;
+  function followPointer(now){
+    dragFrame=0;
+    if(!gesture?.dragging)return;
+    const elapsed=gesture.frameTime?Math.min(32,now-gesture.frameTime):16;
+    gesture.frameTime=now;
+    const distance=gesture.target-position;
+    position=Math.abs(distance)<0.001?gesture.target:position+distance*(1-Math.exp(-elapsed/32));
+    draw();
+    if(position!==gesture.target)dragFrame=requestAnimationFrame(followPointer);
+  }
   stage.onpointerdown=event=>{
     if(!event.isPrimary||event.button!==0)return;
     if(event.pointerType==="mouse"&&!slides.includes(event.target))return;
@@ -3130,6 +3173,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     gesture.mouse=event.pointerType==="mouse" && gesture.slide>=0;
     cancelAnimationFrame(animation);
     gesture.origin=position;
+    gesture.width=stage.clientWidth;
     stage.setPointerCapture(event.pointerId);
   };
   stage.onpointermove=event=>{
@@ -3138,12 +3182,13 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     if(!gesture.dragging&&Math.abs(dx)<6)return;
     gesture.dragging=true;
     stage.classList.add('is-dragging');
-    cancelAnimationFrame(animation);
-    const distance=stage.clientWidth*1.5;
-    position=gesture.origin-Math.max(-0.65,Math.min(0.65,dx/distance));
-    draw();
+    const distance=gesture.width*1.5;
+    gesture.target=gesture.origin-Math.max(-0.65,Math.min(0.65,dx/distance));
+    if(!dragFrame){gesture.frameTime=0;dragFrame=requestAnimationFrame(followPointer)}
   };
   stage.onlostpointercapture=()=>{
+    cancelAnimationFrame(dragFrame);
+    dragFrame=0;
     if(gesture?.dragging)show(current);
     gesture=null;
     stage.classList.remove('is-dragging');
@@ -3151,6 +3196,8 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   stage.onpointerup=event=>{
     if(gesture?.id!==event.pointerId)return;
     const {x,y,slide,mouse,dragging}=gesture;
+    cancelAnimationFrame(dragFrame);
+    dragFrame=0;
     stage.classList.remove("is-dragging");
     gesture=null;
     const dx=event.clientX-x;
