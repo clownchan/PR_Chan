@@ -3035,15 +3035,20 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       drag.x = e.clientX;
       drag.time = e.timeStamp;
       requestDraw();
-    } else if (e.pointerType === 'mouse' && !reducedMotion.matches) {
+    } else {
+      rotateOnHover(e);
+    }
+  });
+  function rotateOnHover(e) {
+    if (drag || e.pointerType !== 'mouse') return;
       const rect = stage.getBoundingClientRect();
       const offset = (e.clientX - rect.left) / rect.width * 2 - 1;
       gliding = false;
       if (Math.abs(offset) < 0.12) { stop(); return; }
       speed = offset * 1.5;
       requestDraw();
-    }
-  });
+  }
+  stage.addEventListener('pointerenter', rotateOnHover);
   stage.addEventListener('pointerleave', () => { if (!drag && !gliding) stop(); });
   stage.addEventListener('pointerdown', e => {
     if (!e.isPrimary || e.button !== 0) return;
@@ -3106,7 +3111,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       slide.style.zIndex=Math.round(depth*100);
     });
   }
-  function show(index){
+  function show(index, fromMouseDrag=false){
     current=(index+slides.length)%slides.length;
     slides.forEach((slide,i)=>{
       slide.setAttribute('aria-hidden',String(i!==current));
@@ -3117,16 +3122,17 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     cancelAnimationFrame(animation);
     const from=position;
     const target=current+slides.length*Math.round((from-current)/slides.length);
-    if(from===target||matchMedia('(prefers-reduced-motion: reduce)').matches){
+    if(from===target||(!fromMouseDrag && matchMedia('(prefers-reduced-motion: reduce)').matches)){
       position=target;
       draw();
       return;
     }
     const start=performance.now();
-    const duration=Math.abs(target-from)<0.5?400:580;
+    const duration=fromMouseDrag?440:Math.abs(target-from)<0.5?400:580;
     function frame(now){
       const t=Math.min(1,(now-start)/duration);
-      position=target+(from-target)*(1-t)**3;
+      const progress=fromMouseDrag?t*t*(3-2*t):1-(1-t)**3;
+      position=from+(target-from)*progress;
       draw();
       if(t<1)animation=requestAnimationFrame(frame);
     }
@@ -3175,7 +3181,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     const elapsed=gesture.frameTime?Math.min(32,now-gesture.frameTime):16;
     gesture.frameTime=now;
     const distance=gesture.target-position;
-    position=Math.abs(distance)<0.001?gesture.target:position+distance*(1-Math.exp(-elapsed/32));
+    position=Math.abs(distance)<0.001?gesture.target:position+distance*(1-Math.exp(-elapsed/13));
     draw();
     if(position!==gesture.target)dragFrame=requestAnimationFrame(followPointer);
   }
@@ -3195,14 +3201,14 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     if(!gesture.dragging&&Math.abs(dx)<6)return;
     gesture.dragging=true;
     stage.classList.add('is-dragging');
-    const distance=gesture.width*1.5;
+    const distance=gesture.width*0.68;
     gesture.target=gesture.origin-Math.max(-0.65,Math.min(0.65,dx/distance));
     if(!dragFrame){gesture.frameTime=0;dragFrame=requestAnimationFrame(followPointer)}
   };
   stage.onlostpointercapture=()=>{
     cancelAnimationFrame(dragFrame);
     dragFrame=0;
-    if(gesture?.dragging)show(current);
+    if(gesture?.dragging)show(current,true);
     gesture=null;
     stage.classList.remove('is-dragging');
   };
@@ -3216,9 +3222,9 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     const dx=event.clientX-x;
     const dy=event.clientY-y;
     if(Math.abs(dx)>(mouse?Math.max(72,stage.clientWidth*0.29):32)&&Math.abs(dx)>Math.abs(dy)){
-      show(current+(dx<0?1:-1));
+      show(current+(dx<0?1:-1),mouse);
     }else if(dragging){
-      show(current);
+      show(current,true);
     }else if(Math.abs(dx)<8&&Math.abs(dy)<8&&slide>=0){
       openImage(slide);
 
