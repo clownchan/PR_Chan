@@ -1793,6 +1793,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 .ai-media-slot--link { min-height: 88px; }
 .ai-media-slot--video { min-height: 160px; aspect-ratio: 16 / 7; }
 .auction-highlight { margin:24px auto; width:min(100%,320px); text-align:center; }
+.night-highlight { width:min(100%,880px); }
 .auction-highlight video { display:block; width:100%; height:auto; border-radius:12px; background:#231b15; }
 .auction-highlight figcaption { margin-top:8px; color:#4e544c; font-size:14px; }
 .ai-auction-art { background: #222b28; border-radius: 5px; padding: 14px; text-align: center; }
@@ -2091,8 +2092,9 @@ html:has(.studio-view[open]){overflow:hidden}
         <h2 id="ai-night-title">야간자율학습</h2>
         <p class="ai-summary">밤의 학교에서 물품을 회수하고 괴이를 피해 탈출하는 Unity 3D 게임 · 개발 중</p>
       </header>
-      <figure class="ai-media-slot ai-media-slot--video">
-        <figcaption><small>영상 자리</small><strong>개발 중 빌드 플레이</strong><span>학교 진입 → 조명 아래 탐색 → 물품 회수 → 경비원과 마주친 뒤 탈출하는 흐름을 담은 짧은 영상.</span></figcaption>
+      <figure class="auction-highlight night-highlight">
+        <video width="1280" height="720" src="./assets/night-highlight.mp4" poster="./assets/night-highlight-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
+        <figcaption>개발 중 빌드 플레이 하이라이트</figcaption>
       </figure>
       <h3>AI 모델을 Unity에 적용</h3>
       <p>Tripo로 만든 캐릭터에 걷기·달리기 동작을 붙이고 손전등이 손에 맞도록 조정했습니다. 학교 문과 계단 조명도 실제 이동 경로에 맞췄습니다.</p>
