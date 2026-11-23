@@ -1737,6 +1737,12 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
  #games-screen .games-experience-item:last-child {grid-column:auto;grid-template-columns:37% minmax(0,1fr);}
 }
 </style>
+<style>
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-fade { opacity: var(--scroll-opacity, 1); }
+  .scroll-fade:focus-within { opacity: 1; }
+}
+</style>
 </head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><div class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
@@ -2426,4 +2432,56 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
 </script>
 
 
+<script id="scroll-fade">
+(() => {
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const selectors = [
+    '.home-about-photo', '.home-about-copy', '.info-identity', '.info-facts',
+    '.info-history-section', '.info-lower-card', '.portfolio-doc-item',
+    '.games-experience-item', '.games-collection-card', '.h17-panel'
+  ];
+  const screens = Array.from(document.querySelectorAll('.track > .screen'), screen => ({
+    screen,
+    items: Array.from(screen.querySelectorAll(selectors.join(', ')))
+  })).filter(({items}) => items.length);
+  let frame = 0;
+
+  function update() {
+    frame = 0;
+    for (const {screen, items} of screens) {
+      const viewport = screen.getBoundingClientRect();
+      const top = Math.max(0, viewport.top);
+      const bottom = Math.min(window.innerHeight, viewport.bottom);
+      const values = items.map(item => {
+        const rect = item.getBoundingClientRect();
+        const fadeDistance = Math.max(1, Math.min(96, rect.height * 0.65, (bottom - top) * 0.2));
+        const edgeDistance = Math.min(rect.bottom - top, bottom - rect.top);
+        const progress = Math.max(0, Math.min(1, edgeDistance / fadeDistance));
+        return progress * progress * (3 - 2 * progress);
+      });
+      items.forEach((item, index) => {
+        item.style.setProperty('--scroll-opacity', values[index].toFixed(3));
+      });
+    }
+  }
+
+  function schedule() {
+    if (!motion.matches && !frame) frame = requestAnimationFrame(update);
+  }
+
+  const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(schedule) : null;
+  for (const {screen, items} of screens) {
+    screen.addEventListener('scroll', schedule, {passive: true});
+    resizeObserver?.observe(screen);
+    items.forEach(item => {
+      item.classList.add('scroll-fade');
+      resizeObserver?.observe(item);
+    });
+  }
+  window.addEventListener('resize', schedule);
+  window.addEventListener('pageshow', schedule);
+  motion.addEventListener('change', schedule);
+  schedule();
+})();
+</script>
 </body></html>
