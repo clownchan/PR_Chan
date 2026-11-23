@@ -2,19 +2,19 @@
 
 
 <html lang="ko"><head>
-<meta content="기억에 남을 재미를, 설득력 있는 설계로. 게임기획자의 플레이 경험과 시스템 기획 프로젝트를 담은 포트폴리오입니다." name="description"/>
+<meta content="게임 안팎에서 얻은 발견을, 플레이할 수 있는 재미로. 게임기획자의 플레이 경험과 시스템 기획 프로젝트를 담은 포트폴리오입니다." name="description"/>
 <meta content="website" property="og:type"/>
 <meta content="ko_KR" property="og:locale"/>
 <meta content="Game Design Portfolio" property="og:site_name"/>
 <meta content="이찬 | 게임 기획자 포트폴리오" property="og:title"/>
-<meta content="기억에 남을 재미를, 설득력 있는 설계로. 게임 플레이 경험과 시스템 기획 프로젝트를 소개합니다." property="og:description"/>
+<meta content="게임 안팎에서 얻은 발견을, 플레이할 수 있는 재미로. 게임 플레이 경험과 시스템 기획 프로젝트를 소개합니다." property="og:description"/>
 <meta content="https://clownchan.github.io/PR_Chan/" property="og:url"/>
 <meta content="https://clownchan.github.io/PR_Chan/assets/share-thumbnail.jpg" property="og:image"/>
 <meta content="https://clownchan.github.io/PR_Chan/assets/share-thumbnail.jpg" property="og:image:secure_url"/>
 <meta content="image/jpeg" property="og:image:type"/>
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
-<meta content="이찬 게임 기획자 포트폴리오, 기억에 남을 재미를 설득력 있는 설계로" property="og:image:alt"/>
+<meta content="이찬 게임 기획자 포트폴리오, 게임 안팎에서 얻은 발견을, 플레이할 수 있는 재미로" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="이찬 | 게임 기획자 포트폴리오" name="twitter:title"/>
 <meta content="게임 플레이 경험과 시스템 기획 프로젝트를 소개합니다." name="twitter:description"/>
@@ -1746,9 +1746,6 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 <style>
 .ai-wrap { padding-bottom: 1rem; }
 .ai-lead { color: #535950; font-size: clamp(16px, 2vw, 21px); line-height: 1.7; }
-.ai-index { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 38px; }
-.ai-index a { border: 1px solid var(--line); border-radius: 30px; background: #fff; color: var(--ink); padding: 9px 15px; font-weight: 750; text-decoration: none; }
-.ai-index a:hover, .ai-index a:focus-visible { background: var(--accent); border-color: var(--accent); }
 .ai-case { max-width: 1040px; scroll-margin-top: 18px; padding: clamp(20px, 5vw, 54px); background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--accent); margin-bottom: 24px; }
 .ai-case h2 { margin: 0; font-size: clamp(29px, 5.3vw, 55px); line-height: 1.13; letter-spacing: -.065em; overflow-wrap: anywhere; }
 .ai-case h3 { margin: 26px 0 6px; font-size: clamp(17px, 2.4vw, 22px); letter-spacing: -.035em; }
@@ -1842,12 +1839,6 @@ body { background: var(--bg); }
 .hl { box-shadow: inset 0 -.19em var(--accent); }
 .floating-page-nav { background: #1d1b16; }
 .floating-page-nav button.current { background: var(--accent); }
-#ai-screen .ai-index { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
-#ai-screen .ai-index a { display: grid; align-content: space-between; gap: 12px; min-height: 108px; padding: 15px; border: 1px solid #dcd3bb; border-radius: 0; overflow-wrap: anywhere; }
-.ai-index a:first-child { background: var(--accent); }
-.ai-index a > small { display: block; color: #5f5332; font-size: 12px; }
-.ai-index a > span { display: flex; align-items: baseline; justify-content: space-between; gap: 6px; }
-.ai-index a > span::after { content: '↓'; flex-shrink: 0; }
 #ai-screen .ai-case { max-width: none; border: 0; border-top: 2px solid var(--ink); padding: clamp(20px,4vw,48px) 0; background: transparent; }
 #ai-screen .ai-case > p, #ai-screen .ai-case > header { max-width: 76ch; }
 .ai-media-slot { background: #fcf9ef; }
@@ -1865,8 +1856,6 @@ body { background: var(--bg); }
 .history-detail-end { display: flex; justify-content: flex-end; padding: 5px 0 20px; }
 .history-detail-end .history-detail-toggle { margin: 0; }
 @media (max-width: 560px) {
-  #ai-screen .ai-index { grid-template-columns: 1fr; gap: 6px; }
-  #ai-screen .ai-index a { min-height: 0; gap: 3px; padding: 9px 12px; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -1895,6 +1884,16 @@ body { background: var(--bg); }
 #playing-expanded .playing-covers.cylinder > * { position:absolute; top:50%; left:50%; width:clamp(94px,13vw,154px); max-width:44%; margin:0; transform-origin:center; }
 
 </style><style>
+#hero-title .line-one {white-space:normal}
+.ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
+.ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
+.ai-topic--wide{grid-column:1/-1}
+.ai-case .ai-topic h3{margin:0 0 12px;font-size:clamp(17px,2vw,22px);line-height:1.4}
+.ai-topic h3::before{content:"";display:block;width:26px;height:3px;margin-bottom:10px;background:var(--accent)}
+.ai-case .ai-topic p:last-child{margin-bottom:0}
+.ai-topic ul{margin:0;padding-left:1.15em}
+.ai-topic li+li{margin-top:8px}
+@media(max-width:700px){.ai-topics{grid-template-columns:1fr;gap:10px}}
 .ai-title-logo{display:block;width:min(100%,360px);height:auto;margin:0 0 12px}
 #ai-circus-title{display:flex;align-items:center;gap:.2em} #ai-circus-title img{width:1.2em;height:1.2em;flex:none;object-fit:contain}
 @media(pointer:fine){.studio-stage img[aria-hidden]{cursor:grab}.studio-stage.is-dragging,.studio-stage.is-dragging img[aria-hidden]{cursor:grabbing}}
@@ -1934,7 +1933,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <div class="container">
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
-<h1 class="reveal delay" id="hero-title"><span class="line-one">기억에 남을 재미를,</span>설득력 있는 <span class="mark">설계</span>로<span class="home-hero-period">.</span></h1>
+<h1 class="reveal delay" id="hero-title"><span class="line-one">게임 안팎에서 얻은 발견을,</span>플레이할 수 있는 <span class="mark">재미</span>로<span class="home-hero-period">.</span></h1>
 <div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div></div>
 </div>
 </div>
@@ -1946,13 +1945,17 @@ html:has(.studio-view[open]){overflow:hidden}
 <div class="home-about-kicker">GET TO KNOW ME</div>
 <h2 id="home-about-heading">ABOUT ME<span class="home-about-period">.</span></h2>
 <div aria-label="게임 기획자 자기소개" class="home-about-writing">
-<h3 class="home-about-statement">재미를 발견하고, 설계하고,<br class="home-about-statement-break"/> 더 나은 방법을 고민합니다.</h3>
+<h3 class="home-about-statement">게임을 깊이 즐기고, 재미를 만드는 선택을 설계합니다.</h3>
 <div class="home-about-paragraphs">
-<p>다양한 장르의 게임을 깊이 경험하며 <strong>플레이어의 선택과 재미를 만드는 시스템</strong>에 관심을 가져왔습니다.</p>
-<p>광고·마케팅 기획에서는 타깃의 요구를 분석하고 아이디어를 설득력 있는 제안으로 구체화하여 <strong>공모전 수상</strong>이라는 성과를 거두었습니다.</p>
-<p>또한 TRPG 마스터 활동과 게임 시스템 기획서 제작을 통해 <strong>아이디어를 실제로 작동하는 규칙과 데이터로 설계하는 역량</strong>을 발전시켜 왔습니다.</p>
-<p>최근에는 생성형 AI와 Dify를 활용한 게임기획 보조 도구를 개발하며 <strong>반복적인 검토 업무를 개선하고 기획 프로세스를 효율화하는 방법</strong>까지 탐구하고 있습니다.</p>
-<p>다양한 경험을 바탕으로 재미의 이유를 분석하고, 그 가치를 플레이어에게 전달할 수 있는 게임 기획자를 지향합니다.</p>
+<p>다양한 장르의 게임을 플레이하며 <strong>어떤 규칙이 플레이어의 선택을 바꾸고, 어떤 경험이 다시 게임을 켜게 하는지</strong> 관찰해 왔습니다. 게임 음악 공연, 전시, e스포츠 현장을 찾아가며 사람들이 게임을 즐기는 방식에도 관심을 넓혔습니다.</p>
+
+<p>광고·마케팅 기획을 하며 <strong>사람들이 무엇을 원하는지 파악하고, 아이디어를 설득력 있는 제안으로 구체화하는 법</strong>을 배웠습니다. 팀 프로젝트에서는 기획 방향과 역할을 조율하며 아이디어를 결과물로 만드는 과정도 경험했습니다.</p>
+
+<p>보드게임을 제작하고 TRPG 세션을 운영하면서, 같은 규칙도 플레이어의 선택에 따라 다르게 작동한다는 걸 배웠습니다. 플레이 중 예상과 달랐던 순간을 살피며 규칙을 다듬었고, 상용 게임에서 발견한 개선점은 시스템 기획서로 정리했습니다.</p>
+
+<p>최근에는 <strong>AI를 통해 기획을 플레이 가능한 게임으로 구현하고, 직접 검수하며 수정하는 과정</strong>을 이어가고 있습니다. 기획과 구현, 검수 기록을 연결하는 제작 도구도 만들어 다음 수정의 근거를 남기고 있습니다.</p>
+
+<p><strong>게임과 게임 밖에서 쌓은 다양한 경험을 저만의 방식으로 연결해, 결과로 만들어냅니다.</strong></p>
 </div>
 </div>
 </div>
@@ -2022,11 +2025,6 @@ html:has(.studio-view[open]){overflow:hidden}
   <div class="wrap ai-wrap">
     <h1 class="page-title" id="ai-title">AI<span class="hl">.</span></h1>
     <p class="ai-lead">AI와 함께 만든 게임과 제작 도구를 소개합니다.</p>
-    <nav class="ai-index" aria-label="AI 프로젝트 바로가기">
-      <a href="#ai-night"><small>Unity 3D 게임</small><span>야간자율학습</span></a>
-      <a href="#ai-auction"><small>모바일 웹게임</small><span>ClockWork Auction</span></a>
-      <a href="#ai-circus"><small>게임 제작 도구</small><span>Circus Studio</span></a>
-    </nav>
     <article class="ai-case" id="ai-night" aria-labelledby="ai-night-title">
       <header>
         <h2 id="ai-night-title"><img class="ai-title-logo" src="./assets/ai-night-heading.webp" alt="야간자율학습"></h2>
@@ -2037,17 +2035,27 @@ html:has(.studio-view[open]){overflow:hidden}
         <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
         <figcaption>개발 중 빌드 플레이 하이라이트</figcaption>
       </figure>
+      <div class="ai-topics">
+        <section class="ai-topic">
       <h3>웹에서 핵심 재미를 확인하고 Unity로 옮기기</h3>
       <p>웹 프로토타입으로 파밍과 탈출의 재미를 확인한 뒤, 학교 공간과 조명, 1인칭 시야를 구현하기 위해 Unity로 옮겼습니다.</p>
       <p>제가 기본 규칙을 쓰고 Codex와 예외를 정리했습니다. Claude Code가 승인된 기획을 구현하면, 빌드에서 발견한 문제를 Circus Studio에 기록해 다음 패치에 반영했습니다.</p>
+        </section>
+        <section class="ai-topic">
       <h3>카메라 별로 모델링을 다르게 출력하기</h3>
       <p>Tripo 모델을 Unity에 넣자 머리가 1인칭 시야를 가렸습니다. Claude Code와 카메라별 표시 범위를 나눠 1인칭에서는 머리를 숨기고 거울에는 전신을 표시했습니다.</p>
       <p>어두운 교실에서는 거울에만 별도 재질을 적용했습니다. 실제 이동 속도에 걷기·달리기 동작을 맞추고 손전등 그립도 조정했습니다.</p>
+        </section>
+        <section class="ai-topic">
       <h3>학교 구조가 달라져도 탈출할 길은 확보하기</h3>
       <p>학교 구조가 달라져도 배전함과 탈출구까지 갈 수 있어야 했습니다.</p>
       <p>Codex와 <strong>복도·계단 연결 → 필수 위치 확보 → 방과 아이템 배치 → 경로 검사</strong> 순서를 정했습니다. 문제 배치는 같은 생성 번호로 재현하고, 어두운 복도에서는 조명으로 출입구와 단서를 드러냈습니다.</p>
+        </section>
+        <section class="ai-topic">
       <h3>위협적인 크리쳐에게서 벗어날 틈 만들기</h3>
       <p>추격의 위협을 유지하면서도 도망치거나 로커에 숨을 틈을 만들고 싶었습니다. Codex와 <strong>직접 본 위치</strong>와 <strong>소리를 들은 위치</strong>를 나눠, 시야가 끊긴 뒤 크리쳐가 따라갈 단서를 정했습니다.</p>
+        </section>
+      </div>
     </article>
     <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
       <header>
@@ -2064,16 +2072,22 @@ html:has(.studio-view[open]){overflow:hidden}
           <figcaption>플레이 하이라이트</figcaption>
         </figure>
       </div>
+      <div class="ai-topics">
+        <section class="ai-topic">
       <h3>세 라이벌이 서로 다른 입찰 고민을 만들도록 설계하기</h3>
       <ul>
         <li><strong>루루</strong>는 희귀품과 세트 완성에 집중해, 경쟁할지 다른 조합을 노릴지 고민하게 합니다.</li>
         <li><strong>모코</strong>는 초반에 아껴 후반에 따라잡으므로, 플레이어도 예산을 남겨야 합니다.</li>
         <li><strong>레오</strong>는 초반부터 맞입찰해, 가격을 더 올릴지 다음 기회를 기다릴지 판단하게 합니다.</li>
       </ul>
+        </section>
+        <section class="ai-topic">
       <h3>빈손 보정으로 첫 낙찰 기회 만들기</h3>
       <p>모코가 계속 빈손이면 후반에 따라잡기 어렵고, 입찰 한도를 계속 높이면 전체 낙찰가도 오를 수 있었습니다.</p>
       <p>Codex와 <strong>빈손일 때만 입찰 한도를 높이고 첫 낙찰 뒤 해제하는 규칙</strong>을 설계했습니다. 모코의 감정가 상한과 각 라이벌의 잔액 제한도 적용했습니다.</p>
       <p>Codex로 물품 순서를 고정하고 전략별 <strong>첫 낙찰 시점, 빈손 종료율, 평균 낙찰가</strong>를 비교했습니다.</p>
+        </section>
+        <section class="ai-topic ai-topic--wide">
       <h3>아트와 사운드로 경매 상황을 읽기 쉽게 만들기</h3>
       <p><strong>스팀펑크풍 사교클럽</strong>을 콘셉트로 배경·물품·표정의 역할을 나눠 AI에 지시했습니다. 모바일에서 현재가·남은 시간·입찰 버튼이 한눈에 보이도록 배치했습니다.</p>
       <p>루루는 여유로운 수집가, 모코는 신중한 실속파, 레오는 자신감 있는 견제형으로 표정과 분위기를 잡았습니다.</p>
@@ -2082,6 +2096,8 @@ html:has(.studio-view[open]){overflow:hidden}
         <figure><img src="./assets/portfolio-auction-ui.webp" loading="lazy" alt="현재가, 남은 시간, 라이벌과 입찰 버튼이 보이는 모바일 경매 화면"><figcaption>모바일 빌드에 적용된 경매 화면</figcaption></figure>
       </div>
       <p>입찰음은 가격 변화, 마감음은 남은 시간, 낙찰음은 결과 확정을 알립니다. 반복해 들어도 부담이 적고 <strong>각 상황을 소리로 구분</strong>할 수 있게 했습니다.</p>
+        </section>
+      </div>
     </article>
     <article class="ai-case" id="ai-circus" aria-labelledby="ai-circus-title">
       <header>
@@ -2089,6 +2105,8 @@ html:has(.studio-view[open]){overflow:hidden}
         <p class="ai-summary">Codex, Claude Code, Unity를 연결해 기획부터 구현·QA까지 관리하는 게임 제작 도구</p>
       </header>
       <p>기획과 구현·QA 기록이 여러 대화와 파일에 흩어져, <strong>어떤 기획을 어느 빌드에서 확인했는지</strong> 한곳에서 추적하려고 Circus Studio를 만들었습니다.</p>
+      <div class="ai-topics">
+        <section class="ai-topic ai-topic--wide">
       <h3>내가 승인한 기획을 개발 기준으로 삼기</h3>
       <p>제가 방향을 정하고 Codex와 초안을 다듬습니다. 승인한 기획은 개발 패키지로 전달되고, Claude Code가 구현해 빌드와 테스트 결과를 남깁니다.</p>
       <p>Codex와 <strong>승인한 기획과 구현 결과를 대조</strong>하고, 직접 플레이하며 발견한 문제와 다음 검수 항목을 빌드에 연결합니다.</p>
@@ -2111,6 +2129,8 @@ html:has(.studio-view[open]){overflow:hidden}
           </ol>
         </div>
       </figure>
+        </section>
+        <section class="ai-topic ai-topic--wide">
       <h3>Unity에 들어 있는 데이터와 리소스를 기획에 활용하기</h3>
       <p>Unity의 <strong>아이템 수치, 드롭 규칙, 프리팹</strong>을 불러와 다음 기획에 활용합니다. 리소스를 바꿀 때는 현재 파일과 교체 후보를 함께 확인합니다.</p>
       <p>표에서 바꾼 값은 기획 기준으로 저장합니다. Codex는 다음 기획에 참고하고, Claude Code는 제가 승인한 변경을 게임에 반영합니다.</p>
@@ -2125,6 +2145,8 @@ html:has(.studio-view[open]){overflow:hidden}
   </div>
   <div class="studio-controls"><button type="button" aria-label="이전 화면">←</button><strong aria-live="polite">1 / 5 · 프로젝트 대시보드</strong><button type="button" aria-label="다음 화면">→</button></div>
 </section>
+        </section>
+      </div>
     </article>
   </div>
 </section>
@@ -2895,21 +2917,6 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
   window.addEventListener('pageshow', schedule);
   motion.addEventListener('change', schedule);
   schedule();
-})();
-</script>
-<script>
-(() => {
-  const screen = document.getElementById('ai-screen');
-  screen.querySelectorAll('.ai-index a').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const target = document.getElementById(link.hash.slice(1));
-      if (!target) return;
-      scrollPortfolioTo(target);
-      target.tabIndex = -1;
-      target.focus({preventScroll: true});
-    });
-  });
 })();
 </script>
 <script id="genre-cylinder">
