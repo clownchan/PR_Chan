@@ -1947,14 +1947,14 @@ body { background: var(--bg); }
     100%{opacity:1;translate:0 0;scale:1}
   }
   #home-screen .hero-content .reveal{
-    animation:portfolio-build-in .64s cubic-bezier(.22,1,.36,1) both;
+    animation:portfolio-build-in .64s cubic-bezier(.22,1,.36,1) backwards;
   }
   #home-screen .hero-content .delay{animation-delay:.09s}
   #home-screen .hero-content .delay2{animation-delay:.22s}
-  .hero-photocards{animation:portfolio-build-in .76s .18s cubic-bezier(.22,1,.36,1) both}
-  .floating-page-nav{animation:portfolio-build-in .55s .22s cubic-bezier(.22,1,.36,1) both}
+  .hero-photocards{animation:portfolio-build-in .76s .18s cubic-bezier(.22,1,.36,1) backwards}
+  .floating-page-nav{animation:portfolio-build-in .55s .22s cubic-bezier(.22,1,.36,1) backwards}
   .floating-page-nav button,.contact-trigger,.portfolio-control-enter{
-    animation:portfolio-control-in .52s var(--control-delay,0s) cubic-bezier(.22,1,.36,1) both;
+    animation:portfolio-control-in .52s var(--control-delay,0s) cubic-bezier(.22,1,.36,1) backwards;
   }
   .floating-page-nav button:nth-child(1){--control-delay:.32s}
   .floating-page-nav button:nth-child(2){--control-delay:.38s}
