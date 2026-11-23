@@ -1889,6 +1889,7 @@ body { background: var(--bg); }
   --portfolio-gutter: clamp(18px, 5.5vw, 90px);
   --portfolio-section-space: clamp(42px, 7vw, 88px);
   --portfolio-divider: 1px solid var(--line);
+  --portfolio-section-divider: 3px solid var(--ink);
 }
 #track > .screen:not(#home-screen),
 #home-screen .home-about-section,
@@ -1896,6 +1897,7 @@ body { background: var(--bg); }
   padding: var(--portfolio-section-space) var(--portfolio-gutter);
   border-top: var(--portfolio-divider);
 }
+#track > .screen:not(#home-screen) {border-top:var(--portfolio-section-divider)}
 #track > .screen > .wrap,
 #home-screen .home-about-inner,
 #home-screen .home-profile-info-section .wrap {
@@ -1911,7 +1913,13 @@ body { background: var(--bg); }
 }
 #ai-screen .ai-case{border-top:var(--portfolio-divider);margin-bottom:0}
 #history-screen .h17-intro{border-bottom:var(--portfolio-divider)}
-#portfolio-page .portfolio-doc-item{border-bottom:var(--portfolio-divider)}
+#portfolio-page .portfolio-doc-item,
+#portfolio-page .portfolio-headline,
+#info .info-facts-category{border-bottom:var(--portfolio-divider)}
+#home-screen .profile-unified-life,
+#history-screen .history-detail-bottom section,
+#games-screen .playing-expanded-heading,
+#games-screen .games-culture-block{border-top:var(--portfolio-divider)}
 #hero-title .line-one {white-space:normal}
 .ai-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .ai-topic{min-width:0;padding:clamp(16px,3vw,28px);background:#fff;border:1px solid var(--line);border-radius:12px}
@@ -2174,7 +2182,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <p class="sub portfolio-lead">플레이를 통해 발견한 문제점을 <span class="portfolio-lead-tail">기획서로 구체화했습니다</span></p>
 <div class="portfolio-headline"><div><span>DOCUMENTS LIST</span></div></div>
 <div class="portfolio-doc-list"><a aria-label="몬길: 스타다이브 연계 스킬 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AA%AC%EA%B8%B8%EC%8A%A4%ED%83%80%EB%8B%A4%EC%9D%B4%EB%B8%8C_%EC%97%B0%EA%B3%84%EC%8A%A4%ED%82%AC.xlsx">
-<span class="portfolio-doc-index">01<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">01</span>
 <span aria-label="몬길: 스타다이브 연계 스킬 시스템 창작 기획서 표지" class="portfolio-doc-cover"><img alt="몬길: 스타다이브 연계 스킬 시스템 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_007.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">몬길: 스타다이브</span>
@@ -2184,7 +2192,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span aria-hidden="true" class="portfolio-doc-circle">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
 </a>
 <a aria-label="승리의 여신: 니케 신규 캐릭터 창작 기획서, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%A0%84%ED%88%AC_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%8B%A0%EA%B7%9C%EC%BA%90%EB%A6%AD%ED%84%B0.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">02<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">02</span>
 <span class="portfolio-doc-cover"><img alt="승리의 여신: 니케 캐릭터 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/nikke-character-cover.jpg"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">승리의 여신: 니케</span>
@@ -2194,7 +2202,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
 </a>
 <a aria-label="이터널 리턴 무기 선택 성장 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EA%B0%9C%EC%84%A0%EC%A0%9C%EC%95%88_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9D%B4%ED%84%B0%EB%84%90%EB%A6%AC%ED%84%B4_%EB%AC%B4%EA%B8%B0%EC%84%A0%ED%83%9D%EC%84%B1%EC%9E%A5.xlsx">
-<span class="portfolio-doc-index">03<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">03</span>
 <span aria-label="이터널 리턴 무기 선택 성장 시스템 제안서 표지" class="portfolio-doc-cover"><img alt="이터널 리턴 무기 선택 성장 시스템 제안서 표지" decoding="async" loading="lazy" src="./assets/img_005.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">이터널 리턴</span>
@@ -2204,7 +2212,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span aria-hidden="true" class="portfolio-doc-circle">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
 </a>
 <a aria-label="젠레스 존 제로 조건부 편성 스테이지, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%A0%A0%EB%A0%88%EC%8A%A4%EC%A1%B4%EC%A0%9C%EB%A1%9C_%EC%A1%B0%EA%B1%B4%EB%B6%80%ED%8E%B8%EC%84%B1%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">04<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">04</span>
 <span aria-label="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지" class="portfolio-doc-cover"><img alt="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_006.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">젠레스 존 제로</span>
@@ -2214,7 +2222,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
 </a>
 <a aria-label="승리의 여신: 니케 캐릭터 리캡 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A6%AC%EC%BA%A1.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">05<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">05</span>
 <span aria-label="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지" class="portfolio-doc-cover"><img alt="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_008.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">승리의 여신: 니케</span>
@@ -2224,7 +2232,7 @@ html:has(.studio-view[open]){overflow:hidden}
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
 </a>
 <a aria-label="붕괴: 스타레일 캐릭터 공략 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%97%AD%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%B6%95%EA%B4%B4%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC_%EC%BA%90%EB%A6%AD%ED%84%B0%EA%B3%B5%EB%9E%B5.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">06<span class="portfolio-doc-index-decor"></span></span>
+<span class="portfolio-doc-index">06</span>
 <span aria-label="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지" class="portfolio-doc-cover"><img alt="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지" decoding="async" loading="lazy" src="./assets/img_009.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">붕괴: 스타레일</span>
