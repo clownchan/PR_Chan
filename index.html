@@ -1071,7 +1071,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 
 /* PORTFOLIO: make the cover actual reading-size rather than a small icon. */
 #portfolio-page .portfolio-doc-item{
-  grid-template-columns:62px clamp(370px, 34vw, 510px) minmax(0, 1fr) 192px;
+  grid-template-columns:clamp(370px, 34vw, 510px) minmax(0, 1fr) 192px;
   column-gap:19px;
   min-height:0;
   padding:27px 16px 27px 24px;
@@ -1091,7 +1091,7 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 #portfolio-page .portfolio-doc-cta{font-size:13.2px;font-weight:750;color:#777c75;letter-spacing:-.025em}
 
 @media(max-width:1230px){
-  #portfolio-page .portfolio-doc-item{grid-template-columns:51px clamp(300px, 34vw, 410px) minmax(0,1fr) 164px;column-gap:15px}
+  #portfolio-page .portfolio-doc-item{grid-template-columns:clamp(300px, 34vw, 410px) minmax(0,1fr) 164px;column-gap:15px}
   #portfolio-page .portfolio-doc-action{column-gap:7px;grid-template-columns:minmax(0,1fr) 41px}
   #portfolio-page .portfolio-doc-format{font-size:13.2px}
   #portfolio-page .portfolio-doc-cta{font-size:12.2px}
@@ -1099,14 +1099,14 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
 }
 /* Intermediate widths: keep the cover legible and prioritize the action icon. */
 @media(max-width:1100px){
-  #portfolio-page .portfolio-doc-item{grid-template-columns:51px clamp(300px, 34vw, 410px) minmax(0,1fr) 92px}
+  #portfolio-page .portfolio-doc-item{grid-template-columns:clamp(300px, 34vw, 410px) minmax(0,1fr) 92px}
   #portfolio-page .portfolio-doc-action{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px}
   #portfolio-page .portfolio-doc-cta{display:none}
 }
 /* Tablet and mobile: let each thumbnail fill the row instead of shrinking it. */
 @media(max-width:960px){
   #portfolio-page .portfolio-doc-item{
-    grid-template-columns:58px minmax(0,1fr) 105px;
+    grid-template-columns:minmax(0,1fr) 105px;
     grid-template-rows:auto auto;
     column-gap:18px;row-gap:15px;
     padding:25px 10px 28px 16px;
@@ -1115,23 +1115,23 @@ body:has(#overlay.open) .contact-widget,body:has(#trpg-image-dialog[open]) .cont
   #portfolio-page .portfolio-doc-item:focus-visible{padding-left:16px}
   #portfolio-page .portfolio-doc-index{grid-column:1;grid-row:1/3;align-self:start;margin-top:5px;font-size:35px}
   #portfolio-page .portfolio-doc-index-decor{height:33px}
-  #portfolio-page .portfolio-doc-cover{grid-column:2/4;grid-row:1;max-width:650px;justify-self:start}
-  #portfolio-page .portfolio-doc-main{grid-column:2;grid-row:2;gap:7px;align-self:center}
-  #portfolio-page .portfolio-doc-action{grid-column:3;grid-row:2;align-self:center;justify-self:end}
+  #portfolio-page .portfolio-doc-cover{grid-column:1/3;grid-row:1;max-width:650px;justify-self:start}
+  #portfolio-page .portfolio-doc-main{grid-column:1;grid-row:2;gap:7px;align-self:center}
+  #portfolio-page .portfolio-doc-action{grid-column:2;grid-row:2;align-self:center;justify-self:end}
   #portfolio-page .portfolio-doc-title{font-size:clamp(23px,3vw,29px)}
 }
 @media(max-width:600px){
   #portfolio-page .portfolio-doc-item{
-    grid-template-columns:35px minmax(0,1fr) 46px;
+    grid-template-columns:minmax(0,1fr) 46px;
     column-gap:9px;row-gap:12px;padding:19px 10px 24px;
   }
   #portfolio-page .portfolio-doc-item:hover,
   #portfolio-page .portfolio-doc-item:focus-visible{padding-left:10px}
   #portfolio-page .portfolio-doc-index{font-size:27px;grid-column:1;grid-row:1/3;align-self:start;margin-top:2px}
   #portfolio-page .portfolio-doc-index-decor{display:none}
-  #portfolio-page .portfolio-doc-cover{grid-column:2/4;grid-row:1;max-width:none}
-  #portfolio-page .portfolio-doc-main{grid-column:2;grid-row:2;gap:4px}
-  #portfolio-page .portfolio-doc-action{grid-column:3;grid-row:2;align-self:center;justify-self:end;margin:0}
+  #portfolio-page .portfolio-doc-cover{grid-column:1/3;grid-row:1;max-width:none}
+  #portfolio-page .portfolio-doc-main{grid-column:1;grid-row:2;gap:4px}
+  #portfolio-page .portfolio-doc-action{grid-column:2;grid-row:2;align-self:center;justify-self:end;margin:0}
   #portfolio-page .portfolio-doc-game{font-size:11px}
   #portfolio-page .portfolio-doc-title{font-size:clamp(18px,4.5vw,23px)}
   #portfolio-page .portfolio-doc-category{font-size:10px}
@@ -2145,8 +2145,25 @@ html:has(.studio-view[open]){overflow:hidden}
 <h1 class="page-title">DOCUMENT<span class="hl">.</span></h1>
 <p class="sub portfolio-lead">플레이를 통해 발견한 문제점을 <span class="portfolio-lead-tail">기획서로 구체화했습니다</span></p>
 <div class="portfolio-headline"><div><span>DOCUMENTS LIST</span></div></div>
-<div class="portfolio-doc-list"><a aria-label="이터널 리턴 무기 선택 성장 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/05_%EC%9D%B4%EC%B0%AC_%EA%B0%9C%EC%84%A0%EC%A0%9C%EC%95%88_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9D%B4%ED%84%B0%EB%84%90%EB%A6%AC%ED%84%B4_%EB%AC%B4%EA%B8%B0%EC%84%A0%ED%83%9D%EC%84%B1%EC%9E%A5.xlsx">
-<span class="portfolio-doc-index">01<span class="portfolio-doc-index-decor"></span></span>
+<div class="portfolio-doc-list"><a aria-label="몬길: 스타다이브 연계 스킬 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AA%AC%EA%B8%B8%EC%8A%A4%ED%83%80%EB%8B%A4%EC%9D%B4%EB%B8%8C_%EC%97%B0%EA%B3%84%EC%8A%A4%ED%82%AC.xlsx">
+<span aria-label="몬길: 스타다이브 연계 스킬 시스템 창작 기획서 표지" class="portfolio-doc-cover"><img alt="몬길: 스타다이브 연계 스킬 시스템 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_007.png"/></span>
+<span class="portfolio-doc-main">
+<span class="portfolio-doc-game">몬길: 스타다이브</span>
+<strong class="portfolio-doc-title">연계 스킬 시스템</strong>
+<span class="portfolio-doc-category">창작 · 시스템 기획</span>
+</span>
+<span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span aria-hidden="true" class="portfolio-doc-circle">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
+</a>
+<a aria-label="승리의 여신: 니케 신규 캐릭터 창작 기획서, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%A0%84%ED%88%AC_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%8B%A0%EA%B7%9C%EC%BA%90%EB%A6%AD%ED%84%B0.pdf" rel="noopener noreferrer" target="_blank">
+<span class="portfolio-doc-cover"><img alt="승리의 여신: 니케 캐릭터 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/nikke-character-cover.png"/></span>
+<span class="portfolio-doc-main">
+<span class="portfolio-doc-game">승리의 여신: 니케</span>
+<strong class="portfolio-doc-title">신규 캐릭터 창작 기획</strong>
+<span class="portfolio-doc-category">창작 · 전투 기획</span>
+</span>
+<span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
+</a>
+<a aria-label="이터널 리턴 무기 선택 성장 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EA%B0%9C%EC%84%A0%EC%A0%9C%EC%95%88_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9D%B4%ED%84%B0%EB%84%90%EB%A6%AC%ED%84%B4_%EB%AC%B4%EA%B8%B0%EC%84%A0%ED%83%9D%EC%84%B1%EC%9E%A5.xlsx">
 <span aria-label="이터널 리턴 무기 선택 성장 시스템 제안서 표지" class="portfolio-doc-cover"><img alt="이터널 리턴 무기 선택 성장 시스템 제안서 표지" decoding="async" loading="lazy" src="./assets/img_005.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">이터널 리턴</span>
@@ -2155,8 +2172,7 @@ html:has(.studio-view[open]){overflow:hidden}
 </span>
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span aria-hidden="true" class="portfolio-doc-circle">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
 </a>
-<a aria-label="젠레스 존 제로 조건부 편성 스테이지, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/03_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%A0%A0%EB%A0%88%EC%8A%A4%EC%A1%B4%EC%A0%9C%EB%A1%9C_%EC%A1%B0%EA%B1%B4%EB%B6%80%ED%8E%B8%EC%84%B1%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">02<span class="portfolio-doc-index-decor"></span></span>
+<a aria-label="젠레스 존 제로 조건부 편성 스테이지, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%A0%A0%EB%A0%88%EC%8A%A4%EC%A1%B4%EC%A0%9C%EB%A1%9C_%EC%A1%B0%EA%B1%B4%EB%B6%80%ED%8E%B8%EC%84%B1%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%A7%80.pdf" rel="noopener noreferrer" target="_blank">
 <span aria-label="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지" class="portfolio-doc-cover"><img alt="젠레스 존 제로 조건부 편성 스테이지 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_006.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">젠레스 존 제로</span>
@@ -2165,18 +2181,7 @@ html:has(.studio-view[open]){overflow:hidden}
 </span>
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
 </a>
-<a aria-label="몬스터 길들이기: 스타다이브 연계 스킬 시스템, 원본 파일 다운로드" class="portfolio-doc-item" download="" href="./portfolio_documents/04_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AA%AC%EA%B8%B8%EC%8A%A4%ED%83%80%EB%8B%A4%EC%9D%B4%EB%B8%8C_%EC%97%B0%EA%B3%84%EC%8A%A4%ED%82%AC.xlsx">
-<span class="portfolio-doc-index">03<span class="portfolio-doc-index-decor"></span></span>
-<span aria-label="몬스터 길들이기: 스타다이브 연계 스킬 시스템 창작 기획서 표지" class="portfolio-doc-cover"><img alt="몬스터 길들이기: 스타다이브 연계 스킬 시스템 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_007.png"/></span>
-<span class="portfolio-doc-main">
-<span class="portfolio-doc-game">몬스터 길들이기: 스타다이브</span>
-<strong class="portfolio-doc-title">연계 스킬 시스템</strong>
-<span class="portfolio-doc-category">창작 · 시스템 기획</span>
-</span>
-<span class="portfolio-doc-action"><span class="portfolio-doc-format">XLSX</span><span aria-hidden="true" class="portfolio-doc-circle">↓</span><span class="portfolio-doc-cta">원본 파일 다운로드</span></span>
-</a>
-<a aria-label="승리의 여신: 니케 캐릭터 리캡 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/02_%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A6%AC%EC%BA%A1.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">04<span class="portfolio-doc-index-decor"></span></span>
+<a aria-label="승리의 여신: 니케 캐릭터 리캡 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%B0%BD%EC%9E%91%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%8A%B9%EB%A6%AC%EC%9D%98%EC%97%AC%EC%8B%A0%EB%8B%88%EC%BC%80_%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A6%AC%EC%BA%A1.pdf" rel="noopener noreferrer" target="_blank">
 <span aria-label="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지" class="portfolio-doc-cover"><img alt="승리의 여신: 니케 캐릭터 리캡 시스템 창작 기획서 표지" decoding="async" loading="lazy" src="./assets/img_008.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">승리의 여신: 니케</span>
@@ -2185,8 +2190,7 @@ html:has(.studio-view[open]){overflow:hidden}
 </span>
 <span class="portfolio-doc-action"><span class="portfolio-doc-format">PDF</span><span aria-hidden="true" class="portfolio-doc-circle">↗</span><span class="portfolio-doc-cta">PDF 문서 열기</span></span>
 </a>
-<a aria-label="붕괴: 스타레일 캐릭터 공략 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/01_%EC%9D%B4%EC%B0%AC_%EC%97%AD%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%B6%95%EA%B4%B4%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC_%EC%BA%90%EB%A6%AD%ED%84%B0%EA%B3%B5%EB%9E%B5.pdf" rel="noopener noreferrer" target="_blank">
-<span class="portfolio-doc-index">05<span class="portfolio-doc-index-decor"></span></span>
+<a aria-label="붕괴: 스타레일 캐릭터 공략 시스템, PDF 문서 열기" class="portfolio-doc-item" href="./portfolio_documents/%EC%9D%B4%EC%B0%AC_%EC%97%AD%EA%B8%B0%ED%9A%8D_%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%B6%95%EA%B4%B4%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC_%EC%BA%90%EB%A6%AD%ED%84%B0%EA%B3%B5%EB%9E%B5.pdf" rel="noopener noreferrer" target="_blank">
 <span aria-label="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지" class="portfolio-doc-cover"><img alt="붕괴: 스타레일 캐릭터 공략 시스템 역기획서 표지" decoding="async" loading="lazy" src="./assets/img_009.png"/></span>
 <span class="portfolio-doc-main">
 <span class="portfolio-doc-game">붕괴: 스타레일</span>
