@@ -1842,6 +1842,13 @@ body { background: var(--bg); }
 #history-inline[hidden] { display: none; }
 #history-inline .history-detail-content { max-width: 100%; }
 #history-inline .trpg-gallery-item { text-decoration: none; }
+.history-detail-toggle { justify-self: start; margin: 0 clamp(16px, 3vw, 29px) 18px; grid-column: 1 / -1; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: #fffdf5; color: var(--ink); font-weight: 750; font-size: 13px; }
+.history-detail-toggle:hover, .history-detail-toggle:focus-visible { border-color: var(--ink); }
+.history-detail-toggle span { display: inline-block; margin-left: 5px; }
+.history-detail-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
+.history-detail-toggle[hidden] { display: none; }
+.history-detail-end { display: flex; justify-content: flex-end; padding: 5px 0 20px; }
+.history-detail-end .history-detail-toggle { margin: 0; }
 @media (max-width: 560px) {
   #ai-screen .ai-index { grid-template-columns: 1fr; gap: 6px; }
   #ai-screen .ai-index a { min-height: 0; gap: 3px; padding: 9px 12px; }
@@ -2151,6 +2158,7 @@ body { background: var(--bg); }
 <div class="h17-metric"><span>MY ROLE</span><p id="h17-role">시나리오·몬스터·전투 규칙 설계 · 밸런스 조정 · 세션 진행</p></div>
 <div class="h17-metric h17-metric-result"><span>RESULT / OUTPUT</span><p id="h17-result">6개 세션 · 누적 21명 · 총 283시간</p></div>
 </div>
+<button class="history-detail-toggle" id="history-detail-toggle" type="button" aria-controls="history-inline" aria-expanded="false" hidden>상세 펼치기 <span aria-hidden="true">⌄</span></button>
 <div id="history-inline" hidden></div>
 </section>
 </div></div></div></section><section class="screen" id="games-screen"><div class="wrap games-wrap">
@@ -2384,12 +2392,6 @@ function renderTrpgArchive(){return `<div class="trpg-gallery-collection">
       ${trpgMediaFigure('inventory','아이템·스킬 데이터 관리','trpg-gallery-item--span')}
     </div>
   </section>
-  <section class="trpg-gallery-group"><h4 class="trpg-gallery-heading">실제 플레이 운영과 재화 대응</h4><p class="trpg-gallery-note">실시간 피드백에 대응한 전투 기록과, 골드 소비처로 도입한 야바위 미니게임의 운영 화면입니다.</p>
-    <div class="trpg-gallery-grid trpg-gallery-grid--single">
-      ${trpgMediaFigure('combat','실시간으로 플레이어의 부정적 피드백 대응','trpg-gallery-item--log')}
-      ${trpgMediaFigure('gold','재화 소비를 위한 야바위 미니게임','trpg-gallery-item--log')}
-    </div>
-  </section>
 </div>`;}
 const boardgameAssets={"board-cover":"./assets/img_148.webp","board-award":"./assets/img_149.webp","board-report1":"./assets/img_150.webp","board-report2":"./assets/img_151.webp","board-slide-01":"./assets/img_152.webp","board-slide-02":"./assets/img_153.webp","board-slide-03":"./assets/img_154.webp","board-slide-04":"./assets/img_155.webp","board-slide-05":"./assets/img_156.webp","board-slide-06":"./assets/img_157.webp","board-slide-07":"./assets/img_158.webp","board-slide-08":"./assets/img_159.webp","board-slide-09":"./assets/img_160.webp","board-slide-10":"./assets/img_161.webp","board-slide-11":"./assets/img_162.webp","board-slide-12":"./assets/img_163.webp","board-slide-13":"./assets/img_164.webp","board-slide-14":"./assets/img_165.webp","board-slide-15":"./assets/img_166.webp","board-slide-16":"./assets/img_167.webp","board-slide-17":"./assets/img_168.webp","board-slide-18":"./assets/img_169.webp"};
 Object.assign(trpgAssets,boardgameAssets);
@@ -2489,7 +2491,7 @@ function renderInlineHistory(id) {
   detail.replaceChildren();
   if (!activity) return;
   const a = activity;
-  detail.innerHTML = `<div class="history-detail-content"><section class="history-hero-media">${renderHistoryCover(a)}</section><section class="history-detail-story"><h3>ACTIVITY OVERVIEW</h3>${a.sections.map(part=>`<div class="history-story-part"><h4>${safeHistoryText(part.heading)}</h4>${part.paragraphs.map(par=>`<p>${safeRichText(par)}</p>`).join('')}</div>`).join('')}</section><section class="history-detail-documents"><div class="history-media-heading"><h3>DOCUMENT & OUTPUT ARCHIVE</h3></div>${renderHistoryArchive(a)}</section></div>`;
+  detail.innerHTML = `<div class="history-detail-content"><section class="history-hero-media">${renderHistoryCover(a)}</section><section class="history-detail-story"><h3>ACTIVITY OVERVIEW</h3>${a.sections.map(part=>`<div class="history-story-part"><h4>${safeHistoryText(part.heading)}</h4>${part.paragraphs.map(par=>`<p>${safeRichText(par)}</p>`).join('')}</div>`).join('')}</section><section class="history-detail-documents"><div class="history-media-heading"><h3>DOCUMENT & OUTPUT ARCHIVE</h3></div>${renderHistoryArchive(a)}</section><div class="history-detail-end"><button class="history-detail-toggle" type="button" data-history-collapse aria-controls="history-inline">상세 접기 ↑</button></div></div>`;
   detail.querySelectorAll('[data-trpg-full]').forEach(button => {
     const link = document.createElement('a');
     link.className = button.className;
@@ -2611,12 +2613,16 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
 <script id="portfolio-count-up">
 const portfolioNumberFormat = new Intl.NumberFormat('ko-KR');
 const countMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const startedPortfolioCounts = new Set();
 const countObserver = typeof IntersectionObserver === 'function'
   ? new IntersectionObserver(entries => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         const counter = entry.target;
         countObserver.unobserve(counter);
+        const key = counter.dataset.countKey;
+        if (key && startedPortfolioCounts.has(key)) continue;
+        if (key) startedPortfolioCounts.add(key);
 
         const visible = counter.querySelector('.count-up-value');
         const value = Number(counter.dataset.countValue);
@@ -2639,8 +2645,9 @@ const countObserver = typeof IntersectionObserver === 'function'
     }, {threshold: 0.6})
   : null;
 
-function addPortfolioCounters(element, pattern) {
+function addPortfolioCounters(element, pattern, group) {
   if (!countObserver || !element) return;
+  let index = 0;
   for (const node of Array.from(element.childNodes)) {
     if (node.nodeType !== Node.TEXT_NODE) continue;
     const matches = Array.from(node.textContent.matchAll(pattern));
@@ -2653,6 +2660,8 @@ function addPortfolioCounters(element, pattern) {
       const counter = document.createElement('span');
       counter.className = 'count-up';
       counter.dataset.countValue = digits.replaceAll(',', '');
+      const key = group ? group + ':' + index++ : null;
+      if (key) counter.dataset.countKey = key;
       const finalValue = document.createElement('span');
       finalValue.className = 'count-up-final';
       finalValue.textContent = digits;
@@ -2662,7 +2671,7 @@ function addPortfolioCounters(element, pattern) {
       visible.textContent = digits;
       counter.append(finalValue, visible);
       fragment.append(counter);
-      countObserver.observe(counter);
+      if (!key || !startedPortfolioCounts.has(key)) countObserver.observe(counter);
       offset = match.index + digits.length;
     }
     fragment.append(node.textContent.slice(offset));
@@ -2689,6 +2698,24 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
   if (!buttons.length || !panel) return;
   const byId = Object.fromEntries(records.map((r,i) => [r.id,{...r,index:i}]));
   let selected = 'trpg';
+  const detailToggle = document.getElementById('history-detail-toggle');
+  const inlineDetail = document.getElementById('history-inline');
+  function syncHistoryToggle() {
+    const expanded = !inlineDetail.hidden;
+    detailToggle.setAttribute('aria-expanded', String(expanded));
+    detailToggle.firstChild.textContent = expanded ? '상세 접기 ' : '상세 펼치기 ';
+  }
+  detailToggle.addEventListener('click', () => {
+    renderInlineHistory(inlineDetail.hidden ? selected : null);
+    syncHistoryToggle();
+  });
+  inlineDetail.addEventListener('click', event => {
+    if (!event.target.closest('[data-history-collapse]')) return;
+    renderInlineHistory(null);
+    syncHistoryToggle();
+    detailToggle.focus({preventScroll: true});
+    scrollPortfolioTo(panel);
+  });
   const put=(id,value)=>{document.getElementById(id).textContent=value;};
   const pick=(id,focus=false)=>{
     const data=byId[id];
@@ -2706,10 +2733,14 @@ document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(
     put('h17-title',data.title);
     put('h17-description',data.description);
     put('h17-role',data.role);
-    put('h17-result',data.result);
-    addPortfolioCounters(document.getElementById('h17-result'), measuredCountPattern);
+    const result = document.getElementById('h17-result');
+    result.querySelectorAll('.count-up').forEach(counter => countObserver?.unobserve(counter));
+    result.textContent = data.result;
+    addPortfolioCounters(result, measuredCountPattern, 'history:' + id);
     put('h17-position',String(data.index+1).padStart(2,'0')+' / 07');
     renderInlineHistory(data.detail ? id : null);
+    detailToggle.hidden = !data.detail;
+    syncHistoryToggle();
     const active=buttons[data.index];
     if (focus) active.focus({preventScroll:true});
     if (scroller && active) {
