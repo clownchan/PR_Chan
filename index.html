@@ -1835,6 +1835,12 @@ body { background: var(--bg); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
+<style id="portfolio-count-style">
+.count-up { display: inline-grid; font-variant-numeric: tabular-nums; text-align: right; }
+.count-up > span { grid-area: 1 / 1; }
+.count-up-final { opacity: 0; }
+.playing-inline-stats .stat big span { font: inherit; color: inherit; }
+</style>
 </head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO / 2026</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
@@ -2244,12 +2250,12 @@ function scrollPortfolioTo(target) {
   const distance = Math.abs(initialDistance);
   const duration = reducePortfolioMotion.matches
     ? Math.min(700, Math.max(380, distance * 0.1))
-    : Math.min(1550, Math.max(520, distance * 0.16));
+    : Math.min(1700, Math.max(680, distance * 0.28));
   let startedAt;
   function animate(now) {
     startedAt ??= now;
     const progress = Math.min(1, (now - startedAt) / duration);
-    const eased = progress * progress * (3 - 2 * progress);
+    const eased = progress ** 3 * (10 + progress * (-15 + 6 * progress));
     const destination = destinationTop();
     window.scrollTo({top: start + (destination - start) * eased, behavior: 'instant'});
     portfolioScrollFrame = progress < 1 ? requestAnimationFrame(animate) : 0;
@@ -2291,7 +2297,7 @@ window.addEventListener('resize', scheduleNavigationSync);
 window.addEventListener('pageshow', scheduleNavigationSync);
 syncPortfolioNavigation();
 
-document.querySelector('#playing-stat-games').textContent=games.length+'+';document.querySelector('#playing-stat-platforms').textContent=Object.keys(platformCounts).length;document.querySelector('#playing-stat-hours').textContent=Math.floor(totalHours).toLocaleString()+'h+';
+document.querySelector('#playing-stat-games').textContent=games.length+'+';document.querySelector('#playing-stat-platforms').textContent=Object.keys(platformCounts).length;document.querySelector('#playing-stat-hours').textContent=Math.floor(totalHours).toLocaleString('ko-KR')+'h+';
 function stats(){return `<div class="stats"><div class="stat"><small>GAMES PLAYED</small><big>${games.length}+</big></div><div class="stat"><small>PLATFORMS</small><big>${Object.keys(platformCounts).length}</big></div><div class="stat"><small>RECORDED HOURS</small><big>${Math.floor(totalHours).toLocaleString()}h+</big></div></div>`}
 function analytics(){
   const counts={...primaryCounts};
@@ -2591,6 +2597,75 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
  });
 })();
 </script>
+<script id="portfolio-count-up">
+const portfolioNumberFormat = new Intl.NumberFormat('ko-KR');
+const countMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const countObserver = typeof IntersectionObserver === 'function'
+  ? new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const counter = entry.target;
+        countObserver.unobserve(counter);
+
+        const visible = counter.querySelector('.count-up-value');
+        const value = Number(counter.dataset.countValue);
+        if (!value) continue;
+        const started = performance.now();
+        const duration = countMotion.matches ? 500 : (value > 1000 ? 1250 : 950);
+        function tick(now) {
+          if (!counter.isConnected) return;
+          const progress = Math.min(1, (now - started) / duration);
+          const current = Math.round(value * (1 - (1 - progress) ** 3));
+          visible.textContent = portfolioNumberFormat.format(current);
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        visible.textContent = '0';
+        requestAnimationFrame(tick);
+      }
+    }, {threshold: 0.6})
+  : null;
+
+function addPortfolioCounters(element, pattern) {
+  if (!countObserver || !element) return;
+  for (const node of Array.from(element.childNodes)) {
+    if (node.nodeType !== Node.TEXT_NODE) continue;
+    const matches = Array.from(node.textContent.matchAll(pattern));
+    if (!matches.length) continue;
+    const fragment = document.createDocumentFragment();
+    let offset = 0;
+    for (const match of matches) {
+      const [digits] = match;
+      fragment.append(node.textContent.slice(offset, match.index));
+      const counter = document.createElement('span');
+      counter.className = 'count-up';
+      counter.dataset.countValue = digits.replaceAll(',', '');
+      const finalValue = document.createElement('span');
+      finalValue.className = 'count-up-final';
+      finalValue.textContent = digits;
+      const visible = document.createElement('span');
+      visible.className = 'count-up-value';
+      visible.setAttribute('aria-hidden', 'true');
+      visible.textContent = digits;
+      counter.append(finalValue, visible);
+      fragment.append(counter);
+      countObserver.observe(counter);
+      offset = match.index + digits.length;
+    }
+    fragment.append(node.textContent.slice(offset));
+    node.replaceWith(fragment);
+  }
+}
+const measuredCountPattern = /\d[\d,]*(?=\s*(?:개 세션|명|시간|회 이상))/g;
+document.querySelectorAll('.playing-inline-stats .stat big').forEach(element => {
+  addPortfolioCounters(element, /\d[\d,]*/g);
+});
+document.querySelectorAll('.playing-genre-hours strong').forEach(element => {
+  addPortfolioCounters(element, /\d[\d,]*(?=h)/g);
+});
+document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(element => {
+  addPortfolioCounters(element, measuredCountPattern);
+});
+</script>
 <script>
 (function(){
   const records = [{"id":"younghana","year":"2019","label":"영하나 크루","title":"하나은행 영하나 마케팅 크루 2기","date":"2019.09 — 12","field":"상품 기획 · PT","description":"20대 고객을 위한 카드 상품을 기획하고, 경쟁 PT에서 기획의 가치를 직접 전달했습니다.","role":"카드 상품 아이디어 기획 · 현장 마케팅 · 경쟁 PT 발표","result":"아이디어 대상 · 제안 상품 최종 채택","detail":true},{"id":"volunteer","year":"2020","label":"희망씨앗 봉사","title":"희망씨앗 대학생 봉사단 8기","date":"2020.06 — 12","field":"봉사 기획 · 인원 섭외","description":"재능기부 봉사 프로그램을 기획하고 활동 인원을 섭외했으며, 보육원 교육 봉사에도 참여했습니다.","role":"봉사 프로그램 기획 · 인원 섭외 · 교육 봉사","result":"재능기부 및 교육 봉사 활동","detail":false},{"id":"dca","year":"2020","label":"DCA 광고대상","title":"제37회 DCA 대학생 광고대상","date":"2020.08","field":"프로젝트 리딩","description":"3인 팀 리더로서 2주간 기획 방향과 일정, 역할 분담을 조율하며 프로젝트를 완성했습니다.","role":"팀 리딩 · 일정 관리 · 자료조사 · 기획 방향 설계","result":"제37회 DCA 대학생 광고대상 동상","detail":true},{"id":"boardgame","year":"2021","label":"보드게임 제작","title":"보드게임 제작 프로젝트","date":"2021.09 — 12","field":"게임 규칙 설계 · 제작","description":"서로 다른 승리 조건을 지닌 캐릭터의 규칙을 기획하고, 반복적인 테스트를 거쳐 실물 게임으로 완성했습니다.","role":"게임 콘셉트 및 규칙 설계 · 테스트 플레이 · 실물 제작","result":"20회 이상 테스트 플레이 · 캡스톤 디자인 장려상","detail":true},{"id":"trpg","year":"2022","label":"TRPG 마스터","title":"TRPG 마스터","date":"2021 — 2022","field":"게임 시스템 · 운영","description":"직접 설계한 시나리오와 전투 규칙을 플레이어의 선택에 맞춰 운영하고, 밸런스 문제를 개선했습니다.","role":"시나리오·몬스터·전투 규칙 설계 · 밸런스 조정 · 세션 진행","result":"6개 세션 · 누적 21명 · 총 283시간","detail":true},{"id":"ktng","year":"2024","label":"상상마케팅스쿨","title":"KT&G 상상 마케팅 스쿨 17기","date":"2024.04 — 05","field":"마케팅 기획 교육","description":"광고·마케팅 기획 교육을 이수하고, F&B 광고 기획서를 작성하며 타깃과 메시지 구성 방식을 학습했습니다.","role":"마케팅 기획 교육 · F&B 광고 기획서 작성","result":"KT&G 상상 마케팅 스쿨 17기 참여","detail":false},{"id":"exchange","year":"2026","label":"독일 교환학생","title":"독일 HfWU 교환학생","date":"2025.09 — 2026.02","field":"글로벌 · 문화 교류","description":"독일 대학에서 수업과 문화 교류 활동에 참여하며 새로운 환경과 서로 다른 관점을 경험했습니다.","role":"현지 대학 수업 · 다양한 문화권의 학생과 교류","result":"독일 HfWU 교환학생 프로그램 이수","detail":false}];
@@ -2618,6 +2693,7 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
     put('h17-description',data.description);
     put('h17-role',data.role);
     put('h17-result',data.result);
+    addPortfolioCounters(document.getElementById('h17-result'), measuredCountPattern);
     put('h17-position',String(data.index+1).padStart(2,'0')+' / 07');
     renderInlineHistory(showDetail && data.detail ? id : null);
     const active=buttons[data.index];
@@ -2671,10 +2747,10 @@ document.querySelectorAll('#playing-expanded .playing-cover-art img').forEach(fu
       const bottom = Math.min(window.innerHeight, viewport.bottom);
       const values = items.map(item => {
         const rect = item.getBoundingClientRect();
-        const fadeDistance = Math.max(1, Math.min(96, rect.height * 0.65, (bottom - top) * 0.2));
+        const fadeDistance = Math.max(1, Math.min(135, rect.height * 0.75, (bottom - top) * 0.25));
         const edgeDistance = Math.min(rect.bottom - top, bottom - rect.top);
         const progress = Math.max(0, Math.min(1, edgeDistance / fadeDistance));
-        return progress * progress * (3 - 2 * progress);
+        return 0.38 + 0.62 * progress * progress * (3 - 2 * progress);
       });
       items.forEach((item, index) => {
         item.style.setProperty('--scroll-opacity', values[index].toFixed(3));
