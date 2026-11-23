@@ -1808,7 +1808,18 @@ body { background: var(--bg); }
 #track > .screen { display: block; width: 100%; overflow: visible; padding: clamp(42px, 7vw, 104px) clamp(18px, 5.5vw, 90px); border-top: 1px solid var(--line); }
 #track > .screen > .wrap { max-width: 1180px; }
 #track > #home-screen.home-v1-page { padding: 0; overflow: visible; border-top: 0; }
-#home-screen .home-v1-hero { background: #fcfcfb; }
+#home-screen.home-v1-page > .home-v1-hero { min-height: 0; background: #fcfcfb; }
+#home-screen.home-v1-page .home-v1-hero > .container {
+  max-width: 1360px;
+  min-height: 0;
+  padding: clamp(32px, 5.8vw, 80px) clamp(22px, 5.5vw, 90px);
+}
+#home-screen .hero-content { width: 100%; }
+#home-screen .hero-content h1 { font-size: clamp(32px, 5.4vw, 68px); margin: 18px 0; }
+#home-screen .hero-content h1 .line-one { margin-bottom: 5px; }
+#home-screen .hero-bottom { margin-top: 18px; }
+#home-screen .role-label { font-size: clamp(14px, 1.7vw, 18px); }
+#home-screen .role-label::before { height: 20px; }
 #home-screen .home-about-section, #home-screen .home-profile-info-section { background: var(--section-bg); }
 #track > .screen:not(#home-screen) { background: var(--section-bg); }
 #track > #games-screen { padding-bottom: max(134px, calc(104px + env(safe-area-inset-bottom))); }
@@ -1846,11 +1857,8 @@ body { background: var(--bg); }
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO   /   2026</div>
 <h1 class="reveal delay" id="hero-title"><span class="line-one">기억에 남을 재미를,</span>설득력 있는 <span class="mark">설계</span>로<span class="home-hero-period">.</span></h1>
-<p class="hero-description reveal delay2">플레이 <strong>경험</strong>을 <strong>규칙과 데이터</strong>로 구체화하고,<br/>기획 의도를 명확히 <strong>전달</strong>합니다.</p>
-<div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div><button class="hero-cta" data-page="1" type="button">AI 프로젝트 둘러보기 <span aria-hidden="true">↗</span></button></div>
+<div class="hero-bottom reveal delay2"><div class="role-label">게임 기획자 이찬</div></div>
 </div>
-<div aria-hidden="true" class="hero-image"><img alt="" src="./assets/img_001.webp"/></div>
-<div class="hero-note"><span>SCROLL TO EXPLORE</span><span aria-hidden="true" class="profile-scroll-hint-arrow">↓</span></div><div class="vertical-note">PLAY · ANALYZE · DESIGN</div>
 </div>
 </div>
 <section aria-labelledby="home-about-heading" class="home-about-section" id="home-about">
