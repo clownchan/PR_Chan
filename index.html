@@ -1899,6 +1899,15 @@ body { background: var(--bg); }
   .studio-view::backdrop{background:rgba(0,0,0,.78)}
   .studio-pan img{width:100%;height:min(80dvh,58vw);object-fit:contain}
 }
+.studio-zoom{display:none}
+@media(max-width:760px){
+  .studio-zoom{display:inline-block}
+  .studio-view{padding-bottom:env(safe-area-inset-bottom)}
+  .studio-pan{display:grid;place-items:center}
+  .studio-pan img{width:100%;height:100%;min-height:0;object-fit:contain}
+  .studio-pan.is-zoomed{display:block}
+  .studio-pan.is-zoomed img{width:1266px;height:auto;margin:0}
+}
 html:has(.studio-view[open]){overflow:hidden}
 .studio-stage img[aria-hidden=true]{cursor:zoom-in}.studio-controls{display:flex;align-items:center;justify-content:center;gap:1em;padding:.6em}
 .studio-controls strong{min-width:10em;text-align:center}
@@ -2027,7 +2036,7 @@ html:has(.studio-view[open]){overflow:hidden}
           </ol>
         </div>
       </figure>
-      <dialog class="studio-view" aria-label="Circus Studio 화면 확대"><header><strong></strong><button type="button" autofocus>닫기</button></header><div class="studio-pan"><img alt=""></div></dialog>
+      <dialog class="studio-view" aria-label="Circus Studio 화면 확대"><header><strong></strong><div><button class="studio-zoom" type="button" aria-pressed="false">확대</button> <button class="studio-close" type="button" autofocus>닫기</button></div></header><div class="studio-pan"><img alt=""></div></dialog>
 <section class="studio-gallery" aria-label="Circus Studio 작업 화면" aria-roledescription="슬라이드쇼">
   <div class="studio-stage">
     <img data-place="center" src="./assets/circus-approval.png" width="1266" height="793" loading="lazy" alt="Clockwork Auction 기획서 목록과 승인한 패치 내용">
@@ -2974,9 +2983,10 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
       return;
     }
     const start=performance.now();
+    const duration=Math.abs(target-from)<0.5?560:780;
     function frame(now){
-      const t=Math.min(1,(now-start)/720);
-      position=from+(target-from)*(1-Math.cos(Math.PI*t))/2;
+      const t=Math.min(1,(now-start)/duration);
+      position=from+(target-from)*t*t*(3-2*t);
       draw();
       if(t<1)animation=requestAnimationFrame(frame);
     }
@@ -2990,13 +3000,22 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
   const viewer=document.querySelector('.studio-view');
   const pan=viewer.querySelector('.studio-pan');
   const fullImage=pan.querySelector('img');
-  const close=viewer.querySelector('button');
+  const close=viewer.querySelector('.studio-close');
+  const zoom=viewer.querySelector('.studio-zoom');
+  function setZoom(enabled){
+    pan.classList.toggle('is-zoomed',enabled);
+    zoom.setAttribute('aria-pressed',String(enabled));
+    zoom.textContent=enabled?'전체 보기':'확대';
+    pan.scrollTo(0,0);
+  }
+  zoom.onclick=()=>setZoom(!pan.classList.contains('is-zoomed'));
   function openImage(index=current){
     const slide=slides[index];
     fullImage.src=slide.currentSrc||slide.src;
     fullImage.alt=slide.alt;
     viewer.querySelector('strong').textContent=labels[index];
     viewer.showModal();
+    setZoom(false);
     pan.scrollTo(0,0);
   }
   close.onclick=()=>viewer.close();
@@ -3014,6 +3033,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     if(event.pointerType==="mouse"&&!slides.includes(event.target))return;
     gesture={id:event.pointerId,x:event.clientX,y:event.clientY,slide:slides.indexOf(event.target)};
     gesture.mouse=event.pointerType==="mouse" && gesture.slide>=0;
+    cancelAnimationFrame(animation);
     gesture.origin=position;
     stage.setPointerCapture(event.pointerId);
   };
