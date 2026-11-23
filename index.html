@@ -2872,7 +2872,7 @@ document.querySelectorAll('.playing-inline-stats .stat big').forEach(element => 
 document.querySelectorAll('.playing-genre-hours strong').forEach(element => {
   addPortfolioCounters(element, /\d[\d,]*(?=h)/g);
 });
-document.querySelectorAll('.info-activity-copy p, .games-event-copy p').forEach(element => {
+document.querySelectorAll('.games-event-copy p').forEach(element => {
   addPortfolioCounters(element, measuredCountPattern);
 });
 </script>
