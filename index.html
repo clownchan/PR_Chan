@@ -2093,7 +2093,7 @@ html:has(.studio-view[open]){overflow:hidden}
   color:var(--portfolio-control-light);
   box-shadow:inset 0 4px 0 var(--accent);
 }
-</style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
+</style><style>.draft-answers{margin:0}.draft-answers>div+div{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}.draft-answers dt{font-size:12px;font-weight:800;margin-bottom:4px}.draft-answers>div+div dt{display:table;background:#fff0ae;border-radius:4px;padding:1px 6px}.draft-answers dd{margin:0;line-height:1.65}.draft-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:440px;margin-top:14px}.draft-pair figure{margin:0;min-width:0}.draft-pair img{display:block;width:100%;height:auto;border-radius:6px}.draft-pair figcaption{font-size:11px;line-height:1.4;margin-top:5px;color:var(--muted);word-break:keep-all}.draft-rivals{list-style:none;display:grid;gap:7px;margin-top:12px!important;padding:0!important}.draft-rivals li{display:flex;gap:9px;align-items:center;margin:0!important}.draft-portrait{width:42px;height:42px;overflow:hidden;flex:none;border-radius:6px;background:var(--portfolio-soft)}.draft-portrait img{display:block;width:300%;max-width:none;height:auto}</style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
 <div class="eyebrow reveal">Game Design PORTFOLIO</div>
@@ -2202,28 +2202,11 @@ html:has(.studio-view[open]){overflow:hidden}
       <figure class="auction-highlight night-highlight">
         <video width="1280" height="720" src="./assets/night-gameplay-v3.mp4" poster="./assets/night-gameplay-v2-poster.jpg" muted autoplay loop playsinline controls preload="metadata" aria-label="야간자율학습 개발 중 빌드 플레이 하이라이트"></video>
       </figure>
-      <div class="ai-topics">
-        <section class="ai-topic">
-      <h3>웹에서 핵심 재미를 확인하고 Unity로 옮기기</h3>
-      <p>웹 프로토타입으로 파밍과 탈출의 재미를 확인한 뒤, 학교 공간과 조명, 1인칭 시야를 구현하기 위해 Unity로 옮겼습니다.</p>
-      <p>제가 기본 규칙을 쓰고 Codex와 예외를 정리했습니다. Claude Code가 승인된 기획을 구현하면, 빌드에서 발견한 문제를 Circus Studio에 기록해 다음 패치에 반영했습니다.</p>
-        </section>
-        <section class="ai-topic">
-      <h3>카메라 별로 모델링을 다르게 출력하기</h3>
-      <p>Tripo 모델을 Unity에 넣자 머리가 1인칭 시야를 가렸습니다. Claude Code와 카메라별 표시 범위를 나눠 1인칭에서는 머리를 숨기고 거울에는 전신을 표시했습니다.</p>
-      <p>어두운 교실에서는 거울에만 별도 재질을 적용했습니다. 실제 이동 속도에 걷기·달리기 동작을 맞추고 손전등 그립도 조정했습니다.</p>
-        </section>
-        <section class="ai-topic">
-      <h3>학교 구조가 달라져도 탈출할 길은 확보하기</h3>
-      <p>학교 구조가 달라져도 배전함과 탈출구까지 갈 수 있어야 했습니다.</p>
-      <p>Codex와 <strong>복도·계단 연결 → 필수 위치 확보 → 방과 아이템 배치 → 경로 검사</strong> 순서를 정했습니다. 문제 배치는 같은 생성 번호로 재현하고, 어두운 복도에서는 조명으로 출입구와 단서를 드러냈습니다.</p>
-        </section>
-        <section class="ai-topic">
-      <h3>위협적인 크리쳐에게서 벗어날 틈 만들기</h3>
-      <p>추격의 위협을 유지하면서도 도망치거나 로커에 숨을 틈을 만들고 싶었습니다. Codex와 <strong>직접 본 위치</strong>와 <strong>소리를 들은 위치</strong>를 나눠, 시야가 끊긴 뒤 크리쳐가 따라갈 단서를 정했습니다.</p>
-        </section>
-      </div>
-    </article>
+      <div class="ai-topics"><section class="ai-topic draft-case"><h3>프로토타입으로 핵심 플레이 검증하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>학교 공간과 조명을 만들기 전에, 파밍과 탈출을 반복하는 흐름이 재미있는지 확인해야 했습니다.</dd></div><div><dt>해결</dt><dd>웹 프로토타입으로 핵심 흐름을 확인한 뒤 Unity로 옮겼습니다. 여러 규칙이 겹치는 상황은 Codex와 정리하고, 승인한 기획을 Claude Code로 구현했습니다.</dd></div></dl></section>
+<section class="ai-topic draft-case"><h3>시점에 맞게 캐릭터 표현 조정하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>Tripo 모델의 머리가 1인칭 카메라를 가렸습니다. 거울에는 전신이 보여야 했고, 어두운 교실에서는 반사도 잘 보이지 않았습니다.</dd></div><div><dt>해결</dt><dd>Claude Code와 카메라별 표시 범위를 나눴습니다. 1인칭에서는 머리를 숨기고, 거울에는 전신을 표시한 뒤 반사 화면에만 별도 재질을 적용했습니다.</dd></div></dl><div class="draft-pair"><figure><img src="./assets/draft-1.png" alt="1인칭으로 내려다본 몸"><figcaption>1인칭으로 내려다본 몸</figcaption></figure><figure><img src="./assets/draft-3.png" alt="거울에 비친 플레이어"><figcaption>거울에 비친 플레이어</figcaption></figure></div></section>
+<section class="ai-topic draft-case"><h3>맵이 달라져도 목표에 도달할 수 있게 하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>판마다 학교가 달라져도 배전함과 탈출구까지 갈 수 있어야 했습니다.</dd></div><div><dt>해결</dt><dd>Codex와 <strong>복도·계단 연결 → 필수 위치 확보 → 방·아이템 배치 → 경로 검사</strong> 순으로 규칙을 정했습니다. 문제가 생긴 배치는 같은 생성 번호로 다시 불러와 확인할 수 있게 했습니다.</dd></div></dl><div class="draft-pair"><figure><img src="./assets/draft-2.png" alt="탈출구 앞에서 확인한 안내도"><figcaption>탈출구 앞에서 확인한 안내도</figcaption></figure><figure><img src="./assets/draft-4.png" alt="배전함 앞에서 확인한 안내도"><figcaption>배전함 앞에서 확인한 안내도</figcaption></figure></div></section>
+<section class="ai-topic draft-case"><h3>추격의 긴장감을 살리면서 회피 기회 주기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>크리쳐가 시야 밖에서도 플레이어의 위치를 계속 알면, 모서리를 돌거나 로커에 숨는 선택의 의미가 줄어듭니다.</dd></div><div><dt>해결</dt><dd>Codex와 <strong>직접 본 위치</strong>와 <strong>소리를 들은 위치</strong>를 구분했습니다. 시야가 끊기면 크리쳐가 단서를 따라 수색하고, 플레이어는 그사이 방향을 바꾸거나 숨을 수 있습니다.</dd></div></dl></section></div>
+</article>
     <article class="ai-case" id="ai-auction" aria-labelledby="ai-auction-title">
       <header>
         <h2 id="ai-auction-title"><img class="ai-title-logo" src="./assets/ai-auction-heading.webp" alt="ClockWork Auction"></h2>
@@ -2236,29 +2219,10 @@ html:has(.studio-view[open]){overflow:hidden}
         </figure>
         <a class="ai-play-link" href="https://clownchan.itch.io/clockwork-auction" target="_blank" rel="noopener noreferrer">웹에서 게임 플레이 ↗</a>
       </div>
-      <div class="ai-topics">
-        <section class="ai-topic">
-      <h3>세 라이벌이 서로 다른 입찰 고민을 만들도록 설계하기</h3>
-      <ul>
-        <li><strong>루루</strong>는 희귀품과 세트 완성에 집중해, 경쟁할지 다른 조합을 노릴지 고민하게 합니다.</li>
-        <li><strong>모코</strong>는 초반에 아껴 후반에 따라잡으므로, 플레이어도 예산을 남겨야 합니다.</li>
-        <li><strong>레오</strong>는 초반부터 맞입찰해, 가격을 더 올릴지 다음 기회를 기다릴지 판단하게 합니다.</li>
-      </ul>
-        </section>
-        <section class="ai-topic">
-      <h3>빈손 보정으로 첫 낙찰 기회 만들기</h3>
-      <p>모코가 계속 빈손이면 후반에 따라잡기 어렵고, 입찰 한도를 계속 높이면 전체 낙찰가도 오를 수 있었습니다.</p>
-      <p>Codex와 <strong>빈손일 때만 입찰 한도를 높이고 첫 낙찰 뒤 해제하는 규칙</strong>을 설계했습니다. 모코의 감정가 상한과 각 라이벌의 잔액 제한도 적용했습니다.</p>
-      <p>Codex로 물품 순서를 고정하고 전략별 <strong>첫 낙찰 시점, 빈손 종료율, 평균 낙찰가</strong>를 비교했습니다.</p>
-        </section>
-        <section class="ai-topic ai-topic--wide">
-      <h3>아트와 사운드로 경매 상황을 읽기 쉽게 만들기</h3>
-      <p><strong>스팀펑크풍 사교클럽</strong>을 콘셉트로 배경·물품·표정의 역할을 나눠 AI에 지시했습니다. 모바일에서 현재가·남은 시간·입찰 버튼이 한눈에 보이도록 배치했습니다.</p>
-      <p>각 캐릭터 디자인은 AI의 전략 콘셉트에 맞게 디자인했습니다.</p>
-      <p>입찰음은 가격 변화, 마감음은 남은 시간, 낙찰음은 결과 확정을 알립니다. 반복해 들어도 부담이 적고 <strong>각 상황을 소리로 구분</strong>할 수 있게 했습니다.</p>
-        </section>
-      </div>
-    </article>
+      <div class="ai-topics"><section class="ai-topic draft-case"><h3>AI마다 다른 경매 전략을 갖게 하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>세 라이벌이 비슷한 기준으로 입찰하면 플레이어도 매번 비슷한 선택을 하게 됩니다.</dd></div><div><dt>해결</dt><dd>라이벌마다 어떤 물품을 노리고 언제 예산을 쓰는지 다르게 설계했습니다.</dd></div></dl><ul class="draft-rivals"><li><span class="draft-portrait"><img alt="" src="./assets/draft-lulu.png"></span><span><strong>루루</strong> 희귀품과 세트 완성에 집중합니다.</span></li><li><span class="draft-portrait"><img alt="" src="./assets/draft-moko.png"></span><span><strong>모코</strong> 초반에 예산을 아끼고 후반에 따라잡습니다.</span></li><li><span class="draft-portrait"><img alt="" src="./assets/draft-leo.png"></span><span><strong>레오</strong> 초반부터 맞입찰해 가격 경쟁을 만듭니다.</span></li></ul></section>
+<section class="ai-topic draft-case"><h3>초반에 뒤처진 AI의 경쟁 기회 보완하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>모코가 계속 빈손이면 후반 전략을 펼치기 어렵습니다. 입찰 한도를 계속 높이면 전체 낙찰가도 오를 수 있습니다.</dd></div><div><dt>해결</dt><dd>Codex와 <strong>빈손일 때만 입찰 한도를 높이고, 첫 낙찰 직후 해제</strong>하는 규칙을 만들었습니다. 물품 순서를 고정해 첫 낙찰 시점, 빈손 종료율, 평균 낙찰가를 비교했습니다.</dd></div></dl></section>
+<section class="ai-topic draft-case ai-topic--wide"><h3>짧은 시간에 판단할 수 있도록 정보 전달하기</h3><dl class="draft-answers"><div><dt>문제</dt><dd>모바일에서는 짧은 시간 안에 현재가와 남은 시간을 읽고 입찰을 결정해야 합니다.</dd></div><div><dt>해결</dt><dd>AI에 배경·물품·라이벌 표정의 역할을 나눠 지시하고, UI에서는 <strong>현재가·남은 시간·입찰 버튼</strong>이 먼저 보이게 했습니다. 입찰·마감·낙찰은 서로 다른 소리로 구분했습니다.</dd></div></dl></section></div>
+</article>
     <article class="ai-case" id="ai-circus" aria-labelledby="ai-circus-title">
       <header>
         <h2 id="ai-circus-title"><img src="./assets/circus-studio-icon.png" alt="">Circus Studio</h2>
