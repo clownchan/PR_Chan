@@ -2115,15 +2115,11 @@ html:has(.studio-view[open]){overflow:hidden}
   @keyframes history-bubble-invite{0%,100%{translate:0 0}50%{translate:0 -7px}}
 }</style><style>.night-hover-preview{opacity:0;visibility:hidden;scale:.97}
 .night-hover-preview.is-visible{opacity:1;visibility:visible;scale:1}
+.night-shot,.auction-rival .draft-portrait{position:relative;border-radius:6px}
+.media-action-icon{position:absolute;right:4px;bottom:4px;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--portfolio-control-dark);color:#fff;border:1px solid #ffffff80;font-size:13px;font-weight:800;line-height:1;pointer-events:none}
 @media(prefers-reduced-motion:no-preference){
-  .night-shot,.auction-rival .draft-portrait{animation:portfolio-image-invite 2.6s ease-in-out infinite;border-radius:6px}
-  .draft-pair figure:nth-child(2) .night-shot,.auction-rival:nth-child(2) .draft-portrait{animation-delay:.35s}
-  .auction-rival:nth-child(3) .draft-portrait{animation-delay:.7s}
-  .night-shot:is(:hover,:focus-visible),.auction-rival .draft-portrait:is(:hover,:focus-visible,[aria-expanded=true]){animation-play-state:paused}
-  @keyframes portfolio-image-invite{
-    0%,100%{box-shadow:0 0 0 1px #c5a74755}
-    50%{box-shadow:0 0 0 3px #e9be46aa}
-  }
+  .media-cue-enter .media-action-icon{animation:media-action-invite .7s ease-in-out 2}
+  @keyframes media-action-invite{0%,100%{scale:1}50%{scale:1.16;translate:0 -2px}}
   .rival-note{transition:opacity .2s ease,translate .24s ease,visibility .24s}
   .night-hover-preview{transition:opacity .23s ease,scale .28s cubic-bezier(.22,1,.36,1),visibility .28s}
   .night-image-dialog[open]{animation:portfolio-media-open .25s cubic-bezier(.22,1,.36,1)}
@@ -2223,12 +2219,12 @@ html:has(.studio-view[open]){overflow:hidden}
 <section class="ai-topic draft-case">
   <h3>시점에 맞게 캐릭터 표현 조정하기</h3>
   <dl class="draft-answers"><div><dt>문제</dt><dd>Tripo로 만든 모델링을 적용하니, 플레이어의 눈높이에 둔 카메라를 캐릭터의 머리가 가렸습니다. 거울에는 전신이 필요했지만, 어두운 교실에서는 반사도 잘 보이지 않았습니다.</dd></div><div><dt>해결</dt><dd>Claude Code와 화면마다 보이는 부분을 나눴습니다. 플레이어 시점에서는 머리를 숨기고, 거울에는 전신을 표시했습니다. 어두운 곳에서도 모습이 보이도록 거울 속 캐릭터의 표면 표현을 따로 조정했습니다.</dd></div></dl>
-  <div class="draft-pair"><figure><button class="night-shot" type="button" aria-label="아래를 내려다봤을 때 보이는 모델링 확대"><img src="./assets/draft-1.png" alt="아래를 내려다봤을 때 보이는 모델링" width="1920" height="1080" loading="lazy"></button><figcaption>아래를 내려다봤을 때 보이는 모델링</figcaption></figure><figure><button class="night-shot" type="button" aria-label="거울에 비친 모델링 확대"><img src="./assets/draft-3.png" alt="거울에 비친 모델링" width="1920" height="1080" loading="lazy"></button><figcaption>거울에 비친 모델링</figcaption></figure></div>
+  <div class="draft-pair"><figure><button class="night-shot" type="button" aria-label="아래를 내려다봤을 때 보이는 모델링 확대"><img src="./assets/draft-1.png" alt="아래를 내려다봤을 때 보이는 모델링" width="1920" height="1080" loading="lazy"><span class="media-action-icon" aria-hidden="true">⌕</span></button><figcaption>아래를 내려다봤을 때 보이는 모델링</figcaption></figure><figure><button class="night-shot" type="button" aria-label="거울에 비친 모델링 확대"><img src="./assets/draft-3.png" alt="거울에 비친 모델링" width="1920" height="1080" loading="lazy"><span class="media-action-icon" aria-hidden="true">⌕</span></button><figcaption>거울에 비친 모델링</figcaption></figure></div>
 </section>
 <section class="ai-topic draft-case">
   <h3>맵이 바뀌어도 주요 목표의 위치를 짐작할 수 있게 하기</h3>
   <dl class="draft-answers"><div><dt>문제</dt><dd>매번 다른 학교를 탐색하는 긴장감을 주면서도, 플레이를 반복할수록 배전함이나 탈출구를 어디서 찾아야 할지 감을 잡을 수 있어야 했습니다.</dd></div><div><dt>해결</dt><dd>Codex와 <strong>학교의 배치는 바뀌어도 주요 오브젝트가 놓이는 조건은 유지하는 절차적 생성 규칙</strong>을 정했습니다. 먼저 복도와 계단을 연결하고, 배전함은 복도에서 찾을 수 있도록 배치 범위를 제한했습니다. 탈출구 위치를 확보한 뒤 방과 물품을 배치하고, 시작점에서 주요 목표까지 길이 이어지는지 검사하도록 했습니다. 문제가 생긴 구조는 같은 시드로 다시 불러와 확인할 수 있게 했습니다.</dd></div></dl>
-  <div class="draft-pair"><figure><button class="night-shot" type="button" aria-label="탈출구 앞 학교 안내도 확대"><img src="./assets/draft-2.png" alt="탈출구 앞 학교 안내도" width="1920" height="1080" loading="lazy"></button></figure><figure><button class="night-shot" type="button" aria-label="배전함 앞 학교 안내도 확대"><img src="./assets/draft-4.png" alt="배전함 앞 학교 안내도" width="1920" height="1080" loading="lazy"></button></figure><p class="night-pair-caption">서로 다른 시드의 맵 지도</p></div>
+  <div class="draft-pair"><figure><button class="night-shot" type="button" aria-label="탈출구 앞 학교 안내도 확대"><img src="./assets/draft-2.png" alt="탈출구 앞 학교 안내도" width="1920" height="1080" loading="lazy"><span class="media-action-icon" aria-hidden="true">⌕</span></button></figure><figure><button class="night-shot" type="button" aria-label="배전함 앞 학교 안내도 확대"><img src="./assets/draft-4.png" alt="배전함 앞 학교 안내도" width="1920" height="1080" loading="lazy"><span class="media-action-icon" aria-hidden="true">⌕</span></button></figure><p class="night-pair-caption">서로 다른 시드의 맵 지도</p></div>
 </section>
 <section class="ai-topic draft-case">
   <h3>추격의 긴장감을 살리면서 회피 기회 주기</h3>
@@ -2251,7 +2247,7 @@ html:has(.studio-view[open]){overflow:hidden}
       <div class="ai-topics"><section class="ai-topic draft-case">
   <h3>AI마다 다른 경매 전략을 갖게 하기</h3>
   <dl class="draft-answers"><div><dt>문제</dt><dd>세 라이벌이 같은 기준으로 입찰하면, 플레이어는 상대가 누구든 비슷한 가격에서 입찰하거나 포기하게 됩니다. 상대의 성향을 보고 전략을 바꿀 이유가 필요했습니다.</dd></div><div><dt>해결</dt><dd>같은 입찰 단위와 예산 제한을 적용하고, <strong>어떤 물품을 노리는지와 언제 예산을 쓰는지</strong>를 다르게 설계했습니다.</dd></div></dl>
-  <div class="auction-portraits"><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="루루 경매 전략" aria-expanded="false" aria-controls="rival-lulu" aria-describedby="rival-lulu"><img alt="" loading="lazy" src="./assets/draft-lulu.png"></button><div class="rival-note" id="rival-lulu"><strong>루루</strong><span>희귀품이나 세트를 완성할 물품을 우선합니다. 플레이어는 루루와 경쟁할지, 다른 조합을 노릴지 판단합니다.</span></div></div><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="모코 경매 전략" aria-expanded="false" aria-controls="rival-moko" aria-describedby="rival-moko"><img alt="" loading="lazy" src="./assets/draft-moko.png"></button><div class="rival-note" id="rival-moko"><strong>모코</strong><span>초반에 저렴한 물품을 고르고 후반을 위해 예산을 남깁니다. 플레이어도 후반 입찰에 쓸 돈을 남길지 고민합니다.</span></div></div><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="레오 경매 전략" aria-expanded="false" aria-controls="rival-leo" aria-describedby="rival-leo"><img alt="" loading="lazy" src="./assets/draft-leo.png"></button><div class="rival-note" id="rival-leo"><strong>레오</strong><span>초반부터 입찰하고 감당할 수 있는 가격까지 맞입찰합니다. 플레이어는 지금 가격을 더 올릴지, 다음 물품을 기다릴지 선택합니다.</span></div></div></div>
+  <div class="auction-portraits"><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="루루 경매 전략" aria-expanded="false" aria-controls="rival-lulu" aria-describedby="rival-lulu"><img alt="" loading="lazy" src="./assets/draft-lulu.png"><span class="media-action-icon" aria-hidden="true">i</span></button><div class="rival-note" id="rival-lulu"><strong>루루</strong><span>희귀품이나 세트를 완성할 물품을 우선합니다. 플레이어는 루루와 경쟁할지, 다른 조합을 노릴지 판단합니다.</span></div></div><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="모코 경매 전략" aria-expanded="false" aria-controls="rival-moko" aria-describedby="rival-moko"><img alt="" loading="lazy" src="./assets/draft-moko.png"><span class="media-action-icon" aria-hidden="true">i</span></button><div class="rival-note" id="rival-moko"><strong>모코</strong><span>초반에 저렴한 물품을 고르고 후반을 위해 예산을 남깁니다. 플레이어도 후반 입찰에 쓸 돈을 남길지 고민합니다.</span></div></div><div class="auction-rival"><button class="draft-portrait" type="button" aria-label="레오 경매 전략" aria-expanded="false" aria-controls="rival-leo" aria-describedby="rival-leo"><img alt="" loading="lazy" src="./assets/draft-leo.png"><span class="media-action-icon" aria-hidden="true">i</span></button><div class="rival-note" id="rival-leo"><strong>레오</strong><span>초반부터 입찰하고 감당할 수 있는 가격까지 맞입찰합니다. 플레이어는 지금 가격을 더 올릴지, 다음 물품을 기다릴지 선택합니다.</span></div></div></div>
 </section>
 <section class="ai-topic draft-case">
   <h3>초반에 뒤처진 AI의 경쟁 기회 보완하기</h3>
@@ -3371,6 +3367,17 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
 <dialog class="night-image-dialog" aria-label="야간자율학습 스크린샷 확대"><form method="dialog"><button type="submit" autofocus>닫기</button></form><img alt=""></dialog>
 <script>
 (() => {
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const cueObserver = new IntersectionObserver(entries => {
+      entries.forEach(({target, isIntersecting}) => {
+        if (!isIntersecting) return;
+        cueObserver.unobserve(target);
+        target.classList.add('media-cue-enter');
+      });
+    }, {threshold:0.5});
+    document.querySelectorAll('.night-shot, .auction-rival .draft-portrait').forEach(button => cueObserver.observe(button));
+  }
+
   const hover = document.querySelector('.night-hover-preview');
   const dialog = document.querySelector('.night-image-dialog');
   const enlarged = dialog.querySelector('img');
