@@ -2102,8 +2102,10 @@ html:has(.studio-view[open]){overflow:hidden}
 .night-image-dialog button{display:block;margin:0 0 8px auto}
 .auction-portraits{display:flex;gap:clamp(8px,2vw,16px);margin-top:14px;position:relative}
 .auction-rival .draft-portrait{display:block;width:clamp(62px,10vw,90px);height:auto;aspect-ratio:1;border:1px solid var(--line);padding:0;cursor:pointer}
-.rival-note{opacity:0;visibility:hidden;pointer-events:none;translate:0 6px;position:absolute;z-index:3;bottom:calc(100% + 6px);inset-inline:0;width:min(100%,340px);padding:10px 12px;border-radius:8px;background:var(--portfolio-control-dark);color:var(--portfolio-control-light);font-size:13px;box-shadow:0 4px 12px #0003}
+.rival-note{opacity:0;visibility:hidden;pointer-events:none;translate:0 6px;position:absolute;z-index:3;bottom:calc(100% + 6px);inset-inline:0;width:min(100%,420px);padding:14px 16px;border:1px solid #504735;border-radius:10px;background:var(--portfolio-control-dark);color:var(--portfolio-control-light);font-size:15px;line-height:1.65;text-align:left;word-break:keep-all;overflow-wrap:anywhere;box-shadow:0 8px 24px #0004}
 .rival-note strong,.rival-note span{display:block}
+.rival-note strong{margin-bottom:4px;font-size:17px;line-height:1.3;color:var(--accent)}
+@media(hover:hover) and (pointer:fine){.auction-portraits:has(.auction-rival:hover) .auction-rival:not(:hover)>.rival-note{opacity:0;visibility:hidden}}
 .auction-rival .draft-portrait:is([aria-expanded=true],:focus-visible)+.rival-note{opacity:1;visibility:visible;translate:0 0}
 @media(hover:hover) and (pointer:fine){.auction-rival:hover>.rival-note{opacity:1;visibility:visible;translate:0 0}}
 #history-detail-toggle{background:var(--accent);border-color:#d5b82d}
