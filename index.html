@@ -2102,15 +2102,30 @@ html:has(.studio-view[open]){overflow:hidden}
 .night-image-dialog button{display:block;margin:0 0 8px auto}
 .auction-portraits{display:flex;gap:clamp(8px,2vw,16px);margin-top:14px;position:relative}
 .auction-rival .draft-portrait{display:block;width:clamp(62px,10vw,90px);height:auto;aspect-ratio:1;border:1px solid var(--line);padding:0;cursor:pointer}
-.rival-note{display:none;position:absolute;z-index:3;bottom:calc(100% + 6px);inset-inline:0;width:min(100%,340px);padding:10px 12px;border-radius:8px;background:var(--portfolio-control-dark);color:var(--portfolio-control-light);font-size:13px;box-shadow:0 4px 12px #0003}
+.rival-note{opacity:0;visibility:hidden;pointer-events:none;translate:0 6px;position:absolute;z-index:3;bottom:calc(100% + 6px);inset-inline:0;width:min(100%,340px);padding:10px 12px;border-radius:8px;background:var(--portfolio-control-dark);color:var(--portfolio-control-light);font-size:13px;box-shadow:0 4px 12px #0003}
 .rival-note strong,.rival-note span{display:block}
-.auction-rival .draft-portrait:is([aria-expanded=true],:focus-visible)+.rival-note{display:block}
-@media(hover:hover) and (pointer:fine){.auction-rival:hover>.rival-note{display:block}}
+.auction-rival .draft-portrait:is([aria-expanded=true],:focus-visible)+.rival-note{opacity:1;visibility:visible;translate:0 0}
+@media(hover:hover) and (pointer:fine){.auction-rival:hover>.rival-note{opacity:1;visibility:visible;translate:0 0}}
 #history-detail-toggle{background:var(--accent);border-color:#d5b82d}
 @media(prefers-reduced-motion:no-preference){
-  #history-screen .h17-bubble{animation:history-bubble-invite 3.8s ease-in-out infinite}
+  #history-screen .h17-bubble{animation:history-bubble-invite 2s ease-in-out infinite}
   #history-screen .h18-point:nth-child(even) .h17-bubble{animation-delay:.35s}
-  @keyframes history-bubble-invite{0%,22%,100%{translate:0 0}10%{translate:0 -3px}}
+  @keyframes history-bubble-invite{0%,100%{translate:0 0}50%{translate:0 -7px}}
+}</style><style>.night-hover-preview{opacity:0;visibility:hidden;scale:.97}
+.night-hover-preview.is-visible{opacity:1;visibility:visible;scale:1}
+@media(prefers-reduced-motion:no-preference){
+  .night-shot,.auction-rival .draft-portrait{animation:portfolio-image-invite 2.6s ease-in-out infinite;border-radius:6px}
+  .draft-pair figure:nth-child(2) .night-shot,.auction-rival:nth-child(2) .draft-portrait{animation-delay:.35s}
+  .auction-rival:nth-child(3) .draft-portrait{animation-delay:.7s}
+  .night-shot:is(:hover,:focus-visible),.auction-rival .draft-portrait:is(:hover,:focus-visible,[aria-expanded=true]){animation-play-state:paused}
+  @keyframes portfolio-image-invite{
+    0%,100%{box-shadow:0 0 0 1px #c5a74755}
+    50%{box-shadow:0 0 0 3px #e9be46aa}
+  }
+  .rival-note{transition:opacity .2s ease,translate .24s ease,visibility .24s}
+  .night-hover-preview{transition:opacity .23s ease,scale .28s cubic-bezier(.22,1,.36,1),visibility .28s}
+  .night-image-dialog[open]{animation:portfolio-media-open .25s cubic-bezier(.22,1,.36,1)}
+  @keyframes portfolio-media-open{from{opacity:0;scale:.97}to{opacity:1;scale:1}}
 }</style></head><body><header class="top"><div class="brand">CHAN / GAME DESIGN</div><div class="topaside">INTERACTIVE PORTFOLIO</div></header><main class="site"><div class="track" id="track"><section aria-labelledby="hero-title" class="screen home-v1-page" id="home-screen"><div class="home-v1-hero">
 <div class="container">
 <div class="hero-content">
@@ -3350,7 +3365,7 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     observer.observe(element);
   });
 })();
-</script><img class="night-hover-preview" alt="" aria-hidden="true" hidden>
+</script><img class="night-hover-preview" alt="" aria-hidden="true">
 <dialog class="night-image-dialog" aria-label="야간자율학습 스크린샷 확대"><form method="dialog"><button type="submit" autofocus>닫기</button></form><img alt=""></dialog>
 <script>
 (() => {
@@ -3362,17 +3377,17 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     button.addEventListener('pointerenter', event => {
       if (event.pointerType !== 'mouse' || !matchMedia('(hover:hover) and (pointer:fine)').matches || dialog.open) return;
       hover.src = image.currentSrc || image.src;
-      hover.hidden = false;
+      hover.classList.add('is-visible');
     });
-    button.addEventListener('pointerleave', () => { hover.hidden = true; });
+    button.addEventListener('pointerleave', () => { hover.classList.remove('is-visible'); });
     button.addEventListener('click', () => {
-      hover.hidden = true;
+      hover.classList.remove('is-visible');
       enlarged.src = image.currentSrc || image.src;
       enlarged.alt = image.alt;
       dialog.showModal();
     });
   });
-  window.addEventListener('scroll', () => { hover.hidden = true; }, {passive:true});
+  window.addEventListener('scroll', () => { hover.classList.remove('is-visible'); }, {passive:true});
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
 
   const portraits = [...document.querySelectorAll('.auction-rival button')];
@@ -3385,6 +3400,6 @@ document.querySelectorAll('.playing-covers').forEach(stage => {
     button.setAttribute('aria-expanded', String(!open));
   }));
   document.addEventListener('click', event => { if (!event.target.closest('.auction-rival')) closePortraits(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') { closePortraits(); hover.hidden = true; } });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') { closePortraits(); hover.classList.remove('is-visible'); } });
 })();
 </script></body></html>
